@@ -1,0 +1,14 @@
+---
+layout: default
+title: Pet Projects
+---
+
+<section class="pet-projects">
+    {% for project in site.pet_projects %}
+    <div class="pet-project-card">
+        <h3 class="pet-project-title">{{ project.title }}</h3>
+        <p class="pet-project-description">{{ project.description }}</p>
+        <a href="{{ project.link }}" class="pet-project-link" target="_blank" rel="noopener">{{ project.link_text | default: "View Project" }}</a>
+    </div>
+    {% endfor %}
+</section>

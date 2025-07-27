@@ -1,0 +1,30 @@
+<header class="header">
+    <a href="{{ site.baseurl }}/" class="logo">Vladimir Zhukov</a>
+    
+    <div class="nav-container">
+        <nav class="main-nav">
+            <a href="{{ site.baseurl }}/works" {% if page.url contains '/works' or page.url == '/' %}class="active"{% endif %}>Works</a>
+            <a href="{{ site.baseurl }}/about" {% if page.url == '/about.html' %}class="active"{% endif %}>About</a>
+            <a href="{{ site.baseurl }}/cv" {% if page.url == '/cv.html' %}class="active"{% endif %}>CV</a>
+            <a href="{{ site.baseurl }}/email" {% if page.url == '/email.html' %}class="active"{% endif %}>Email</a>
+        </nav>
+    </div>
+
+    {% if page.url contains '/works' or page.url == '/' %}
+    <div class="sub-nav" id="subNav">
+        <a href="{{ site.baseurl }}/works" {% if page.url == '/works/index.html' or page.url == '/' %}class="active"{% endif %}>Main</a>
+        <a href="{{ site.baseurl }}/works/pet-projects" {% if page.url == '/works/pet-projects.html' %}class="active"{% endif %}>Pet projects</a>
+    </div>
+    {% endif %}
+
+    <button class="mobile-menu-toggle" id="mobileMenuToggle">☰</button>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu-content">
+        <a href="{{ site.baseurl }}/works">Works</a>
+        <a href="{{ site.baseurl }}/about">About</a>
+        <a href="{{ site.baseurl }}/cv">CV</a>
+        <a href="{{ site.baseurl }}/email">Email</a>
+    </div>
+</div>
