@@ -106,6 +106,21 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // Обновлена функция updateSubNav()
+function updateSubNav() {
+    const subNav = document.getElementById('subNav');
+    const mainContent = document.querySelector('.main-content'); // добавлено
+    const currentPath = window.location.pathname;
+    
+    if (currentPath.includes('/works') || currentPath === '/' || currentPath === '/index.html') {
+        if (subNav) subNav.style.display = 'flex';
+        if (mainContent) mainContent.classList.remove('no-subnav'); // добавлено
+    } else {
+        if (subNav) subNav.style.display = 'none';
+        if (mainContent) mainContent.classList.add('no-subnav'); // добавлено
+    }
+}
+
     // Keyboard navigation
     document.addEventListener('keydown', (e) => {
         const lightbox = document.getElementById('lightbox');

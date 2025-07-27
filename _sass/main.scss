@@ -393,8 +393,12 @@ body {
     }
 
     .main-content {
-        margin-top: 80px;
+        margin-top: 140px;
     }
+
+    .main-content.no-subnav {
+    margin-top: 100px;
+}
 
     .header {
         padding: 15px 20px;
