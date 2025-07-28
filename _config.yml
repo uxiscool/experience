@@ -1,38 +1,5 @@
-title: Vladimir Zhukov - Portfolio
-description: UX/UI Designer focused on creating meaningful digital experiences
-url: "https://uxiscool.github.io"
-baseurl: "/portfolio"
-
-markdown: kramdown
-highlighter: rouge
-sass:
-  sass_dir: _sass
-  style: compressed
-
-plugins:
-  - jekyll-feed
-  - jekyll-sitemap
-
-collections:
-  projects:
-    output: false
-    sort_by: date
-  pet_projects:
-    output: false
-
-defaults:
-  - scope:
-      path: ""
-      type: "pages"
-    values:
-      layout: "page"
-  - scope:
-      path: ""
-      type: "projects"
-    values:
-      layout: "project"
-
-exclude:
-  - Gemfile
-  - Gemfile.lock
-  - README.md
+title: Vladimir Zhukov
+description: Portfolio
+baseurl: "" # не трогай если в корне
+url: ""     # не трогай если в Pages
+collections: []

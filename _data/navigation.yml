@@ -1,0 +1,10 @@
+main:
+  - title: Works
+    url: /
+    subnav:
+      - title: Works
+        url: /
+      - title: Pet projects
+        url: /pet-projects/
+  - title: CV
+    url: /cv/

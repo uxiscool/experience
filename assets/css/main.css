@@ -1,0 +1,46 @@
+body {
+  background: #171819;
+  color: #fff;
+  font-family: -apple-system,BlinkMacSystemFont,"San Francisco",Segoe UI,Roboto,sans-serif;
+  margin: 0;
+}
+header {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 36px 24px 0 24px;
+}
+.logo a {
+  font-weight: 700;
+  font-size: 1.4rem;
+  color: #fff;
+  text-decoration: none;
+  letter-spacing: 0.01em;
+}
+.main-menu, .subnav {
+  display: flex;
+  gap: 16px;
+  margin: 0 0 4px 0;
+}
+.menu-link,
+.sub-link {
+  color: #bbb;
+  text-decoration: none;
+  padding: 6px 16px;
+  border-radius: 18px;
+  transition: background 0.15s, color 0.15s;
+}
+.menu-link:hover, .sub-link:hover {
+  background: #33200d;
+  color: #ff9900;
+}
+.menu-link.current, .sub-link.current {
+  background: #33200d;
+  color: #ff9900;
+}
+main {
+  max-width: 780px;
+  margin: 50px auto 0 auto;
+  padding: 0 24px;
+  min-height: 60vh;
+}
