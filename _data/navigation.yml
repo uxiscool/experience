@@ -2,8 +2,8 @@ main:
   - title: Works
     url: /
     subnav:
-      - title: Works
-        url: /
+      - title: Cases
+        url: /cases/
       - title: Pet projects
         url: /pet-projects/
   - title: CV
