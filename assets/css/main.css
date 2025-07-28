@@ -19,12 +19,12 @@ header {
   padding: 36px 24px 0 24px;
 }
 .logo a {
-  font-weight: 300;
-  font-size: 1.1rem;
+  font-weight: 400;
+  font-size: 1rem;        /* уменьшил с 1.1rem */
   color: #fff;
   text-decoration: none;
-  letter-spacing: 0.01em;
-  opacity: 0.9;
+  letter-spacing: 0.025em; /* чуть больше “воздуха” */
+  opacity: 0.85;
   font-family:
     "SF Pro Display",
     "San Francisco",
