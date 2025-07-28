@@ -27,6 +27,7 @@ header {
 .logo a {
   font-weight: 300;
   font-size: 1rem;
+  padding-right: 100px;
   color: #fff;
   text-decoration: none;
   letter-spacing: 0.025em;
