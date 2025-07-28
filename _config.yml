@@ -1,5 +1,5 @@
 title: Vladimir Zhukov
 description: Portfolio
-baseurl: "" # не трогай если в корне
+baseurl: "/experience" # не трогай если в корне
 url: ""     # не трогай если в Pages
 collections: []

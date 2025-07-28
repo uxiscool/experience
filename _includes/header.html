@@ -1,5 +1,5 @@
 <header>
-  <div class="logo"><a href="/">Vladimir Zhukov</a></div>
+  <div class="logo"><a href="{{ site.baseurl }}/">Vladimir Zhukov</a></div>
   <nav class="main-menu">
     {% assign nav = site.data.navigation.main %}
     {% assign pageurl = page.url %}
@@ -16,10 +16,9 @@
           {% endfor %}
         {% endif %}
       {% endif %}
-      <a href="{{ item.url }}" class="menu-link{% if is_current %} current{% endif %}">{{ item.title }}</a>
+      <a href="{{ site.baseurl }}{{ item.url }}" class="menu-link{% if is_current %} current{% endif %}">{{ item.title }}</a>
     {% endfor %}
   </nav>
-  {% comment %} Второй уровень меню, только если есть у текущего пункта subnav {% endcomment %}
   {% assign current_main = nav | where: "url", pageurl | first %}
   {% unless current_main %}
     {% for item in nav %}
@@ -35,7 +34,7 @@
   {% if current_main and current_main.subnav %}
     <nav class="subnav">
       {% for sub in current_main.subnav %}
-        <a href="{{ sub.url }}" class="sub-link{% if sub.url == pageurl %} current{% endif %}">{{ sub.title }}</a>
+        <a href="{{ site.baseurl }}{{ sub.url }}" class="sub-link{% if sub.url == pageurl %} current{% endif %}">{{ sub.title }}</a>
       {% endfor %}
     </nav>
   {% endif %}
