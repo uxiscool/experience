@@ -92,15 +92,15 @@ header {
   color: #bbb;
   text-decoration: none;
   padding: 6px 16px;
-  border-radius: 18px;
-  transition: background 0.15s, color 0.15s;
+  border-radius: 0px;
+  transition: background 0.25s, color 0.15s;
 }
 .menu-link:hover, .sub-link:hover {
-  background: #33200d;
+  background: #323437;
   color: #ff9900;
 }
 .menu-link.current, .sub-link.current {
-  background: #33200d;
+  background: #323437;
   color: #ff9900;
 }
 
