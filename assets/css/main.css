@@ -47,21 +47,18 @@ header {
 }
 
 .logo a {
+  font-family: "Fraunces", serif !important;
   font-weight: 400;
   font-size: 1.3rem;
   color: #fff;
   text-decoration: none;
   letter-spacing: 0.025em;
   opacity: 0.85;
-  font-family:
-    "SF Pro Display",
-    "San Francisco",
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
-    Roboto,
-    Arial,
-    sans-serif;
+  font-variation-settings: 
+    'wght' 400,
+    'opsz' 72,
+    'SOFT' 1,
+    'WONK' 1;
 }
 
 .menu-link,
