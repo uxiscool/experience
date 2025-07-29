@@ -96,11 +96,11 @@ header {
   transition: background 0.25s, color 0.15s;
 }
 .menu-link:hover, .sub-link:hover {
-  background: #1b1c1d;
+  background: #242627;
   color: #ff9900;
 }
 .menu-link.current, .sub-link.current {
-  background: #1b1c1d;
+  background: #242627;
   color: #ff9900;
 }
 
