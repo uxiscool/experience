@@ -22,6 +22,7 @@ header {
 }
 .menu-panel {
   display: flex;
+  align-items: stretch;
   flex-direction: row;
   align-items: flex-start;
   gap: 0;
@@ -31,6 +32,7 @@ header {
   min-height: 48px; /* fallback высота, если меню слишком маленькое */
   width: 1px;
   background: #323437;
+  align-self: stretch;
   margin: 0 22px 0 0; /* справа отступ до меню */
   border-radius: 1px;
   /* Линия должна быть от самой верхней до самой нижней точки меню */
