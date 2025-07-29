@@ -19,23 +19,25 @@
       <a href="{{ site.baseurl }}{{ item.url }}" class="menu-link{% if is_current %} current{% endif %}">{{ item.title }}</a>
     {% endfor %}
   </nav>
-  {% assign current_main = nav | where: "url", pageurl | first %}
-  {% unless current_main %}
-    {% for item in nav %}
-      {% if item.subnav %}
-        {% for sub in item.subnav %}
-          {% if sub.url == pageurl %}
-            {% assign current_main = item %}
-          {% endif %}
-        {% endfor %}
-      {% endif %}
-    {% endfor %}
-  {% endunless %}
-  {% if current_main and current_main.subnav %}
-    <nav class="subnav">
-      {% for sub in current_main.subnav %}
-        <a href="{{ site.baseurl }}{{ sub.url }}" class="sub-link{% if sub.url == pageurl %} current{% endif %}">{{ sub.title }}</a>
-      {% endfor %}
-    </nav>
-  {% endif %}
 </header>
+
+{%- assign current_main = nav | where: "url", pageurl | first -%}
+{%- unless current_main -%}
+  {%- for item in nav -%}
+    {%- if item.subnav -%}
+      {%- for sub in item.subnav -%}
+        {%- if sub.url == pageurl -%}
+          {%- assign current_main = item -%}
+        {%- endif -%}
+      {%- endfor -%}
+    {%- endif -%}
+  {%- endfor -%}
+{%- endunless -%}
+
+{%- if current_main and current_main.subnav -%}
+  <nav class="subnav">
+    {% for sub in current_main.subnav %}
+      <a href="{{ site.baseurl }}{{ sub.url }}" class="sub-link{% if sub.url == pageurl %} current{% endif %}">{{ sub.title }}</a>
+    {% endfor %}
+  </nav>
+{%- endif -%}

@@ -14,15 +14,30 @@ body {
 }
 header {
   display: flex;
-  align-items: center;   /* Выравнивание по центру по вертикали */
-  flex-direction: row;   /* В одну строку */
-  gap: 36px;             /* Пространство между логотипом и меню */
+  align-items: center;
+  flex-direction: row;
+  gap: 36px;
   padding: 36px 24px 0 24px;
 }
 
 .logo {
   margin-right: 12px;
 }
+
+.main-menu {
+  display: flex;
+  flex-direction: row;
+  gap: 18px;
+  margin: 0;
+}
+
+.subnav {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  margin: 8px 0 0 24px;   /* сверху небольшой отступ, слева выравниваем с логотипом */
+}
+
 
 .logo a {
   font-weight: 400;
@@ -40,20 +55,6 @@ header {
     Roboto,
     Arial,
     sans-serif;
-}
-
-.main-menu {
-  display: flex;
-  flex-direction: row;
-  gap: 18px;
-  margin: 0;
-}
-
-.subnav {
-  display: flex;
-  flex-direction: row;
-  gap: 12px;
-  margin: 0 0 0 18px;
 }
 
 .menu-link,
