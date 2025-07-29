@@ -14,12 +14,34 @@ body {
 }
 header {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   flex-direction: row;
   gap: 36px;
   padding: 36px 24px 0 24px;
+  width: 100%;
 }
-
+.menu-panel {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 0;
+}
+.menu-divider {
+  height: 100%;
+  min-height: 48px; /* fallback высота, если меню слишком маленькое */
+  width: 1px;
+  background: #323437;
+  margin: 0 22px 0 0; /* справа отступ до меню */
+  border-radius: 1px;
+  /* Линия должна быть от самой верхней до самой нижней точки меню */
+}
+.menu-block {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  height: 100%;
+  /* меню + подменю вертикально */
+}
 .main-menu {
   display: flex;
   flex-direction: row;
@@ -31,8 +53,18 @@ header {
   display: flex;
   flex-direction: row;
   gap: 12px;
-  margin: 10px 0 0 0;    /* убираем левый отступ */
-  padding-left: 255px;    /* это и есть якорь — сдвиг под меню (178px — ширина лого+gap) */
+  margin: 10px 0 0 0;
+  padding: 0;
+}
+
+@media (max-width: 700px) {
+  .menu-panel, .menu-block, .main-menu, .subnav {
+    flex-direction: column;
+    gap: 0;
+  }
+  .menu-divider {
+    display: none;
+  }
 }
 
 .nav-wrapper {
