@@ -10,8 +10,9 @@ body {
     Roboto,
     Arial,
     sans-serif;
-    margin: 0;
+  margin: 0;
 }
+
 header {
   display: flex;
   align-items: flex-start;
@@ -20,59 +21,11 @@ header {
   padding: 36px 24px 0 24px;
   width: 100%;
 }
-.menu-panel {
-  display: flex;
-  align-items: stretch;
-  flex-direction: row;
-  align-items: flex-start;
-  gap: 0;
-}
-.menu-divider {
-  height: 100%;
-  min-height: 48px; /* fallback высота, если меню слишком маленькое */
-  width: 1px;
-  background: #323437;
-  align-self: stretch;
-  margin: 0 22px 0 0; /* справа отступ до меню */
-  border-radius: 1px;
-  /* Линия должна быть от самой верхней до самой нижней точки меню */
-}
-.menu-block {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  height: 100%;
-  /* меню + подменю вертикально */
-}
-.main-menu {
-  display: flex;
-  flex-direction: row;
-  gap: 18px;
-  margin: 0;
-}
-
-.subnav {
-  display: flex;
-  flex-direction: row;
-  gap: 12px;
-  margin: 10px 0 0 0;
-  padding: 0;
-}
-
-@media (max-width: 700px) {
-  .menu-panel, .menu-block, .main-menu, .subnav {
-    flex-direction: column;
-    gap: 0;
-  }
-  .menu-divider {
-    display: none;
-  }
-}
 
 .nav-wrapper {
   display: flex;
   flex-direction: column;
-  align-items: flex-start; /* выравнивание по левому краю */
+  align-items: flex-start;
   width: 100%;
 }
 
@@ -92,6 +45,48 @@ header {
     'WONK' 1;
 }
 
+.menu-panel {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 0;
+}
+
+.menu-panel::before {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1px;
+  height: 100%;
+  background: #323437;
+  border-radius: 1px;
+}
+
+.menu-block {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-left: 22px; /* расстояние от линии до меню */
+}
+
+.main-menu {
+  display: flex;
+  flex-direction: row;
+  gap: 18px;
+  margin: 0;
+}
+
+.subnav {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  margin: 10px 0 0 0;
+  padding: 0;
+}
+
 .menu-link,
 .sub-link {
   color: #bbb;
@@ -108,9 +103,16 @@ header {
   background: #33200d;
   color: #ff9900;
 }
+
 main {
   max-width: 780px;
   margin: 50px auto 0 auto;
   padding: 0 24px;
   min-height: 60vh;
+}
+
+@media (max-width: 700px) {
+  .menu-panel::before {
+    display: none;
+  }
 }
