@@ -97,7 +97,7 @@ header {
 .menu-link:hover, .sub-link:hover {
   /* background: #242627; */
   color: #ff9900;
-  transition: background 0.25s, color 0.50s;
+  transition: background 0.25s, color 2s;
 }
 .menu-link.current, .sub-link.current {
   background: #242627;
