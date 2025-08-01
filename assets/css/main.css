@@ -108,9 +108,9 @@ header {
 }
 
 main {
-  margin: 50px auto 0 auto;
+  /* margin: 50px auto 0 auto;
   padding: 0 24px;
-  min-height: 60vh;
+  min-height: 60vh; */
 }
 
 @media (max-width: 700px) {
