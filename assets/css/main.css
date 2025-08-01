@@ -18,8 +18,8 @@ header {
   align-items: flex-start;
   flex-direction: row;
   gap: 36px;
-  /* margin-top: 36px;
-  width: 100%; */
+  margin-top: 36px;
+ /* width: 100%; */
   background: #424c67; /* временный фон */
 }
 
