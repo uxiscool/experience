@@ -133,7 +133,16 @@ main {
   position: relative;
 }
 
+.intro-divider {
+  height: 1.5px;
+  background: linear-gradient(90deg, #272829 0%, #434446 100%);
+  margin-top: 40px;
+  border-radius: 2px;
+  opacity: 0.55;
+}
+
 @keyframes heroFadeIn {
   from { opacity: 0; transform: translateY(30px);}
   to { opacity: 0.90; transform: none;}
 }
+

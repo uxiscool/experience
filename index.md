@@ -11,7 +11,7 @@ title: Works
   </p>
   <div class="intro-divider"></div>
 </div>
-
+<hr>
 <div class="projects-section">
   <!-- Здесь появятся проекты -->
 </div>
