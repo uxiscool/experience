@@ -121,6 +121,8 @@ main {
 }
 .container {
   margin-left: auto;
+  width: 100%;
+  background: #2f3831;
   margin-right: auto;
   padding-left: 32px;    /* отступ слева */
   padding-right: 32px;   /* отступ справа */
