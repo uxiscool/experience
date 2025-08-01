@@ -119,6 +119,15 @@ main {
     display: none;
   }
 }
+.container {
+  max-width: 780px;      /* или шире, если нужно */
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 32px;    /* отступ слева */
+  padding-right: 32px;   /* отступ справа */
+  width: 100%;
+  box-sizing: border-box;
+}
 .intro-hero {
   display: flex;
   flex-direction: column;
