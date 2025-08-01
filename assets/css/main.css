@@ -18,8 +18,9 @@ header {
   align-items: flex-start;
   flex-direction: row;
   gap: 36px;
-  padding: 36px 24px 0 24px;
+  /*padding: 36px 24px 0 24px;  */
   width: 100%;
+  background: #424c67; /* временный фон */
 }
 
 .nav-wrapper {
@@ -125,6 +126,7 @@ main {
   font-size: 1.35rem;
   font-weight: 400;
   color: #fff;
+ background: #424b63; /* временный фон */
   margin-bottom: 40px;
   opacity: 0.90;
   line-height: 1.4;
