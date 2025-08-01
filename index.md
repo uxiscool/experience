@@ -9,9 +9,8 @@ title: Works
     Creating minimalistic, human-centered apps and systems.<br>
     Based in Berlin. Open for collaboration.
   </p>
-  <div class="intro-divider"></div>
 </div>
-<hr>
+<div class="intro-divider"></div>
 <div class="projects-section">
   <!-- Здесь появятся проекты -->
 </div>
