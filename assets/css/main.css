@@ -123,7 +123,7 @@ main {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  min-height: calc(100vh - 250px); /* корректируй по факту */
+  min-height: calc(100vh - 240px); /* корректируй по факту */
   font-size: 1.35rem;
   font-weight: 400;
   color: #fff;
