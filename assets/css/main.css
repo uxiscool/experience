@@ -92,6 +92,7 @@ header {
 .menu-link,
 .sub-link {
   color: #bbb;
+  font-size: 15px; /* размер шрифта */ 
   text-decoration: none;
   padding: 6px 16px;
   border-radius: 8px;
