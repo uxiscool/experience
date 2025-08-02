@@ -149,6 +149,8 @@ main {
   height: 1.5px;
   background: linear-gradient(90deg, #272829 0%, #434446 100%);
   margin-top: 40px;
+  margin-left: 293px;
+  margin-right: 293px;
   border-radius: 2px;
   opacity: 0.55;
 }
