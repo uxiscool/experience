@@ -9,6 +9,6 @@ images:
     caption: "Main dashboard redesign"
   - src: /_cases/epam/time/time2.jpg
     caption: "Updated analytics module"
-cover: /assets/images/crm1.jpg
+cover: /_cases/epam/time/time1.jpg
 permalink: /cases/time/
 ---
