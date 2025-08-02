@@ -124,7 +124,7 @@ main {
   background: #2f3831;
   margin-right: auto;
   padding-left: 293px;    /* отступ слева */
-  padding-right: 32px;   /* отступ справа */
+  padding-right: 293px;   /* отступ справа */
   width: 100%;
   box-sizing: border-box;
 }
