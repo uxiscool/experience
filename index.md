@@ -14,6 +14,36 @@ title: Works
   </div>
 </div>
 <div class="intro-divider"></div>
-<div class="projects-section">
-  <!-- Здесь появятся проекты -->
+<div class="featured-cases">
+  {% assign featured = site.cases | where: "featured", true %}
+  {% for case in featured %}
+    <div class="case-card">
+      <div class="case-img-wrap">
+        <img
+          class="case-thumb"
+          src="{{ case.cover }}"
+          alt="{{ case.title }} preview"
+          data-images='{{ case.images | jsonify }}'
+          data-index="0"
+          onclick="openLightbox(this)"
+        >
+      </div>
+      <div class="case-meta">
+        <a href="{{ case.url }}" class="case-title">{{ case.title }}</a>
+        <div class="case-year">{{ case.year }} · {{ case.type }}</div>
+        <div class="case-summary">{{ case.summary }}</div>
+      </div>
+    </div>
+  {% endfor %}
+</div>
+<!-- Лайтбокс -->
+<div id="lightbox" class="lightbox" style="display:none;">
+  <div class="lightbox-bg" onclick="closeLightbox()"></div>
+  <div class="lightbox-content">
+    <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+    <button class="lightbox-arrow left" onclick="lightboxPrev()">&larr;</button>
+    <img id="lightbox-img" class="lightbox-img" src="">
+    <button class="lightbox-arrow right" onclick="lightboxNext()">&rarr;</button>
+    <div id="lightbox-caption" class="lightbox-caption"></div>
+  </div>
 </div>
