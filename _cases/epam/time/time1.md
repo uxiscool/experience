@@ -1,6 +1,7 @@
 ---
 title: Internal B2E time management services
 year: 2023
+company: Epam
 type: B2E Web Service
 featured: true
 summary: Revamped core flows for enterprise sales CRM used by 3,000+ employees.

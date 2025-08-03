@@ -360,6 +360,8 @@ main {
   color: #9fa7b2;
   font-size: 1.05rem;
   opacity: 0.9;
+  margin-left: 8px;
+  white-space: nowrap;
 }
 .case-type2 {
   color: #b7c1cc;
