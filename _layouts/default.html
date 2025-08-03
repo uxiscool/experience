@@ -13,6 +13,7 @@
       {{ content }}
     </main>
     <script>
+window.siteBaseurl = "{{ site.baseurl }}";
 let lightboxImages = [];
 let lightboxIndex = 0;
 
@@ -25,7 +26,7 @@ function openLightbox(imgEl) {
 
 function showLightboxImg() {
   const data = lightboxImages[lightboxIndex];
-  document.getElementById('lightbox-img').src = data.src;
+  document.getElementById('lightbox-img').src = window.siteBaseurl + data.src;
   document.getElementById('lightbox-caption').textContent = data.caption || '';
 }
 
