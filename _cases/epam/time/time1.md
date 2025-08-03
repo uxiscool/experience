@@ -16,5 +16,7 @@ images:
     caption: "Updated analytics module"
     src: /assets/pix/cases/epam/time/time5.jpg
     caption: "Updated analytics module"
+    src: /assets/pix/cases/epam/time/time6.jpg
+    caption: "Updated analytics module"
 permalink: /cases/time/
 ---
