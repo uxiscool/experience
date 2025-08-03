@@ -12,38 +12,38 @@
     <main>
       {{ content }}
     </main>
-    <script>
+<script>
 window.siteBaseurl = "{{ site.baseurl }}";
-let lightboxImages = [];
-let lightboxIndex = 0;
+let allCases = {{ site.cases | jsonify }};
+let currentCaseIdx = 0, currentImgIdx = 0;
 
-function openLightbox(imgEl) {
-  lightboxImages = JSON.parse(imgEl.dataset.images.replace(/&quot;/g,'"'));
-  lightboxIndex = Number(imgEl.dataset.index) || 0;
-  document.getElementById('lightbox').style.display = 'flex';
-  showLightboxImg();
+function openCaseGallery(caseIdx, imgIdx) {
+  currentCaseIdx = caseIdx;
+  currentImgIdx = imgIdx;
+  showCaseLightbox();
 }
 
-function showLightboxImg() {
-  const data = lightboxImages[lightboxIndex];
+function showCaseLightbox() {
+  const imgs = allCases[currentCaseIdx].images;
+  const data = imgs[currentImgIdx];
   document.getElementById('lightbox-img').src = window.siteBaseurl + data.src;
   document.getElementById('lightbox-caption').textContent = data.caption || '';
+  document.getElementById('lightbox').style.display = 'flex';
 }
 
 function closeLightbox() {
   document.getElementById('lightbox').style.display = 'none';
 }
-
 function lightboxPrev() {
-  lightboxIndex = (lightboxIndex + lightboxImages.length - 1) % lightboxImages.length;
-  showLightboxImg();
+  const imgs = allCases[currentCaseIdx].images;
+  currentImgIdx = (currentImgIdx + imgs.length - 1) % imgs.length;
+  showCaseLightbox();
 }
-
 function lightboxNext() {
-  lightboxIndex = (lightboxIndex + 1) % lightboxImages.length;
-  showLightboxImg();
+  const imgs = allCases[currentCaseIdx].images;
+  currentImgIdx = (currentImgIdx + 1) % imgs.length;
+  showCaseLightbox();
 }
-
 document.addEventListener('keydown', function(e) {
   const lb = document.getElementById('lightbox');
   if (!lb || lb.style.display !== 'flex') return;
@@ -52,6 +52,5 @@ document.addEventListener('keydown', function(e) {
   if (e.key === "ArrowRight") lightboxNext();
 });
 </script>
-
   </body>
 </html>

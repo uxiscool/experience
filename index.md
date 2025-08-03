@@ -18,26 +18,34 @@ title: Works
 <div class="featured-cases">
   {% assign featured = site.cases | where: "featured", true %}
   {% for case in featured %}
-    <div class="case-card">
-      <div class="case-img-wrap">
-   <img
-  class="case-thumb"
-  src="{{ site.baseurl }}{{ case.cover }}"
-  alt="{{ case.title }} preview"
-  data-images='{{ case.images | jsonify }}'
-  data-index="0"
-  onclick="openLightbox(this)"
->
+    <div class="case-block">
+      <div class="case-meta2">
+        <div class="case-title-row">
+          <a href="{{ case.url }}" class="case-title2">{{ case.title }}</a>
+          <span class="case-year2">{{ case.year }}</span>
+        </div>
+        <div class="case-type2">{{ case.type }}</div>
+        <div class="case-summary2">{{ case.summary }}</div>
       </div>
-      <div class="case-meta">
-        <a href="{{ case.url }}" class="case-title">{{ case.title }}</a>
-        <div class="case-year">{{ case.year }} · {{ case.type }}</div>
-        <div class="case-summary">{{ case.summary }}</div>
+      <div class="case-gallery">
+        {% for img in case.images %}
+          <div class="case-gallery-item">
+            <img
+              class="case-thumb2"
+              src="{{ site.baseurl }}{{ img.src }}"
+              alt="{{ img.caption | escape }}"
+              onclick="openCaseGallery({{ forloop.parentloop.index0 }}, {{ forloop.index0 }})"
+            >
+            {% if img.caption %}
+              <div class="case-thumb-caption">{{ img.caption }}</div>
+            {% endif %}
+          </div>
+        {% endfor %}
       </div>
     </div>
   {% endfor %}
 </div>
-<!-- Лайтбокс -->
+<!-- Лайтбокс (один для всех проектов) -->
 <div id="lightbox" class="lightbox" style="display:none;">
   <div class="lightbox-bg" onclick="closeLightbox()"></div>
   <div class="lightbox-content">
@@ -48,3 +56,4 @@ title: Works
     <div id="lightbox-caption" class="lightbox-caption"></div>
   </div>
 </div>
+

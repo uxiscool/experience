@@ -160,12 +160,6 @@ main {
   from { opacity: 0; transform: translateY(30px);}
   to { opacity: 0.90; transform: none;}
 }
-.featured-cases {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 36px;
-  margin: 60px 0 32px 0;
-}
 
 .case-card {
   background: #23242a;
@@ -322,3 +316,100 @@ main {
   to { opacity: 1;}
 }
 
+.featured-cases {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+  margin: 60px 0 32px 0;
+}
+
+.case-block {
+  background: #23242a;
+  border-radius: 18px;
+  box-shadow: 0 2px 18px #181a1c29;
+  padding: 32px 24px 28px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.case-meta2 {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  margin-bottom: 12px;
+}
+
+.case-title-row {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+.case-title2 {
+  font-size: 1.18rem;
+  font-weight: 600;
+  color: #fff;
+  text-decoration: underline dotted;
+  text-underline-offset: 4px;
+  transition: color .15s;
+}
+.case-title2:hover {
+  color: #ff9900;
+}
+.case-year2 {
+  color: #9fa7b2;
+  font-size: 1.05rem;
+  opacity: 0.9;
+}
+.case-type2 {
+  color: #b7c1cc;
+  font-size: 1.01rem;
+  opacity: 0.96;
+}
+.case-summary2 {
+  font-size: 1.09rem;
+  color: #e2e5e7;
+  opacity: 0.93;
+}
+
+.case-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(196px, 1fr));
+  gap: 22px;
+  margin-top: 4px;
+}
+.case-gallery-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #1b1c20;
+  border-radius: 12px;
+  padding: 12px;
+  box-shadow: 0 2px 8px #0002;
+  transition: box-shadow .13s;
+}
+.case-gallery-item:hover {
+  box-shadow: 0 6px 20px #18a0fb19;
+}
+.case-thumb2 {
+  max-width: 100%;
+  max-height: 180px;
+  width: auto;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  border-radius: 8px;
+  background: #191a1e;
+  margin-bottom: 6px;
+  cursor: pointer;
+  transition: filter .14s;
+}
+.case-gallery-item:hover .case-thumb2 {
+  filter: brightness(1.08);
+}
+.case-thumb-caption {
+  font-size: .97rem;
+  color: #bac0c9;
+  text-align: center;
+  margin-top: 3px;
+  opacity: 0.86;
+}
