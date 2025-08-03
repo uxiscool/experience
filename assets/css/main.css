@@ -131,14 +131,14 @@ main {
 
 @media (max-width: 1200px) {
   .container {
-    padding-left: 120px;
+    padding-left: 293px;
     padding-right: 32px;
   }
 }
 
 @media (max-width: 980px) {
   .container {
-    padding-left: 0;
+    padding-left: 293px;
     padding-right: 0;
   }
 }
