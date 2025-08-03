@@ -138,8 +138,8 @@ main {
 
 @media (max-width: 980px) {
   .container {
-    padding-left: 32px;
-    padding-right: 32px;
+    padding-left: 64px;
+    padding-right: 64px;
   }
 }
 
