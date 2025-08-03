@@ -120,15 +120,29 @@ main {
   }
 }
 .container {
-  margin-left: auto;
-  width: 100%;
-  background: #2f3831;
-  margin-right: auto;
-  padding-left: 293px;    /* отступ слева */
-  padding-right: 293px;   /* отступ справа */
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: 293px;
+  padding-right: 48px;
+  max-width: none;
   width: 100%;
   box-sizing: border-box;
 }
+
+@media (max-width: 1200px) {
+  .container {
+    padding-left: 120px;
+    padding-right: 32px;
+  }
+}
+
+@media (max-width: 980px) {
+  .container {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
 .intro-hero {
   display: flex;
   flex-direction: column;
@@ -150,8 +164,8 @@ main {
   height: 1.5px;
   background: linear-gradient(90deg, #272829 0%, #434446 100%);
   margin-top: 40px;
-  margin-left: 293px;
-  margin-right: 293px;
+  margin-left: 0px;
+  margin-right: 0px;
   border-radius: 2px;
   opacity: 0.55;
 }
