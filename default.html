@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>{{ page.title | default: site.title }}</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@72,400,1,1&display=swap">
+    <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/main.css">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+  </head>
+  <body>
+    {% include header.html %}
+    <main>
+      {{ content }}
+    </main>
+<script>
+window.siteBaseurl = "{{ site.baseurl }}";
+let allCases = {{ site.cases | jsonify }};
+let currentCaseIdx = 0, currentImgIdx = 0;
+
+function openCaseGallery(caseIdx, imgIdx) {
+  currentCaseIdx = caseIdx;
+  currentImgIdx = imgIdx;
+  showCaseLightbox();
+}
+
+function showCaseLightbox() {
+  const imgs = allCases[currentCaseIdx].images;
+  const data = imgs[currentImgIdx];
+  document.getElementById('lightbox-img').src = window.siteBaseurl + data.src;
+  document.getElementById('lightbox-caption').textContent = data.caption || '';
+  document.getElementById('lightbox').style.display = 'flex';
+}
+
+function closeLightbox() {
+  document.getElementById('lightbox').style.display = 'none';
+}
+function lightboxPrev() {
+  const imgs = allCases[currentCaseIdx].images;
+  currentImgIdx = (currentImgIdx + imgs.length - 1) % imgs.length;
+  showCaseLightbox();
+}
+function lightboxNext() {
+  const imgs = allCases[currentCaseIdx].images;
+  currentImgIdx = (currentImgIdx + 1) % imgs.length;
+  showCaseLightbox();
+}
+document.addEventListener('keydown', function(e) {
+  const lb = document.getElementById('lightbox');
+  if (!lb || lb.style.display !== 'flex') return;
+  if (e.key === "Escape") closeLightbox();
+  if (e.key === "ArrowLeft") lightboxPrev();
+  if (e.key === "ArrowRight") lightboxNext();
+});
+</script>
+  </body>
+</html>

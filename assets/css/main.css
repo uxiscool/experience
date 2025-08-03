@@ -339,7 +339,14 @@ main {
   gap: 7px;
   margin-bottom: 12px;
 }
-
+.case-meta2-inline {
+  color: #b7c1cc;
+  font-size: 1.01rem;
+  opacity: 0.96;
+  margin-bottom: 4px;
+  margin-top: 2px;
+  white-space: nowrap;
+}
 .case-title-row {
   display: flex;
   align-items: center;

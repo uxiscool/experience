@@ -20,13 +20,16 @@ title: Works
   {% for case in featured %}
     <div class="case-block">
       <div class="case-meta2">
-        <div class="case-title-row">
+<div class="case-title-row">
   <a href="{{ case.url }}" class="case-title2">{{ case.title }}</a>
-  <span class="case-year2">
-    {{ case.year }}
-    {% if case.company %} · {{ case.company }}{% endif %}
-  </span>
 </div>
+<div class="case-meta2-inline">
+  {{ case.year }}
+  {% if case.company %} · {{ case.company }}{% endif %}
+  {% if case.type %} · {{ case.type }}{% endif %}
+</div>
+<div class="case-summary2">{{ case.summary }}</div>
+
         <div class="case-type2">{{ case.type }}</div>
         <div class="case-summary2">{{ case.summary }}</div>
       </div>
