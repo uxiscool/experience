@@ -197,9 +197,6 @@ main {
   transition: filter .18s;
   cursor: pointer;
 }
-.case-card:hover .case-thumb {
-  filter: brightness(1.08);
-}
 
 .case-meta {
   padding: 22px 18px 18px 18px;
@@ -412,9 +409,6 @@ main {
   margin-bottom: 6px;
   cursor: pointer;
   transition: filter .14s;
-}
-.case-gallery-item:hover .case-thumb2 {
-  filter: brightness(1.08);
 }
 .case-thumb-caption {
   font-size: .97rem;
