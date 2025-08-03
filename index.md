@@ -19,20 +19,17 @@ title: Works
   {% assign featured = site.cases | where: "featured", true %}
   {% for case in featured %}
     <div class="case-block">
-      <div class="case-meta2">
-<div class="case-title-row">
-  <a href="{{ case.url }}" class="case-title2">{{ case.title }}</a>
+<div class="case-meta2">
+  <div class="case-title-row">
+    <a href="{{ case.url }}" class="case-title2">{{ case.title }}</a>
+  </div>
+  <div class="case-meta2-inline">
+    {{ case.year }}
+    {% if case.company %} · {{ case.company }}{% endif %}
+    {% if case.type %} · {{ case.type }}{% endif %}
+  </div>
+  <div class="case-summary2">{{ case.summary }}</div>
 </div>
-<div class="case-meta2-inline">
-  {{ case.year }}
-  {% if case.company %} · {{ case.company }}{% endif %}
-  {% if case.type %} · {{ case.type }}{% endif %}
-</div>
-<div class="case-summary2">{{ case.summary }}</div>
-
-        <div class="case-type2">{{ case.type }}</div>
-        <div class="case-summary2">{{ case.summary }}</div>
-      </div>
       <div class="case-gallery">
         {% for img in case.images %}
           <div class="case-gallery-item">
