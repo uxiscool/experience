@@ -14,19 +14,20 @@ title: Works
   </div>
 </div>
 <div class="intro-divider"></div>
+<!-- Главные кейсы -->
 <div class="featured-cases">
   {% assign featured = site.cases | where: "featured", true %}
   {% for case in featured %}
     <div class="case-card">
       <div class="case-img-wrap">
-        <img
-          class="case-thumb"
-          src="{{ case.cover }}"
-          alt="{{ case.title }} preview"
-          data-images='{{ case.images | jsonify }}'
-          data-index="0"
-          onclick="openLightbox(this)"
-        >
+   <img
+  class="case-thumb"
+  src="{{ site.baseurl }}{{ case.cover }}"
+  alt="{{ case.title }} preview"
+  data-images='{{ case.images | jsonify }}'
+  data-index="0"
+  onclick="openLightbox(this)"
+>
       </div>
       <div class="case-meta">
         <a href="{{ case.url }}" class="case-title">{{ case.title }}</a>
