@@ -6,10 +6,10 @@ title: Works
 <div class="container">
   <div class="intro-hero">
     <p>
-    I’m Vladimir — UX enthusiast and interaction architect based in Moscow, Russia.<br><br>
-    I’m passionate about a systematic approach to design and believe that real product value starts with well-thought-out user journeys. I love working on a wide variety of interfaces, with a special passion for internal tools and complex B2B web services.<br><br>
-    My experience covers different project roles: from solo contributor to core team member. I enjoy tackling business tasks, building structure out of chaos, and making digital products truly useful and delightful for people.<br><br>
-    Open to collaboration and always excited to solve new challenges.
+    I’m Vladimir — UX&nbsp;enthusiast and&nbsp;interaction architect based in&nbsp;Moscow, Russia.<br><br>
+    I’m&nbsp;passionate about a&nbsp;systematic approach to&nbsp;design and&nbsp;believe that real product value starts with well-thought-out user journeys. I&nbsp;love working on&nbsp;a&nbsp;wide variety of&nbsp;interfaces, with a&nbsp;special passion for&nbsp;internal tools and&nbsp;complex B2B web&nbsp;services.<br><br>
+    My&nbsp;experience covers different project roles: from solo contributor to&nbsp;core team member. I&nbsp;enjoy tackling business tasks, building structure out&nbsp;of&nbsp;chaos, and&nbsp;making digital products truly useful and&nbsp;delightful for&nbsp;people.<br><br>
+    Open to&nbsp;collaboration and&nbsp;always excited to&nbsp;solve new&nbsp;challenges.
     </p>
   </div>
 </div>
