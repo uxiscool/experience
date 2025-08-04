@@ -417,7 +417,7 @@ main {
   max-height: 350px;
   width: auto;
   aspect-ratio: 4/3;
-  object-fit: cover;
+  object-fit: contain;
   border-radius: 8px;
   background: #191a1e;
   margin-bottom: 6px;
