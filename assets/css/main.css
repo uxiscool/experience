@@ -176,10 +176,10 @@ main {
 }
 
 .case-card {
-  background: #23242a;
+  background: #2d2e37;
   border-radius: 18px;
   overflow: hidden;
-  box-shadow: 0 2px 18px #181a1c29;
+  box-shadow: 0 2px 18px #2f343929;
   transition: box-shadow 0.18s, transform 0.2s;
   display: flex;
   flex-direction: column;
