@@ -207,7 +207,7 @@ main {
   height: auto;
   object-fit: contain;
   border-radius: 0;
-  background: #181c22;
+  background: #232429;
   transition: filter .18s;
   cursor: pointer;
 }
@@ -335,7 +335,6 @@ main {
 }
 
 .case-block {
-  background: #23242a;
   border-radius: 18px;
   box-shadow: 0 2px 18px #181a1c29;
   padding: 32px 24px 28px 24px;
