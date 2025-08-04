@@ -11,8 +11,11 @@ title: Works
     My&nbsp;experience covers different project roles: from solo contributor to&nbsp;core team member. I&nbsp;enjoy tackling business tasks, building structure out&nbsp;of&nbsp;chaos, and&nbsp;making digital products truly useful and&nbsp;delightful for&nbsp;people.<br><br>
     Open to&nbsp;collaboration and&nbsp;always excited to&nbsp;solve new&nbsp;challenges.
     </p>
+    <div class="intro-divider"></div>
   </div>
+  <div class="intro-divider"></div>
 </div>
+<!-- Градиентный разделитель -->
 <div class="intro-divider"></div>
 <!-- Главные кейсы -->
 <div class="featured-cases">
