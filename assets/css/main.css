@@ -411,7 +411,7 @@ main {
   transition: box-shadow .25s;
 }
 .case-gallery-item:hover {
-  box-shadow: 0 5px 5px #fd4931;
+  box-shadow: 2px 2px 2px #fd4931;
 }
 .case-thumb2 {
   max-width: 100%;
