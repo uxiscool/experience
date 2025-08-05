@@ -221,9 +221,6 @@ header {
   text-decoration: underline dotted;
   text-underline-offset: 4px;
   transition: color .15s;
-  padding-left: 293px;
-  padding-right: 132px;
-  background: #424b63;
 }
 .case-title:hover {
   color: #ff9900;
@@ -347,6 +344,9 @@ header {
   flex-direction: column;
   gap: 7px;
   margin-bottom: 12px;
+  padding-left: 293px;
+  padding-right: 132px;
+  background: #424b63;
 }
 .case-meta2-inline {
   color: #b7c1cc;
