@@ -292,19 +292,33 @@ header {
 .lightbox-arrow.right { right: -48px; }
 .lightbox-arrow:hover { opacity: 1; }
 
+
+/* КНОПКА ЗАКРЫТЬ — ВПРАВО ВВЕРХУ ОТ КАРТИНКИ */
 .lightbox-close {
   position: absolute;
-  top: 8px;
-  right: 10px;
-  font-size: 2.4rem;
+  top: 0;
+  right: calc(7vw + 42px);  /* "отступ" от правого края картинки */
+  /* 7vw — то же, что и для стрелки, 42px — margin у .lightbox-img */
+  font-size: 2.3rem;
   color: #fff;
   background: none;
   border: none;
-  opacity: 0.7;
+  opacity: 0.75;
   cursor: pointer;
-  z-index: 4;
+  z-index: 5;
+  transition: opacity .2s;
+  padding: 6px 10px;
+  line-height: 1;
 }
-.lightbox-close:hover { opacity: 1; }
+
+.lightbox-close:hover {
+  opacity: 1;
+  color: #ff4931;
+}
+.lightbox-close:hover {
+  opacity: 1;
+  color: #ff4931;
+}
 
 .lightbox-caption {
   margin-top: 18px;
