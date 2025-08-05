@@ -176,7 +176,7 @@ main {
 }
 
 .case-card {
-  background: #3a3b47;
+  /* background: #3a3b47; */
   border-radius: 18px;
   overflow: hidden;
   box-shadow: 0 2px 18px #2f343929;
@@ -207,7 +207,7 @@ main {
   height: auto;
   object-fit: contain;
   border-radius: 0;
-  background: #232429;
+  background: #3a3b47;
   transition: filter .18s;
   cursor: pointer;
 }
