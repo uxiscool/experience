@@ -249,8 +249,8 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(22,24,30,0.94);
-  animation: lightbox-fade-in 0.25s;
+  background: #16181ef0;
+  animation: lightbox-fade-in 1s;
 }
 
 .lightbox-bg {
@@ -411,7 +411,7 @@ main {
   transition: box-shadow .25s;
 }
 .case-gallery-item:hover {
-  box-shadow: 0 0 32px 0 #fd493133;
+  box-shadow: 0 0 18px 0 #fd493169;
 }
 .case-thumb2 {
   max-width: 100%;
