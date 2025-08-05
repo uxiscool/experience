@@ -404,14 +404,14 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: #868ba2;
+  background: #232429;
   border-radius: 12px;
   padding: 12px;
   box-shadow: 0 2px 8px #0002;
   transition: box-shadow .13s;
 }
 .case-gallery-item:hover {
-  box-shadow: 0 6px 20px #18a0fb19;
+  box-shadow: 0 6px 20px #51b9ff;
 }
 .case-thumb2 {
   max-width: 100%;
@@ -420,7 +420,7 @@ main {
   aspect-ratio: 4/3;
   object-fit: contain;
   border-radius: 8px;
-  background: #415337;
+  background: #232429;
   margin-bottom: 6px;
   cursor: pointer;
   transition: filter .14s;
