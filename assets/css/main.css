@@ -350,12 +350,10 @@ header {
 
 @media (max-width: 980px) {
   .case-meta2 {
-    padding-left: 64px;
-    padding-right: 64px;
+    padding-left: 0px;
+    padding-right: 0px;
   }
 }
-
-
 
 .case-meta2-inline {
   color: #b7c1cc;
