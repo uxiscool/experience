@@ -297,7 +297,7 @@ header {
 .lightbox-close {
   position: absolute;
   top: 0;
-  right: -20px;         /* тот же right, что и у .lightbox-arrow.right! */
+  right: -48px; 
   font-size: 2.3rem;
   color: #fff;
   background: none;
