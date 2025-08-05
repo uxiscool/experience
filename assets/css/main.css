@@ -338,7 +338,6 @@ header {
   margin-left: 32px;
   margin-right: 32px;
 }
-
 .case-meta2 {
   display: flex;
   flex-direction: column;
@@ -348,6 +347,16 @@ header {
   padding-right: 237px;
   background: #424b63;
 }
+
+@media (max-width: 980px) {
+  .case-meta2 {
+    padding-left: 64px;
+    padding-right: 64px;
+  }
+}
+
+
+
 .case-meta2-inline {
   color: #b7c1cc;
   font-size: 1.01rem;
