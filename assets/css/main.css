@@ -297,7 +297,7 @@ header {
 .lightbox-close {
   position: absolute;
   top: 0;
-  right: calc(7vw + 42px);  /* "отступ" от правого края картинки */
+  right: 7vw;  /* "отступ" от правого края картинки */
   /* 7vw — то же, что и для стрелки, 42px — margin у .lightbox-img */
   font-size: 2.3rem;
   color: #fff;
