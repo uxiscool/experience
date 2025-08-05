@@ -408,10 +408,10 @@ main {
   border-radius: 12px;
   padding: 12px;
   box-shadow: 0 2px 8px #0002;
-  transition: box-shadow .13s;
+  transition: box-shadow .25s;
 }
 .case-gallery-item:hover {
-  box-shadow: 0 6px 20px #51b9ff;
+  box-shadow: 0 5px 5px #fd4931;
 }
 .case-thumb2 {
   max-width: 100%;
