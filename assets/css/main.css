@@ -362,10 +362,10 @@ header {
 
 @media (max-width: 900px) {
   .lightbox-arrow.left {
-    left: 8px;
+    left: 18px;
   }
   .lightbox-arrow.right {
-    right: 8px;
+    right: 18px;
   }
   .lightbox-close {
     right: 12px;
