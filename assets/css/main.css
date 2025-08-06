@@ -284,29 +284,37 @@ header {
   position: relative;
 }
 
-.lightbox-arrow.left,
-.lightbox-arrow.right {
-  position: absolute;
+/* ЛЕВАЯ СТРЕЛКА */
+.lightbox-arrow.left {
+  position: fixed;
   top: 50%;
-  z-index: 4;
+  left: 24px;
+  transform: translateY(-50%);
+  z-index: 11001;
   background: none;
   border: none;
   padding: 0;
   margin: 0;
   cursor: pointer;
-  transition: filter 0.5s cubic-bezier(.42,0,.58,1), opacity 0.18s;
+  transition: filter 0.2s cubic-bezier(.42,0,.58,1), opacity 0.18s;
 }
 
-.lightbox-arrow.left {
-  left: 0;
-  transform: translate(-70%, -50%);
-}
-
+/* ПРАВАЯ СТРЕЛКА */
 .lightbox-arrow.right {
-  right: 0;
-  transform: translate(70%, -50%);
+  position: fixed;
+  top: 50%;
+  right: 24px;
+  transform: translateY(-50%);
+  z-index: 11001;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  transition: filter 0.2s cubic-bezier(.42,0,.58,1), opacity 0.18s;
 }
 
+/* СКРЫТЬ ФОН, ПЛАВНОСТЬ И ИКОНКИ */
 .lightbox-arrow img {
   width: 36px;
   height: 36px;
@@ -317,24 +325,24 @@ header {
   transition: filter 0.2s cubic-bezier(.42,0,.58,1), opacity 0.18s;
 }
 
-/* Ховер-эффект: чуть приглушаем стрелку */
+/* ХОВЕР-ЭФФЕКТ */
 .lightbox-arrow:hover img {
   filter: brightness(0.70);
   opacity: 0.84;
 }
 
-/* КНОПКА ЗАКРЫТЬ — ВПРАВО ВВЕРХУ ОТ КАРТИНКИ */
+/* КНОПКА ЗАКРЫТЬ (КРЕСТИК) — В ПРАВОМ ВЕРХНЕМ УГЛУ */
 .lightbox-close {
-  position: absolute;
-  top: 0;
-  right: -38px; 
+  position: fixed;
+  top: 42px;
+  right: 42px;
   font-size: 2.3rem;
   color: #fff;
   background: none;
   border: none;
   opacity: 0.75;
   cursor: pointer;
-  z-index: 5;
+  z-index: 11002;
   transition: opacity .2s;
   padding: 6px 10px;
   line-height: 1;
