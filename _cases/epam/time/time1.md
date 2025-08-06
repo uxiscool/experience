@@ -4,7 +4,7 @@ year: 2023
 company: Epam
 type: B2E Web Service
 featured: true
-summary: Revamped core flows for enterprise sales CRM used by 3,000+ employees.
+summary: Revamped core flows for&nbsp;enterprise sales CRM&nbsp;used by&nbsp;3,000+ employees.
 images:
   - src: /assets/pix/cases/epam/time/time1.jpg
     caption: "Main dashboard redesign"
