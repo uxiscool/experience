@@ -121,6 +121,9 @@ header {
   max-width: none;
   width: 100%;
   box-sizing: border-box;
+    transition:
+    padding-left 0.8s cubic-bezier(.44,1.4,.6,1),
+    padding-right 0.8s cubic-bezier(.44,1.4,.6,1),
 }
 
 @media (max-width: 1200px) {
