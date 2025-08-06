@@ -154,6 +154,15 @@ header {
   position: relative;
 }
 
+@media (max-width: 980px) {
+  .intro-hero {
+    font-size: 1.2rem;
+    line-height: normal;
+    letter-spacing: normal;
+  }
+}
+
+
 .intro-divider {
   height: 1.5px;
   background: linear-gradient(90deg, #272829 0%, #434446 100%);
