@@ -53,11 +53,21 @@ title: Works
 <div id="lightbox" class="lightbox" style="display:none;">
   <div class="lightbox-bg" onclick="closeLightbox()"></div>
   <div class="lightbox-content">
-    <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
-    <button class="lightbox-arrow left" onclick="lightboxPrev()">&larr;</button>
+    <button class="lightbox-close" onclick="closeLightbox()" aria-label="Close">
+      <svg width="36" height="36" viewBox="0 0 36 36">
+        <line x1="10" y1="10" x2="26" y2="26" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="26" y1="10" x2="10" y2="26" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/>
+      </svg>
+    </button>
+    <button class="lightbox-arrow left" onclick="lightboxPrev()" aria-label="Previous">
+      <img src="{{ site.baseurl }}/ui/lightbox_arrow_left.svg" width="36" height="36" alt="Prev">
+    </button>
     <img id="lightbox-img" class="lightbox-img" src="">
-    <button class="lightbox-arrow right" onclick="lightboxNext()">&rarr;</button>
+    <button class="lightbox-arrow right" onclick="lightboxNext()" aria-label="Next">
+      <img src="{{ site.baseurl }}/ui/lightbox_arrow_right.svg" width="36" height="36" alt="Next">
+    </button>
     <div id="lightbox-caption" class="lightbox-caption"></div>
   </div>
 </div>
+
 

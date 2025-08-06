@@ -274,30 +274,19 @@ header {
   transition: box-shadow .2s;
 }
 
-.lightbox-arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 2.6rem;
-  background: none;
-  border: none;
-  color: #fff;
-  opacity: 0.8;
-  padding: 14px;
-  cursor: pointer;
-  z-index: 3;
-  transition: opacity .15s;
+.lightbox-arrow img {
+  width: 36px;
+  height: 36px;
+  display: block;
+  pointer-events: none; /* чтобы клик был на кнопку, а не на картинку */
 }
-.lightbox-arrow.left { left: -48px; }
-.lightbox-arrow.right { right: -48px; }
-.lightbox-arrow:hover { opacity: 1; }
 
 
 /* КНОПКА ЗАКРЫТЬ — ВПРАВО ВВЕРХУ ОТ КАРТИНКИ */
 .lightbox-close {
   position: absolute;
   top: 0;
-  right: -48px; 
+  right: -38px; 
   font-size: 2.3rem;
   color: #fff;
   background: none;
@@ -310,10 +299,21 @@ header {
   line-height: 1;
 }
 
-.lightbox-close:hover {
-  opacity: 1;
-  color: #fd4931;
+.lightbox-close svg {
+  width: 36px;
+  height: 36px;
+  display: block;
+  pointer-events: none;
 }
+
+.lightbox-close:hover svg line {
+  stroke: #fd4931;
+  opacity: 0.9;
+}
+.lightbox-arrow:hover img {
+  filter: drop-shadow(0 0 4px #fd4931bb);
+}
+
 
 .lightbox-caption {
   margin-top: 18px;
