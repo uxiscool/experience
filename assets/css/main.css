@@ -153,9 +153,9 @@ header {
   animation: heroFadeIn 1.1s cubic-bezier(.19,1,.22,1);
   position: relative;
   transition:
-    font-size 0.32s cubic-bezier(.44,1.4,.6,1),
-    line-height 0.32s cubic-bezier(.44,1.4,.6,1),
-    letter-spacing 0.32s cubic-bezier(.44,1.4,.6,1),
+    font-size 1s cubic-bezier(.44,1.4,.6,1),
+    line-height 1s cubic-bezier(.44,1.4,.6,1),
+    letter-spacing 1s cubic-bezier(.44,1.4,.6,1),
 }
 
 @media (max-width: 980px) {
