@@ -273,22 +273,22 @@ header {
 }
 
 .lightbox-img {
-  max-width: 86vw;
+  max-width: 76vw;
   max-height: 80vh;
   border-radius: 18px;
   box-shadow: 0 8px 56px #000a;
-  margin: 0 42px;
   background: #181c22;
   object-fit: contain;
   display: block;
   position: relative;
+  margin: 0 64px;
 }
 
 /* ЛЕВАЯ СТРЕЛКА */
 .lightbox-arrow.left {
   position: fixed;
   top: 50%;
-  left: 24px;
+  left: 32px;
   transform: translateY(-50%);
   z-index: 11001;
   background: none;
@@ -303,7 +303,7 @@ header {
 .lightbox-arrow.right {
   position: fixed;
   top: 50%;
-  right: 24px;
+  right: 32px;
   transform: translateY(-50%);
   z-index: 11001;
   background: none;
@@ -335,7 +335,7 @@ header {
 .lightbox-close {
   position: fixed;
   top: 42px;
-  right: 42px;
+  right: 52px;
   font-size: 2.3rem;
   color: #fff;
   background: none;
@@ -358,6 +358,23 @@ header {
 .lightbox-close:hover svg line {
   stroke: #fd4931;
   opacity: 0.9;
+}
+
+@media (max-width: 900px) {
+  .lightbox-arrow.left {
+    left: 8px;
+  }
+  .lightbox-arrow.right {
+    right: 8px;
+  }
+  .lightbox-close {
+    right: 12px;
+    top: 18px;
+  }
+  .lightbox-img {
+    margin: 0 54px; /* больше воздуха слева и справа */
+    max-width: 84vw; /* чуть уже, чтобы не прилегала к стрелкам */
+  }
 }
 
 .lightbox-caption {
