@@ -17,7 +17,7 @@
 .row { display:flex; gap:.6rem; flex-wrap:wrap; align-items:center; }
 .tooltip { position:relative; }
 .tooltip:hover::after { content:attr(data-tip); position:absolute; left:50%; transform:translateX(-50%); bottom:120%;
-  white-space:nowrap; background:#111; color:#fff; padding:.35rem .6rem; border:1px solid #333; border-radius:8px; font-size:.8rem; }
+  white-space:nowrap; background:#111; color:#fff; padding:.35rem .6rem; border:1px solid #333; border-radius:8px; font-size:.8rem; z-index:10; }
 .fadein { animation:fade .6s ease both; } @keyframes fade { from{opacity:0; transform:translateY(4px)} to{opacity:1; transform:none} }
 .ring { outline:2px solid transparent; transition:outline-color .2s; }
 .ring:hover { outline-color: var(--ring); }
@@ -30,4 +30,39 @@
 .dotline { display:flex; gap:.25rem; }
 .dotline i { width:.6rem; height:.6rem; border-radius:50%; background:#2e81ff; opacity:.25 }
 .dotline i.on { opacity:1 }
-.tilt:hover { transform: translateY(-2px) rotate(.2deg); transition:.2s; }
+.tilt { transition: transform .2s; }
+.tilt:hover { transform: translateY(-2px) rotate(.2deg); }
+
+/* ===== New: Skills section layout ===== */
+.skills-section { margin: 2rem 0 3rem; }
+.skills-heading { margin: 0 0 1rem; font-size: clamp(1.4rem, 1.2rem + 1vw, 1.8rem); }
+.skills-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px; /* межколоночный отступ по ТЗ */
+}
+.skills-col { display: flex; flex-direction: column; gap: .8rem; }
+.skills-title { margin: 0; font-size: 1rem; color: var(--muted); }
+
+/* Адаптив: < 920px — в столбик */
+@media (max-width: 920px) {
+  .skills-columns { grid-template-columns: 1fr; }
+}
+
+/* ===== New: slide-in animations (soft: left->right, hard: right->left) ===== */
+@keyframes slideInLeft {
+  from { opacity:0; transform: translateX(-12px); }
+  to   { opacity:1; transform: none; }
+}
+@keyframes slideInRight {
+  from { opacity:0; transform: translateX(12px); }
+  to   { opacity:1; transform: none; }
+}
+.slide-in-left, .slide-in-right {
+  opacity: 0; /* чтобы анимация была заметна */
+  animation-duration: .5s;
+  animation-timing-function: ease;
+  animation-fill-mode: both;
+}
+.slide-in-left  { animation-name: slideInLeft; }
+.slide-in-right { animation-name: slideInRight; }

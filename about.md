@@ -8,22 +8,37 @@ permalink: /about/
 <p>Здесь будет раздел «Обо мне».</p>
 <br>
 
-<div class="skills skills-grid">
-  {% for s in site.data.skills.hard %}
-    <span class="chip tooltip" data-tip="{{ s.note | default: '—' }}">{{ s.name }}</span>
-  {% endfor %}
-</div>
-<br>
-<div class="skills">
-  {% for s in site.data.skills.hard %}
-    <div class="kv fadein" style="animation-delay: {{ forloop.index0 | times: 80 }}ms">
-      <div>{{ s.name }}</div><div class="small">L{{ s.level }}</div>
-      <div class="bar" style="grid-column:1/-1"><i style="--w: {{ s.level | times: 20 }}%"></i></div>
+<!-- ===== Skills Section ===== -->
+<section class="skills-section">
+  <h2 class="skills-heading">Skills</h2>
+
+  <div class="skills-columns">
+    <!-- Soft column -->
+    <div class="skills-col">
+      <h3 class="skills-title">Soft</h3>
+      <div class="skills skills-grid">
+        {% for s in site.data.skills.soft %}
+          <span
+            class="pill tilt mono tooltip slide-in-left"
+            data-tip="{{ s.note | default: '—' }}"
+            style="animation-delay: {{ forloop.index0 | times: 80 }}ms"
+          >{{ s.name }}</span>
+        {% endfor %}
+      </div>
     </div>
-  {% endfor %}
-</div>
-<br>
-<div class="skills row">
-  {% for s in site.data.skills.hard %}<span class="pill tilt mono">{{ s.name }}</span>{% endfor %}
-</div>
-<br>
+
+    <!-- Hard column -->
+    <div class="skills-col">
+      <h3 class="skills-title">Hard</h3>
+      <div class="skills skills-grid">
+        {% for s in site.data.skills.hard %}
+          <span
+            class="pill tilt mono tooltip slide-in-right"
+            data-tip="{{ s.note | default: '—' }}"
+            style="animation-delay: {{ forloop.index0 | times: 80 }}ms"
+          >{{ s.name }}</span>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>

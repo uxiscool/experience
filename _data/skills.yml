@@ -1,22 +1,63 @@
 hard:
   - name: UX Research
-    level: 4    # 1..5
-    note: Интервью, JTBD, аналитика
+    level: 5
+    note: Interviews, surveys, JTBD, analysis of user scenarios
+  - name: Information Architecture
+    level: 5
+    note: Building sitemaps, user flows, and navigation
   - name: UI Design
     level: 5
-    note: Дизайн-системы, авто-лейауты
+    note: Creating layouts in Figma, working with design systems
   - name: Prototyping
+    level: 5
+    note: Interactive prototypes, early-stage hypothesis validation
+  - name: Figma Advanced
+    level: 5
+    note: Auto-layouts, components, variables, plugins
+  - name: Usability Testing
     level: 4
-    note: Figma, интерактив
-  - name: HTML/CSS
+    note: Conducting tests, capturing and analyzing feedback
+  - name: Wireframing
+    level: 4
+    note: Quick drafts of interfaces and scenarios
+  - name: HTML/CSS Basics
     level: 3
-    note: Базовая верстка
+    note: Understanding of markup for collaboration with developers
+  - name: Design Handoff
+    level: 5
+    note: Preparing layouts and specifications for developers
+  - name: Accessibility
+    level: 3
+    note: WCAG, contrast, accessibility for diverse users
+
 soft:
-  - name: Коммуникация
+  - name: Empathy
     level: 5
-  - name: Системное мышление
-    level: 4
-  - name: Фасилитация
-    level: 4
-  - name: Настойчивость
+    note: Ability to understand users’ motivations and feelings
+  - name: Communication
     level: 5
+    note: Clear expression of ideas, active listening
+  - name: Collaboration
+    level: 5
+    note: Comfortable working in cross-functional teams
+  - name: Systems Thinking
+    level: 4
+    note: Seeing connections and consequences of decisions
+  - name: Facilitation
+    level: 4
+    note: Leading sessions and workshops, keeping the group focused
+  - name: Flexibility
+    level: 4
+    note: Quickly adapting to project changes
+  - name: Perseverance
+    level: 5
+    note: Following tasks through despite challenges
+  - name: Time Management
+    level: 4
+    note: Planning time and prioritizing effectively
+  - name: Openness to Feedback
+    level: 5
+    note: Viewing criticism as a way to grow
+  - name: Creativity
+    level: 4
+    note: Generating ideas and finding non-standard solutions
