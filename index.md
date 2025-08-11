@@ -7,7 +7,7 @@ title: Works
   <div class="intro-hero">
     <p>
     I’m Vladimir — UX&nbsp;enthusiast and&nbsp;interaction architect based in&nbsp;Moscow, Russia.<br><br>
-    I’m&nbsp;passionate about a&nbsp;systematic approach to&nbsp;design and&nbsp;believe that real product value starts with well-thought-out user journeys. I&nbsp;love working on&nbsp;a&nbsp;wide variety of&nbsp;interfaces, with a&nbsp;special passion for&nbsp;internal tools and&nbsp;complex B2B web&nbsp;services.<br><br>
+    I’m&nbsp;passionate about a&nbsp;systematic approach to&nbsp;design and&nbsp;believe that real product value starts with well-thought-out user journeys.<br>I&nbsp;love working on&nbsp;a&nbsp;wide variety of&nbsp;interfaces, with a&nbsp;special passion for&nbsp;internal tools and&nbsp;complex B2B web&nbsp;services.<br><br>
     My&nbsp;experience covers different project roles: from solo contributor to&nbsp;core team member. I&nbsp;enjoy tackling business tasks, building structure out&nbsp;of&nbsp;chaos, and&nbsp;making digital products truly useful and&nbsp;delightful for&nbsp;people.<br><br>
     Open to&nbsp;collaboration and&nbsp;always excited to&nbsp;solve new&nbsp;challenges.
     </p>
@@ -53,12 +53,9 @@ title: Works
 <div id="lightbox" class="lightbox" style="display:none;">
   <div class="lightbox-bg" onclick="closeLightbox()"></div>
   <div class="lightbox-content">
-    <button class="lightbox-close" onclick="closeLightbox()" aria-label="Close">
-      <svg width="36" height="36" viewBox="0 0 36 36">
-        <line x1="10" y1="10" x2="26" y2="26" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/>
-        <line x1="26" y1="10" x2="10" y2="26" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/>
-      </svg>
-    </button>
+<button class="lightbox-close" onclick="closeLightbox()" aria-label="Close">
+  <img src="{{ site.baseurl }}/ui/lightbox_close.svg" width="36" height="36" alt="Close">
+</button>
     <button class="lightbox-arrow left" onclick="lightboxPrev()" aria-label="Previous">
       <img src="{{ site.baseurl }}/ui/lightbox_arrow_left.svg" width="36" height="36" alt="Prev">
     </button>
