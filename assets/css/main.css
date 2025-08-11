@@ -340,7 +340,7 @@ header {
 .lightbox-close {
   position: fixed;
   top: 42px;
-  right: 42px;
+  right: 32px;
   background: none;
   border: none;
   cursor: pointer;
@@ -360,6 +360,8 @@ header {
   .lightbox-close {
     right: 12px;
     top: 18px;
+    width: 24px;
+    height: 24px;
   }
   .lightbox-img {
     margin: 0 54px; /* больше воздуха слева и справа */
