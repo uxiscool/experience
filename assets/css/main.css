@@ -355,8 +355,8 @@ header {
   pointer-events: none;
 }
 
-.lightbox-close:hover svg line {
-  stroke: #fd4931;
+.lightbox-close:hover svg {
+  color: #fd4931;
   opacity: 0.9;
 }
 
