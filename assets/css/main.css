@@ -325,15 +325,14 @@ header {
   transition: filter 0.5s cubic-bezier(.42,0,.58,1), opacity 0.18s;
 }
 
-/* ХОВЕР-ЭФФЕКТ */
-.lightbox-arrow:hover img {
-  filter: brightness(0.70);
-  opacity: 0.84;
-}
-
-.lightbox-close:hover img {
-  filter: brightness(0.70);
-  opacity: 0.84;
+.lightbox-close img {
+  width: 32px;
+  height: 32px;
+  display: block;
+  background: none;
+  pointer-events: none;
+  box-shadow: none;
+  transition: filter 0.5s cubic-bezier(.42,0,.58,1), opacity 0.18s;
 }
 
 /* КНОПКА ЗАКРЫТЬ (КРЕСТИК) — В ПРАВОМ ВЕРХНЕМ УГЛУ */
@@ -350,6 +349,18 @@ header {
   transition: filter 0.5s cubic-bezier(.42,0,.58,1), opacity 0.18s;
 }
 
+/* ХОВЕР-ЭФФЕКТ */
+.lightbox-arrow:hover img {
+  filter: brightness(0.70);
+  opacity: 0.84;
+}
+
+.lightbox-close:hover img {
+  filter: brightness(0.70);
+  opacity: 0.84;
+}
+
+
 @media (max-width: 900px) {
   .lightbox-arrow.left {
     left: 18px;
@@ -358,6 +369,7 @@ header {
     right: 18px;
   }
   .lightbox-close {
+    right: 24px;
     top: 24px;
     width: 24px;
     height: 24px;
