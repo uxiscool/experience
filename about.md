@@ -53,17 +53,6 @@ permalink: /about/
   {% endfor %}
 </div>
 <br>
-<div class="skills hscroll">
-  {% for s in site.data.skills.hard %}<span class="chip">{{ s.name }}</span>{% endfor %}
-  {% for s in site.data.skills.soft %}<span class="chip outline">{{ s.name }}</span>{% endfor %}
-</div>
-<br>
-<div class="skills" style="columns: 2; column-gap: 2rem">
-  {% for s in site.data.skills.hard %}
-    <div class="check"><span>✓</span><span>{{ s.name }}</span></div>
-  {% endfor %}
-</div>
-<br>
 <div class="skills row">
   {% for s in site.data.skills.hard %}<span class="pill tilt mono">{{ s.name }}</span>{% endfor %}
 </div>
