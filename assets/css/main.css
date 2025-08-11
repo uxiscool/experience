@@ -332,8 +332,6 @@ header {
 }
 
 .lightbox-close:hover img {
-  color: #fd4931;
-  fill: #fd4931;
   filter: brightness(0.70);
   opacity: 0.84;
 }
@@ -343,8 +341,6 @@ header {
   position: fixed;
   top: 42px;
   right: 42px;
-  color: #fff;
-  fill: #fff;
   background: none;
   border: none;
   cursor: pointer;
