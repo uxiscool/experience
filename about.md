@@ -68,30 +68,3 @@ permalink: /about/
   {% for s in site.data.skills.hard %}<span class="pill tilt mono">{{ s.name }}</span>{% endfor %}
 </div>
 <br>
-<div class="skills">
-  {% for s in site.data.skills.hard %}
-    <div class="card" style="display:inline-block; margin:.4rem">
-      <div class="row"><strong>{{ s.name }}</strong><span class="small">L{{ s.level }}</span></div>
-      <div class="small" style="max-height:0; overflow:hidden; transition:.2s">
-        {{ s.note | default: " " }}
-      </div>
-    </div>
-  {% endfor %}
-</div>
-<script>
-document.querySelectorAll('.card').forEach(c=>{
-  c.addEventListener('mouseenter',()=>c.lastElementChild.style.maxHeight='4rem');
-  c.addEventListener('mouseleave',()=>c.lastElementChild.style.maxHeight='0');
-});
-</script>
-<br>
-<table class="skills table">
-  <tbody>
-    {% for s in site.data.skills.hard %}
-      <tr><td>{{ s.name }}</td><td>
-        <div class="meter" style="--w: {{ s.level | times: 20 }}%"></div>
-      </td></tr>
-    {% endfor %}
-  </tbody>
-</table>
-<br>
