@@ -342,9 +342,7 @@ header {
 .lightbox-close {
   position: fixed;
   top: 42px;
-  right: 32px;
-  width: 36px;
-  height: 36px;
+  right: 42px;
   color: #fff;
   fill: #fff;
   background: none;
