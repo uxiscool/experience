@@ -1,0 +1,33 @@
+.skills { --gap: .6rem; --chip-bg:#111; --chip-br:20px; --muted:#888; --ring:#2e81ff; }
+.skills * { box-sizing:border-box; }
+.skills-grid { display:flex; flex-wrap:wrap; gap:var(--gap); }
+.chip { padding:.5rem .8rem; border-radius:var(--chip-br); background:var(--chip-bg); color:#fff; line-height:1; }
+.chip.outline { background:transparent; border:1px solid #333; }
+.badge { font-size:.75rem; opacity:.75; margin-left:.5rem; }
+.kv { display:grid; grid-template-columns:1fr auto; gap:.4rem .8rem; }
+.bar { height:8px; border-radius:999px; background:#222; overflow:hidden; }
+.bar > i { display:block; height:100%; width:var(--w,0%); background:linear-gradient(90deg,#2e81ff,#7aa8ff); }
+.meter { height:10px; border-radius:999px; background:#222; position:relative; overflow:hidden; }
+.meter::before { content:""; position:absolute; inset:0; width:var(--w,0%); background:#2e81ff; }
+.stars { letter-spacing:1px; }
+.tagcloud a { text-decoration:none; color:#fff; opacity:.9 }
+.card { border:1px solid #222; border-radius:16px; padding:1rem; background:#0b0b0b; }
+.mono { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+.pill { border:1px solid #333; border-radius:999px; padding:.45rem .7rem; }
+.row { display:flex; gap:.6rem; flex-wrap:wrap; align-items:center; }
+.tooltip { position:relative; }
+.tooltip:hover::after { content:attr(data-tip); position:absolute; left:50%; transform:translateX(-50%); bottom:120%;
+  white-space:nowrap; background:#111; color:#fff; padding:.35rem .6rem; border:1px solid #333; border-radius:8px; font-size:.8rem; }
+.fadein { animation:fade .6s ease both; } @keyframes fade { from{opacity:0; transform:translateY(4px)} to{opacity:1; transform:none} }
+.ring { outline:2px solid transparent; transition:outline-color .2s; }
+.ring:hover { outline-color: var(--ring); }
+.hscroll { display:flex; gap:.5rem; overflow:auto; scroll-snap-type:x mandatory; padding-bottom:.4rem; }
+.hscroll .chip { scroll-snap-align:start; }
+.small { font-size:.85rem; color:var(--muted); }
+.table { width:100%; border-collapse:collapse; }
+.table th, .table td { padding:.6rem .7rem; border-bottom:1px solid #222; }
+.check { display:grid; grid-template-columns:1.2rem 1fr; gap:.5rem; align-items:center; }
+.dotline { display:flex; gap:.25rem; }
+.dotline i { width:.6rem; height:.6rem; border-radius:50%; background:#2e81ff; opacity:.25 }
+.dotline i.on { opacity:1 }
+.tilt:hover { transform: translateY(-2px) rotate(.2deg); transition:.2s; }

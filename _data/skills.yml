@@ -1,0 +1,22 @@
+hard:
+  - name: UX Research
+    level: 4    # 1..5
+    note: Интервью, JTBD, аналитика
+  - name: UI Design
+    level: 5
+    note: Дизайн-системы, авто-лейауты
+  - name: Prototyping
+    level: 4
+    note: Figma, интерактив
+  - name: HTML/CSS
+    level: 3
+    note: Базовая верстка
+soft:
+  - name: Коммуникация
+    level: 5
+  - name: Системное мышление
+    level: 4
+  - name: Фасилитация
+    level: 4
+  - name: Настойчивость
+    level: 5
