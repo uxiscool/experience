@@ -81,6 +81,11 @@ header {
   margin: 0;
 }
 
+.subheading {
+  margin: 0 0 1rem;
+  font-size: clamp(1.4rem, 1.2rem + 1vw, 1.8rem);
+}
+
 .subnav {
   display: flex;
   flex-direction: row;

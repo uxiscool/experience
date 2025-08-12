@@ -10,7 +10,7 @@ permalink: /about/
        I’ve been curious about how people think and behave since I&nbsp;was&nbsp;a&nbsp;kid — that curiosity eventually led me&nbsp;into&nbsp;UX/UI design, where I’ve&nbsp;been working for&nbsp;over 14&nbsp;years. I’ve&nbsp;always loved making things and&nbsp;exploring visual arts, and&nbsp;those creative interests naturally shaped my&nbsp;design approach, giving me a&nbsp;strong sense for&nbsp;form, color, and&nbsp;composition. I&nbsp;enjoy an&nbsp;academic vibe at&nbsp;work — sharing ideas, debating approaches, learning from others, and&nbsp;connecting at&nbsp;industry events. I&nbsp;like working with&nbsp;flexible methods and&nbsp;visual tools that bring business goals and&nbsp;user needs onto the&nbsp;same page. Over the&nbsp;years, I’ve&nbsp;designed internal tools, mobile and&nbsp;desktop apps, and&nbsp;full ecosystem products. I’d&nbsp;be&nbsp;happy to&nbsp;work with&nbsp;you&nbsp;on&nbsp;your next product — just drop me&nbsp;a&nbsp;message.
     </p>
     <section class="skills-section">
-  <h2 class="skills-heading">Skills</h2>
+  <h2 class="subheading">Skills</h2>
 
   <div class="skills-columns">
     <!-- Soft column -->

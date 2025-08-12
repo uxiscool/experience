@@ -7,11 +7,6 @@
   margin: 2rem 0 3rem;
 }
 
-.skills-heading {
-  margin: 0 0 1rem;
-  font-size: clamp(1.4rem, 1.2rem + 1vw, 1.8rem);
-}
-
 /* Две колонки: 1/2 + 1/2 с отступом 32px */
 .skills-columns {
   display: grid;
