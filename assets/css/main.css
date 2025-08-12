@@ -154,6 +154,12 @@ header {
   position: relative;
 }
 
+.bio {
+  font-size: 1.35rem;
+  font-weight: 400;
+  color: #fff;
+}
+
 @media (max-width: 980px) {
   .intro-hero {
     font-size: 1.2rem;
