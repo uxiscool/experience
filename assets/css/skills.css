@@ -57,25 +57,8 @@
 /* Моноширинный шрифт для аккуратных подписей */
 .mono { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
 
-/* Подсказки по hover (tooltip) */
-.tooltip { position: relative; }
-.tooltip:hover::after {
-  content: attr(data-tip);
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  bottom: 120%;
-  white-space: nowrap;
-  background: #111;
-  color: #fff;
-  padding: .35rem .6rem;
-  border: 1px solid #333;
-  border-radius: 8px;
-  font-size: .8rem;
-  z-index: 10;
-}
-
-/* Появление слайдом (Soft: слева→направо, Hard: справа→налево) */
+/* Анимация появления чипсов:
+   Soft: слева→направо, Hard: справа→налево */
 @keyframes slideInLeft {
   from { opacity: 0; transform: translateX(-12px); }
   to   { opacity: 1; transform: none; }
@@ -93,3 +76,32 @@
 }
 .slide-in-left  { animation-name: slideInLeft; }
 .slide-in-right { animation-name: slideInRight; }
+
+/* ===== Тултип (через единый bubble в <body>) ===== */
+#tooltip-bubble {
+  position: fixed;
+  left: 0; top: 0;
+  max-width: 36ch;           /* комфортная ширина */
+  padding: .45rem .6rem;
+  border-radius: 10px;
+  background: #FFA94D;       /* тёплый оранжевый */
+  color: #000;
+  box-shadow: 0 8px 24px rgba(0,0,0,.28);
+  font-size: .85rem;
+  line-height: 1.25;
+  z-index: 10000;
+  pointer-events: none;      /* не перехватывает курсор */
+  display: none;             /* показываем через JS */
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity .18s ease, transform .18s ease;
+  word-wrap: break-word;
+  overflow-wrap: anywhere;
+}
+#tooltip-bubble.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Маркер-источник тултипа: можно оставить пустым, но дадим позиционирование для совместимости */
+.tooltip { position: relative; }
