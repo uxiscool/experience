@@ -145,7 +145,7 @@ header {
   font-size: 1.35rem;
   font-weight: 400;
   color: #fff;
- background: #424b63; /* временный фон */
+  background: #424b63; /* временный фон */
   margin-bottom: 40px;
   opacity: 0.90;
   line-height: 1.4;
@@ -158,6 +158,9 @@ header {
   font-size: 1.35rem;
   font-weight: 400;
   color: #fff;
+  opacity: 0.90;
+  line-height: 1.4;
+  letter-spacing: 0.01em;
 }
 
 @media (max-width: 980px) {
