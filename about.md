@@ -9,7 +9,7 @@ permalink: /about/
   <section class="bio-section">
     <div class="skills-columns">
       <!-- Левая колонка: текст -->
-      <div class="skills-col">
+      <div class="bio">
         <p>
           Curiosity about human behavior and cognitive science led me into UX/UI design, where I’ve worked for 14+ years. 
           My background in visual arts sharpened my sense of form, color, and composition. 
@@ -20,7 +20,7 @@ permalink: /about/
         </p>
       </div>
       <!-- Правая колонка: пока пусто -->
-      <div class="skills-col">
+      <div class="bio">
         <!-- Здесь позже появится фото -->
       </div>
     </div>
