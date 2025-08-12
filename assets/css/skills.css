@@ -52,10 +52,10 @@
 
 /* Лёгкий «tilt» при ховере */
 .tilt { transition: transform .2s; }
-.tilt:hover { transform: translateY(-2px) rotate(.2deg); }
+.tilt:hover { transform: translateY(-4px) rotate(.2deg); }
 
 /* Моноширинный шрифт для аккуратных подписей */
-.mono { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+.mono { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 1rem; }
 
 /* Анимация появления чипсов:
    Soft: слева→направо, Hard: справа→налево */
@@ -70,7 +70,7 @@
 .slide-in-left,
 .slide-in-right {
   opacity: 0;                  /* старт прозрачно — чтобы анимация была заметна */
-  animation-duration: .5s;
+  animation-duration: .1s;
   animation-timing-function: ease;
   animation-fill-mode: both;   /* остаёмся в конечном состоянии */
 }
