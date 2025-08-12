@@ -5,13 +5,46 @@ permalink: /about/
 ---
 
 <div class="container">
-  <div class="intro-hero">
+  <div class="bio">
     <p>
     I’m Vladimir — UX&nbsp;enthusiast and&nbsp;interaction architect based in&nbsp;Moscow, Russia.<br><br>
     I’m&nbsp;passionate about a&nbsp;systematic approach to&nbsp;design and&nbsp;believe that real product value starts with well-thought-out user journeys.<br>I&nbsp;love working on&nbsp;a&nbsp;wide variety of&nbsp;interfaces, with a&nbsp;special passion for&nbsp;internal tools and&nbsp;complex B2B web&nbsp;services.<br><br>
     My&nbsp;experience covers different project roles: from solo contributor to&nbsp;core team member. I&nbsp;enjoy tackling business tasks, building structure out&nbsp;of&nbsp;chaos, and&nbsp;making digital products truly useful and&nbsp;delightful for&nbsp;people.<br><br>
     Open to&nbsp;collaboration and&nbsp;always excited to&nbsp;solve new&nbsp;challenges.
     </p>
+    <section class="skills-section">
+  <h2 class="skills-heading">Skills</h2>
+
+  <div class="skills-columns">
+    <!-- Soft column -->
+    <div class="skills-col">
+      <h3 class="skills-title">Soft</h3>
+      <div class="skills skills-grid">
+        {% for s in site.data.skills.soft %}
+          <span
+            class="pill tilt mono tooltip slide-in-left"
+            data-tip="{{ s.note | default: '—' }}"
+            style="animation-delay: {{ forloop.index0 | times: 80 }}ms"
+          >{{ s.name }}</span>
+        {% endfor %}
+      </div>
+    </div>
+
+    <!-- Hard column -->
+    <div class="skills-col">
+      <h3 class="skills-title">Hard</h3>
+      <div class="skills skills-grid">
+        {% for s in site.data.skills.hard %}
+          <span
+            class="pill tilt mono tooltip slide-in-right"
+            data-tip="{{ s.note | default: '—' }}"
+            style="animation-delay: {{ forloop.index0 | times: 80 }}ms"
+          >{{ s.name }}</span>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
   </div>
   <!-- Градиентный разделитель -->
   <div class="intro-divider"></div>
