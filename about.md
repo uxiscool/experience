@@ -7,10 +7,7 @@ permalink: /about/
 <div class="container">
   <div class="bio">
     <p>
-    I’m Vladimir — UX&nbsp;enthusiast and&nbsp;interaction architect based in&nbsp;Moscow, Russia.<br><br>
-    I’m&nbsp;passionate about a&nbsp;systematic approach to&nbsp;design and&nbsp;believe that real product value starts with well-thought-out user journeys.<br>I&nbsp;love working on&nbsp;a&nbsp;wide variety of&nbsp;interfaces, with a&nbsp;special passion for&nbsp;internal tools and&nbsp;complex B2B web&nbsp;services.<br><br>
-    My&nbsp;experience covers different project roles: from solo contributor to&nbsp;core team member. I&nbsp;enjoy tackling business tasks, building structure out&nbsp;of&nbsp;chaos, and&nbsp;making digital products truly useful and&nbsp;delightful for&nbsp;people.<br><br>
-    Open to&nbsp;collaboration and&nbsp;always excited to&nbsp;solve new&nbsp;challenges.
+    I’ve been curious about how people think and behave since I&nbsp;was&nbsp;a&nbsp;kid — that curiosity eventually led me&nbsp;into&nbsp;UX/UI design, where I’ve&nbsp;been working for&nbsp;over 14&nbsp;years. I’ve&nbsp;always loved making things and&nbsp;exploring visual arts, and&nbsp;those creative interests naturally shaped my&nbsp;design approach, giving me a&nbsp;strong sense for&nbsp;form, color, and&nbsp;composition. I&nbsp;enjoy an&nbsp;academic vibe at&nbsp;work — sharing ideas, debating approaches, learning from others, and&nbsp;connecting at&nbsp;industry events. I&nbsp;like working with&nbsp;flexible methods and&nbsp;visual tools that bring business goals and&nbsp;user needs onto the&nbsp;same page. Over the&nbsp;years, I’ve&nbsp;designed internal tools, mobile and&nbsp;desktop apps, and&nbsp;full ecosystem products. I’d&nbsp;be&nbsp;happy to&nbsp;work with&nbsp;you&nbsp;on&nbsp;your next product — just drop me&nbsp;a&nbsp;message.
     </p>
     <section class="skills-section">
   <h2 class="skills-heading">Skills</h2>
