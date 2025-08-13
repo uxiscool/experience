@@ -27,7 +27,7 @@
 }
 
 /* Адаптив: < 900px — колонки в столбик */
-@media (max-width: 9px) {
+@media (max-width: 900px) {
   .skills-columns { grid-template-columns: 1fr; }
   .bio-columns { grid-template-columns: 1fr; }
 }
