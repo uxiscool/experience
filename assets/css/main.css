@@ -36,10 +36,10 @@ section {
 
 .logo-img {
   display: block;
-  height: 1.1rem; /* соответствует прежнему font-size */
+  height: 1.1rem;
   width: auto;
   margin-top: 6px;
-  margin-left: 30px;
+  margin-left: 132px;
   margin-right: 12px;
   opacity: 0.85;
 }
