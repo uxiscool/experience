@@ -30,6 +30,8 @@
 @media (max-width: 900px) {
   .skills-columns { grid-template-columns: 1fr; }
   .bio-columns { grid-template-columns: 1fr; }
+  .bio-columns .bio:first-child { order: 1; }
+  .bio-columns .bio:last-child  { order: 2; }
 }
 
 /* Сетка чипсов/пиллов */

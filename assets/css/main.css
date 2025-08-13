@@ -84,6 +84,7 @@ header {
 .subheading {
   margin: 0 0 1rem;
   font-size: clamp(1.4rem, 1.2rem + 1vw, 1.8rem);
+  margin-bottom: 1.5rem; /* или 24px отступ от подзаголовка до контента блока */
 }
 
 .subnav {
@@ -166,6 +167,11 @@ header {
   opacity: 0.90;
   line-height: 1.4;
   letter-spacing: 0.01em;
+}
+
+.bio p {
+  margin: 0 0 1rem;
+  max-width: 68ch;     /* комфортная длина строки */
 }
 
 @media (max-width: 980px) {
