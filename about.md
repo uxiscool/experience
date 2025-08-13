@@ -23,7 +23,7 @@ permalink: /about/
       <!-- Правая колонка: пока пусто -->
       <div class="bio">
         <!-- Здесь позже появится фото -->
-        Тут будет фото
+        15+ YoE, 100+ relised projects
       </div>
     </div>
   </section>
