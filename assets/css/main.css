@@ -29,6 +29,10 @@ header {
   align-items: flex-start;
   width: 100%;
 }
+  
+.logo {
+  border: 1px solid #9fa7b2;
+}
 
 .logo-img {
   display: block;
