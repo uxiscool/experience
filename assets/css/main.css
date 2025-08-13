@@ -77,10 +77,10 @@ header {
 
 .subheading {
   margin: 0 0 1rem;
-  font-size: clamp(1.4rem, 1.2rem + 1vw, 1.8rem);
+  font-size: clamp(1.3rem, 1.1rem + 1vw, 1.5rem);
   margin-bottom: 1.1rem; /* или 24px отступ от подзаголовка до контента блока */
   font-weight: 400;             /* полужирный */
-  letter-spacing: 0.01em;       /* опционально, для воздуха */
+  letter-spacing: 0.02em;       /* опционально, для воздуха */
 }
 
 .subnav {
