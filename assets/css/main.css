@@ -32,13 +32,13 @@ header {
 
 .logo-img {
   display: block;
-  height: 1.5rem; /* соответствует прежнему font-size */
+  height: 1.3rem; /* соответствует прежнему font-size */
   width: auto;
   margin-top: 2px;
   margin-left: 24px;
   margin-right: 12px;
   opacity: 0.85;
-  fill: #fff;
+  color: #fffcfa;
 }
 
 .menu-panel {
