@@ -29,10 +29,6 @@ header {
   align-items: flex-start;
   width: 100%;
 }
-  
-.logo {
-  background-color: #464a4b;
-}
 
 .logo-img {
   display: block;
@@ -42,7 +38,7 @@ header {
   margin-left: 24px;
   margin-right: 12px;
   opacity: 0.85;
-  color: #fff;
+  fill: #fff;
 }
 
 .menu-panel {
@@ -82,7 +78,7 @@ header {
 .subheading {
   margin: 0 0 1rem;
   font-size: clamp(1.4rem, 1.2rem + 1vw, 1.8rem);
-  margin-bottom: 1.5rem; /* или 24px отступ от подзаголовка до контента блока */
+  margin-bottom: 1.1rem; /* или 24px отступ от подзаголовка до контента блока */
   font-weight: 400;             /* полужирный */
   letter-spacing: 0.01em;       /* опционально, для воздуха */
 }
