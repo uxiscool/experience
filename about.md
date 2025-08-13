@@ -6,8 +6,9 @@ permalink: /about/
 
 <div class="container">
   <!-- Блок биографии -->
-   <h2 class="subheading">Skills</h2>
   <section class="bio-section">
+   <h2 class="subheading">Bio</h2>
+    <div class="bio-columns">
       <!-- Левая колонка: текст -->
       <div class="bio">
         <p>
@@ -22,7 +23,9 @@ permalink: /about/
       <!-- Правая колонка: пока пусто -->
       <div class="bio">
         <!-- Здесь позже появится фото -->
+        +
       </div>
+    </div>
   </section>
 
   <!-- Блок скилов -->

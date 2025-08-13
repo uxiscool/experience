@@ -8,7 +8,7 @@
 }
 
 /* Две колонки: 1/2 + 1/2 с отступом 32px */
-.skills-columns {
+.skills-columns, .bio-columns {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 32px;
@@ -26,9 +26,10 @@
   color: var(--muted);
 }
 
-/* Адаптив: < 920px — колонки в столбик */
-@media (max-width: 920px) {
+/* Адаптив: < 900px — колонки в столбик */
+@media (max-width: 9px) {
   .skills-columns { grid-template-columns: 1fr; }
+  .bio-columns { grid-template-columns: 1fr; }
 }
 
 /* Сетка чипсов/пиллов */
