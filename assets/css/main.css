@@ -129,6 +129,10 @@ header {
   box-sizing: border-box;
 }
 
+.bio-section {
+  margin-top: 148px; /* отступ в about от навигации до контента */
+}
+
 @media (max-width: 1200px) {
   .container {
     padding-left: 293px;
