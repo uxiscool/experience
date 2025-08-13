@@ -23,6 +23,10 @@ header {
   background: #424c67; /* временный фон */
 }
 
+section {
+ padding-top: 5rem;
+}
+
 .nav-wrapper {
   display: flex;
   flex-direction: column;
@@ -34,7 +38,7 @@ header {
   display: block;
   height: 1.3rem; /* соответствует прежнему font-size */
   width: auto;
-  margin-top: 2px;
+  margin-top: 5px;
   margin-left: 24px;
   margin-right: 12px;
   opacity: 0.85;

@@ -12,12 +12,12 @@ permalink: /about/
       <!-- Левая колонка: текст -->
       <div class="bio">
         <p>
-          Curiosity about human behavior and cognitive science led me into UX/UI design, where I’ve worked for 14+ years. 
-          My background in visual arts sharpened my sense of form, color, and composition. 
-          I enjoy an academic vibe — sharing ideas, debating approaches, and learning from peers. 
-          I work with flexible methods and visual tools to align business goals with user needs, 
-          and have designed internal tools, mobile/desktop apps, and ecosystem products. 
-          Always open to new collaborations — feel free to reach out.
+          Curiosity about human behavior and&nbsp;cognitive science led&nbsp;me&nbsp;intoUX/UI design, where I’ve&nbsp;worked for&nbsp;14+&nbsp;years. 
+          My&nbsp;background in&nbsp;visual arts sharpened my&nbsp;sense of&nbsp;form, color, and&nbsp;composition. 
+          I&nbsp;enjoy an&nbsp;academic vibe — sharing ideas, debating approaches, and&nbsp;learning from&nbsp;peers. 
+          I&nbsp;work with&nbsp;flexible methods and&nbsp;visual tools to&nbsp;align business goals with user needs, 
+          and&nbsp;have designed internal tools, mobile/desktop apps, and&nbsp;ecosystem products. 
+          Always open to&nbsp;new&nbsp;collaborations — feel free to&nbsp;reach out.
         </p>
       </div>
       <!-- Правая колонка: пока пусто -->
@@ -27,7 +27,6 @@ permalink: /about/
       </div>
     </div>
   </section>
-
   <!-- Блок скилов -->
   <section class="skills-section">
     <h2 class="subheading">Skills</h2>
