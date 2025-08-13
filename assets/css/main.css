@@ -30,21 +30,14 @@ header {
   width: 100%;
 }
 
-.logo a {
+.logo-img {
+  display: block;
+  height: 1.5rem; /* соответствует прежнему font-size */
+  width: auto;
   margin-left: 24px;
   margin-right: 12px;
-  font-family: "Fraunces", serif !important;
-  font-weight: 400;
-  font-size: 1.5rem;
-  color: #fff;
-  text-decoration: none;
-  letter-spacing: 0.025em;
   opacity: 0.85;
-  font-variation-settings: 
-    'wght' 400,
-    'opsz' 72,
-    'SOFT' 1,
-    'WONK' 1;
+  color: #fff;
 }
 
 .menu-panel {
