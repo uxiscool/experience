@@ -24,7 +24,7 @@ header {
 }
 
 section {
- padding-top: 5rem;
+ padding-top: 3rem;
 }
 
 .nav-wrapper {
@@ -36,9 +36,9 @@ section {
 
 .logo-img {
   display: block;
-  height: 1.3rem; /* соответствует прежнему font-size */
+  height: 1.1rem; /* соответствует прежнему font-size */
   width: auto;
-  margin-top: 4px;
+  margin-top: 6px;
   margin-left: 24px;
   margin-right: 12px;
   opacity: 0.85;
