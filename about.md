@@ -57,12 +57,13 @@ permalink: /about/
       </div>
     </div>
   </section>
- <section class="tools-section">
+<section class="tools-section">
   <h2 class="subheading">Apps & Tools</h2>
-  <div class="tools-grid">
+  <!-- базовая задержка, чтобы сперва анимировались пиллы -->
+  <div class="tools-grid" style="--tools-delay-base: 800ms">
     {% for app in site.data.apps %}
-      <a class="tool" href="{{ app.url }}" target="_blank" rel="noopener"
-         aria-label="{{ app.name }}">
+      <a class="tool appear" href="{{ app.url }}" target="_blank" rel="noopener"
+         aria-label="{{ app.name }}" style="--i: {{ forloop.index0 }}">
         <span class="tool-logo-wrap">
           <img
             src="{{ app.logo | relative_url }}"
@@ -180,3 +181,25 @@ permalink: /about/
   }, true);
 })();
 </script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const tools = document.querySelectorAll(".tool.appear");
+
+  if ("IntersectionObserver" in window) {
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("in-view");
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 }); // 10% видимости для срабатывания
+
+    tools.forEach(el => observer.observe(el));
+  } else {
+    // Фолбэк — без анимации, если IntersectionObserver не поддерживается
+    tools.forEach(el => el.classList.add("in-view"));
+  }
+});
+</script>
+

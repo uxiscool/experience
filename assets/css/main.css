@@ -637,3 +637,30 @@ section {
   .tool-logo-wrap { height: 44px; }
   .tool-logo { max-height: 28px; }
 }
+/* Поочерёдное появление карточек «Apps & Tools» */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: none; }
+}
+
+.tool.appear {
+  opacity: 0;
+  will-change: opacity, transform;
+  /* 80ms шаг как у пиллов, плюс базовая задержка на всю секцию */
+  animation: fadeUp .45s ease both;
+  animation-delay: calc(var(--tools-delay-base, 0ms) + (var(--i, 0) * 80ms));
+}
+
+/* уважение к предпочтениям пользователя */
+@media (prefers-reduced-motion: reduce) {
+  .tool.appear {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.tool.appear.in-view {
+  animation: fadeUp .45s ease both;
+  animation-delay: calc(var(--tools-delay-base, 0ms) + (var(--i, 0) * 80ms));
+}
