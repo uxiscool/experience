@@ -16,8 +16,7 @@ permalink: /about/
           My&nbsp;background in&nbsp;visual arts sharpened my&nbsp;sense of&nbsp;form, color, and&nbsp;composition. 
           I&nbsp;enjoy an&nbsp;academic vibe&nbsp;— sharing ideas, debating approaches, and&nbsp;learning from&nbsp;peers.</p>
           <p>I&nbsp;work with&nbsp;flexible methods and&nbsp;visual tools to&nbsp;align business goals with user needs, 
-          and&nbsp;have designed internal tools, mobile/desktop apps, and&nbsp;ecosystem products. 
-          Always open to&nbsp;new&nbsp;collaborations&nbsp;— feel free to&nbsp;reach out.
+          and&nbsp;have designed internal tools, mobile/desktop apps, and&nbsp;ecosystem products.
         </p>
       </div>
       <!-- Правая колонка: пока пусто -->
@@ -58,16 +57,27 @@ permalink: /about/
       </div>
     </div>
   </section>
-  <!-- Градиентный разделитель -->
-  <div class="intro-divider"></div>
-   <!-- Блок скилов -->
-  <section class="tools-section">
-    <h2 class="subheading">Apps & Tools</h2>
-    0 0 0 0 0 0
-  </section>
-   <!-- Градиентный разделитель -->
-  <div class="intro-divider"></div>
-
+ <section class="tools-section">
+  <h2 class="subheading">Apps & Tools</h2>
+  <div class="tools-grid">
+    {% for app in site.data.apps %}
+      <a class="tool" href="{{ app.url }}" target="_blank" rel="noopener"
+         aria-label="{{ app.name }}">
+        <span class="tool-logo-wrap">
+          <img
+            src="{{ app.logo | relative_url }}"
+            alt="{{ app.name }} logo"
+            class="tool-logo"
+            loading="lazy"
+            decoding="async"
+            fetchpriority="low"
+          >
+        </span>
+        <span class="tool-name">{{ app.name }}</span>
+      </a>
+    {% endfor %}
+  </div>
+</section>
   <!-- Блок philosophy -->
 <section class="philosophy-section">
   <h2 class="subheading">Philosophy</h2>
