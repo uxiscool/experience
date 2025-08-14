@@ -567,63 +567,66 @@ section {
   margin-top: 3px;
   opacity: 0.86;
 }
-/* ===== Apps & Tools (обновлённый стиль) ===== */
+/* ===== Apps & Tools (уплотнение и контроль размеров) ===== */
 .tools-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
-  gap: 10px 12px;
+  grid-template-columns: repeat(auto-fit, minmax(90px, 1fr)); /* плотнее, чем было */
+  gap: 8px;                                                   /* меньший общий зазор */
 }
 
-/* Карточка без постоянного фона и без бордера */
 .tool {
-  display: grid;
-  grid-auto-rows: auto;
+  display: flex;
   align-items: center;
-  justify-items: center;
-  gap: 8px;
-  padding: 10px 8px;
-  background: transparent;           /* ← фон скрыт по умолчанию */
-  border: none;                      /* ← убрали бордер */
-  border-radius: 12px;
-  text-decoration: none;
+  justify-content: center;
+  padding: 6px;                          /* одинаковые отступы со всех сторон */
+  background: transparent;               /* по умолчанию без фона */
+  border: none;
+  border-radius: 10px;
   transition:
-    background-color .18s ease,      /* плавное появление фона */
+    background-color .18s ease,
     box-shadow .18s ease,
     transform .16s ease;
-  opacity: 0;                        /* для анимации появления */
+  opacity: 0;                            /* для анимации появления (IntersectionObserver) */
   will-change: opacity, transform;
+  overflow: hidden;                      /* на всякий случай — ничего не вылезет из плашки */
 }
 
-/* Фон и тень мягко проявляются только при наведении/фокусе */
 .tool:hover,
 .tool:focus-visible {
-  background: rgba(255,255,255,0.06);  /* лёгкая «плашка» */
+  background: rgba(255,255,255,0.06);    /* мягкая подложка только на ховере */
   box-shadow: 0 6px 22px #00000025;
   transform: translateY(-2px);
   outline: none;
 }
 
-/* Центровка логотипа в «коробке» */
+/* Окно под логотип 32px по высоте, чтобы прямоугольные не вылазили */
 .tool-logo-wrap {
   width: 100%;
-  height: 40px;
+  height: 32px;                          /* фиксируем «коробку» под логотип */
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-/* Логотипы сразу цветные, фиксируем высоту 32px */
+/* Логотип вписывается в окно, без обесцвечивания */
 .tool-logo {
-  height: 32px;
+  max-height: 100%;                      /* не выше окна */
+  max-width: 100%;                       /* не шире окна с учётом паддингов */
   width: auto;
+  height: auto;
   display: block;
   object-fit: contain;
-  filter: none;                      /* ← убрали grayscale */
-  opacity: 1;                        /* ← и полную непрозрачность */
+  filter: none;
+  opacity: 1;
   transition: transform .16s ease;
 }
 
-/* Визуально скрытое имя (для доступности) остаётся как есть */
+.tool:hover .tool-logo,
+.tool:focus-visible .tool-logo {
+  transform: translateY(-1px);
+}
+
+/* Визуально скрытое имя (для A11y) */
 .sr-only {
   position: absolute !important;
   width: 1px; height: 1px;
@@ -632,21 +635,24 @@ section {
   white-space: nowrap; border: 0;
 }
 
-/* Поочерёдное появление карточек (как у пиллов) */
+/* Поочерёдное появление карточек */
 @keyframes fadeUp { from { opacity:0; transform: translateY(6px) } to { opacity:1; transform:none } }
 .tool.appear.in-view {
   animation: fadeUp .45s ease both;
   animation-delay: calc(var(--tools-delay-base, 0ms) + (var(--i, 0) * 80ms));
 }
 
-/* Мобильный штрих */
-@media (max-width: 900px) {
-  .tools-grid { grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 12px; }
-  .tool { padding: 12px; }
-  .tool-logo-wrap { height: 44px; }
+/* Мобилка: ещё плотнее сетка */
+@media (max-width: 600px) {
+  .tools-grid {
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    gap: 6px;
+  }
+  .tool { padding: 5px; }
+  .tool-logo-wrap { height: 30px; }
 }
 
-/* Уважение к reduce motion */
+/* reduce motion */
 @media (prefers-reduced-motion: reduce) {
   .tool.appear,
   .tool.appear.in-view {
@@ -655,3 +661,4 @@ section {
     transform: none;
   }
 }
+
