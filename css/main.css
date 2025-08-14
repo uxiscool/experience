@@ -570,8 +570,8 @@ section {
 /* ===== Apps & Tools (плотная сетка, без подложек и ховеров) ===== */
 .tools-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(76px, 1fr)); /* плотнее */
-  gap: 6px;                                                   /* компактнее */
+  grid-template-columns: repeat(auto-fit, minmax(60px, 1fr)); /* плотнее */
+  gap: 4px;                                                   /* компактнее */
 }
 
 .tool {
@@ -622,8 +622,8 @@ section {
 /* мобилка — ещё плотнее */
 @media (max-width: 600px) {
   .tools-grid {
-    grid-template-columns: repeat(auto-fit, minmax(68px, 1fr));
-    gap: 4px;
+    grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+    gap: 3px;
   }
   .tool { padding: 3px; }
   .tool-logo-wrap { height: 30px; }
