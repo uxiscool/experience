@@ -646,19 +646,19 @@ section {
 .tool.appear {
   opacity: 0;
   will-change: opacity, transform;
-  /* 80ms шаг как у пиллов, плюс базовая задержка на всю секцию */
-  animation: fadeUp .45s ease both;
-  animation-delay: calc(var(--tools-delay-base, 0ms) + (var(--i, 0) * 80ms));
 }
 
 /* уважение к предпочтениям пользователя */
 @media (prefers-reduced-motion: reduce) {
-  .tool.appear {
-  opacity: 0;
-  will-change: opacity, transform;
+  .tool.appear,
+  .tool.appear.in-view {
+    animation: none !important;
+    opacity: 1;
+    transform: none;
   }
 }
 
+/* Анимация запускается ТОЛЬКО при попадании в зону видимости */
 .tool.appear.in-view {
   animation: fadeUp .45s ease both;
   animation-delay: calc(var(--tools-delay-base, 0ms) + (var(--i, 0) * 80ms));
