@@ -22,7 +22,6 @@ permalink: /about/
       </div>
       <!-- Правая колонка: пока пусто -->
       <div class="bio">
-        <!-- Здесь позже появится фото -->
         15+ YoE, 100+ relised projects
       </div>
     </div>
@@ -59,10 +58,25 @@ permalink: /about/
       </div>
     </div>
   </section>
-
   <!-- Градиентный разделитель -->
   <div class="intro-divider"></div>
 </div>
+<!-- Блок philosophy -->
+<section class="philosophy-section">
+  <h2 class="subheading">Philosophy</h2>
+  <div class="bio-columns">
+    <!-- Левая колонка: текст -->
+    <div class="bio">
+      <p>
+        I&nbsp;believe that the&nbsp;best solutions grow from a&nbsp;balance of&nbsp;structure and&nbsp;creativity. I&nbsp;often recharge through hiking and&nbsp;observing nature — it&nbsp;teaches patience, attention to&nbsp;detail, and&nbsp;the&nbsp;beauty of&nbsp;simplicity. Always open to&nbsp;new collaborations&nbsp;— feel free to&nbsp;reach out.
+      </p>
+    </div>
+    <!-- Правая колонка: фото -->
+    <div class="bio">
+      <img src="{{ site.baseurl }}/assets/images/photo.jpg" alt="Portrait of Vladimir" class="bio-photo">
+    </div>
+  </div>
+</section>
 
 <!-- ===== Tooltip logic: один bubble на весь сайт, без зависимостей ===== -->
 <script>
