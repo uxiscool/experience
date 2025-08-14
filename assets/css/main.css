@@ -572,13 +572,13 @@ section {
 
 .tools-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   gap: 14px 18px;
 }
 
 .tool {
   display: grid;
-  grid-template-rows: auto auto;
+  grid-auto-rows: auto;           /* только логотип (подпись скрыта визуально) */
   align-items: center;
   justify-items: center;
   gap: 8px;
@@ -588,67 +588,58 @@ section {
   border-radius: 12px;
   text-decoration: none;
   transition: transform .16s ease, box-shadow .16s ease, border-color .16s ease;
+  opacity: 0;                     /* для анимации появления */
+  will-change: opacity, transform;
 }
 
-.tool:hover {
+.tool:hover,
+.tool:focus-visible {
   transform: translateY(-2px);
   border-color: #34363a;
   box-shadow: 0 6px 22px #00000025;
+  outline: none;
 }
 
 .tool-logo-wrap {
   width: 100%;
-  height: 48px;              /* «коробка» для логотипа */
+  height: 48px;                   /* оптическая «коробка» под центрирование */
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .tool-logo {
-  max-height: 32px;          /* выравниваем оптически по высоте */
-  width: auto;
+  height: 32px;                   /* ← фиксируем высоту логотипа */
+  width: auto;                    /* ← ширина — авто, чтобы не искажать */
   display: block;
   object-fit: contain;
   filter: grayscale(1) opacity(.88);
   transition: filter .16s ease;
 }
 
-.tool:hover .tool-logo {
+.tool:hover .tool-logo,
+.tool:focus-visible .tool-logo {
   filter: none;
 }
 
-.tool-name {
-  font-size: .95rem;
-  color: #d6d9df;
-  opacity: .95;
-  text-align: center;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+/* Визуально скрытый текст (доступность) */
+.sr-only {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0);
+  white-space: nowrap; border: 0;
 }
 
-/* Узкие экраны — сетка чуть крупнее элементов, меньше тени */
-@media (max-width: 900px) {
-  .tools-grid {
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-    gap: 12px 12px;
-  }
-  .tool { padding: 12px 12px; }
-  .tool-logo-wrap { height: 44px; }
-  .tool-logo { max-height: 28px; }
-}
-/* Поочерёдное появление карточек «Apps & Tools» */
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(6px); }
-  to   { opacity: 1; transform: none; }
+/* Поочерёдное появление как у пиллов */
+@keyframes fadeUp { from { opacity:0; transform: translateY(6px) } to { opacity:1; transform:none } }
+
+.tool.appear.in-view {
+  animation: fadeUp .45s ease both;
+  animation-delay: calc(var(--tools-delay-base, 0ms) + (var(--i, 0) * 80ms));
 }
 
-.tool.appear {
-  opacity: 0;
-  will-change: opacity, transform;
-}
-
-/* уважение к предпочтениям пользователя */
+/* Уважение к reduce motion */
 @media (prefers-reduced-motion: reduce) {
   .tool.appear,
   .tool.appear.in-view {
@@ -658,8 +649,9 @@ section {
   }
 }
 
-/* Анимация запускается ТОЛЬКО при попадании в зону видимости */
-.tool.appear.in-view {
-  animation: fadeUp .45s ease both;
-  animation-delay: calc(var(--tools-delay-base, 0ms) + (var(--i, 0) * 80ms));
+/* Мобильный штрих */
+@media (max-width: 900px) {
+  .tools-grid { grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 12px; }
+  .tool { padding: 12px; }
+  .tool-logo-wrap { height: 44px; }
 }

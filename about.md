@@ -57,13 +57,15 @@ permalink: /about/
       </div>
     </div>
   </section>
+    <!-- блок мой инструментарий -->
 <section class="tools-section">
   <h2 class="subheading">Apps & Tools</h2>
-  <!-- базовая задержка, чтобы сперва анимировались пиллы -->
   <div class="tools-grid" style="--tools-delay-base: 800ms">
     {% for app in site.data.apps %}
-      <a class="tool appear" href="{{ app.url }}" target="_blank" rel="noopener"
-         aria-label="{{ app.name }}" style="--i: {{ forloop.index0 }}">
+      <a class="tool appear"
+         href="{{ app.url }}" target="_blank" rel="noopener"
+         aria-label="{{ app.name }}"
+         style="--i: {{ forloop.index0 }}">
         <span class="tool-logo-wrap">
           <img
             src="{{ app.logo | relative_url }}"
@@ -74,7 +76,7 @@ permalink: /about/
             fetchpriority="low"
           >
         </span>
-        <span class="tool-name">{{ app.name }}</span>
+        <span class="tool-name sr-only">{{ app.name }}</span>
       </a>
     {% endfor %}
   </div>
