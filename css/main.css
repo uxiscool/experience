@@ -567,71 +567,66 @@ section {
   margin-top: 3px;
   opacity: 0.86;
 }
-/* ===== Apps & Tools (уплотнение и контроль размеров) ===== */
+/* ===== Apps & Tools (плотная сетка, без подложек и ховеров) ===== */
 .tools-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(90px, 1fr)); /* плотнее, чем было */
-  gap: 8px;                                                   /* меньший общий зазор */
+  grid-template-columns: repeat(auto-fit, minmax(76px, 1fr)); /* было 90px */
+  gap: 6px;                                                  /* было 8px */
 }
 
 .tool {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 6px;                          /* одинаковые отступы со всех сторон */
-  background: transparent;               /* по умолчанию без фона */
+  padding: 4px;                 /* было 6px */
+  background: transparent;      /* без подложки */
   border: none;
-  border-radius: 10px;
-  opacity: 0;                            /* для анимации появления (IntersectionObserver) */
+  border-radius: 0;             /* можно 0 — т.к. фона нет (чуть плотнее) */
+  opacity: 0;                   /* остаётся для анимации появления */
   will-change: opacity, transform;
-  overflow: hidden;                      /* на всякий случай — ничего не вылезет из плашки */
+  overflow: visible;            /* можно visible: логотипы “дышат” свободнее */
 }
 
-/* Окно под логотип 32px по высоте, чтобы прямоугольные не вылазили */
+.tool:focus {
+  outline: none;                /* управляем фокусом вручную, если понадобится */
+}
+
+/* Окно под логотип фиксированной высоты */
 .tool-logo-wrap {
   width: 100%;
-  height: 32px;                          /* фиксируем «коробку» под логотип */
+  height: 32px;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0; 
+  padding: 0;
 }
 
-/* Логотип вписывается в окно, без обесцвечивания */
+/* Сам логотип максимально крупно в окно */
 .tool-logo {
-  max-height: 100%;                      /* не выше окна */
-  max-width: 100%;                       /* не шире окна с учётом паддингов */
+  height: 100%;                 /* ключ для «реальной» высоты */
   width: auto;
-  height: 100%; 
-  display: block;
+  max-height: 100%;
+  max-width: 100%;
   object-fit: contain;
+  display: block;
   filter: none;
   opacity: 1;
 }
 
-/* Визуально скрытое имя (для A11y) */
-.sr-only {
-  position: absolute !important;
-  width: 1px; height: 1px;
-  padding: 0; margin: -1px;
-  overflow: hidden; clip: rect(0 0 0 0);
-  white-space: nowrap; border: 0;
-}
-
-/* Поочерёдное появление карточек */
+/* Поочерёдное появление карточек — оставляем */
 @keyframes fadeUp { from { opacity:0; transform: translateY(6px) } to { opacity:1; transform:none } }
 .tool.appear.in-view {
   animation: fadeUp .45s ease both;
   animation-delay: calc(var(--tools-delay-base, 0ms) + (var(--i, 0) * 80ms));
 }
 
-/* Мобилка: ещё плотнее сетка */
+/* Мобилка: ещё плотнее */
 @media (max-width: 600px) {
   .tools-grid {
-    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
-    gap: 6px;
+    grid-template-columns: repeat(auto-fit, minmax(68px, 1fr)); /* было 80px */
+    gap: 4px;                                                   /* было 6px */
   }
-  .tool { padding: 5px; }
+  .tool { padding: 3px; }                                       /* было 5px/4px */
   .tool-logo-wrap { height: 30px; }
 }
 
@@ -644,4 +639,5 @@ section {
     transform: none;
   }
 }
+
 
