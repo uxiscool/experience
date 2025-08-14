@@ -27,6 +27,26 @@ section {
  padding-top: 2rem;
 }
 
+.skills-section {
+  --gap: .6rem;
+  --muted: #888;
+  margin: 2rem 0 3rem;
+}
+
+.skills-columns, .bio-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+
+/* Адаптив: < 90px — колонки в столбик */
+@media (max-width: 920px) {
+  .skills-columns { grid-template-columns: 1fr; }
+  .bio-columns { grid-template-columns: 1fr; }
+  .bio-columns .bio:first-child { order: 2; }
+  .bio-columns .bio:last-child  { order: 1; }
+}
+
 .nav-wrapper {
   display: flex;
   flex-direction: column;

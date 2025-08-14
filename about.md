@@ -60,8 +60,7 @@ permalink: /about/
   </section>
   <!-- Градиентный разделитель -->
   <div class="intro-divider"></div>
-</div>
-<!-- Блок philosophy -->
+  <!-- Блок philosophy -->
 <section class="philosophy-section">
   <h2 class="subheading">Philosophy</h2>
   <div class="bio-columns">
@@ -77,6 +76,7 @@ permalink: /about/
     </div>
   </div>
 </section>
+</div>
 
 <!-- ===== Tooltip logic: один bubble на весь сайт, без зависимостей ===== -->
 <script>

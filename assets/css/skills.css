@@ -1,18 +1,9 @@
 /* ===== Skills section (минимальный набор) ===== */
 
 /* Локальные переменные секции — унаследуются всеми вложенными элементами */
-.skills-section {
-  --gap: .6rem;
-  --muted: #888;
-  margin: 2rem 0 3rem;
-}
 
 /* Две колонки: 1/2 + 1/2 с отступом 32px */
-.skills-columns, .bio-columns {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 32px;
-}
+
 
 .skills-col {
   display: flex;
@@ -24,14 +15,6 @@
   margin: 0;
   font-size: 1rem;
   color: var(--muted);
-}
-
-/* Адаптив: < 900px — колонки в столбик */
-@media (max-width: 900px) {
-  .skills-columns { grid-template-columns: 1fr; }
-  .bio-columns { grid-template-columns: 1fr; }
-  .bio-columns .bio:first-child { order: 2; }
-  .bio-columns .bio:last-child  { order: 1; }
 }
 
 /* Сетка чипсов/пиллов */
