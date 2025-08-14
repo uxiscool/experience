@@ -654,9 +654,8 @@ section {
 /* уважение к предпочтениям пользователя */
 @media (prefers-reduced-motion: reduce) {
   .tool.appear {
-    animation: none;
-    opacity: 1;
-    transform: none;
+  opacity: 0;
+  will-change: opacity, transform;
   }
 }
 
