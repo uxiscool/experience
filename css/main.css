@@ -1,0 +1,662 @@
+body {
+  background: #171819;
+  color: #fff;
+  font-family:
+    "SF Pro Display",
+    "San Francisco",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Arial,
+    sans-serif;
+  margin: 0;
+}
+
+header {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: row;
+  gap: 36px;
+  margin-top: 36px;
+ /* width: 100%; */
+ /*  background: #424c67; временный фон */
+}
+
+section {
+ padding-top: 2rem;
+}
+
+.skills-section {
+  --gap: .6rem;
+  --muted: #888;
+  margin: 2rem 0 3rem;
+}
+
+.skills-columns, .bio-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+
+/* Адаптив: < 90px — колонки в столбик */
+@media (max-width: 920px) {
+  .skills-columns { grid-template-columns: 1fr; }
+  .bio-columns { grid-template-columns: 1fr; }
+  .bio-columns .bio:first-child { order: 2; }
+  .bio-columns .bio:last-child  { order: 1; }
+}
+
+.nav-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.logo-img {
+  display: block;
+  height: 1.1rem;
+  width: auto;
+  margin-top: 6px;
+  margin-left: 35px;
+  margin-right: 12px;
+  opacity: 0.85;
+}
+
+.menu-panel {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 0;
+}
+
+.menu-panel::before {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1px;
+  height: 100%;
+  background: #323437;
+  border-radius: 1px;
+}
+
+.menu-block {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-left: 22px; /* расстояние от линии до меню */
+}
+
+.main-menu {
+  display: flex;
+  flex-direction: row;
+  gap: 18px;
+  margin: 0;
+}
+
+.subheading {
+  margin: 0 0 1rem;
+  font-size: clamp(1.3rem, 1.1rem + 1vw, 1.5rem);
+  margin-bottom: 1.1rem; /* или 24px отступ от подзаголовка до контента блока */
+  font-weight: 400;             /* полужирный */
+  letter-spacing: 0.02em;       /* опционально, для воздуха */
+}
+
+.subnav {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  margin: 10px 0 0 0;
+  padding: 0;
+}
+
+.menu-link,
+.sub-link {
+  color: #bbb;
+  font-size: 1.1rem; /* размер шрифта */ 
+  text-decoration: none;
+  padding: 6px 16px;
+  border-radius: 8px;
+}
+.menu-link:hover, .sub-link:hover {
+  /* background: #242627; */
+  color: #ff9900;
+  transition: background 0.25s, color 2s;
+}
+.menu-link.current, .sub-link.current {
+  background: #242627;
+  color: #ff9900;
+  transition: background 0.50s, color 0.15s;
+}
+
+@media (max-width: 700px) {
+  .menu-panel::before {
+    display: none;
+  }
+}
+.container {
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: 293px;
+  padding-right: 200px;
+  max-width: none;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.bio-section {
+  margin-top: 148px; /* отступ в about от навигации до контента */
+}
+
+@media (max-width: 1200px) {
+  .container {
+    padding-left: 293px;
+    padding-right: 132px;
+  }
+}
+
+@media (max-width: 980px) {
+  .container {
+    padding-left: 64px;
+    padding-right: 64px;
+  }
+}
+
+.intro-hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: calc(100vh - 240px); /* корректируй по факту */
+  font-size: 1.35rem;
+  font-weight: 400;
+  color: #fff;
+  background: #424b63; /* временный фон */
+  margin-bottom: 40px;
+  opacity: 0.90;
+  line-height: 1.4;
+  letter-spacing: 0.01em;
+  animation: heroFadeIn 1.1s cubic-bezier(.19,1,.22,1);
+  position: relative;
+}
+
+.bio {
+  font-size: 1.35rem;
+  font-weight: 400;
+  color: #fff;
+  opacity: 0.90;
+  line-height: 1.4;
+  letter-spacing: 0.01em;
+}
+
+.bio p {
+  margin: 0 0 1rem;
+  max-width: 68ch;     /* комфортная длина строки */
+}
+
+@media (max-width: 980px) {
+  .intro-hero {
+    font-size: 1.2rem;
+    line-height: normal;
+    letter-spacing: normal;
+    min-height: calc(100vh / 2);
+  }
+}
+
+.intro-divider {
+  height: 1.5px;
+  background: linear-gradient(90deg, #272829 0%, #434446 100%);
+  margin-top: 40px;
+  margin-left: 0px;
+  margin-right: 0px;
+  border-radius: 2px;
+  opacity: 0.55;
+}
+
+@keyframes heroFadeIn {
+  from { opacity: 0; transform: translateY(30px);}
+  to { opacity: 0.90; transform: none;}
+}
+
+.case-card {
+  /* background: #3a3b47; */
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 2px 18px #2f343929;
+  transition: box-shadow 0.18s, transform 0.2s;
+  display: flex;
+  flex-direction: column;
+}
+
+.case-card:hover {
+  box-shadow: 0 4px 28px #19c0ff2c;
+  transform: translateY(-2px) scale(1.018);
+}
+
+.case-img-wrap {
+  background: #17191e;
+  width: 100%;
+  aspect-ratio: 4/3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.case-thumb {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 0;
+  /* background: #3a3b47; */
+  transition: filter .18s;
+  cursor: pointer;
+}
+
+.case-meta {
+  padding: 22px 18px 18px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.case-title {
+  font-size: 1.19rem;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 2px;
+  text-decoration: underline dotted;
+  text-underline-offset: 4px;
+  transition: color .15s;
+}
+.case-title:hover {
+  color: #ff9900;
+}
+
+.case-year {
+  color: #9fa7b2;
+  font-size: 0.97rem;
+}
+.case-summary {
+  font-size: 1.04rem;
+  color: #e2e5e7;
+  opacity: 0.93;
+}
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #16181ef0;
+  animation: lightbox-fade-in 0.5s;
+}
+
+.lightbox-bg {
+  position: absolute;
+  inset: 0;
+  background: transparent;
+  z-index: 0;
+}
+
+.lightbox-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 98vw;
+}
+
+.lightbox-img {
+  max-width: 76vw;
+  max-height: 80vh;
+  border-radius: 18px;
+  box-shadow: 0 8px 56px #000a;
+  background: #181c22;
+  object-fit: contain;
+  display: block;
+  position: relative;
+  margin: 0 64px;
+}
+
+/* ЛЕВАЯ СТРЕЛКА */
+.lightbox-arrow.left {
+  position: fixed;
+  top: 50%;
+  left: 32px;
+  transform: translateY(-50%);
+  z-index: 11001;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  transition: filter 0.5s cubic-bezier(.42,0,.58,1), opacity 0.18s;
+}
+
+/* ПРАВАЯ СТРЕЛКА */
+.lightbox-arrow.right {
+  position: fixed;
+  top: 50%;
+  right: 32px;
+  transform: translateY(-50%);
+  z-index: 11001;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  transition: filter 0.5s cubic-bezier(.42,0,.58,1), opacity 0.18s;
+}
+
+/* СКРЫТЬ ФОН, ПЛАВНОСТЬ И ИКОНКИ */
+.lightbox-arrow img {
+  width: 36px;
+  height: 36px;
+  display: block;
+  background: none;
+  pointer-events: none;
+  box-shadow: none;
+  transition: filter 0.5s cubic-bezier(.42,0,.58,1), opacity 0.18s;
+}
+
+.lightbox-close img {
+  width: 32px;
+  height: 32px;
+  display: block;
+  background: none;
+  pointer-events: none;
+  box-shadow: none;
+  transition: filter 0.5s cubic-bezier(.42,0,.58,1), opacity 0.18s;
+}
+
+/* КНОПКА ЗАКРЫТЬ (КРЕСТИК) — В ПРАВОМ ВЕРХНЕМ УГЛУ */
+.lightbox-close {
+  position: fixed;
+  top: 42px;
+  right: 32px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 11002;
+  transition: opacity .2s;
+  padding: 6px 10px;
+  transition: filter 0.5s cubic-bezier(.42,0,.58,1), opacity 0.18s;
+}
+
+/* ХОВЕР-ЭФФЕКТ */
+.lightbox-arrow:hover img {
+  filter: brightness(0.70);
+  opacity: 0.84;
+}
+
+.lightbox-close:hover img {
+  filter: brightness(0.70);
+  opacity: 0.84;
+}
+
+
+@media (max-width: 900px) {
+  .lightbox-arrow.left {
+    left: 18px;
+  }
+  .lightbox-arrow.right {
+    right: 18px;
+  }
+  .lightbox-close {
+    right: 34px;
+    top: 34px;
+  }
+  .lightbox-img {
+    margin: 0 54px; /* больше воздуха слева и справа */
+    max-width: 84vw; /* чуть уже, чтобы не прилегала к стрелкам */
+  }
+  .lightbox-arrow img {
+  width: 24px;
+  height: 24px;
+}
+  .lightbox-close img {
+  width: 24px;
+  height: 24px;
+}
+}
+
+@media (max-width: 590px) {
+
+  .lightbox-arrow img {
+  width: 18px;
+  height: 18px;
+}
+}
+
+.lightbox-caption {
+  margin-top: 18px;
+  color: #e7eaf0;
+  font-size: 1.12rem;
+  text-align: center;
+  max-width: 82vw;
+  min-height: 28px;
+  opacity: 0.90;
+}
+
+@keyframes lightbox-fade-in {
+  from { opacity: 0;}
+  to { opacity: 1;}
+}
+
+.featured-cases {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+  margin: 60px 0 32px 0;
+}
+
+.case-block {
+  border-radius: 18px;
+  box-shadow: 0 2px 18px #181a1c29;
+  padding: 32px 24px 28px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-left: 32px;
+  margin-right: 32px;
+}
+.case-meta2 {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  margin-bottom: 12px;
+  padding-left: 237px;
+  padding-right: 237px;
+  background: #424b63;
+}
+
+@media (max-width: 980px) {
+  .case-meta2 {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+}
+
+.case-meta2-inline {
+  color: #b7c1cc;
+  font-size: 1.01rem;
+  opacity: 0.96;
+  margin-bottom: 4px;
+  margin-top: 2px;
+  white-space: nowrap;
+}
+
+.case-title-row {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+.case-title2 {
+  font-size: 1.18rem;
+  font-weight: 600;
+  color: #fff;
+  text-decoration: underline dotted;
+  text-underline-offset: 4px;
+  transition: color .15s;
+}
+.case-title2:hover {
+  color: #ff9900;
+}
+.case-year2 {
+  color: #9fa7b2;
+  font-size: 1.05rem;
+  opacity: 0.9;
+  margin-left: 8px;
+  white-space: nowrap;
+}
+.case-type2 {
+  color: #b7c1cc;
+  font-size: 1.01rem;
+  opacity: 0.96;
+}
+.case-summary2 {
+  font-size: 1.09rem;
+  color: #e2e5e7;
+  opacity: 0.93;
+}
+
+.case-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 22px;
+  margin-top: 4px;
+}
+.case-gallery-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #232429;
+  border-radius: 12px;
+  padding: 12px;
+  box-shadow: 0 2px 8px #0002;
+  transition: box-shadow .25s;
+}
+.case-gallery-item:hover {
+  box-shadow: 0 0 18px 0 #fd493169;
+}
+.case-thumb2 {
+  max-width: 100%;
+  max-height: 350px;
+  width: auto;
+  aspect-ratio: 4/3;
+  object-fit: contain;
+  border-radius: 8px;
+  background: #232429;
+  margin-bottom: 6px;
+  cursor: pointer;
+  transition: filter .14s;
+}
+.case-thumb-caption {
+  font-size: .97rem;
+  color: #bac0c9;
+  text-align: center;
+  margin-top: 3px;
+  opacity: 0.86;
+}
+/* ===== Apps & Tools (обновлённый стиль) ===== */
+.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 14px 18px;
+}
+
+/* Карточка без постоянного фона и без бордера */
+.tool {
+  display: grid;
+  grid-auto-rows: auto;
+  align-items: center;
+  justify-items: center;
+  gap: 8px;
+  padding: 14px 16px;
+  background: transparent;           /* ← фон скрыт по умолчанию */
+  border: none;                      /* ← убрали бордер */
+  border-radius: 12px;
+  text-decoration: none;
+  transition:
+    background-color .18s ease,      /* плавное появление фона */
+    box-shadow .18s ease,
+    transform .16s ease;
+  opacity: 0;                        /* для анимации появления */
+  will-change: opacity, transform;
+}
+
+/* Фон и тень мягко проявляются только при наведении/фокусе */
+.tool:hover,
+.tool:focus-visible {
+  background: rgba(255,255,255,0.06);  /* лёгкая «плашка» */
+  box-shadow: 0 6px 22px #00000025;
+  transform: translateY(-2px);
+  outline: none;
+}
+
+/* Центровка логотипа в «коробке» */
+.tool-logo-wrap {
+  width: 100%;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Логотипы сразу цветные, фиксируем высоту 32px */
+.tool-logo {
+  height: 32px;
+  width: auto;
+  display: block;
+  object-fit: contain;
+  filter: none;                      /* ← убрали grayscale */
+  opacity: 1;                        /* ← и полную непрозрачность */
+  transition: transform .16s ease;
+}
+
+.tool:hover .tool-logo,
+.tool:focus-visible .tool-logo {
+  transform: translateY(-1px);       /* лёгкий отклик, опционально */
+}
+
+/* Визуально скрытое имя (для доступности) остаётся как есть */
+.sr-only {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0);
+  white-space: nowrap; border: 0;
+}
+
+/* Поочерёдное появление карточек (как у пиллов) */
+@keyframes fadeUp { from { opacity:0; transform: translateY(6px) } to { opacity:1; transform:none } }
+.tool.appear.in-view {
+  animation: fadeUp .45s ease both;
+  animation-delay: calc(var(--tools-delay-base, 0ms) + (var(--i, 0) * 80ms));
+}
+
+/* Мобильный штрих */
+@media (max-width: 900px) {
+  .tools-grid { grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 12px; }
+  .tool { padding: 12px; }
+  .tool-logo-wrap { height: 44px; }
+}
+
+/* Уважение к reduce motion */
+@media (prefers-reduced-motion: reduce) {
+  .tool.appear,
+  .tool.appear.in-view {
+    animation: none !important;
+    opacity: 1;
+    transform: none;
+  }
+}
