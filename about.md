@@ -60,6 +60,14 @@ permalink: /about/
   </section>
   <!-- Градиентный разделитель -->
   <div class="intro-divider"></div>
+   <!-- Блок скилов -->
+  <section class="tools-section">
+    <h2 class="subheading">Apps & Tools</h2>
+    0 0 0 0 0 0
+  </section>
+   <!-- Градиентный разделитель -->
+  <div class="intro-divider"></div>
+
   <!-- Блок philosophy -->
 <section class="philosophy-section">
   <h2 class="subheading">Philosophy</h2>
@@ -72,7 +80,7 @@ permalink: /about/
     </div>
     <!-- Правая колонка: фото -->
     <div class="bio">
-      <img src="{{ site.baseurl }}/assets/images/photo.jpg" alt="Portrait of Vladimir" class="bio-photo">
+      <img src="{{ site.baseurl }}/ui/photo.jpg" alt="Portrait of Vladimir" class="bio-photo">
     </div>
   </div>
 </section>
