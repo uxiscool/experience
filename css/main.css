@@ -582,21 +582,9 @@ section {
   background: transparent;               /* по умолчанию без фона */
   border: none;
   border-radius: 10px;
-  transition:
-    background-color .18s ease,
-    box-shadow .18s ease,
-    transform .16s ease;
   opacity: 0;                            /* для анимации появления (IntersectionObserver) */
   will-change: opacity, transform;
   overflow: hidden;                      /* на всякий случай — ничего не вылезет из плашки */
-}
-
-.tool:hover,
-.tool:focus-visible {
-  background: rgba(255,255,255,0.06);    /* мягкая подложка только на ховере */
-  box-shadow: 0 6px 22px #00000025;
-  transform: translateY(-2px);
-  outline: none;
 }
 
 /* Окно под логотип 32px по высоте, чтобы прямоугольные не вылазили */
@@ -619,12 +607,6 @@ section {
   object-fit: contain;
   filter: none;
   opacity: 1;
-  transition: transform .16s ease;
-}
-
-.tool:hover .tool-logo,
-.tool:focus-visible .tool-logo {
-  transform: translateY(-1px);
 }
 
 /* Визуально скрытое имя (для A11y) */
