@@ -31,6 +31,9 @@
 - name: Jira
   url: https://www.atlassian.com/software/jira
   logo: /ui/apps_logo/logo_jira.svg
+- name: Github
+  url: https://github.com/
+  logo: /ui/apps_logo/logo_github.svg
 - name: Holst
   url: https://holst.so/
   logo: /ui/apps_logo/logo_holst.svg
