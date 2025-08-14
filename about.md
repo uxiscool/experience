@@ -61,7 +61,6 @@ permalink: /about/
 <section class="tools-section">
   <h2 class="subheading">Apps & Tools</h2>
   <div class="tools-grid" style="--tools-delay-base: 800ms">
-  <p>
     {% for app in site.data.apps %}
       <a class="tool appear"
          href="{{ app.url }}" target="_blank" rel="noopener"
@@ -74,13 +73,11 @@ permalink: /about/
             class="tool-logo"
             loading="lazy"
             decoding="async"
-            fetchpriority="low"
-          >
+            fetchpriority="low">
         </span>
         <span class="tool-name sr-only">{{ app.name }}</span>
       </a>
     {% endfor %}
-    </p>
   </div>
 </section>
   <!-- Блок philosophy -->
