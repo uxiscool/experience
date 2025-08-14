@@ -606,6 +606,7 @@ section {
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 0; 
 }
 
 /* Логотип вписывается в окно, без обесцвечивания */
@@ -613,7 +614,7 @@ section {
   max-height: 100%;                      /* не выше окна */
   max-width: 100%;                       /* не шире окна с учётом паддингов */
   width: auto;
-  height: auto;
+  height: 100%; 
   display: block;
   object-fit: contain;
   filter: none;
