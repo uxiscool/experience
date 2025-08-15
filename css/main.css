@@ -638,8 +638,8 @@ section {
   background: linear-gradient(
     to bottom,
     #171819 0%,
-    #1d1f20 40%,
-    #212224 100%
+    #1d1f20 30%,
+    #212224 70%
   );
   display: flex;              /* ← делаем flex-контейнер */
   flex-direction: column;     /* ← ось сверху вниз */
