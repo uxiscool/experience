@@ -634,22 +634,26 @@ section {
 /* ===== Footer ===== */
 .site-footer {
   width: 100%;
-  min-height: clamp(80px, 14vw, 200px); /* 80–200px адаптивно */
+  min-height: clamp(80px, 14vw, 200px);
   background: linear-gradient(
     to bottom,
     rgba(23, 24, 25, 0) 0%,
     rgba(23, 24, 25, 0.8) 60%,
     rgba(23, 24, 25, 1) 100%
-  );           
+  );
+  display: flex;              /* ← делаем flex-контейнер */
+  flex-direction: column;     /* ← ось сверху вниз */
 }
 
 .footer-inner {
-  min-height: 100%;           /* теперь занимает весь футер */
+  /* min-height: 100%;  ← убрать */
   display: flex;
-  align-items: flex-end;       /* прижимаем текст к нижней кромке футера */
-  justify-content: flex-end;   /* и к правому краю */
+  align-items: center;         /* контент сам по себе строчный — центр по высоте строки ок */
+  justify-content: flex-end;   /* текст справа */
   box-sizing: border-box;
-  padding: 0 200px 12px 293px; /* сочетаем с текущими паддингами .container */
+  padding: 0 200px 12px 293px;
+  margin-top: auto;            /* ← прижать к НИЗУ футера */
+  margin-left: auto;           /* ← прижать к ПРАВОМУ краю с учётом padding */
 }
 
 @media (max-width: 1200px) {
