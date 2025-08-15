@@ -644,10 +644,10 @@ section {
 }
 
 .footer-inner {
-  height: 100%;
+  min-height: 100%;           /* теперь занимает весь футер */
   display: flex;
-  align-items: flex-end;    /* прижимаем текст к нижней кромке футера */
-  justify-content: flex-end;/* и к правому краю */
+  align-items: flex-end;       /* прижимаем текст к нижней кромке футера */
+  justify-content: flex-end;   /* и к правому краю */
   box-sizing: border-box;
   padding: 0 200px 12px 293px; /* сочетаем с текущими паддингами .container */
 }
