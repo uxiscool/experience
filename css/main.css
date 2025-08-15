@@ -569,18 +569,19 @@ section {
 }
 /* ===== Apps & Tools (плотная сетка, без подложек и ховеров) ===== */
 .tools-grid {
-  display: grid;
-  grid-auto-flow: column;
-  grid-auto-columns: 35px; /* фиксированная ширина ячейки */
-  justify-content: start;  /* выравнивание влево */
-  gap: 0;                  /* между ячейками нет «воздуха», ровно 60px шаг */
+  display: flex;            /* чтобы элементы были шириной по содержимому */
+  flex-wrap: wrap;          /* перенос на новую строку */
+  column-gap: 60px;         /* фиксированный горизонтальный зазор */
+  row-gap: 12px;            /* вертикальный зазор между рядами */
+  align-items: center;      /* выравнивание по центру по высоте */
+  justify-content: flex-start;
 }
 
 .tool {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 4px;                 /* равный зазор, немного меньше */
+  padding: 0px;                 /* равный зазор, немного меньше */
   background: transparent;      /* без подложки */
   border: 0;
   border-radius: 0;             /* фона нет — скругление не нужно */
@@ -622,7 +623,7 @@ section {
 }
 
 /* мобилка — ещё плотнее */
-@media (max-width: 600px) {
+@media (max-width: 900px) {
    .tools-grid {
     grid-auto-columns: 50px;
   }
