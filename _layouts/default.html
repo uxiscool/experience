@@ -12,6 +12,7 @@
     <main>
       {{ content }}
     </main>
+    {% include footer.html %}
 <script>
 window.siteBaseurl = "{{ site.baseurl }}";
 let allCases = {{ site.cases | jsonify }};

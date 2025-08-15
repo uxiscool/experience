@@ -631,3 +631,32 @@ section {
   .tool-logo-wrap { height: 30px; }
 }
 
+/* ===== Footer ===== */
+.site-footer {
+  width: 100%;
+  min-height: clamp(80px, 14vw, 200px); /* 80–200px адаптивно */
+  background: transparent;              /* при желании можно дать едва заметный градиент */
+}
+
+.footer-inner {
+  height: 100%;
+  display: flex;
+  align-items: flex-end;    /* прижимаем текст к нижней кромке футера */
+  justify-content: flex-end;/* и к правому краю */
+  box-sizing: border-box;
+  padding: 0 200px 12px 293px; /* сочетаем с текущими паддингами .container */
+}
+
+@media (max-width: 1200px) {
+  .footer-inner { padding: 0 132px 12px 293px; }
+}
+@media (max-width: 900px) {
+  .footer-inner { padding: 0 64px 12px 64px; }
+}
+
+.footer-updated {
+  color: #bbb;               /* как в меню */
+  font-size: 1.1rem;         /* как .menu-link/.sub-link */
+  line-height: 1.2;
+  opacity: 0.95;
+}
