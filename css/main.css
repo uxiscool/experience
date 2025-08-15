@@ -571,7 +571,7 @@ section {
 .tools-grid {
   display: flex;            /* чтобы элементы были шириной по содержимому */
   flex-wrap: wrap;          /* перенос на новую строку */
-  column-gap: 60px;         /* фиксированный горизонтальный зазор */
+  column-gap: 40px;         /* фиксированный горизонтальный зазор */
   row-gap: 12px;            /* вертикальный зазор между рядами */
   align-items: center;      /* выравнивание по центру по высоте */
   justify-content: flex-start;
