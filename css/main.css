@@ -637,9 +637,9 @@ section {
   min-height: clamp(80px, 14vw, 400px);
   background: linear-gradient(
     to bottom,
-    #171819 100%,
-    #2f3334 90%,
-    #2b2f30 100%
+    rgb(23, 24, 25) 100%,
+    rgb(47, 51, 52) 100%,
+    rgb(43, 47, 48) 100%
   );
   display: flex;              /* ← делаем flex-контейнер */
   flex-direction: column;     /* ← ось сверху вниз */
