@@ -79,6 +79,7 @@ permalink: /about/
       </a>
     {% endfor %}
   </div>
+   <div class="intro-divider"></div>
 </section>
   <!-- Блок philosophy -->
 <section class="philosophy-section">
