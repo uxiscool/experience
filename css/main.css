@@ -639,7 +639,7 @@ section {
     to bottom,
     #171819 100%,
     #1d1f20 10%,
-    #1d1f20 7%
+    #1d1f20 70%
   );
   display: flex;              /* ← делаем flex-контейнер */
   flex-direction: column;     /* ← ось сверху вниз */
