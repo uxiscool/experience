@@ -634,12 +634,12 @@ section {
 /* ===== Footer ===== */
 .site-footer {
   width: 100%;
-  min-height: clamp(80px, 14vw, 200px);
+  min-height: clamp(80px, 14vw, 400px);
   background: linear-gradient(
     to bottom,
     #171819 0%,
-    #1d1f20 30%,
-    #212224 70%
+    #1d1f20 25%,
+    #212224 50%
   );
   display: flex;              /* ← делаем flex-контейнер */
   flex-direction: column;     /* ← ось сверху вниз */
