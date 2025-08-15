@@ -637,9 +637,9 @@ section {
   min-height: clamp(80px, 14vw, 400px);
   background: linear-gradient(
     to bottom,
-    #171819 0%,
-    #171819 1%,
-    #171819 5%,
+    #171819 100%,
+    #171819 100%,
+    #171819 100%,
     #1d1f20 7%,
     #212224 30%
   );
