@@ -712,9 +712,6 @@ section {
   place-items: center;
   color: var(--leaf);
   position: relative;
-  opacity: 0;
-  transform: translateY(10px);
-  animation: lb-fade 3s cubic-bezier(.34,1.56,.64,1) 0.1s both;
   --lift: -20%;
 }
 
@@ -779,4 +776,42 @@ html[data-theme="dark"] .laurel-badge { --leaf: #c2c9d3; }
   );
 }
 @keyframes lb-text-in { to { opacity: 1; } }
+
+/* Плавное отдельное появление числа и подписи */
+.laurel-badge .lb-number,
+.laurel-badge .lb-label {
+  opacity: 0;
+  transform: translateY(8px);
+  filter: blur(4px);
+  will-change: opacity, transform, filter;
+}
+
+/* База задержки текста: после того как достроятся листья */
+:root {
+  --lb-text-base-delay: calc(
+    var(--leaf-delay, .35s) +
+    (var(--pairs, 6) * var(--leaf-gap, 120ms)) + 120ms
+  );
+}
+
+/* Число — чуть быстрее и раньше */
+@keyframes lb-number-in {
+  60% { filter: blur(0.5px); }
+  100% { opacity: 1; transform: none; filter: none; }
+}
+.laurel-badge .lb-number {
+  animation: lb-number-in 900ms cubic-bezier(.19,1,.22,1)
+             var(--number-delay, var(--lb-text-base-delay)) both;
+}
+
+/* Подпись — мягче, дольше и с паузой после числа */
+@keyframes lb-label-in {
+  70% { filter: blur(0.5px); }
+  100% { opacity: 1; transform: none; filter: none; }
+}
+.laurel-badge .lb-label {
+  animation: lb-label-in 1200ms cubic-bezier(.19,1,.22,1)
+             calc(var(--label-delay, var(--lb-text-base-delay)) + var(--label-stall, 160ms)) both;
+}
+
 

@@ -27,7 +27,7 @@ permalink: /about/
           --leaf:#d6c083;
           --text:#fff9e6;
           --leaf-delay:.5s;   /* пауза перед стартом «строительства» венка */
-          --leaf-gap:240ms;   /* шаг между парами листьев */
+          --leaf-gap:160ms;   /* шаг между парами листьев */
           --lift:-20%;        /* вертикальный подъём SVG листвы */
         "></figure>
     <figure class="laurel-badge" data-value="25+" data-label="big projects" style="
@@ -35,7 +35,7 @@ permalink: /about/
           --leaf:#d6c083;
           --text:#fff9e6;
           --leaf-delay:.5s;   /* пауза перед стартом «строительства» венка */
-          --leaf-gap:240ms;   /* шаг между парами листьев */
+          --leaf-gap:160ms;   /* шаг между парами листьев */
           --lift:-20%;        /* вертикальный подъём SVG листвы */
         "></figure>
   </div>
