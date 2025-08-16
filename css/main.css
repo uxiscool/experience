@@ -46,11 +46,11 @@ section {
 }
 
 .bio-photo {
-  display: block;
   max-width: 100%;
-  width: 100%;
-  height: auto;        /* сохраняем пропорции */
-  object-fit: contain; /* ничего не режем */
+  height: auto;
+  object-fit: contain;
+  width: auto; /* ← ключ: ширина подстраивается под картинку */
+  display: block;
 }
 
 /* дети грида должны позволять сжатие содержимого */
