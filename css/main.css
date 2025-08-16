@@ -766,17 +766,6 @@ html[data-theme="dark"] .laurel-badge { --leaf: #c2c9d3; }
   to { opacity: 1; transform: none; }
 }
 
-/* Текст появляется после того, как «достроятся» все пары листьев */
-.laurel-badge .lb-text {
-  opacity: 0;
-  animation: lb-text-in 600ms cubic-bezier(.19,1,.22,1) both;
-  animation-delay: calc(
-    var(--leaf-delay, .35s) +
-    (var(--pairs, 6) * var(--leaf-gap, 120ms)) + 120ms
-  );
-}
-@keyframes lb-text-in { to { opacity: 1; } }
-
 /* Плавное отдельное появление числа и подписи */
 .laurel-badge .lb-number,
 .laurel-badge .lb-label {
@@ -786,7 +775,7 @@ html[data-theme="dark"] .laurel-badge { --leaf: #c2c9d3; }
   will-change: opacity, transform, filter;
 }
 
-/* База задержки текста: после того как достроятся листья */
+/* База задержки: после того как «достроятся» листья */
 :root {
   --lb-text-base-delay: calc(
     var(--leaf-delay, .35s) +
@@ -794,24 +783,32 @@ html[data-theme="dark"] .laurel-badge { --leaf: #c2c9d3; }
   );
 }
 
-/* Число — чуть быстрее и раньше */
+/* Число — быстро начинает, сильно замедляется к концу */
 @keyframes lb-number-in {
-  60% { filter: blur(0.5px); }
+  0%   { opacity: 0; transform: translateY(10px); filter: blur(6px); }
+  50%  { filter: blur(1px); }
   100% { opacity: 1; transform: none; filter: none; }
-}
-.laurel-badge .lb-number {
-  animation: lb-number-in 900ms cubic-bezier(.19,1,.22,1)
-             var(--number-delay, var(--lb-text-base-delay)) both;
 }
 
-/* Подпись — мягче, дольше и с паузой после числа */
+.laurel-badge .lb-number {
+  opacity: 0;
+  will-change: opacity, transform, filter;
+  animation: lb-number-in 1.2s cubic-bezier(.19,1,.22,1)
+             calc(var(--number-delay, var(--lb-text-base-delay)) + 80ms) both;
+}
+
+/* Подпись — ещё мягче, дольше и позже числа */
 @keyframes lb-label-in {
-  70% { filter: blur(0.5px); }
+  0%   { opacity: 0; transform: translateY(12px); filter: blur(8px); }
+  60%  { filter: blur(1px); }
   100% { opacity: 1; transform: none; filter: none; }
 }
+
 .laurel-badge .lb-label {
-  animation: lb-label-in 1200ms cubic-bezier(.19,1,.22,1)
-             calc(var(--label-delay, var(--lb-text-base-delay)) + var(--label-stall, 160ms)) both;
+  opacity: 0;
+  will-change: opacity, transform, filter;
+  animation: lb-label-in 1.5s cubic-bezier(.19,1,.22,1)
+             calc(var(--label-delay, var(--lb-text-base-delay)) + var(--label-stall, 280ms)) both;
 }
 
 
