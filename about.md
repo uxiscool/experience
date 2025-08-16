@@ -25,7 +25,7 @@ permalink: /about/
     <figure class="laurel-badge" data-value="15+" data-label="years of experience" style="
           --size:160px;
           --leaf:#d6c083;
-          --text:#fff9e6;
+          --text:#d6c083;
           --leaf-delay:.5s;   /* пауза перед стартом «строительства» венка */
           --leaf-gap:160ms;   /* шаг между парами листьев */
           --lift:-20%;        /* вертикальный подъём SVG листвы */
@@ -33,7 +33,7 @@ permalink: /about/
     <figure class="laurel-badge" data-value="25+" data-label="big projects" style="
           --size:160px;
           --leaf:#d6c083;
-          --text:#fff9e6;
+          --text:#d6c083;
           --leaf-delay:.5s;   /* пауза перед стартом «строительства» венка */
           --leaf-gap:160ms;   /* шаг между парами листьев */
           --lift:-20%;        /* вертикальный подъём SVG листвы */
