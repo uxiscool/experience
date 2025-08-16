@@ -714,7 +714,7 @@ section {
   position: relative;
   opacity: 0;
   transform: translateY(10px);
-  animation: lb-fade 1s cubic-bezier(.25,.8,.25,1) .6s both;
+  animation: lb-fade 1.5s cubic-bezier(.11,.9,.31,1) .3s both;
   --lift: -20%; /* можно -8%…-14% по вкусу/размеру */
 }
 
