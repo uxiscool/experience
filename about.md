@@ -93,7 +93,10 @@ permalink: /about/
     </div>
     <!-- Правая колонка: фото -->
     <div class="bio">
-      <img src="{{ site.baseurl }}/ui/photo.jpg" alt="Portrait of Vladimir" class="bio-photo">
+    <img src="{{ site.baseurl }}/ui/photo.jpg"
+     alt="Portrait of Vladimir"
+     class="bio-photo"
+     width="957" height="521">
     </div>
   </div>
 </section>
