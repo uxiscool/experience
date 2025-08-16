@@ -20,9 +20,12 @@ permalink: /about/
         </p>
       </div>
       <!-- Правая колонка: пока пусто -->
-      <div class="bio">
-        15+ YoE, 100+ relised projects
-      </div>
+   <div class="bio">
+  <div class="achievements-grid">
+    <figure class="laurel-badge" data-value="15+" data-label="years of experience" style="--size: 160px"></figure>
+    <figure class="laurel-badge" data-value="100+" data-label="shipped projects" style="--size: 160px"></figure>
+  </div>
+</div>
     </div>
   </section>
   <!-- Блок скилов -->
@@ -206,5 +209,55 @@ document.addEventListener("DOMContentLoaded", () => {
     tools.forEach(el => el.classList.add("in-view"));
   }
 });
+</script>
+<script>
+(function () {
+  const tpl = (num, label) => `
+  <svg viewBox="0 0 200 200" aria-hidden="true" focusable="false">
+    <g transform="translate(100,100)">
+      <!-- Левая ветвь -->
+      <g transform="translate(-10,0) rotate(-15)">
+        ${leafPath( -60,  45, 26)}
+        ${leafPath( -78,  18, 22)}
+        ${leafPath( -84, -12, 20)}
+        ${leafPath( -78, -38, 18)}
+        ${leafPath( -60, -60, 16)}
+        ${leafPath( -35, -76, 14)}
+      </g>
+      <!-- Правая ветвь (зеркало) -->
+      <g transform="translate(10,0) rotate(15) scale(-1,1)">
+        ${leafPath( -60,  45, 26)}
+        ${leafPath( -78,  18, 22)}
+        ${leafPath( -84, -12, 20)}
+        ${leafPath( -78, -38, 18)}
+        ${leafPath( -60, -60, 16)}
+        ${leafPath( -35, -76, 14)}
+      </g>
+    </g>
+  </svg>
+  <div class="lb-text" aria-hidden="true">
+    <div class="lb-number">${num}</div>
+    <div class="lb-label">${label}</div>
+  </div>`;
+
+  function leafPath(x, y, r){
+    // эллиптический лист через две дуги
+    const rx = r, ry = r*0.55, k = 0.65*r;
+    return `
+      <path d="
+        M ${x} ${y}
+        c ${k} ${-ry}, ${rx} ${-ry}, ${rx*2} 0
+        c ${-k} ${ry}, ${-rx} ${ry}, ${-rx*2} 0
+        Z
+      " fill="currentColor"/>
+    `;
+  }
+
+  document.querySelectorAll('.laurel-badge').forEach(el => {
+    const num = el.getAttribute('data-value')  || '';
+    const label = el.getAttribute('data-label') || '';
+    el.innerHTML = tpl(num, label);
+  });
+})();
 </script>
 

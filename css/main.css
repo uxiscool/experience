@@ -686,3 +686,70 @@ section {
   line-height: 1.2;
   opacity: 0.95;
 }
+/* ===== Laurel badge ===== */
+.achievements-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(140px, 1fr));
+  gap: 18px;
+  align-items: center;
+  justify-items: center;
+}
+
+@media (max-width: 920px) {
+  .achievements-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+}
+
+.laurel-badge {
+  --size: 160px;                 /* можно переопределять инлайн */
+  --leaf: #b7c1cc;               /* цвет венка */
+  --text: #ffffff;               /* цвет цифры и подписи */
+  width: var(--size);
+  height: var(--size);
+  display: grid;
+  place-items: center;
+  color: var(--leaf);
+  position: relative;
+  opacity: 0;
+  transform: translateY(6px);
+  animation: lb-fade .5s ease .2s both;
+}
+
+@keyframes lb-fade {
+  to { opacity: 1; transform: none; }
+}
+
+.laurel-badge svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.laurel-badge .lb-text {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+  text-align: center;
+}
+
+.laurel-badge .lb-number {
+  color: var(--text);
+  font-size: calc(var(--size) * 0.34);
+  line-height: 1;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+.laurel-badge .lb-label {
+  color: var(--leaf);
+  font-size: calc(var(--size) * 0.11);
+  margin-top: 6px;
+  opacity: .9;
+}
+
+/* тёмная тема может захотеть чуть ярче лист */
+html[data-theme="dark"] .laurel-badge { --leaf: #c2c9d3; }
