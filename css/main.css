@@ -704,8 +704,8 @@ section {
 
 .laurel-badge {
   --size: 160px;                 /* можно переопределять инлайн */
-  --leaf: #b7c1cc;               /* цвет венка */
-  --text: #ffffff;               /* цвет цифры и подписи */
+  --leaf: #ffc74f;               /* цвет венка */
+  --text: #ffe76f;               /* цвет цифры и подписи */
   width: var(--size);
   height: var(--size);
   display: grid;
