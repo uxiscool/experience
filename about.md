@@ -57,23 +57,7 @@ permalink: /about/
       </div>
     </div>
   </section>
-  <!-- Блок philosophy -->
-<section class="philosophy-section">
-  <h2 class="subheading">Philosophy</h2>
-  <div class="bio-columns">
-    <!-- Левая колонка: текст -->
-    <div class="bio">
-      <p>
-        I&nbsp;believe that the&nbsp;best solutions grow from a&nbsp;balance of&nbsp;structure and&nbsp;creativity. I&nbsp;often recharge through hiking and&nbsp;observing nature — it&nbsp;teaches patience, attention to&nbsp;detail, and&nbsp;the&nbsp;beauty of&nbsp;simplicity. Always open to&nbsp;new collaborations&nbsp;— feel free to&nbsp;reach out.
-      </p>
-    </div>
-    <!-- Правая колонка: фото -->
-    <div class="bio">
-      <img src="{{ site.baseurl }}/ui/photo.jpg" alt="Portrait of Vladimir" class="bio-photo">
-    </div>
-  </div>
-</section>
- <!-- блок мой инструментарий -->
+    <!-- блок мой инструментарий -->
 <section class="tools-section">
   <h2 class="subheading">Apps & Tools</h2>
   <div class="tools-grid" style="--tools-delay-base: 800ms">
@@ -96,6 +80,22 @@ permalink: /about/
     {% endfor %}
   </div>
    <div class="intro-divider"></div>
+</section>
+  <!-- Блок philosophy -->
+<section class="philosophy-section">
+  <h2 class="subheading">Philosophy</h2>
+  <div class="bio-columns">
+    <!-- Левая колонка: текст -->
+    <div class="bio">
+      <p>
+        I&nbsp;believe that the&nbsp;best solutions grow from a&nbsp;balance of&nbsp;structure and&nbsp;creativity. I&nbsp;often recharge through hiking and&nbsp;observing nature — it&nbsp;teaches patience, attention to&nbsp;detail, and&nbsp;the&nbsp;beauty of&nbsp;simplicity. Always open to&nbsp;new collaborations&nbsp;— feel free to&nbsp;reach out.
+      </p>
+    </div>
+    <!-- Правая колонка: фото -->
+    <div class="bio">
+      <img src="{{ site.baseurl }}/ui/photo.jpg" alt="Portrait of Vladimir" class="bio-photo">
+    </div>
+  </div>
 </section>
 </div>
 
