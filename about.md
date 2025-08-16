@@ -19,11 +19,25 @@ permalink: /about/
           and&nbsp;have designed internal tools, mobile/desktop apps, and&nbsp;ecosystem products.
         </p>
       </div>
-      <!-- Правая колонка: пока пусто -->
+      <!-- Правая колонка достижения -->
    <div class="bio">
   <div class="achievements-grid">
-    <figure class="laurel-badge" data-value="15+" data-label="years of experience" style="--size: 160px"></figure>
-    <figure class="laurel-badge" data-value="100+" data-label="shipped projects" style="--size: 160px"></figure>
+    <figure class="laurel-badge" data-value="15+" data-label="years of experience" style="
+          --size:160px;
+          --leaf:#d6c083;
+          --text:#fff9e6;
+          --leaf-delay:.5s;   /* пауза перед стартом «строительства» венка */
+          --leaf-gap:140ms;   /* шаг между парами листьев */
+          --lift:-12%;        /* вертикальный подъём SVG листвы */
+        "></figure>
+    <figure class="laurel-badge" data-value="25+" data-label="big projects" style="
+          --size:160px;
+          --leaf:#d6c083;
+          --text:#fff9e6;
+          --leaf-delay:.5s;   /* пауза перед стартом «строительства» венка */
+          --leaf-gap:140ms;   /* шаг между парами листьев */
+          --lift:-12%;        /* вертикальный подъём SVG листвы */
+        "></figure>
   </div>
 </div>
     </div>
@@ -215,23 +229,23 @@ document.addEventListener("DOMContentLoaded", () => {
   const tpl = (num, label) => `
   <svg viewBox="0 0 200 200" aria-hidden="true" focusable="false">
     <g transform="translate(100,100)">
-      <!-- Левая ветвь -->
+      <!-- Левая ветвь (пары i=0..5: снизу вверх) -->
       <g transform="translate(-10,0) rotate(-15)">
-        ${leafPath( -60,  45, 26)}
-        ${leafPath( -78,  18, 22)}
-        ${leafPath( -84, -12, 20)}
-        ${leafPath( -78, -38, 18)}
-        ${leafPath( -60, -60, 16)}
-        ${leafPath( -35, -76, 14)}
+        ${leafPath( -60,  45, 26, 0)}
+        ${leafPath( -78,  18, 22, 1)}
+        ${leafPath( -84, -12, 20, 2)}
+        ${leafPath( -78, -38, 18, 3)}
+        ${leafPath( -60, -60, 16, 4)}
+        ${leafPath( -35, -76, 14, 5)}
       </g>
-      <!-- Правая ветвь (зеркало) -->
+      <!-- Правая ветвь (зеркало, те же индексы — пары синхронны) -->
       <g transform="translate(10,0) rotate(15) scale(-1,1)">
-        ${leafPath( -60,  45, 26)}
-        ${leafPath( -78,  18, 22)}
-        ${leafPath( -84, -12, 20)}
-        ${leafPath( -78, -38, 18)}
-        ${leafPath( -60, -60, 16)}
-        ${leafPath( -35, -76, 14)}
+        ${leafPath( -60,  45, 26, 0)}
+        ${leafPath( -78,  18, 22, 1)}
+        ${leafPath( -84, -12, 20, 2)}
+        ${leafPath( -78, -38, 18, 3)}
+        ${leafPath( -60, -60, 16, 4)}
+        ${leafPath( -35, -76, 14, 5)}
       </g>
     </g>
   </svg>
@@ -240,22 +254,24 @@ document.addEventListener("DOMContentLoaded", () => {
     <div class="lb-label">${label}</div>
   </div>`;
 
-  function leafPath(x, y, r){
-    // эллиптический лист через две дуги
+  function leafPath(x, y, r, i){
     const rx = r, ry = r*0.55, k = 0.65*r;
     return `
-      <path d="
-        M ${x} ${y}
-        c ${k} ${-ry}, ${rx} ${-ry}, ${rx*2} 0
-        c ${-k} ${ry}, ${-rx} ${ry}, ${-rx*2} 0
-        Z
-      " fill="currentColor"/>
+      <path class="lb-leaf" style="--i:${i}"
+        d="
+          M ${x} ${y}
+          c ${k} ${-ry}, ${rx} ${-ry}, ${rx*2} 0
+          c ${-k} ${ry}, ${-rx} ${ry}, ${-rx*2} 0
+          Z
+        " fill="currentColor"/>
     `;
   }
 
   document.querySelectorAll('.laurel-badge').forEach(el => {
     const num = el.getAttribute('data-value')  || '';
     const label = el.getAttribute('data-label') || '';
+    // кол-во пар (для вычисления финальной задержки текста)
+    el.style.setProperty('--pairs', '6');
     el.innerHTML = tpl(num, label);
   });
 })();
