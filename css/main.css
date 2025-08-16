@@ -715,6 +715,7 @@ section {
   opacity: 0;
   transform: translateY(6px);
   animation: lb-fade .5s ease .2s both;
+  --lift: -10%; /* можно -8%…-14% по вкусу/размеру */
 }
 
 @keyframes lb-fade {
@@ -725,6 +726,7 @@ section {
   width: 100%;
   height: 100%;
   display: block;
+  transform: translateY(var(--lift));
 }
 
 .laurel-badge .lb-text {
@@ -749,6 +751,7 @@ section {
   font-size: calc(var(--size) * 0.11);
   margin-top: 6px;
   opacity: .9;
+  margin-top: calc(var(--size) * 0.08); /* было 6px */
 }
 
 /* тёмная тема может захотеть чуть ярче лист */
