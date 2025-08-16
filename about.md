@@ -96,7 +96,7 @@ permalink: /about/
     <img src="{{ site.baseurl }}/ui/photo_tmp.jpg"
      alt="Portrait of Vladimir"
      class="bio-photo"
-     width="957" height="521">
+     width="50" height="50">
     </div>
   </div>
 </section>
