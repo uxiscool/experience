@@ -27,16 +27,16 @@ permalink: /about/
           --leaf:#d6c083;
           --text:#fff9e6;
           --leaf-delay:.5s;   /* пауза перед стартом «строительства» венка */
-          --leaf-gap:140ms;   /* шаг между парами листьев */
-          --lift:-12%;        /* вертикальный подъём SVG листвы */
+          --leaf-gap:240ms;   /* шаг между парами листьев */
+          --lift:-40%;        /* вертикальный подъём SVG листвы */
         "></figure>
     <figure class="laurel-badge" data-value="25+" data-label="big projects" style="
           --size:160px;
           --leaf:#d6c083;
           --text:#fff9e6;
           --leaf-delay:.5s;   /* пауза перед стартом «строительства» венка */
-          --leaf-gap:140ms;   /* шаг между парами листьев */
-          --lift:-12%;        /* вертикальный подъём SVG листвы */
+          --leaf-gap:240ms;   /* шаг между парами листьев */
+          --lift:-20%;        /* вертикальный подъём SVG листвы */
         "></figure>
   </div>
 </div>
