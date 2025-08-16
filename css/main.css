@@ -33,11 +33,28 @@ section {
   margin: 2rem 0 3rem;
 }
 
-.skills-columns, .bio-columns {
+.skills-columns {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 32px;
 }
+
+.bio-columns {
+  display: grid;
+  grid-template-columns: minmax(0,1fr) minmax(0,1fr); /* ← можно сжиматься */
+  gap: 32px;
+}
+
+.bio-photo {
+  display: block;
+  max-width: 100%;
+  width: 100%;
+  height: auto;        /* сохраняем пропорции */
+  object-fit: contain; /* ничего не режем */
+}
+
+/* дети грида должны позволять сжатие содержимого */
+.bio-columns > .bio { min-width: 0; }
 
 /* Адаптив: < 90px — колонки в столбик */
 @media (max-width: 920px) {
