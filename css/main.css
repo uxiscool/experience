@@ -715,7 +715,7 @@ section {
   opacity: 0;
   transform: translateY(6px);
   animation: lb-fade .5s ease .2s both;
-  --lift: -17%; /* можно -8%…-14% по вкусу/размеру */
+  --lift: -20%; /* можно -8%…-14% по вкусу/размеру */
 }
 
 @keyframes lb-fade {
