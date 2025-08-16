@@ -751,7 +751,7 @@ section {
   font-size: calc(var(--size) * 0.11);
   margin-top: 6px;
   opacity: .9;
-  margin-top: calc(var(--size) * 0.08); /* было 6px */
+  margin-top: calc(var(--size) * 0.16); /* было 6px */
 }
 
 /* тёмная тема может захотеть чуть ярче лист */
