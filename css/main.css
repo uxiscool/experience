@@ -687,3 +687,42 @@ html[data-theme="dark"] .laurel-badge { --leaf: #c2c9d3; }
     filter: none !important;
   }
 }
+/* ===== Contacts ===== */
+.contacts-section { margin-top: 148px; } /* как в about для .bio-section */
+
+.contacts-list {
+  --contact-link-color: #e2e5e7;  /* можешь переопределить inline */
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 14px;                      /* вертикальный ритм */
+}
+
+.contact-item {
+  display: grid;
+  grid-template-columns: 32px 1fr; /* иконка + текст */
+  align-items: center;
+  column-gap: 14px;
+}
+
+.ci { width: 32px; height: 32px; color: var(--contact-link-color); display: inline-flex; align-items: center; justify-content: center; }
+
+.contact-line { display: flex; flex-wrap: wrap; gap: 8px; align-items: baseline; }
+
+.contact-link {
+  color: var(--contact-link-color);
+  text-decoration: none;
+}
+/* одинаковый цвет во всех состояниях */
+.contact-link:visited,
+.contact-link:hover,
+.contact-link:active,
+.contact-link:focus { color: var(--contact-link-color); }
+
+.contact-hint { color: #b7c1cc; font-size: 0.95rem; opacity: .96; }
+
+/* мобайл: плотнее */
+@media (max-width: 700px) {
+  .contact-line { gap: 6px; }
+}
