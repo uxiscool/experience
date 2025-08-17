@@ -52,7 +52,7 @@ permalink: /contact/
   <a id="email-link"
      class="contact-block"
      href="#"
-     data-user="luocsixu"
+     data-user="loocsixu"
      data-host="moc.liamg"
      aria-label="Email">
     <span class="ci" aria-hidden="true">
