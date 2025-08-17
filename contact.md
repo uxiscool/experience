@@ -5,7 +5,7 @@ permalink: /contact/
 ---
 <div class="container">
   <!-- контактный блок -->
-  <div class="contacts">
+  <div class="bio-section">
     <p>
     Контактная информация
     </p>
