@@ -3,6 +3,13 @@ layout: default
 title: Contact
 permalink: /contact/
 ---
-
-<h1>Contact</h1>
-<p>Контакты для связи: email, Telegram, ссылки на соцсети и т.д.</p>
+<div class="container">
+  <!-- контактный блок -->
+  <div class="contacts">
+    <p>
+    Контактная информация
+    </p>
+  </div>
+  <!-- Градиентный разделитель -->
+  <div class="intro-divider"></div>
+</div>

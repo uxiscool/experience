@@ -3,6 +3,13 @@ layout: default
 title: CV
 permalink: /cv/
 ---
-
-<h1>CV</h1>
-<p>Резюме будет тут.</p>
+<div class="container">
+  <!-- контактный блок -->
+  <div class="cv">
+    <p>
+    CV Резюме будет тут.
+    </p>
+  </div>
+  <!-- Градиентный разделитель -->
+  <div class="intro-divider"></div>
+</div>
