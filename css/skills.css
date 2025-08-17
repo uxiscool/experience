@@ -1,9 +1,6 @@
 /* ===== Skills section (минимальный набор) ===== */
 
-/* Локальные переменные секции — унаследуются всеми вложенными элементами */
-
 /* Две колонки: 1/2 + 1/2 с отступом 32px */
-
 
 .skills-col {
   display: flex;
@@ -84,5 +81,15 @@
   transform: translateY(0);
 }
 
-/* Маркер-источник тултипа: можно оставить пустым, но дадим позиционирование для совместимости */
+/* Маркер-источник тултипа */
 .tooltip { position: relative; }
+
+/* ==== Предпочтение «меньше анимации» для чипсов ==== */
+@media (prefers-reduced-motion: reduce) {
+  .slide-in-left,
+  .slide-in-right {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

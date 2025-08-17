@@ -1,3 +1,4 @@
+/* ====== main.css ====== */
 body {
   background: #171819;
   color: #fff;
@@ -12,6 +13,9 @@ body {
     sans-serif;
   margin: 0;
 }
+
+/* Блокировка скролла, когда открыт лайтбокс */
+body.lb-lock { overflow: hidden; }
 
 header {
   display: flex;
@@ -56,7 +60,7 @@ section {
 /* дети грида должны позволять сжатие содержимого */
 .bio-columns > .bio { min-width: 0; }
 
-/* Адаптив: < 90px — колонки в столбик */
+/* Адаптив: < 920px — колонки в столбик */
 @media (max-width: 920px) {
   .skills-columns { grid-template-columns: 1fr; }
   .bio-columns { grid-template-columns: 1fr; }
@@ -148,6 +152,18 @@ section {
   background: #242627;
   color: #ff9900;
   transition: background 0.50s, color 0.15s;
+}
+
+/* Видимый фокус для клавиатуры */
+.menu-link:focus-visible,
+.sub-link:focus-visible,
+.tool:focus-visible,
+.case-thumb2:focus-visible,
+.lightbox-close:focus-visible,
+.lightbox-arrow:focus-visible {
+  outline: 2px solid #ff9900;
+  outline-offset: 2px;
+  border-radius: 8px;
 }
 
 @media (max-width: 700px) {
@@ -420,7 +436,6 @@ section {
   opacity: 0.84;
 }
 
-
 @media (max-width: 900px) {
   .lightbox-arrow.left {
     left: 18px;
@@ -437,21 +452,20 @@ section {
     max-width: 84vw; /* чуть уже, чтобы не прилегала к стрелкам */
   }
   .lightbox-arrow img {
-  width: 24px;
-  height: 24px;
-}
+    width: 24px;
+    height: 24px;
+  }
   .lightbox-close img {
-  width: 24px;
-  height: 24px;
-}
+    width: 24px;
+    height: 24px;
+  }
 }
 
 @media (max-width: 590px) {
-
   .lightbox-arrow img {
-  width: 18px;
-  height: 18px;
-}
+    width: 18px;
+    height: 18px;
+  }
 }
 
 .lightbox-caption {
@@ -584,6 +598,7 @@ section {
   margin-top: 3px;
   opacity: 0.86;
 }
+
 /* ===== Apps & Tools (плотная сетка, без подложек и ховеров) ===== */
 .tools-grid {
   display: flex;            /* чтобы элементы были шириной по содержимому */
@@ -641,7 +656,7 @@ section {
 
 /* мобилка — ещё плотнее */
 @media (max-width: 900px) {
-   .tools-grid {
+  .tools-grid {
     grid-auto-columns: 50px;
   }
   .tool { padding: 3px; }
@@ -686,6 +701,7 @@ section {
   line-height: 1.2;
   opacity: 0.95;
 }
+
 /* ===== Laurel badge ===== */
 .achievements-grid {
   display: grid;
@@ -811,4 +827,20 @@ html[data-theme="dark"] .laurel-badge { --leaf: #c2c9d3; }
              calc(var(--label-delay, var(--lb-text-base-delay)) + var(--label-stall, 280ms)) both;
 }
 
-
+/* ==== Предпочтение «меньше анимации» ==== */
+@media (prefers-reduced-motion: reduce) {
+  .intro-hero,
+  .tool.appear.in-view,
+  .lb-leaf,
+  .laurel-badge .lb-number,
+  .laurel-badge .lb-label {
+    animation: none !important;
+  }
+  .lb-leaf,
+  .laurel-badge .lb-number,
+  .laurel-badge .lb-label {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+  }
+}

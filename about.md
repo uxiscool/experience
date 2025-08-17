@@ -113,7 +113,8 @@ permalink: /about/
     <img src="{{ site.baseurl }}/ui/photo.jpg"
      alt="Portrait of Vladimir"
      class="bio-photo"
-     width="600" height="327">
+     width="600" height="327"
+     loading="lazy" decoding="async">
     </div>
   </div>
 </section>
@@ -276,4 +277,3 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 })();
 </script>
-

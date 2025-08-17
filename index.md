@@ -38,6 +38,8 @@ title: Works
               class="case-thumb2"
               src="{{ site.baseurl }}{{ img.src }}"
               alt="{{ img.caption | escape }}"
+              loading="lazy"
+              decoding="async"
               onclick="openCaseGallery({{ forloop.parentloop.index0 }}, {{ forloop.index0 }})"
             >
             {% if img.caption %}
@@ -66,5 +68,3 @@ title: Works
     <div id="lightbox-caption" class="lightbox-caption"></div>
   </div>
 </div>
-
-

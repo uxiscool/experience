@@ -30,10 +30,14 @@ function showCaseLightbox() {
   document.getElementById('lightbox-img').src = window.siteBaseurl + data.src;
   document.getElementById('lightbox-caption').textContent = data.caption || '';
   document.getElementById('lightbox').style.display = 'flex';
+  // Новый: блокируем скролл фона
+  document.body.classList.add('lb-lock');
 }
 
 function closeLightbox() {
   document.getElementById('lightbox').style.display = 'none';
+  // Новый: возвращаем скролл
+  document.body.classList.remove('lb-lock');
 }
 function lightboxPrev() {
   const imgs = allCases[currentCaseIdx].images;
