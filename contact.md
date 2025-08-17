@@ -5,72 +5,55 @@ permalink: /contact/
 ---
 
 <div class="container">
-  <!-- page-scoped styles: only affect this page -->
+  <!-- Page-scoped styles. Работают только здесь. -->
   <style>
-    /* Блок страницы контактов — только здесь */
-    #contact-page { 
-      /* База, чтобы не было промаха до расчёта JS */
-      min-height: 60vh; 
-    }
+    /* 1) Липкий футер только на странице контактов (без глобальных правок) */
+    body:has(#contact-page) { min-height: 100dvh; display: flex; flex-direction: column; }
+    body:has(#contact-page) > main { flex: 1 0 auto; }
 
-    /* Список и общий цвет ссылок (можно менять одной переменной) */
+    /* Fallback для старых браузеров без :has() — добавим класс скриптом ниже */
+    body.page-contact-flex { min-height: 100dvh; display: flex; flex-direction: column; }
+    body.page-contact-flex > main { flex: 1 0 auto; }
+
+    /* 2) Контент контактов — единая колонка; ссылка — на всю строку (иконка+текст) */
     #contact-page .contacts-list {
       --contact-link-color: #e2e5e7;
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      display: grid;
-      gap: 14px;
+      list-style: none; margin: 0; padding: 0;
+      display: grid; gap: 14px;
     }
-
-    /* Вся строка — кликабельная: и иконка, и текст */
+    #contact-page .contact-item { display: grid; grid-template-columns: 32px 1fr; align-items: center; column-gap: 14px; }
     #contact-page .contact-block {
-      display: grid;
-      grid-template-columns: 32px 1fr;
-      align-items: center;
-      column-gap: 14px;
-      color: var(--contact-link-color);
-      text-decoration: none;
-      border-radius: 8px; /* для фокуса */
-      padding: 2px 0;     /* чтобы фокус-обводка не резала контент */
+      display: contents; /* чтобы <a> охватывала и иконку, и текст, но без доп. обёртки */
+      color: var(--contact-link-color); text-decoration: none;
     }
-    #contact-page .contact-block:visited,
-    #contact-page .contact-block:hover,
-    #contact-page .contact-block:active,
-    #contact-page .contact-block:focus {
-      color: var(--contact-link-color);
-      text-decoration: none;
-    }
-    #contact-page .contact-block:focus-visible {
-      outline: 2px solid #ff9900;
-      outline-offset: 2px;
-    }
+    #contact-page .contact-block:where(:hover,:focus,:active,:visited) { color: var(--contact-link-color); text-decoration: none; }
 
     /* Иконки */
-    #contact-page .ci,
-    #contact-page .ci img,
-    #contact-page .ci svg { width: 32px; height: 32px; display: block; }
+    #contact-page .ci, #contact-page .ci img, #contact-page .ci svg { width: 32px; height: 32px; display: block; }
     #contact-page .ci { display: inline-flex; align-items: center; justify-content: center; }
 
-    /* Текстовая часть строки */
-    #contact-page .contact-line { display: flex; flex-wrap: wrap; gap: 8px; align-items: baseline; }
-    #contact-page .contact-title { font-weight: 500; }
-    #contact-page .contact-hint { color: #b7c1cc; font-size: 0.95rem; opacity: .96; }
+    /* Текст строки: не переносим на широких экранах */
+    #contact-page .contact-line { display: flex; align-items: baseline; gap: 8px; flex-wrap: nowrap; min-width: 0; }
+    #contact-page .contact-title, #contact-page .contact-hint { white-space: nowrap; }
+    #contact-page .contact-hint { color: #b7c1cc; font-size: .95rem; opacity: .96; }
+    /* На узких — разрешаем перенос, чтобы не было горизонтального скролла */
+    @media (max-width: 640px) {
+      #contact-page .contact-line { flex-wrap: wrap; }
+      #contact-page .contact-title, #contact-page .contact-hint { white-space: normal; }
+    }
+
+    /* Фокус по клавиатуре на всю строку */
+    #contact-page .contact-item:has(.contact-block:focus-visible) { outline: 2px solid #ff9900; outline-offset: 2px; border-radius: 8px; }
 
     /* "Coming soon" — приглушаем */
     #contact-page .contact-item.soon { opacity: .55; }
     #contact-page .contact-item.soon .soon-tag { font-size: .95rem; color: #b7c1cc; }
-
-    /* Мобильные мелочи */
-    @media (max-width: 700px) { #contact-page .contact-line { gap: 6px; } }
   </style>
 
   <section id="contact-page" class="contacts-section">
     <h2 class="subheading">Contacts</h2>
 
-    <!-- Наследуем типографику как у .bio -->
     <div class="bio">
-      <!-- Поменять цвет всех ссылок можно тут (e.g. #d6c083 / #ff9900) -->
       <ul class="contacts-list" style="--contact-link-color:#e2e5e7">
 
         <!-- 1) Email -->
@@ -177,26 +160,9 @@ permalink: /contact/
   </section>
 </div>
 
-<!-- Only this page: JS подгоняет высоту секции так, чтобы футер прижимался к низу -->
+<!-- Fallback: если браузер не понимает :has(), добавим класс на body -->
 <script>
-  (function() {
-    function fitContactPage() {
-      var header = document.querySelector('header');
-      var footer = document.querySelector('.site-footer');
-      var section = document.getElementById('contact-page');
-      if (!section) return;
-
-      var vh = (window.visualViewport && window.visualViewport.height) || window.innerHeight;
-      var headerH = header ? header.getBoundingClientRect().height : 0;
-      var footerH = footer ? footer.getBoundingClientRect().height : 0;
-
-      // Минимальная высота секции так, чтобы низ main совпал с низом окна
-      var target = Math.max(0, vh - headerH - footerH);
-      section.style.minHeight = target + 'px';
-    }
-
-    window.addEventListener('DOMContentLoaded', fitContactPage);
-    window.addEventListener('resize', fitContactPage);
-    window.addEventListener('orientationchange', fitContactPage);
-  })();
+  if (!CSS.supports('selector(body:has(#contact-page))')) {
+    document.body.classList.add('page-contact-flex');
+  }
 </script>
