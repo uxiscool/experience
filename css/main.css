@@ -734,7 +734,7 @@ html[data-theme="dark"] .laurel-badge { --leaf: #c2c9d3; }
 
 /* ===== Util: muted / disabled look (reusable) ===== */
 .disabled-text {
-  --disabled-fg: #aeb7c2;           /* мягкий «приглушённый» */
+  --disabled-fg: #555656;           /* мягкий «приглушённый» */
   color: var(--disabled-fg);
 }
 .disabled-text a {
