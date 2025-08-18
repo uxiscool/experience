@@ -48,13 +48,13 @@ body_class: page-contact
         </li>
         <!-- 4) LinkedIn -->
         <li class="contact-item">
-          <a class="contact-block" href="https://www.linkedin.com/in/" target="_blank" rel="noopener" aria-label="LinkedIn profile">
+          <a class="contact-block" href="https://www.linkedin.com/in/uxvladimir/" target="_blank" rel="noopener" aria-label="LinkedIn profile">
             <span class="ci" aria-hidden="true">
               <img src="{{ site.baseurl }}/ui/apps_logo/contacts_linkedin.svg" alt="">
             </span>
             <div class="contact-line">
               <span class="contact-title">LinkedIn profile</span>
-              <span class="contact-hint">linkedin.com/in/<em>your_slug</em></span>
+              <span class="contact-hint"></span>
             </div>
           </a>
         </li>
