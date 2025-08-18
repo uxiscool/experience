@@ -769,9 +769,11 @@ body.page-contact > main { flex: 1 0 auto; }
 .contact-hint { color: #b7c1cc; font-size: 0.95rem; opacity: .96; }
 
 /* Ховер — как в верхнем меню: медленное оранжевое */
-.contact-title { transition: color 2s; }
 .contact-block:hover .contact-title,
-.contact-block:focus-visible .contact-title { color: #ff9900; }
+.contact-block:focus-visible .contact-title {
+  color: #ff9900;
+  transition: color 2s cubic-bezier(.19,1,.22,1);
+}
 
 /* Узкие экраны — разрешаем переносы */
 @media (max-width: 640px) {
