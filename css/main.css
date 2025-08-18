@@ -779,9 +779,16 @@ body.page-contact > main { flex: 1 0 auto; }
   .contact-title, .contact-hint { white-space: normal; }
 }
 
+.contacts-list .contact-item.disabled-text {
+  display: grid;
+  grid-template-columns: 32px auto;
+  align-items: center;
+  column-gap: 14px;
+}
+
 /* ===== Util: disabled-text (reusable) ===== */
 .disabled-text {
-  --disabled-fg: #aeb7c2; /* мягкий приглушённый */
+  --disabled-fg: #424242; /* мягкий приглушённый */
   color: var(--disabled-fg);
 }
 .disabled-text a {
@@ -795,5 +802,5 @@ body.page-contact > main { flex: 1 0 auto; }
 }
 .disabled-text img,
 .disabled-text svg {
-  filter: grayscale(100%) brightness(.9);
+  filter: grayscale(100%) brightness(.4);
 }
