@@ -148,7 +148,7 @@ permalink: /contact/
     </span>
     <div class="contact-line">
       <span class="contact-title">Behance</span>
-      <span class="soon-tag">(coming soon)</span>
+      <span class="soon-tag">(coming somewhen)</span>
     </div>
   </li>
   <!-- 6) Dribbble (coming soon) -->
@@ -162,7 +162,7 @@ permalink: /contact/
     </span>
     <div class="contact-line">
       <span class="contact-title">Dribbble</span>
-      <span class="soon-tag">(coming soon)</span>
+      <span class="soon-tag">(coming somewhen)</span>
     </div>
   </li>
   <!-- 7) Habr (coming soon) -->
@@ -175,7 +175,7 @@ permalink: /contact/
     </span>
     <div class="contact-line">
       <span class="contact-title">Habr</span>
-      <span class="soon-tag">(coming soon)</span>
+      <span class="soon-tag">(coming somewhen)</span>
     </div>
   </li>
 </ul>
