@@ -36,13 +36,13 @@ body_class: page-contact
         </li>
         <!-- 3) HeadHunter -->
         <li class="contact-item">
-          <a class="contact-block" href="https://hh.ru/resume" target="_blank" rel="noopener" aria-label="HeadHunter profile">
+          <a class="contact-block" href="https://hh.ru/resume/1576350fff00cfce6f0039ed1f4a744741564d" target="_blank" rel="noopener" aria-label="HeadHunter profile">
             <span class="ci" aria-hidden="true">
               <img src="{{ site.baseurl }}/ui/apps_logo/contacts_hh.svg" alt="">
             </span>
             <div class="contact-line">
               <span class="contact-title">HeadHunter profile</span>
-              <span class="contact-hint">hh.ru/resume/<em>your_id</em></span>
+              <span class="contact-hint"></span>
             </div>
           </a>
         </li>
