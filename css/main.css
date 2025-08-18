@@ -734,7 +734,7 @@ html[data-theme="dark"] .laurel-badge { --leaf: #c2c9d3; }
 
 /* ===== Util: muted / disabled look (reusable) ===== */
 .disabled-text {
-  --disabled-fg: #555656;           /* мягкий «приглушённый» */
+  --disabled-fg: #494a4a;           /* мягкий «приглушённый» */
   color: var(--disabled-fg);
 }
 .disabled-text a {
@@ -744,5 +744,5 @@ html[data-theme="dark"] .laurel-badge { --leaf: #c2c9d3; }
 /* делаем иконки менее активными, но без прозрачности */
 .disabled-text img,
 .disabled-text svg {
-  filter: grayscale(100%) brightness(.4);
+  filter: grayscale(100%) brightness(.3);
 }
