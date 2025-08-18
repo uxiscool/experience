@@ -76,8 +76,6 @@ permalink: /contact/
     }
 
     /* Coming soon */
-    #contact-page .contact-item.soon { opacity:.55; }
-    #contact-page .contact-item.soon .soon-tag { font-size:.95rem; color:#b7c1cc; }
 
     /* Уважение к prefers-reduced-motion */
     @media (prefers-reduced-motion: reduce){
@@ -87,7 +85,6 @@ permalink: /contact/
 
   <section id="contact-page" class="contacts-section">
     <!-- Заголовок убран по твоей просьбе -->
-
     <div class="bio">
       <ul class="contacts-list">
         <!-- 1) Email (обфускация адреса) -->
@@ -103,8 +100,7 @@ permalink: /contact/
             </div>
           </a>
         </li>
-
-        <!-- 2) Telegram -->
+<!-- 2) Telegram -->
         <li class="contact-item">
           <a class="contact-block" href="https://t.me/evil-cactus" target="_blank" rel="noopener" aria-label="Telegram: @evil-cactus">
             <span class="ci" aria-hidden="true">
@@ -116,8 +112,7 @@ permalink: /contact/
             </div>
           </a>
         </li>
-
-        <!-- 3) HeadHunter -->
+<!-- 3) HeadHunter -->
         <li class="contact-item">
           <a class="contact-block" href="https://hh.ru/resume" target="_blank" rel="noopener" aria-label="HeadHunter profile">
             <span class="ci" aria-hidden="true">
@@ -129,8 +124,7 @@ permalink: /contact/
             </div>
           </a>
         </li>
-
-        <!-- 4) LinkedIn -->
+<!-- 4) LinkedIn -->
         <li class="contact-item">
           <a class="contact-block" href="https://www.linkedin.com/in/" target="_blank" rel="noopener" aria-label="LinkedIn profile">
             <span class="ci" aria-hidden="true">
@@ -142,54 +136,50 @@ permalink: /contact/
             </div>
           </a>
         </li>
-
-        <!-- 5) Behance (coming soon) -->
-        <li class="contact-item soon" aria-disabled="true">
-          <span class="ci" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <rect x="3"  y="4"  width="7" height="7" rx="1"/>
-              <rect x="14" y="4"  width="7" height="7" rx="1"/>
-              <rect x="3"  y="13" width="7" height="7" rx="1"/>
-              <rect x="14" y="13" width="7" height="7" rx="1"/>
-            </svg>
-          </span>
-          <div class="contact-line">
-            <span class="contact-title">Behance</span>
-            <span class="soon-tag">(coming soon)</span>
-          </div>
-        </li>
-
-        <!-- 6) Dribbble (coming soon) -->
-        <li class="contact-item soon" aria-disabled="true">
-          <span class="ci" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <circle cx="12" cy="12" r="9"/>
-              <path d="M3 12h18"/>
-              <path d="M12 3c3 2 5 5 6 9-1 4-3 7-6 9-3-2-5-5-6-9 1-4 3-7 6-9z"/>
-            </svg>
-          </span>
-          <div class="contact-line">
-            <span class="contact-title">Dribbble</span>
-            <span class="soon-tag">(coming soon)</span>
-          </div>
-        </li>
-
-        <!-- 7) Habr (coming soon) -->
-        <li class="contact-item soon" aria-disabled="true">
-          <span class="ci" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <rect x="4" y="3" width="16" height="18" rx="2"/>
-              <path d="M8 7h8M8 11h8M8 15h8"/>
-            </svg>
-          </span>
-          <div class="contact-line">
-            <span class="contact-title">Habr</span>
-            <span class="soon-tag">(coming soon)</span>
-          </div>
-        </li>
-      </ul>
-
-      <!-- email обфускация -->
+<!-- 5) Behance (coming soon) -->
+  <li class="contact-item disabled-text" aria-disabled="true">
+    <span class="ci" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <rect x="3"  y="4"  width="7" height="7" rx="1"/>
+        <rect x="14" y="4"  width="7" height="7" rx="1"/>
+        <rect x="3"  y="13" width="7" height="7" rx="1"/>
+        <rect x="14" y="13" width="7" height="7" rx="1"/>
+      </svg>
+    </span>
+    <div class="contact-line">
+      <span class="contact-title">Behance</span>
+      <span class="soon-tag">(coming soon)</span>
+    </div>
+  </li>
+  <!-- 6) Dribbble (coming soon) -->
+  <li class="contact-item disabled-text" aria-disabled="true">
+    <span class="ci" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="9"/>
+        <path d="M3 12h18"/>
+        <path d="M12 3c3 2 5 5 6 9-1 4-3 7-6 9-3-2-5-5-6-9 1-4 3-7 6-9z"/>
+      </svg>
+    </span>
+    <div class="contact-line">
+      <span class="contact-title">Dribbble</span>
+      <span class="soon-tag">(coming soon)</span>
+    </div>
+  </li>
+  <!-- 7) Habr (coming soon) -->
+  <li class="contact-item disabled-text" aria-disabled="true">
+    <span class="ci" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <rect x="4" y="3" width="16" height="18" rx="2"/>
+        <path d="M8 7h8M8 11h8M8 15h8"/>
+      </svg>
+    </span>
+    <div class="contact-line">
+      <span class="contact-title">Habr</span>
+      <span class="soon-tag">(coming soon)</span>
+    </div>
+  </li>
+</ul>
+<!-- email обфускация -->
       <script>
         (function () {
           var a = document.getElementById('email-link');
@@ -207,7 +197,6 @@ permalink: /contact/
     </div>
   </section>
 </div>
-
 <!-- Fallback: если браузер не понимает :has(), добавим класс на body -->
 <script>
   if (!CSS.supports('selector(body:has(#contact-page))')) {

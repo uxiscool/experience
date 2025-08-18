@@ -731,3 +731,18 @@ html[data-theme="dark"] .laurel-badge { --leaf: #c2c9d3; }
 
 .contact-item.soon { opacity: .55; }
 .contact-item.soon .soon-tag { font-size: .95rem; color: #b7c1cc; }
+
+/* ===== Util: muted / disabled look (reusable) ===== */
+.disabled-text {
+  --disabled-fg: #aeb7c2;           /* мягкий «приглушённый» */
+  color: var(--disabled-fg);
+}
+.disabled-text a {
+  color: var(--disabled-fg);
+  text-decoration: none;            /* без подчёркивания */
+}
+/* делаем иконки менее активными, но без прозрачности */
+.disabled-text img,
+.disabled-text svg {
+  filter: grayscale(100%) brightness(.9);
+}
