@@ -20,16 +20,21 @@ permalink: /contact/
       list-style:none; margin:0; padding:0;
       display:grid; gap:14px;
     }
+
+    /* Анимация: пока размыто — полностью прозрачно; потом быстро проявляется */
     #contact-page .contact-item {
       display:grid; grid-template-columns:32px 1fr; align-items:center; column-gap:14px;
 
-      /* Анимация появления — в духе hero на index (та же кривая) */
-      opacity:0; transform:translateY(8px); filter:blur(4px);
-      animation: ci-in .6s cubic-bezier(.19,1,.22,1) both; /* как heroFadeIn на index */
+      opacity:0; transform:translateY(8px); filter:blur(12px);
+      animation: ci-in .66s cubic-bezier(.19,1,.22,1) both;
     }
-    @keyframes ci-in { to { opacity:1; transform:none; filter:none; } }
+    @keyframes ci-in {
+      0%   { opacity: 0; filter: blur(14px); transform: translateY(8px); }
+      60%  { opacity: 0; filter: blur(6px);  transform: translateY(4px); }
+      100% { opacity: 1; filter: blur(0);    transform: none; }
+    }
 
-    /* Стагер по позициям (у нас до 7 пунктов; запасом — до 12) */
+    /* Стагер построчно */
     #contact-page .contact-item:nth-child(1)  { animation-delay: calc(var(--stagger) * 0); }
     #contact-page .contact-item:nth-child(2)  { animation-delay: calc(var(--stagger) * 1); }
     #contact-page .contact-item:nth-child(3)  { animation-delay: calc(var(--stagger) * 2); }
@@ -126,17 +131,17 @@ permalink: /contact/
         </li>
 
         <!-- 4) LinkedIn -->
-    <li class="contact-item">
-      <a class="contact-block" href="https://www.linkedin.com/in/" target="_blank" rel="noopener" aria-label="LinkedIn profile">
-        <span class="ci" aria-hidden="true">
-          <img src="{{ site.baseurl }}/ui/apps_logo/contacts_linkedin.svg" alt="">
-        </span>
-        <div class="contact-line">
-          <span class="contact-title">LinkedIn profile</span>
-          <span class="contact-hint">linkedin.com/in/<em>your_slug</em></span>
-        </div>
-      </a>
-    </li>
+        <li class="contact-item">
+          <a class="contact-block" href="https://www.linkedin.com/in/" target="_blank" rel="noopener" aria-label="LinkedIn profile">
+            <span class="ci" aria-hidden="true">
+              <img src="{{ site.baseurl }}/ui/apps_logo/contacts_linkedin.svg" alt="">
+            </span>
+            <div class="contact-line">
+              <span class="contact-title">LinkedIn profile</span>
+              <span class="contact-hint">linkedin.com/in/<em>your_slug</em></span>
+            </div>
+          </a>
+        </li>
 
         <!-- 5) Behance (coming soon) -->
         <li class="contact-item soon" aria-disabled="true">
