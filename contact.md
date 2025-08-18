@@ -22,20 +22,18 @@ body_class: page-contact
             </div>
           </a>
         </li>
-
         <!-- 2) Telegram -->
         <li class="contact-item">
-          <a class="contact-block" href="https://t.me/zloi-cactus" target="_blank" rel="noopener" aria-label="Telegram: @zloi-cactus">
+          <a class="contact-block" href="https://t.me/zloi_cactus" target="_blank" rel="noopener" aria-label="Telegram: @zloi_cactus">
             <span class="ci" aria-hidden="true">
               <img src="{{ site.baseurl }}/ui/apps_logo/contacts_telegram.svg" alt="">
             </span>
             <div class="contact-line">
               <span class="contact-title">Telegram</span>
-              <span class="contact-hint">@zloi-cactus</span>
+              <span class="contact-hint">@zloi_cactus</span>
             </div>
           </a>
         </li>
-
         <!-- 3) HeadHunter -->
         <li class="contact-item">
           <a class="contact-block" href="https://hh.ru/resume" target="_blank" rel="noopener" aria-label="HeadHunter profile">
@@ -48,7 +46,6 @@ body_class: page-contact
             </div>
           </a>
         </li>
-
         <!-- 4) LinkedIn -->
         <li class="contact-item">
           <a class="contact-block" href="https://www.linkedin.com/in/" target="_blank" rel="noopener" aria-label="LinkedIn profile">
@@ -61,7 +58,6 @@ body_class: page-contact
             </div>
           </a>
         </li>
-
         <!-- 5) Behance (coming soon) -->
         <li class="contact-item disabled-text" aria-disabled="true">
           <span class="ci" aria-hidden="true">
@@ -72,7 +68,6 @@ body_class: page-contact
             <span class="soon-tag">(coming somewhen)</span>
           </div>
         </li>
-
         <!-- 6) Dribbble (coming soon) -->
         <li class="contact-item disabled-text" aria-disabled="true">
           <span class="ci" aria-hidden="true">
@@ -83,7 +78,6 @@ body_class: page-contact
             <span class="soon-tag">(coming somewhen)</span>
           </div>
         </li>
-
         <!-- 7) Habr (coming soon) -->
         <li class="contact-item disabled-text" aria-disabled="true">
           <span class="ci" aria-hidden="true">
@@ -95,7 +89,6 @@ body_class: page-contact
           </div>
         </li>
       </ul>
-
       <!-- email обфускация -->
       <script>
         (function () {
@@ -109,7 +102,6 @@ body_class: page-contact
         })();
       </script>
       <noscript><p class="contact-hint">Email: uxiscool [at] gmail [dot] com</p></noscript>
-
       <div class="intro-divider"></div>
     </div>
   </section>
