@@ -802,5 +802,5 @@ body.page-contact > main { flex: 1 0 auto; }
 }
 .disabled-text img,
 .disabled-text svg {
-  filter: grayscale(100%) brightness(.4);
+  filter: grayscale(100%) brightness(.5);
 }
