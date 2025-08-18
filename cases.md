@@ -4,11 +4,6 @@ title: Cases
 permalink: /cases/
 ---
 
-<!-- Тонкий разделитель сверху, как на index -->
-<div class="container">
-  <div class="intro-divider"></div>
-</div>
-
 <!-- Все кейсы подряд в том же лейауте, что и на главной -->
 <div class="featured-cases">
   {% assign allcases = site.cases | sort: 'year' | reverse %}
@@ -25,7 +20,6 @@ permalink: /cases/
         </div>
         <div class="case-summary2">{{ case.summary }}</div>
       </div>
-
       <div class="case-gallery">
         {% for img in case.images %}
           <div class="case-gallery-item">
@@ -46,7 +40,6 @@ permalink: /cases/
     </div>
   {% endfor %}
 </div>
-
 <!-- Лайтбокс (тот же, что на index) -->
 <div id="lightbox" class="lightbox" style="display:none;">
   <div class="lightbox-bg" onclick="closeLightbox()"></div>
