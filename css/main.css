@@ -746,3 +746,106 @@ html[data-theme="dark"] .laurel-badge { --leaf: #c2c9d3; }
 .disabled-text svg {
   filter: grayscale(100%) brightness(.3);
 }
+/* ===== Contacts (shared styles + reveal) ===== */
+
+/* Страница: прижать футер (только там, где у <body> есть page-contact) */
+body.page-contact { min-height: 100dvh; display: flex; flex-direction: column; }
+body.page-contact > main { flex: 1 0 auto; }
+
+/* Блок и список */
+.contacts-section { margin-top: 148px; } /* в ритме about */
+.contacts-list {
+  /* цвет ссылок можно переопределить inline на UL через --contact-link-color */
+  --contact-link-color: #e2e5e7;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 14px;
+}
+
+/* Элемент списка: анимация появления (как hero на index) */
+.contacts-list .contact-item {
+  /* reveal: размыто и невидимо → проявилось */
+  --stagger: 90ms;
+  --ci-opacity: 1;
+  opacity: 0;
+  transform: translateY(8px);
+  filter: blur(12px);
+  animation: contacts-in .66s cubic-bezier(.19,1,.22,1) both;
+}
+@keyframes contacts-in {
+  0%   { opacity: 0; filter: blur(14px); transform: translateY(8px); }
+  60%  { opacity: 0; filter: blur(6px);  transform: translateY(4px); }
+  100% { opacity: var(--ci-opacity); filter: none; transform: none; }
+}
+/* стагер (с запасом) */
+.contacts-list .contact-item:nth-child(1)  { animation-delay: calc(var(--stagger)*0); }
+.contacts-list .contact-item:nth-child(2)  { animation-delay: calc(var(--stagger)*1); }
+.contacts-list .contact-item:nth-child(3)  { animation-delay: calc(var(--stagger)*2); }
+.contacts-list .contact-item:nth-child(4)  { animation-delay: calc(var(--stagger)*3); }
+.contacts-list .contact-item:nth-child(5)  { animation-delay: calc(var(--stagger)*4); }
+.contacts-list .contact-item:nth-child(6)  { animation-delay: calc(var(--stagger)*5); }
+.contacts-list .contact-item:nth-child(7)  { animation-delay: calc(var(--stagger)*6); }
+.contacts-list .contact-item:nth-child(8)  { animation-delay: calc(var(--stagger)*7); }
+.contacts-list .contact-item:nth-child(9)  { animation-delay: calc(var(--stagger)*8); }
+.contacts-list .contact-item:nth-child(10) { animation-delay: calc(var(--stagger)*9); }
+.contacts-list .contact-item:nth-child(11) { animation-delay: calc(var(--stagger)*10); }
+.contacts-list .contact-item:nth-child(12) { animation-delay: calc(var(--stagger)*11); }
+
+/* Ссылка-строка: кликабельно только иконка + текст (не «вся строка вправо») */
+.contact-block {
+  display: inline-grid;
+  grid-template-columns: 32px auto;
+  align-items: center;
+  column-gap: 14px;
+  color: var(--contact-link-color);
+  text-decoration: none;
+  padding: 2px 0;           /* для фокус-рамки */
+}
+.contact-block:visited,
+.contact-block:hover,
+.contact-block:active,
+.contact-block:focus { color: var(--contact-link-color); text-decoration: none; }
+
+.contact-block:focus-visible {
+  outline: 2px solid #ff9900;
+  outline-offset: 2px;
+  border-radius: 8px;
+}
+
+/* Иконки */
+.ci, .ci img, .ci svg { width: 32px; height: 32px; display: block; }
+.ci { display: inline-flex; align-items: center; justify-content: center; }
+
+/* Текстовая часть */
+.contact-line { display: flex; align-items: baseline; gap: 8px; flex-wrap: nowrap; min-width: 0; }
+.contact-title, .contact-hint { white-space: nowrap; }
+.contact-hint { color: #b7c1cc; font-size: 0.95rem; opacity: .96; }
+
+/* Ховер — как в верхнем меню: медленное оранжевое */
+.contact-title { transition: color 2s; }
+.contact-block:hover .contact-title,
+.contact-block:focus-visible .contact-title { color: #ff9900; }
+
+/* Узкие экраны — разрешаем переносы */
+@media (max-width: 640px) {
+  .contact-line { flex-wrap: wrap; }
+  .contact-title, .contact-hint { white-space: normal; }
+}
+
+/* Уважение к prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .contacts-list .contact-item {
+    animation: none !important;
+    opacity: 1; transform: none; filter: none;
+  }
+}
+
+/* ===== Util: disabled-text (пригодится и в других местах) ===== */
+.disabled-text {
+  --disabled-fg: #aeb7c2;
+  color: var(--disabled-fg);
+}
+.disabled-text a { color: var(--disabled-fg); text-decoration: none; }
+.disabled-text img, .disabled-text svg { filter: grayscale(100%) brightness(.9); }
