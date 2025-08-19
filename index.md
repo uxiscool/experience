@@ -33,6 +33,7 @@ title: Works
 </div>
       <div class="case-gallery">
         {% for img in case.images %}
+        {% unless img.home == false %}
           <div class="case-gallery-item">
             <img
               class="case-thumb2"
@@ -46,6 +47,7 @@ title: Works
               <div class="case-thumb-caption">{{ img.caption }}</div>
             {% endif %}
           </div>
+          {% endunless %}
         {% endfor %}
       </div>
     </div>
