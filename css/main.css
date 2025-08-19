@@ -279,16 +279,15 @@ section { padding-top: 2rem; }
   display: flex;
   flex-direction: column;
   gap: 60px;
-  margin: 160px 0 32px;
+  margin: 0px 0 32px;
 }
 .case-block {
   border-radius: 18px;
   box-shadow: 0 2px 18px #181a1c29;
-  padding: 32px 237px 28px;
+  padding: 32px 0px 28px;
   display: flex;
   flex-direction: column;
   gap: 24px;
-  /*margin: 0 32px;*/
 }
 .case-meta2 {
   display: flex;
