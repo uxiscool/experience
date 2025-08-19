@@ -12,9 +12,9 @@ title: Works
     Open to&nbsp;collaboration and&nbsp;always excited to&nbsp;solve new&nbsp;challenges.
     </p>
   </div>
+</div>
   <!-- Градиентный разделитель -->
   <div class="intro-divider"></div>
-</div>
 <!-- Главные кейсы -->
 <div class="featured-cases">
   {% assign featured = site.cases | where: "featured", true %}
