@@ -295,9 +295,9 @@ section { padding-top: 2rem; }
   flex-direction: column;
   gap: 7px;
   margin-bottom: 12px;
-  padding-left: 237px;
+  /*padding-left: 237px;
   padding-right: 237px;
-  /* background: #424b63; */
+   background: #424b63; */
 }
 @media (max-width: 980px) {
   .case-meta2 { padding-left: 0; padding-right: 0; }
