@@ -13,10 +13,10 @@ title: Works
     </p>
   </div>
 </div>
-  <!-- Градиентный разделитель -->
-  <div class="intro-divider"></div>
 <!-- Главные кейсы -->
 <div class="featured-cases">
+<!-- Градиентный разделитель -->
+  <div class="intro-divider"></div>
   {% assign featured = site.cases | where: "featured", true %}
   {% for case in featured %}
     <div class="case-block">
