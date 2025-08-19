@@ -314,15 +314,27 @@ section { padding-top: 2rem; }
   align-items: center;
   gap: 18px;
 }
+/* Заголовок кейса: визуально как .subheading, но это ссылка */
 .case-title2 {
-  font-size: 1.18rem;
-  font-weight: 600;
+  margin: 0;                           /* без доп. отступа */
+  font-size: clamp(1.3rem, 1.1rem + 1vw, 1.5rem);
+  font-weight: 400;
+  letter-spacing: 0.02em;
   color: #fff;
-  text-decoration: underline dotted;
-  text-underline-offset: 4px;
-  transition: color .15s;
+  text-decoration: none;
 }
-.case-title2:hover { color: #d6c083; }
+.case-title2:link,
+.case-title2:visited,
+.case-title2:active,
+.case-title2:focus { color: #fff; text-decoration: none; }
+
+/* Плавный оранжевый только на входе (как в меню/контактах) */
+.case-title2:hover,
+.case-title2:focus-visible {
+  color: #ff9900;
+  transition: color 2s cubic-bezier(.19,1,.22,1);
+}
+
 .case-year2 {
   color: #9fa7b2;
   font-size: 1.05rem;
