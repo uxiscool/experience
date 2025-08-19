@@ -40,7 +40,7 @@ section { padding-top: 2rem; }
 }
 
 @media (max-width: 1200px) {
-  .container { padding-left: 250px; padding-right: 250px; }
+  .container { padding-left: 200px; padding-right: 200px; }
 }
 @media (max-width: 980px) {
   .container { padding-left: 64px; padding-right: 64px; }
@@ -284,7 +284,7 @@ section { padding-top: 2rem; }
 }
 
 @media (max-width: 1200px) {
-  .featured-cases { padding-left: 250px; padding-right: 250px; }
+  .featured-cases { padding-left: 200px; padding-right: 200px; }
 }
 @media (max-width: 980px) {
   .featured-cases { padding-left: 64px; padding-right: 64px; }
