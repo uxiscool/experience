@@ -280,6 +280,7 @@ section { padding-top: 2rem; }
   flex-direction: column;
   gap: 60px;
   margin: 0px 0 32px;
+  padding: 0 100px 0 280px;
 }
 .case-block {
   border-radius: 18px;
