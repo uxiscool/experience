@@ -353,18 +353,25 @@ section { padding-top: 2rem; }
 .case-type2 { color: #b7c1cc; font-size: 1.01rem; opacity: .96; }
 .case-summary2 { font-size: 1.09rem; color: #e2e5e7; opacity: .93; }
 
+/* Галерея кейса: авто-подбор на ≥1200px, ниже — контролируемая лесенка */
 .case-gallery {
   display: grid;
   gap: 22px;
   margin-top: 4px;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  /* по умолчанию — два столбца (980–1199px) */
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
-@media (max-width: 1199px) {
-  .case-gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-}
+
+/* Мобильный: один столбец */
 @media (max-width: 979px) {
   .case-gallery { grid-template-columns: 1fr; }
 }
+
+/* Десктоп и шире: авто-подбор превью по ~350px */
+@media (min-width: 1200px) {
+  .case-gallery { grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); }
+}
+
 .case-gallery-item {
   display: flex;
   flex-direction: column;
