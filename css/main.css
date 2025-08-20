@@ -368,7 +368,7 @@ section { padding-top: 2rem; }
 }
 
 /* Десктоп и шире: авто-подбор превью по ~350px */
-@media (min-width: 1200px) {
+@media (min-width: 1290px) {
   .case-gallery { grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); }
 }
 
