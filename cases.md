@@ -23,7 +23,7 @@ permalink: /cases/
 {% if case.stages %}
   {% for st in case.stages %}
     {% if st.desc %}
-      <div class="case-summary2">{{ st.desc }}</div>
+      <div class="stage-summary">{{ st.desc }}</div>
     {% endif %}
     <div class="case-gallery">
       {% for img in st.images %}
