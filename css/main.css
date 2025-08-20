@@ -72,7 +72,7 @@ section { padding-top: 2rem; }
   display: block;
 }
 
-@media (max-width: 920px) {
+@media (max-width: 980px) {
   .skills-columns { grid-template-columns: 1fr; }
   .bio-columns { grid-template-columns: 1fr; }
   .bio-columns .bio:first-child { order: 2; }
