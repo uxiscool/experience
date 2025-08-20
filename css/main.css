@@ -283,9 +283,6 @@ section { padding-top: 2rem; }
   padding: 0 280px 0 280px;
 }
 
-@media (max-width: 1200px) {
-  .featured-cases { padding-left: 200px; padding-right: 200px; }
-}
 @media (max-width: 980px) {
   .featured-cases { padding-left: 64px; padding-right: 64px; }
 }
@@ -585,10 +582,8 @@ section { padding-top: 2rem; }
   margin-top: auto;  /* вниз футера */
   margin-left: auto; /* вправо */
 }
-@media (max-width: 1200px) {
-  .footer-inner { padding: 0 132px 12px 293px; }
-}
-@media (max-width: 900px) {
+
+@media (max-width: 980px) {
   .footer-inner { padding: 0 64px 12px 64px; }
 }
 .footer-updated {
