@@ -3,6 +3,10 @@ layout: default
 title: Cases
 permalink: /cases/
 ---
+<!-- Load Playfair (text-friendly) только на /cases/ -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair:ital@1&display=swap" rel="stylesheet">
 
 <!-- Все кейсы подряд в том же лейауте, что и на главной -->
 <div class="featured-cases">

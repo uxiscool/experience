@@ -347,13 +347,18 @@ section { padding-top: 2rem; }
 .case-type2 { color: #b7c1cc; font-size: 1.01rem; opacity: .96; }
 .case-summary2 { font-size: 1.09rem; color: #e2e5e7; opacity: .93; }
 
-/* Текст описания этапа внутри кейса (только на /cases/) */
+/* Текст описания этапа внутри кейса (используется на /cases/) */
 .stage-summary {
+  font-family: "Playfair", ui-serif, Georgia, serif;
   font-size: 1.09rem;
   font-style: italic;
   color: #e2e5e7;
   opacity: .93;
-  margin-top: 24px;   /* заданный зазор перед блоком этапа */
+  margin-top: 24px;
+  font-optical-sizing: auto; /* пусть сам подстраивает рисунок под кегль */
+  /* при желании можно принудить:
+     font-variation-settings: "opsz" 16;  // ~16px кегль
+  */
 }
 
 /* Галерея кейса: авто-подбор на ≥1200px, ниже — контролируемая лесенка */
