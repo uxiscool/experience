@@ -355,7 +355,6 @@ section { padding-top: 2rem; }
   color: #e2e5e7;
   opacity: .93;
   margin-top: 24px;
-  font-variation-settings: "opsz" 16;
 }
 
 /* Галерея кейса: авто-подбор на ≥1200px, ниже — контролируемая лесенка */
