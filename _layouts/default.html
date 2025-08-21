@@ -14,12 +14,10 @@
     </main>
     {% include footer.html %}
 <script>
-  // Базовый префикс для ссылок
   window.siteBaseurl = "{{ site.baseurl }}";
 
-  // CASE_GALLERY[caseIndex] = [{src, caption}, ...]
-  // Строим из stages (если есть), иначе — из images (бэкап для старых кейсов)
-  window.CASE_GALLERY = [
+  // 1) Полные галереи (для /cases/ и страниц кейса)
+  window.CASE_GALLERY_ALL = [
     {% for c in site.cases %}
       (function(){
         var arr = [];
@@ -27,18 +25,12 @@
           {% for st in c.stages %}
             {% for img in st.images %}
               {% assign src = img.src | default: img.file | prepend: c.images_base | default: img.src %}
-              arr.push({
-                src: "{{ site.baseurl }}{{ src }}",
-                caption: {{ img.caption | jsonify }}
-              });
+              arr.push({ src: "{{ site.baseurl }}{{ src }}", caption: {{ img.caption | jsonify }} });
             {% endfor %}
           {% endfor %}
         {% elsif c.images %}
           {% for img in c.images %}
-            arr.push({
-              src: "{{ site.baseurl }}{{ img.src }}",
-              caption: {{ img.caption | jsonify }}
-            });
+            arr.push({ src: "{{ site.baseurl }}{{ img.src }}", caption: {{ img.caption | jsonify }} });
           {% endfor %}
         {% endif %}
         return arr;
@@ -46,17 +38,57 @@
     {% endfor %}
   ];
 
-  let currentCaseIdx = 0, currentImgIdx = 0;
+  // 2) Галереи только для главной (home == true|undefined)
+  window.CASE_GALLERY_HOME = [
+    {% for c in site.cases %}
+      (function(){
+        var arr = [];
+        {% if c.stages %}
+          {% for st in c.stages %}
+            {% for img in st.images %}
+              {% unless img.home == false %}
+                {% assign src = img.src | default: img.file | prepend: c.images_base | default: img.src %}
+                arr.push({ src: "{{ site.baseurl }}{{ src }}", caption: {{ img.caption | jsonify }} });
+              {% endunless %}
+            {% endfor %}
+          {% endfor %}
+        {% elsif c.images %}
+          {% for img in c.images %}
+            {% unless img.home == false %}
+              arr.push({ src: "{{ site.baseurl }}{{ img.src }}", caption: {{ img.caption | jsonify }} });
+            {% endunless %}
+          {% endfor %}
+        {% endif %}
+        return arr;
+      })(){% unless forloop.last %},{% endunless %}
+    {% endfor %}
+  ];
 
-  function getGallery(caseIdx){ return window.CASE_GALLERY[caseIdx] || []; }
+  // Режим текущей галереи: 'all' или 'home'
+  let currentCaseIdx = 0, currentImgIdx = 0, currentMode = 'all';
 
-  function openCaseGallery(caseIdx, imgIdx) {
+  function getGallery(caseIdx){
+    const src = (currentMode === 'home') ? window.CASE_GALLERY_HOME : window.CASE_GALLERY_ALL;
+    return src[caseIdx] || [];
+  }
+
+  // Вход из /cases/ и страниц кейса — полный набор
+  function openCaseGallery(caseIdx, imgIdx){
+    currentMode = 'all';
     currentCaseIdx = caseIdx;
     currentImgIdx = imgIdx || 0;
     showCaseLightbox();
   }
 
-  function showCaseLightbox() {
+  // Вход с главной — только видимые (home)
+  function openHomeGallery(caseIdx, imgIdx){
+    currentMode = 'home';
+    currentCaseIdx = caseIdx;
+    currentImgIdx = imgIdx || 0;
+    showCaseLightbox();
+  }
+
+  function showCaseLightbox(){
     const imgs = getGallery(currentCaseIdx);
     const data = imgs[currentImgIdx] || {};
     document.getElementById('lightbox-img').src = data.src || '';
@@ -64,31 +96,28 @@
     document.getElementById('lightbox').style.display = 'flex';
     document.body.classList.add('lb-lock');
   }
-
-  function closeLightbox() {
+  function closeLightbox(){
     document.getElementById('lightbox').style.display = 'none';
     document.body.classList.remove('lb-lock');
   }
-
-  function lightboxPrev() {
+  function lightboxPrev(){
     const imgs = getGallery(currentCaseIdx);
     const n = imgs.length || 1;
     currentImgIdx = (currentImgIdx + n - 1) % n;
     showCaseLightbox();
   }
-  function lightboxNext() {
+  function lightboxNext(){
     const imgs = getGallery(currentCaseIdx);
     const n = imgs.length || 1;
     currentImgIdx = (currentImgIdx + 1) % n;
     showCaseLightbox();
   }
-
-  document.addEventListener('keydown', function(e) {
+  document.addEventListener('keydown', function(e){
     const lb = document.getElementById('lightbox');
     if (!lb || lb.style.display !== 'flex') return;
-    if (e.key === "Escape") closeLightbox();
-    if (e.key === "ArrowLeft") lightboxPrev();
-    if (e.key === "ArrowRight") lightboxNext();
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') lightboxPrev();
+    if (e.key === 'ArrowRight') lightboxNext();
   });
 </script>
   </body>
