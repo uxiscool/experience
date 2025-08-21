@@ -12,72 +12,82 @@ title: Works
     Open to&nbsp;collaboration and&nbsp;always excited to&nbsp;solve new&nbsp;challenges.
     </p>
     <!-- Градиентный разделитель -->
-  <div class="intro-divider"></div>
+    <div class="intro-divider"></div>
   </div>
 </div>
+
 <!-- Главные кейсы -->
 <div class="featured-cases">
   {% assign featured = site.cases | where: "featured", true %}
   {% for case in featured %}
-    <div class="case-block">
-<div class="case-meta2">
-  <div class="case-title-row">
-    <a href="{{ case.url }}" class="case-title2">{{ case.title }}</a>
-  </div>
-  <div class="case-meta2-inline">
-    {{ case.year }}
-    {% if case.company %} · {{ case.company }}{% endif %}
-    {% if case.type %} · {{ case.type }}{% endif %}
-  </div>
-  <div class="case-summary2">{{ case.summary }}</div>
-</div>
-   <div class="case-gallery">
-  {% assign idx = 0 %}
-  {% if case.stages %}
-    {% for st in case.stages %}
-      {% for img in st.images %}
-        {% unless img.home == false %}
-          {% assign img_src = img.src | default: img.file | prepend: case.images_base | default: img.src %}
-          <div class="case-gallery-item">
-            <img
-              class="case-thumb2"
-              src="{{ site.baseurl }}{{ img_src }}"
-              alt="{{ img.caption | escape }}"
-              loading="lazy" decoding="async"
-              onclick="openCaseGallery({{ case_index }}, {{ idx }})">
-            {% if img.caption %}<div class="case-thumb-caption">{{ img.caption }}</div>{% endif %}
-          </div>
-        {% endunless %}
-        {% assign idx = idx | plus: 1 %}
+    {% assign case_index = 0 %}
+    {% for c in site.cases %}
+      {% if c.url == case.url %}
         {% assign case_index = forloop.index0 %}
-      {% endfor %}
+        {% break %}
+      {% endif %}
     {% endfor %}
-  {% else %}
-    {% for img in case.images %}
-      {% unless img.home == false %}
-        <div class="case-gallery-item">
-          <img
-            class="case-thumb2"
-            src="{{ site.baseurl }}{{ img.src }}"
-            alt="{{ img.caption | escape }}"
-            loading="lazy" decoding="async"
-            onclick="openCaseGallery({{ forloop.parentloop.index0 }}, {{ forloop.index0 }})">
-          {% if img.caption %}<div class="case-thumb-caption">{{ img.caption }}</div>{% endif %}
+
+    <div class="case-block">
+      <div class="case-meta2">
+        <div class="case-title-row">
+          <a href="{{ case.url }}" class="case-title2">{{ case.title }}</a>
         </div>
-      {% endunless %}
-    {% endfor %}
-  {% endif %}
-</div>
+        <div class="case-meta2-inline">
+          {{ case.year }}
+          {% if case.company %} · {{ case.company }}{% endif %}
+          {% if case.type %} · {{ case.type }}{% endif %}
+        </div>
+        <div class="case-summary2">{{ case.summary }}</div>
+      </div>
+
+      <div class="case-gallery">
+        {% assign idx = 0 %}
+        {% if case.stages %}
+          {% for st in case.stages %}
+            {% for img in st.images %}
+              {% unless img.home == false %}
+                {% assign img_src = img.src | default: img.file | prepend: case.images_base | default: img.src %}
+                <div class="case-gallery-item">
+                  <img
+                    class="case-thumb2"
+                    src="{{ site.baseurl }}{{ img_src }}"
+                    alt="{{ img.caption | escape }}"
+                    loading="lazy" decoding="async"
+                    onclick="openCaseGallery({{ case_index }}, {{ idx }})">
+                  {% if img.caption %}<div class="case-thumb-caption">{{ img.caption }}</div>{% endif %}
+                </div>
+              {% endunless %}
+              {% assign idx = idx | plus: 1 %}
+            {% endfor %}
+          {% endfor %}
+        {% else %}
+          {% for img in case.images %}
+            {% unless img.home == false %}
+              <div class="case-gallery-item">
+                <img
+                  class="case-thumb2"
+                  src="{{ site.baseurl }}{{ img.src }}"
+                  alt="{{ img.caption | escape }}"
+                  loading="lazy" decoding="async"
+                  onclick="openCaseGallery({{ case_index }}, {{ forloop.index0 }})">
+                {% if img.caption %}<div class="case-thumb-caption">{{ img.caption }}</div>{% endif %}
+              </div>
+            {% endunless %}
+          {% endfor %}
+        {% endif %}
+      </div>
     </div>
   {% endfor %}
 </div>
+
 <!-- Лайтбокс (один для всех проектов) -->
 <div id="lightbox" class="lightbox" style="display:none;">
   <div class="lightbox-bg" onclick="closeLightbox()"></div>
   <div class="lightbox-content">
-<button class="lightbox-close" onclick="closeLightbox()" aria-label="Close">
-  <img src="{{ site.baseurl }}/ui/lightbox_close.svg" width="36" height="36" alt="Close">
-</button>
+    <button class="lightbox-close" onclick="closeLightbox()" aria-label="Close">
+      <img src="{{ site.baseurl }}/ui/lightbox_close.svg" width="36" height="36" alt="Close">
+    </button>
     <button class="lightbox-arrow left" onclick="lightboxPrev()" aria-label="Previous">
       <img src="{{ site.baseurl }}/ui/lightbox_arrow_left.svg" width="36" height="36" alt="Prev">
     </button>
