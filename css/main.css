@@ -357,6 +357,10 @@ section { padding-top: 2rem; }
   margin-top: 24px;
 }
 
+@media (max-width: 980px) {
+  .stage-summary { margin-top: 12px; }
+}
+
 /* Галерея кейса: авто-подбор на ≥1200px, ниже — контролируемая лесенка */
 .case-gallery {
   display: grid;
