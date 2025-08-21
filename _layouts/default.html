@@ -64,12 +64,27 @@
     {% endfor %}
   ];
 
-  // Режим текущей галереи: 'all' или 'home'
+  /* 3) Галерея Pet projects */
+  window.PET_GALLERY = [
+    {% for p in site.petprojects %}
+      (function(){
+        var arr = [];
+        {% for img in p.gallery %}
+          {% assign src = img.src | default: img.file | prepend: p.images_base | default: img.src %}
+          arr.push({ src: "{{ site.baseurl }}{{ src }}", caption: {{ img.caption | jsonify }} });
+        {% endfor %}
+        return arr;
+      })(){% unless forloop.last %},{% endunless %}
+    {% endfor %}
+  ];
+
+  /* Режимы: 'all', 'home', 'pet' */
   let currentCaseIdx = 0, currentImgIdx = 0, currentMode = 'all';
 
-  function getGallery(caseIdx){
-    const src = (currentMode === 'home') ? window.CASE_GALLERY_HOME : window.CASE_GALLERY_ALL;
-    return src[caseIdx] || [];
+  function getGallery(idx){
+    if (currentMode === 'home') return window.CASE_GALLERY_HOME[idx] || [];
+    if (currentMode === 'pet')  return window.PET_GALLERY[idx] || [];
+    return window.CASE_GALLERY_ALL[idx] || [];
   }
 
   // Вход из /cases/ и страниц кейса — полный набор
@@ -84,6 +99,13 @@
   function openHomeGallery(caseIdx, imgIdx){
     currentMode = 'home';
     currentCaseIdx = caseIdx;
+    currentImgIdx = imgIdx || 0;
+    showCaseLightbox();
+  }
+
+    function openPetGallery(petIdx, imgIdx){
+    currentMode = 'pet';
+    currentCaseIdx = petIdx;
     currentImgIdx = imgIdx || 0;
     showCaseLightbox();
   }
