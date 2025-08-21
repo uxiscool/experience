@@ -44,11 +44,12 @@ title: Works
               src="{{ site.baseurl }}{{ img_src }}"
               alt="{{ img.caption | escape }}"
               loading="lazy" decoding="async"
-              onclick="openCaseGallery({{ forloop.parentloop.index0 }}, {{ idx }})">
+              onclick="openCaseGallery({{ case_index }}, {{ idx }})">
             {% if img.caption %}<div class="case-thumb-caption">{{ img.caption }}</div>{% endif %}
           </div>
         {% endunless %}
-        {% assign idx = idx | plus: 1 %}  {# индекс считаем всегда, даже если hide on home #}
+        {% assign idx = idx | plus: 1 %}
+        {% assign case_index = forloop.index0 %}
       {% endfor %}
     {% endfor %}
   {% else %}
