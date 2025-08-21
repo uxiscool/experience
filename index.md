@@ -31,25 +31,42 @@ title: Works
   </div>
   <div class="case-summary2">{{ case.summary }}</div>
 </div>
-      <div class="case-gallery">
-        {% for img in case.images %}
+   <div class="case-gallery">
+  {% assign idx = 0 %}
+  {% if case.stages %}
+    {% for st in case.stages %}
+      {% for img in st.images %}
         {% unless img.home == false %}
+          {% assign img_src = img.src | default: img.file | prepend: case.images_base | default: img.src %}
           <div class="case-gallery-item">
             <img
               class="case-thumb2"
-              src="{{ site.baseurl }}{{ img.src }}"
+              src="{{ site.baseurl }}{{ img_src }}"
               alt="{{ img.caption | escape }}"
-              loading="lazy"
-              decoding="async"
-              onclick="openCaseGallery({{ forloop.parentloop.index0 }}, {{ forloop.index0 }})"
-            >
-            {% if img.caption %}
-              <div class="case-thumb-caption">{{ img.caption }}</div>
-            {% endif %}
+              loading="lazy" decoding="async"
+              onclick="openCaseGallery({{ forloop.parentloop.index0 }}, {{ idx }})">
+            {% if img.caption %}<div class="case-thumb-caption">{{ img.caption }}</div>{% endif %}
           </div>
-          {% endunless %}
-        {% endfor %}
-      </div>
+        {% endunless %}
+        {% assign idx = idx | plus: 1 %}  {# индекс считаем всегда, даже если hide on home #}
+      {% endfor %}
+    {% endfor %}
+  {% else %}
+    {% for img in case.images %}
+      {% unless img.home == false %}
+        <div class="case-gallery-item">
+          <img
+            class="case-thumb2"
+            src="{{ site.baseurl }}{{ img.src }}"
+            alt="{{ img.caption | escape }}"
+            loading="lazy" decoding="async"
+            onclick="openCaseGallery({{ forloop.parentloop.index0 }}, {{ forloop.index0 }})">
+          {% if img.caption %}<div class="case-thumb-caption">{{ img.caption }}</div>{% endif %}
+        </div>
+      {% endunless %}
+    {% endfor %}
+  {% endif %}
+</div>
     </div>
   {% endfor %}
 </div>
