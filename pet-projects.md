@@ -7,8 +7,7 @@ permalink: /pet-projects/
 <!-- краткое описание раздела, как «лейбл кейса», но только текст -->
 <div class="pet-meta">
   <div class="case-summary2">
-    Side-проекты, эксперименты и «маленькие радости», где можно быстро пробовать идеи
-    и выкатывать в мир. Тут и плагины для Figma, и мобильные приложения-игрушки.
+    Side projects, experiments and “little joys” where you can quickly try out ideas and roll them out into the world.
   </div>
 </div>
 <div class="pet-grid">
