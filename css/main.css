@@ -946,3 +946,57 @@ body.page-contact > main { flex: 1 0 auto; }
 .pet-card-link:focus-visible .pet-title {
   color: #ff9900; transition: color 2s cubic-bezier(.19,1,.22,1);
 }
+/* Макет внутри карточки: слева media, справа info */
+.pet-layout {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(220px, 1fr) minmax(260px, 1.2fr);
+  gap: 18px;
+  padding: 16px 18px;
+}
+@media (max-width: 780px) { .pet-layout { grid-template-columns: 1fr; } }
+
+/* Левая колонка (изображение) */
+.pet-media {
+  border-radius: 14px;
+  overflow: hidden;
+  background: #1c1e22;
+  box-shadow: inset 0 0 0 1px #2a2d31;
+  min-height: 180px;
+  display: grid;
+  place-items: center;
+}
+.pet-media-img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: contain;
+  display: block;
+}
+.pet-media-empty { width: 100%; height: 100%; }
+
+/* Правая колонка (текст/теги/cta) */
+.pet-info { display: grid; grid-template-rows: auto auto auto auto; align-content: start; gap: 10px; }
+.pet-head-row { display: grid; grid-template-columns: 32px 1fr auto; gap: 12px; align-items: center; }
+.pet-title { margin: 0; font-size: 1.2rem; color: #fff; letter-spacing: .01em; }
+.pet-subtitle { color: #e2e5e7; opacity: .93; font-size: 1.02rem; }
+.pet-desc { color: #cdd3db; opacity: .92; font-size: .98rem; line-height: 1.35; }
+
+.pet-tags { list-style: none; margin: 4px 0 0; padding: 0; display: flex; gap: 8px; flex-wrap: wrap; }
+.pet-tag {
+  font-size: .86rem; color: #cbd2db;
+  border: 1px solid #3a3c40; border-radius: 999px;
+  padding: .22rem .6rem; white-space: nowrap;
+}
+
+.pet-actions { margin-top: 6px; display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+.pet-cta {
+  display: inline-flex; align-items: center; justify-content: center;
+  padding: .55rem .9rem; border-radius: 10px;
+  border: 1px solid #3a3c40; background: #26292d;
+  color: #e8ebef; text-decoration: none; font-size: .98rem;
+  transition: color 2s cubic-bezier(.19,1,.22,1), transform .15s, border-color .2s, background .2s;
+}
+.pet-cta:hover, .pet-cta:focus-visible { color: #ff9900; border-color: #474b50; background: #2a2d31; }
+.pet-cta:active { transform: translateY(1px); }
