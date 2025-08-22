@@ -851,7 +851,7 @@ body.page-contact > main { flex: 1 0 auto; }
 /* ===== Pet projects ===== */
 
 /* Описание раздела — берём тот же ритм, что у лейбла кейса */
-.pet-meta { padding: 32px 280px; margin: 0 0 28px; }
+.pet-meta { padding: 48px 280px; margin: 0 0 28px; }
 @media (max-width: 980px){ .pet-meta { padding: 0 64px; } }
 .pet-meta .case-summary2 { margin: 0; }
 
