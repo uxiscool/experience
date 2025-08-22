@@ -16,11 +16,11 @@ stores:
 # для плагина можно добавить отдельный блок ссылок, если захочешь
 
 gallery:
-  - file: scr1.jpg
+  - file: scr1.png
     caption: "Full description of the plugin and the main screen."
     thumb: true   # эту же картинку покажем маленьким превью в плитке
-  - file: scr2.jpg
+  - file: scr2.png
     caption: "Secondary flow."
-  - file: scr3.jpg
+  - file: scr3.png
     caption: "Another state."
 ---
