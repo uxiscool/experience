@@ -855,15 +855,27 @@ body.page-contact > main { flex: 1 0 auto; }
 @media (max-width: 980px){ .pet-meta { padding: 0 64px; } }
 .pet-meta .case-summary2 { margin: 0; }
 
-/* Грид плиток: 2 в ряд (980–1281), 1 на мобиле, а на ≥1282 — auto-fit */
+/* Грид плиток: до 1282px — одна колонка; на широких — до двух крупных колонок */
 .pet-grid {
   display: grid;
   gap: 22px;
   padding: 0 280px 32px;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: 1fr; /* ключ: не дёргаем в 2 колонки на 981–1281 */
 }
 @media (max-width: 979px)  { .pet-grid { grid-template-columns: 1fr; padding: 0 64px 24px; } }
-@media (min-width: 1282px) { .pet-grid { grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); } }
+/* Две колонки только когда реально помещаются большие карты */
+@media (min-width: 1282px) {
+  .pet-grid {
+    grid-template-columns: repeat(2, minmax(560px, 1fr));
+    justify-content: center;
+  }
+}
+/* На совсем широких экранах позволим плиткам быть чуть шире */
+@media (min-width: 1680px) {
+  .pet-grid {
+    grid-template-columns: repeat(2, minmax(640px, 1fr));
+  }
+}
 
 /* Карточка */
 .pet-card {
