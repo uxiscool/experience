@@ -425,7 +425,7 @@ section { padding-top: 2rem; }
 
 .lightbox-bg { position: absolute; inset: 0; background: transparent; z-index: 0; }
 
-.lightbox-content {
+lightbox-content {
   position: relative;
   z-index: 2;
   display: flex;
@@ -460,7 +460,7 @@ section { padding-top: 2rem; }
   transition: filter .5s cubic-bezier(.42,0,.58,1), opacity .18s;
 }
 .lightbox-arrow.left  { left: 32px; }
-.lightbox-arrow.right { right: 32px; }
+lightbox-arrow.right { right: 32px; }
 
 /* Общие правила для иконок (стрелки и крестик) */
 .lightbox-arrow img,
@@ -855,25 +855,23 @@ body.page-contact > main { flex: 1 0 auto; }
 @media (max-width: 980px){ .pet-meta { padding: 0 64px; } }
 .pet-meta .case-summary2 { margin: 0; }
 
-/* Грид плиток: до 1282px — одна колонка; на широких — до двух крупных колонок */
+/* Грид плиток:
+   — до 980px: одна колонка (см. брейкпоинт ниже);
+   — после 980px: растём по ширине, пока не влезет 2×380px (+ gap), тогда 2 колонки,
+     далее 3, 4... по тому же правилу. Паддинги 280px сохранены. */
 .pet-grid {
   display: grid;
   gap: 22px;
   padding: 0 280px 32px;
-  grid-template-columns: 1fr; /* ключ: не дёргаем в 2 колонки на 981–1281 */
+  grid-template-columns: 1fr; /* базово — один столбец */
 }
-@media (max-width: 979px)  { .pet-grid { grid-template-columns: 1fr; padding: 0 64px 24px; } }
-/* Две колонки только когда реально помещаются большие карты */
-@media (min-width: 1282px) {
-  .pet-grid {
-    grid-template-columns: repeat(2, minmax(560px, 1fr));
-    justify-content: center;
-  }
+@media (max-width: 979px) {
+  .pet-grid { grid-template-columns: 1fr; padding: 0 64px 24px; }
 }
-/* На совсем широких экранах позволим плиткам быть чуть шире */
-@media (min-width: 1680px) {
+@media (min-width: 981px) {
   .pet-grid {
-    grid-template-columns: repeat(2, minmax(640px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+    justify-content: center; /* красиво центрируем ряды при 1/2/3 колонках */
   }
 }
 
@@ -884,7 +882,7 @@ body.page-contact > main { flex: 1 0 auto; }
   overflow: hidden;
   background: #232429;
   box-shadow: 0 2px 14px #181a1c29;
-  min-height: 220px; /* плитка крупнее, чем в Cases */
+  min-height: 220px;
   display: grid;
   grid-template-rows: auto 1fr;
   transition: transform .18s ease, box-shadow .18s ease, filter .18s ease;
@@ -958,60 +956,7 @@ body.page-contact > main { flex: 1 0 auto; }
 .pet-card-link:focus-visible .pet-title {
   color: #ff9900; transition: color 2s cubic-bezier(.19,1,.22,1);
 }
-/* Макет внутри карточки: слева media, справа info */
-.pet-layout {
-  position: relative;
-  z-index: 1;
-  display: grid;
-  grid-template-columns: minmax(220px, 1fr) minmax(260px, 1.2fr);
-  gap: 18px;
-  padding: 16px 18px;
-}
-@media (max-width: 780px) { .pet-layout { grid-template-columns: 1fr; } }
 
-/* Левая колонка (изображение) */
-.pet-media {
-  border-radius: 14px;
-  overflow: hidden;
-  background: #1c1e22;
-  box-shadow: inset 0 0 0 1px #2a2d31;
-  min-height: 180px;
-  display: grid;
-  place-items: center;
-}
-.pet-media-img {
-  width: 100%;
-  height: auto;
-  aspect-ratio: 4 / 3;
-  object-fit: contain;
-  display: block;
-}
-.pet-media-empty { width: 100%; height: 100%; }
-
-/* Правая колонка (текст/теги/cta) */
-.pet-info { display: grid; grid-template-rows: auto auto auto auto; align-content: start; gap: 10px; }
-.pet-head-row { display: grid; grid-template-columns: 32px 1fr auto; gap: 12px; align-items: center; }
-.pet-title { margin: 0; font-size: 1.2rem; color: #fff; letter-spacing: .01em; }
-.pet-subtitle { color: #e2e5e7; opacity: .93; font-size: 1.02rem; }
-.pet-desc { color: #cdd3db; opacity: .92; font-size: .98rem; line-height: 1.35; }
-
-.pet-tags { list-style: none; margin: 4px 0 0; padding: 0; display: flex; gap: 8px; flex-wrap: wrap; }
-.pet-tag {
-  font-size: .86rem; color: #cbd2db;
-  border: 1px solid #3a3c40; border-radius: 999px;
-  padding: .22rem .6rem; white-space: nowrap;
-}
-
-.pet-actions { margin-top: 6px; display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
-.pet-cta {
-  display: inline-flex; align-items: center; justify-content: center;
-  padding: .55rem .9rem; border-radius: 10px;
-  border: 1px solid #3a3c40; background: #26292d;
-  color: #e8ebef; text-decoration: none; font-size: .98rem;
-  transition: color 2s cubic-bezier(.19,1,.22,1), transform .15s, border-color .2s, background .2s;
-}
-.pet-cta:hover, .pet-cta:focus-visible { color: #ff9900; border-color: #474b50; background: #2a2d31; }
-.pet-cta:active { transform: translateY(1px); }
 /* Контент под шапкой: 2 колонки */
 .pet-content {
   position: relative; z-index: 1;
@@ -1047,6 +992,7 @@ body.page-contact > main { flex: 1 0 auto; }
   gap: 10px;
 }
 .pet-text { display: grid; gap: 8px; }
+.pet-subtitle { color: #e2e5e7; opacity: .93; font-size: 1.02rem; }
 .pet-desc { color: #cdd3db; opacity: .92; font-size: .98rem; line-height: 1.35; }
 
 .pet-side-bottom {
