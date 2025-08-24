@@ -856,24 +856,30 @@ body.page-contact > main { flex: 1 0 auto; }
 .pet-meta .case-summary2 { margin: 0; }
 
 /* Грид плиток:
-   — до 980px: одна колонка (см. брейкпоинт ниже);
-   — после 980px: растём по ширине, пока не влезет 2×380px (+ gap), тогда 2 колонки,
-     далее 3, 4... по тому же правилу. Паддинги 280px сохранены. */
+   — до 980px: одна колонка;
+   — после 980px: карточки растут по ширине, пока не влезет N×380px (+ gaps),
+     и только тогда добавляется новая колонка. Паддинги 280px сохраняем. */
 .pet-grid {
   display: grid;
   gap: 22px;
   padding: 0 280px 32px;
-  grid-template-columns: 1fr; /* базово — один столбец */
+  grid-template-columns: 1fr; /* базово — один столбец на всю доступную ширину */
 }
+
 @media (max-width: 979px) {
-  .pet-grid { grid-template-columns: 1fr; padding: 0 64px 24px; }
+  .pet-grid {
+    grid-template-columns: 1fr;
+    padding: 0 64px 24px;
+  }
 }
+
 @media (min-width: 981px) {
   .pet-grid {
     grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-    justify-content: center; /* красиво центрируем ряды при 1/2/3 колонках */
+    justify-content: center; /* красивые ряды при 1/2/3 колонках */
   }
 }
+
 
 /* Карточка */
 .pet-card {
