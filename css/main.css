@@ -1,6 +1,6 @@
 /* ====== main.css ====== */
 
-/* Base */
+/* ---- Base ---- */
 :root {
   --gap: .6rem;
   --muted: #888;
@@ -18,7 +18,7 @@ body {
 body.lb-lock { overflow: hidden; }
 section { padding-top: 2rem; }
 
-/* ===== Layout ===== */
+/* ---- Layout ---- */
 .container {
   margin: 0;
   padding-left: 280px;
@@ -30,7 +30,7 @@ section { padding-top: 2rem; }
   .container { padding-left: 64px; padding-right: 64px; }
 }
 
-/* ===== Header / Nav ===== */
+/* ---- Header / Nav ---- */
 header {
   display: flex;
   align-items: flex-start;
@@ -102,7 +102,7 @@ header {
   border-radius: 8px;
 }
 
-/* ===== Hero ===== */
+/* ---- Hero ---- */
 .intro-hero {
   display: flex;
   flex-direction: column;
@@ -135,7 +135,7 @@ header {
   opacity: .55;
 }
 
-/* ===== Bio / Skills ===== */
+/* ---- Bio / Skills ---- */
 .bio-section { margin-top: 148px; }
 .skills-section { margin: 2rem 0 3rem; }
 .skills-columns,
@@ -160,7 +160,7 @@ header {
   .bio-columns .bio:last-child  { order: 1; }
 }
 
-/* ===== Cases (cards + gallery) ===== */
+/* ---- Cases (cards + gallery) ---- */
 .case-card {
   border-radius: 18px;
   overflow: hidden;
@@ -272,7 +272,7 @@ header {
 }
 .case-thumb-caption { font-size: .97rem; color: #bac0c9; text-align: center; margin-top: 3px; opacity: .86; }
 
-/* ===== Lightbox ===== */
+/* ---- Lightbox ---- */
 .lightbox {
   position: fixed;
   inset: 0;
@@ -362,7 +362,7 @@ header {
   opacity: .90;
 }
 
-/* ===== Tools ===== */
+/* ---- Tools ---- */
 .tools-grid {
   display: flex;
   flex-wrap: wrap;
@@ -402,7 +402,7 @@ header {
   .tool-logo-wrap { height: 30px; }
 }
 
-/* ===== Footer ===== */
+/* ---- Footer ---- */
 .site-footer {
   width: 100%;
   min-height: clamp(80px, 14vw, 400px);
@@ -421,7 +421,7 @@ header {
 @media (max-width: 980px) { .footer-inner { padding: 0 64px 12px; } }
 .footer-updated { color: #bbb; font-size: 1.1rem; line-height: 1.2; opacity: .95; }
 
-/* ===== Laurel badge ===== */
+/* ---- Laurel badge ---- */
 .achievements-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(140px, 1fr));
@@ -476,7 +476,7 @@ html[data-theme="dark"] .laurel-badge { --leaf: #c2c9d3; }
              calc(var(--label-delay, var(--lb-text-base-delay)) + 280ms) both;
 }
 
-/* ===== Prefers-reduced-motion ===== */
+/* ---- Prefers-reduced-motion ---- */
 @media (prefers-reduced-motion: reduce) {
   .intro-hero,
   .tool.appear.in-view,
@@ -495,7 +495,7 @@ html[data-theme="dark"] .laurel-badge { --leaf: #c2c9d3; }
   }
 }
 
-/* ===== Contacts ===== */
+/* ---- Contacts ---- */
 body.page-contact { min-height: 100dvh; display: flex; flex-direction: column; }
 body.page-contact > main { flex: 1 0 auto; }
 .contacts-section { margin-top: 148px; }
@@ -566,7 +566,7 @@ body.page-contact > main { flex: 1 0 auto; }
   column-gap: 14px;
 }
 
-/* ===== Util: disabled-text ===== */
+/* ---- Util: disabled-text ---- */
 .disabled-text { --disabled-fg: #424242; color: var(--disabled-fg); }
 .disabled-text a { color: var(--disabled-fg); text-decoration: none; }
 .disabled-text .contact-hint, .disabled-text .soon-tag { color: var(--disabled-fg); opacity: .9; }
@@ -574,29 +574,28 @@ body.page-contact > main { flex: 1 0 auto; }
 
 /* ===== Pet projects ===== */
 
-/* Описание раздела — в ритме лейбла кейса */
+/* Описание раздела */
 .pet-meta { padding: 48px 280px; margin: 0 0 28px; }
 @media (max-width: 980px){ .pet-meta { padding: 0 64px; } }
 .pet-meta .case-summary2 { margin: 0; }
 
-/* Грид: растягиваем 1 карту после 980px, добавляем колонку только когда влезет ≥380px (+gap) */
+/* Грид: после 980px — 1 широкая колонка растёт; как только влезают N×380px (+gaps) — добавляем колонку */
 .pet-grid {
   display: grid;
   gap: 22px;
   padding: 0 280px 32px;
-  grid-template-columns: 1fr; /* базово — один столбец */
+  grid-template-columns: 1fr;      /* базово — один столбец на всю доступную ширину */
   width: 100%;
+  justify-content: center;         /* красиво центрируем 1/2/3 колонки */
+  align-content: start;
 }
 @media (max-width: 979px) {
   .pet-grid { grid-template-columns: 1fr; padding: 0 64px 24px; }
 }
 @media (min-width: 981px) {
-  .pet-grid {
-    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
-    justify-content: center;   /* центрируем ряды при 1/2/3 колонках */
-  }
+  .pet-grid { grid-template-columns: repeat(auto-fill, minmax(380px, 1fr)); }
 }
-/* страховка от глобальных правил */
+/* страховка от чужих правил */
 .pet-grid > * { grid-column: auto !important; min-width: 0; }
 .pet-grid > a.pet-card-link { width: auto; display: block; }
 
@@ -678,7 +677,7 @@ body.page-contact > main { flex: 1 0 auto; }
 .pet-links { display: flex; gap: 10px; align-items: center; }
 .pet-link-icon img { height: 32px; width: auto; display: block; }
 
-/* Весь блок кликабелен — мягкий оранжевый как в меню */
+/* Кликабельное поведение */
 .pet-card-link { text-decoration: none; color: inherit; display: block; }
 .pet-card-link:hover .pet-title,
 .pet-card-link:focus-visible .pet-title { color: var(--orange); transition: color 2s cubic-bezier(.19,1,.22,1); }
