@@ -1000,3 +1000,50 @@ body.page-contact > main { flex: 1 0 auto; }
 }
 .pet-cta:hover, .pet-cta:focus-visible { color: #ff9900; border-color: #474b50; background: #2a2d31; }
 .pet-cta:active { transform: translateY(1px); }
+/* Контент под шапкой: 2 колонки */
+.pet-content {
+  position: relative; z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(240px, 1.1fr) minmax(260px, 1fr);
+  gap: 18px;
+  padding: 6px 18px 18px;
+}
+@media (max-width: 780px) { .pet-content { grid-template-columns: 1fr; } }
+
+/* Левая колонка — картинка во всю высоту */
+.pet-media {
+  border-radius: 14px;
+  overflow: hidden;
+  background: #1c1e22;
+  box-shadow: inset 0 0 0 1px #2a2d31;
+  min-height: 220px;
+  display: grid;
+  place-items: center;
+}
+.pet-media-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;     /* без обрезки */
+  display: block;
+}
+
+/* Правая колонка — текст сверху, тип+ссылки прижаты к низу */
+.pet-side {
+  display: flex;
+  flex-direction: column;
+  min-height: 220px;
+  gap: 10px;
+}
+.pet-text { display: grid; gap: 8px; }
+.pet-desc { color: #cdd3db; opacity: .92; font-size: .98rem; line-height: 1.35; }
+
+.pet-side-bottom {
+  margin-top: auto;        /* прижать вниз */
+  display: grid;
+  gap: 8px;
+  align-content: end;
+}
+.pet-kind { color: #cbd2db; font-size: .9rem; opacity: .95; }
+
+.pet-links { display: flex; gap: 10px; align-items: center; }
+.pet-link-icon img { height: 32px; width: auto; display: block; }
