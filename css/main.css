@@ -257,85 +257,124 @@ body.page-contact>main{ flex:1 0 auto; }
 @media (max-width:980px){ .pet-meta{ padding:0 64px; } }
 .pet-meta .case-summary2{ margin:0; }
 
-/* Грид плашек */
-.pet-grid{
-  display:grid; gap:22px; padding:0 280px 32px;
-  grid-template-columns:1fr; width:100%;
-  justify-content:center; align-content:start;
-}
-@media (max-width:979px){ .pet-grid{ grid-template-columns:1fr; padding:0 64px 24px; } }
-@media (min-width:981px){ .pet-grid{ grid-template-columns:repeat(auto-fill,minmax(380px,1fr)); } }
-/* страховка от чужих правил */
-.pet-grid>*{ grid-column:auto !important; min-width:0; }
-.pet-grid>a.pet-card-link{ width:auto; display:block; }
+/* ===== Pet projects v2 (from scratch) ===== */
 
-/* Карточка */
-.pet-card{
-  position:relative; border-radius:18px; overflow:hidden; background:#232429;
-  box-shadow:0 2px 14px #181a1c29; min-height:220px;
-  display:grid; grid-template-rows:auto 1fr;
-  transition:transform .18s ease, box-shadow .18s ease, filter .18s ease;
-  min-width:0;
-  /* Включаем контейнерные запросы, чтобы реагировать на СВОЮ ширину */
-  container-type:inline-size;
+/* Раздел (можно оставить твой .pet-meta как есть — сетка отдельно) */
+.pp-grid {
+  /* учёт боковых паддингов 280px на десктопе */
+  padding: 0 280px 32px;
+  display: grid;
+  gap: 22px;
+  /* после 980px: одна широкая карта растёт; как только влезают N×380px (+gap), появляется ещё одна */
+  grid-template-columns: 1fr;
+  width: 100%;
+  justify-content: center;
 }
-.pet-card:hover{ transform:translateY(-2px); box-shadow:0 4px 24px #19c0ff2c; }
-
-/* Фон */
-.pet-bg{ position:absolute; inset:0; background-size:cover; background-position:center; opacity:.35; filter:saturate(115%) contrast(105%); }
-.pet-card:not(.has-bg)::before{
-  content:""; position:absolute; inset:0;
-  background:
-    radial-gradient(120% 80% at 0% 0%, var(--bg1,#1f2023) 0%, transparent 62%),
-    radial-gradient(100% 120% at 100% 0%, var(--bg2,#2b2d31) 0%, transparent 64%),
-    radial-gradient(140% 100% at 50% 100%, var(--bg3,#1b1c1f) 0%, transparent 62%),
-    #232429;
+@media (max-width: 979px) {
+  .pp-grid { padding: 0 64px 24px; grid-template-columns: 1fr; }
+}
+@media (min-width: 981px) {
+  .pp-grid { grid-template-columns: repeat(auto-fill, minmax(380px, 1fr)); }
 }
 
-/* Шапка */
-.pet-inner{
-  position:relative; z-index:1;
-  display:grid; grid-template-columns:40px 1fr auto;
-  gap:12px; align-items:center; padding:16px 18px 10px;
+/* Кликабельный элемент сетки — вся карточка */
+.pp-item {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  /* чтобы кликабельная область строго равнялась карточке */
+  width: 100%;
+  height: 100%;
 }
-.pet-icon{ width:32px; height:32px; display:block; }
-.pet-head{ display:grid; gap:4px; align-items:center; }
-.pet-title{ margin:0; font-size:1.15rem; color:#fff; letter-spacing:.01em; }
-.pet-subtitle{ color:#e2e5e7; opacity:.93; font-size:1.02rem; }
 
-/* Контент: media + side
-   ВАЖНО: минимальные ширины колонок снижены до 180px + 200px (=380px),
-   чтобы карточка могла существовать при минимуме грида 380px. */
-.pet-content{
-  position:relative; z-index:1; display:grid;
-  grid-template-columns: minmax(180px,1.1fr) minmax(200px,1fr);
-  gap:18px; padding:6px 18px 18px;
+/* Карточка: шапка / тело / низ */
+.pp-card {
+  position: relative;
+  display: grid;
+  grid-template-rows: auto 1fr auto; /* header / body / footer */
+  gap: 12px;
+  background: #232429;
+  border-radius: 18px;
+  box-shadow: 0 2px 14px #181a1c29;
+  padding: 16px;
+  min-height: 220px;
+  transition: transform .18s ease, box-shadow .18s ease;
+  /* для контейнерных запросов и корректного расчёта min-content */
+  min-width: 0;
+  container-type: inline-size;
 }
-@supports (container-type: inline-size){
-  /* Когда сама карточка узкая — складываем внутреннюю сетку в одну колонку */
-  @container (max-width: 520px){
-    .pet-content{ grid-template-columns:1fr; }
-  }
+.pp-card:hover { transform: translateY(-2px); box-shadow: 0 4px 24px #19c0ff2c; }
+
+/* Шапка: иконка + заголовок */
+.pp-header {
+  display: grid;
+  grid-template-columns: 32px 1fr;
+  gap: 10px;
+  align-items: center;
+  min-width: 0;
 }
-@media (max-width:780px){ .pet-content{ grid-template-columns:1fr; } }
-
-.pet-media{
-  border-radius:14px; overflow:hidden; background:#1c1e22;
-  box-shadow:inset 0 0 0 1px #2a2d31; min-height:220px;
-  display:grid; place-items:center;
+.pp-icon { width: 32px; height: 32px; display: block; }
+.pp-title {
+  margin: 0;
+  font-size: 1.15rem;
+  color: #fff;
+  letter-spacing: .01em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
-.pet-media-img{ width:100%; height:100%; object-fit:contain; display:block; }
 
-.pet-side{ display:flex; flex-direction:column; min-height:220px; gap:10px; }
-.pet-text{ display:grid; gap:8px; }
-.pet-desc{ color:#cdd3db; opacity:.92; font-size:.98rem; line-height:1.35; }
+/* Тело: слева картинка, справа текст */
+.pp-body {
+  display: grid;
+  grid-template-columns: minmax(180px, 1fr) minmax(200px, 1.2fr); /* 180+200=380 минималка под колонку */
+  gap: 16px;
+  align-items: start;
+  min-width: 0;
+}
+@container (max-width: 560px) {
+  /* когда сама карточка узкая — складываем в одну колонку */
+  .pp-body { grid-template-columns: 1fr; }
+}
 
-.pet-side-bottom{ margin-top:auto; display:grid; gap:8px; align-content:end; }
-.pet-kind{ color:#cbd2db; font-size:.9rem; opacity:.95; }
+/* Медиа слева */
+.pp-media {
+  background: #1c1e22;
+  box-shadow: inset 0 0 0 1px #2a2d31;
+  border-radius: 14px;
+  min-height: 180px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+.pp-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;   /* без обрезки */
+  display: block;
+}
 
-.pet-links{ display:flex; gap:10px; align-items:center; }
-.pet-link-icon img{ height:32px; width:auto; display:block; }
+/* Текст справа */
+.pp-text {
+  display: grid;
+  gap: 8px;
+  min-width: 0;
+}
+.pp-subtitle { color: #e2e5e7; opacity: .93; font-size: 1.02rem; }
+.pp-desc     { color: #cdd3db; opacity: .92; font-size: .98rem; line-height: 1.35; }
 
-/* Клика */
-.pet-card-link{ text-decoration:none; color:inherit; display:block; }
-.pet-card-link:hover .pet-title,.pet-card-link:focus-visible .pet-title{ color:var(--orange); transition:color 2s cubic-bezier(.19,1,.22,1); }
+/* Низ карточки, «приклеен» снизу самой карточки */
+.pp-footer {
+  display: grid;
+  gap: 8px;        /* сначала тип, ниже — логотип стора/figma */
+  align-content: end;
+}
+.pp-kind  { color: #cbd2db; font-size: .9rem; opacity: .95; }
+
+.pp-links { display: flex; gap: 10px; align-items: center; }
+.pp-links img { height: 32px; width: auto; display: block; }
+
+/* Фокус/ховер: оранжевый как в меню */
+.pp-item:hover .pp-title,
+.pp-item:focus-visible .pp-title { color: #ff9900; transition: color 2s cubic-bezier(.19,1,.22,1); }
+.pp-item:focus-visible { outline: 2px solid #ff9900; outline-offset: 4px; border-radius: 18px; }
