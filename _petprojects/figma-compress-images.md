@@ -19,12 +19,12 @@ figma: https://www.figma.com/community/plugin/xxxxxxxx
 
 # Галерея изображений (первая используется в левой колонке плитки)
 gallery:
-  - file: scr1.jpg
+  - file: scr1.png
     caption: "Main screen with quick presets and live size preview."
     thumb: true
-  - file: scr2.jpg
+  - file: scr2.png
     caption: "Compression results and export history."
-  - file: scr3.jpg
+  - file: scr3.png
     caption: "Custom quality profile editor."
 #stores:
 #  play: https://play.google.com/store/apps/details?id=your.app
