@@ -30,30 +30,28 @@ permalink: /pet-projects/
       {% endif %}
     {% endif %}
 
-    <a class="pp-item"
-       href="javascript:void(0)"
-       onclick="openPetGallery({{ pet_index }}, 0)">
-      <article class="pp-card">
-        <!-- Шапка -->
-        <header class="pp-header">
-          <img class="pp-icon" src="{{ site.baseurl }}{{ p.icon }}" alt="">
-          <h3 class="pp-title">{{ p.title }}</h3>
-        </header>
+    <a class="pp-item" href="javascript:void(0)" onclick="openPetGallery({{ pet_index }}, 0)">
+  <article class="pp-card">
+    <!-- Шапка -->
+    <header class="pp-header">
+      <img class="pp-icon" src="{{ site.baseurl }}{{ p.icon }}" alt="">
+      <h3 class="pp-title">{{ p.title }}</h3>
+    </header>
 
-        <!-- Тело: слева медиа, справа текст -->
-        <div class="pp-body">
-          <div class="pp-media">
-            {% if thumb_src %}
-              <img src="{{ site.baseurl }}{{ thumb_src }}" alt="">
-            {% endif %}
-          </div>
-          <div class="pp-text">
-            {% if p.subtitle %}<div class="pp-subtitle">{{ p.subtitle }}</div>{% endif %}
-            {% if p.desc %}<div class="pp-desc">{{ p.desc }}</div>{% endif %}
-          </div>
+    <!-- Тело: слева медиа, справа текст + футер, приклеенный к низу -->
+    <div class="pp-body">
+      <div class="pp-media">
+        {% if thumb_src %}
+          <img src="{{ site.baseurl }}{{ thumb_src }}" alt="">
+        {% endif %}
+      </div>
+
+      <div class="pp-side">
+        <div class="pp-text">
+          {% if p.subtitle %}<div class="pp-subtitle">{{ p.subtitle }}</div>{% endif %}
+          {% if p.desc %}<div class="pp-desc">{{ p.desc }}</div>{% endif %}
         </div>
 
-        <!-- Низ: тип + логотип стора/figma -->
         <div class="pp-footer">
           {% if p.kind %}<div class="pp-kind">{{ p.kind }}</div>{% endif %}
           <div class="pp-links">
@@ -68,8 +66,10 @@ permalink: /pet-projects/
             {% endif %}
           </div>
         </div>
-      </article>
-    </a>
+      </div>
+    </div>
+  </article>
+</a>
   {% endfor %}
 </div>
 <!-- используем общий lightbox из default.html -->

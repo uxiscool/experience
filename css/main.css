@@ -260,21 +260,20 @@ body.page-contact>main{ flex:1 0 auto; }
 /* ===== Pet projects v2 (from scratch) ===== */
 
 /* Раздел (можно оставить твой .pet-meta как есть — сетка отдельно) */
+/* Сетка плашек: 1 колонка до 1342px, затем ровно 2 */
 .pp-grid {
-  /* учёт боковых паддингов 280px на десктопе */
   padding: 0 280px 32px;
   display: grid;
   gap: 22px;
-  /* после 980px: одна широкая карта растёт; как только влезают N×380px (+gap), появляется ещё одна */
   grid-template-columns: 1fr;
-  width: 100%;
   justify-content: center;
 }
 @media (max-width: 979px) {
-  .pp-grid { padding: 0 64px 24px; grid-template-columns: 1fr; }
+  .pp-grid { padding: 0 64px 24px; }
 }
-@media (min-width: 981px) {
-  .pp-grid { grid-template-columns: repeat(auto-fill, minmax(380px, 1fr)); }
+/* 1342px = 560 паддингов + 2×380 + 22 gap */
+@media (min-width: 1342px) {
+  .pp-grid { grid-template-columns: repeat(2, minmax(380px, 1fr)); }
 }
 
 /* Кликабельный элемент сетки — вся карточка */
@@ -289,9 +288,8 @@ body.page-contact>main{ flex:1 0 auto; }
 
 /* Карточка: шапка / тело / низ */
 .pp-card {
-  position: relative;
   display: grid;
-  grid-template-rows: auto 1fr auto; /* header / body / footer */
+  grid-template-rows: auto 1fr;
   gap: 12px;
   background: #232429;
   border-radius: 18px;
@@ -299,7 +297,6 @@ body.page-contact>main{ flex:1 0 auto; }
   padding: 16px;
   min-height: 220px;
   transition: transform .18s ease, box-shadow .18s ease;
-  /* для контейнерных запросов и корректного расчёта min-content */
   min-width: 0;
   container-type: inline-size;
 }
@@ -324,20 +321,16 @@ body.page-contact>main{ flex:1 0 auto; }
   text-overflow: ellipsis;
 }
 
-/* Тело: слева картинка, справа текст */
+/* Тело: слева медиа, справа — колонка с текстом и «приклеенным» футером */
 .pp-body {
   display: grid;
-  grid-template-columns: minmax(180px, 1fr) minmax(200px, 1.2fr); /* 180+200=380 минималка под колонку */
+  grid-template-columns: minmax(180px, 1fr) minmax(200px, 1.2fr); /* 180+200=380 */
   gap: 16px;
   align-items: start;
   min-width: 0;
 }
-@container (max-width: 560px) {
-  /* когда сама карточка узкая — складываем в одну колонку */
-  .pp-body { grid-template-columns: 1fr; }
-}
+@container (max-width: 560px) { .pp-body { grid-template-columns: 1fr; } }
 
-/* Медиа слева */
 .pp-media {
   background: #1c1e22;
   box-shadow: inset 0 0 0 1px #2a2d31;
@@ -347,12 +340,7 @@ body.page-contact>main{ flex:1 0 auto; }
   place-items: center;
   overflow: hidden;
 }
-.pp-media img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;   /* без обрезки */
-  display: block;
-}
+.pp-media img { width: 100%; height: 100%; object-fit: contain; display: block; }
 
 /* Текст справа */
 .pp-text {
@@ -360,17 +348,28 @@ body.page-contact>main{ flex:1 0 auto; }
   gap: 8px;
   min-width: 0;
 }
+
+/* ПРАВАЯ колонка: текст сверху, футер приклеен к низу */
+.pp-side {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 180px;
+}
+
+.pp-text { display: grid; gap: 8px; min-width: 0; }
 .pp-subtitle { color: #e2e5e7; opacity: .93; font-size: 1.02rem; }
 .pp-desc     { color: #cdd3db; opacity: .92; font-size: .98rem; line-height: 1.35; }
 
-/* Низ карточки, «приклеен» снизу самой карточки */
+/* Футер справа, у нижнего края правой колонки */
 .pp-footer {
+  margin-top: auto;         /* прижать вниз в правой колонке */
   display: grid;
-  gap: 8px;        /* сначала тип, ниже — логотип стора/figma */
+  gap: 8px;
   align-content: end;
 }
-.pp-kind  { color: #cbd2db; font-size: .9rem; opacity: .95; }
 
+.pp-kind  { color: #cbd2db; font-size: .9rem; opacity: .95; }
 .pp-links { display: flex; gap: 10px; align-items: center; }
 .pp-links img { height: 32px; width: auto; display: block; }
 
