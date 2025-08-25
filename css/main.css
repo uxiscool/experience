@@ -418,6 +418,7 @@ body.page-contact>main{ flex:1 0 auto; }
   .pp-card {
     max-height: 545px;
     overflow: hidden; /* на всякий — чтобы ничего не «выпирало» */
+    margin-left: 0;
   }
 
   /* ключ: фиксируем высоту медиа-контейнера
