@@ -377,3 +377,14 @@ body.page-contact>main{ flex:1 0 auto; }
 .pp-item:hover .pp-title,
 .pp-item:focus-visible .pp-title { color: #ff9900; transition: color 2s cubic-bezier(.19,1,.22,1); }
 .pp-item:focus-visible { outline: 2px solid #ff9900; outline-offset: 4px; border-radius: 18px; }
+
+/* === Lock two columns inside card from 1152px and up === */
+@media (min-width: 1152px) {
+  /* форсим две колонки внутри карточки, перекрывая контейнерный @container */
+  .pp-body {
+    grid-template-columns: minmax(180px, 1fr) minmax(200px, 1.2fr) !important;
+  }
+  /* страховки от переполнения контентом */
+  .pp-side,
+  .pp-text { min-width: 0; overflow-wrap: anywhere; }
+}
