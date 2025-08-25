@@ -271,9 +271,10 @@ body.page-contact>main{ flex:1 0 auto; }
 @media (max-width: 979px) {
   .pp-grid { padding: 0 64px 24px; }
 }
-/* 1342px = 560 паддингов + 2×380 + 22 gap */
-@media (min-width: 1342px) {
-  .pp-grid { grid-template-columns: repeat(2, minmax(380px, 1fr)); }
+
+/* 1902px = 560 паддингов + 2×660 + 22 gap */
+@media (min-width: 1902px) {
+  .pp-grid { grid-template-columns: repeat(2, minmax(660px, 1fr)); }
 }
 
 /* Кликабельный элемент сетки — вся карточка */
