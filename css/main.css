@@ -402,4 +402,11 @@ body.page-contact>main{ flex:1 0 auto; }
   /* страховки от переполнения контентом */
   .pp-side,
   .pp-text { min-width: 0; overflow-wrap: anywhere; }
+    .pp-card {
+    max-height: 545px;
+  }
+  .pp-media {
+    max-height: 340px; /* картинка внутри тоже не растягивается бесконечно */
+  }
 }
+
