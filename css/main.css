@@ -402,11 +402,33 @@ body.page-contact>main{ flex:1 0 auto; }
   /* страховки от переполнения контентом */
   .pp-side,
   .pp-text { min-width: 0; overflow-wrap: anywhere; }
-    .pp-card {
-    max-height: 545px;
+  .pp-body {
+    grid-template-columns: minmax(180px, 1fr) minmax(200px, 1.2fr) !important;
+    align-items: stretch; /* чтобы левая колонка растягивалась по высоте ряда */
   }
+  .pp-side,
+  .pp-text { min-width: 0; overflow-wrap: anywhere; }
+
+  /* ограничиваем рост карточки */
+  .pp-card {
+    max-height: 545px;
+    overflow: hidden; /* на всякий — чтобы ничего не «выпирало» */
+  }
+
+  /* ключ: фиксируем высоту медиа-контейнера
+     растёт до 340px и дальше останавливается */
   .pp-media {
-    max-height: 340px; /* картинка внутри тоже не растягивается бесконечно */
+    height: clamp(220px, 28vw, 340px); /* definite height */
+    max-height: 340px;
+  }
+
+  /* картинка больше не растёт после 340px высоты:
+     вписывается целиком в доступную высоту, без обрезки */
+  .pp-media img {
+    height: 100%;
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
   }
 }
 
