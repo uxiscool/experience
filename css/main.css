@@ -292,13 +292,13 @@ body.page-contact>main{ flex:1 0 auto; }
 }
 
 /* Кликабельный элемент сетки — вся карточка */
-.pp-item {
-  display: block;
-  text-decoration: none;
-  color: inherit;
-  /* чтобы кликабельная область строго равнялась карточке */
-  width: 100%;
-  height: 100%;
+.pp-item{
+  display:block;
+  text-decoration:none;
+  color:inherit;
+  width:auto;
+  height:auto;
+  justify-self:start;
 }
 
 /* Карточка: шапка / тело / низ */
@@ -317,6 +317,7 @@ body.page-contact>main{ flex:1 0 auto; }
   max-width: 920px;     /* ← добавлено ограничение ширины */
   margin-left: auto;    /* центрируем */
   margin-right: auto;   /* центрируем */
+  margin:0; 
 }
 .pp-card:hover { transform: translateY(-2px); box-shadow: 0 4px 24px #19c0ff2c; }
 
@@ -400,41 +401,28 @@ body.page-contact>main{ flex:1 0 auto; }
 
 /* === Lock two columns inside card from 1152px and up === */
 @media (min-width: 1152px) {
-  /* форсим две колонки внутри карточки, перекрывая контейнерный @container */
   .pp-body {
     grid-template-columns: minmax(180px, 1fr) minmax(200px, 1.2fr) !important;
-  }
-  /* страховки от переполнения контентом */
-  .pp-side,
-  .pp-text { min-width: 0; overflow-wrap: anywhere; }
-  .pp-body {
-    grid-template-columns: minmax(180px, 1fr) minmax(200px, 1.2fr) !important;
-    align-items: stretch; /* чтобы левая колонка растягивалась по высоте ряда */
+    align-items: stretch;
   }
   .pp-side,
   .pp-text { min-width: 0; overflow-wrap: anywhere; }
 
-  /* ограничиваем рост карточки */
   .pp-card {
     max-height: 545px;
-    overflow: hidden; /* на всякий — чтобы ничего не «выпирало» */
-    margin-left: 0;
+    overflow: hidden;
   }
-
-  /* ключ: фиксируем высоту медиа-контейнера
-     растёт до 340px и дальше останавливается */
   .pp-media {
-    height: clamp(220px, 28vw, 340px); /* definite height */
+    height: clamp(220px, 28vw, 340px);
     max-height: 340px;
+    overflow: hidden;
   }
-
-  /* картинка больше не растёт после 340px высоты:
-     вписывается целиком в доступную высоту, без обрезки */
   .pp-media img {
     height: 100%;
     width: auto;
     max-width: 100%;
     object-fit: contain;
+    display: block;
   }
 }
 
