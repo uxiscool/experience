@@ -1004,7 +1004,7 @@ html[data-theme="dark"] .laurel-badge {
 .pp-grid {
   padding: 0 var(--container-padding-desktop) 32px;
   display: grid;
-  gap: 22px;
+  gap: 24px;
   grid-template-columns: 1fr;
   justify-content: start;
 }
@@ -1259,5 +1259,34 @@ html[data-theme="dark"] .laurel-badge {
     opacity: 1 !important;
     transform: none !important;
     filter: none !important;
+  }
+}
+
+/* === Pet projects: ≥1152px — 2 колонки, 660→920, gap 24, динамический правый паддинг === */
+@media (min-width: 1152px) {
+  .pp-grid {
+    /* максимум две колонки; каждая от 660 до 920 */
+    grid-template-columns: repeat(2, minmax(660px, 920px));
+    gap: 24px;
+
+    /* левый паддинг фикс 280, правый — “подстраивается”:
+       как только помещаются 2×660 + gap, начинаем возвращать правый паддинг до 280 */
+    padding-left: 280px;
+    padding-right: clamp(
+      40px,
+      calc(100vw - (280px + 24px + 2 * 660px)),
+      280px
+    );
+    justify-content: start; /* выравниваем влево */
+  }
+
+  /* сами айтемы тянутся по ширине трека; лимит 920 уже задан треком */
+  .pp-item { width: 100%; justify-self: start; }
+
+  /* пустышка — некликабельная и невидимая, но занимает место как карточка */
+  .pp-filler {
+    visibility: hidden;
+    pointer-events: none;
+    min-height: 220px;       /* чтобы высота строки была корректной */
   }
 }
