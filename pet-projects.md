@@ -66,11 +66,11 @@ permalink: /pet-projects/
       </article>
     </a>
   {% endfor %}
-  {%- assign total = items | size -%}
-  {%- if total | modulo: 2 == 1 -%}
-    <!-- Пустая плашка-заполнитель для выравнивания второй колонки последней строки -->
-    <div class="pp-filler" aria-hidden="true"></div>
-  {%- endif -%}
+{%- assign total = items | size -%}
+{%- if total | modulo: 2 == 1 -%}
+  <!-- Пустая плашка-заполнитель для выравнивания второй колонки последней строки -->
+  <div class="pp-filler" aria-hidden="true"></div>
+{%- endif -%}
 </div>
 <!-- используем общий lightbox из default.html -->
 <div id="lightbox" class="lightbox" style="display:none;">
