@@ -280,7 +280,7 @@ body.page-contact>main{ flex:1 0 auto; }
   display: grid;
   gap: 22px;
   grid-template-columns: 1fr;
-  justify-content: center;
+  justify-content: start;
 }
 @media (max-width: 979px) {
   .pp-grid { padding: 0 64px 24px; }
@@ -296,9 +296,10 @@ body.page-contact>main{ flex:1 0 auto; }
   display: block;
   text-decoration: none;
   color: inherit;
-  /* чтобы кликабельная область строго равнялась карточке */
-  width: 100%;
-  height: 100%;
+  width: auto;                /* ← не заполняем весь трек */
+  max-width: 920px;           /* ← твой лимит */
+  justify-self: start;        /* ← при треке шире 920 — прилипает влево */
+  height: auto;
 }
 
 /* Карточка: шапка / тело / низ */
@@ -314,6 +315,9 @@ body.page-contact>main{ flex:1 0 auto; }
   transition: transform .18s ease, box-shadow .18s ease;
   min-width: 0;
   container-type: inline-size;
+  max-width: 920px;     /* ← добавлено ограничение ширины */
+  margin-left: auto;    /* центрируем */
+  margin-right: auto;   /* центрируем */
 }
 .pp-card:hover { transform: translateY(-2px); box-shadow: 0 4px 24px #19c0ff2c; }
 
