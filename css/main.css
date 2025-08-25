@@ -1266,6 +1266,8 @@ html[data-theme="dark"] .laurel-badge {
 @media (min-width: 1152px) {
   .pp-grid {
     /* максимум две колонки; каждая от 660 до 920 */
+    grid-template-columns: repeat(2, minmax(660px, 920px));
+    gap: 24px;
 
     /* левый паддинг фикс 280, правый — “подстраивается”:
        как только помещаются 2×660 + gap, начинаем возвращать правый паддинг до 280 */
@@ -1289,7 +1291,4 @@ html[data-theme="dark"] .laurel-badge {
   }
 }
 
-@media (min-width: 1546px) {
-  .pp-grid { grid-template-columns: repeat(2, minmax(660px, 920px));
-    gap: 24px; }
-}
+
