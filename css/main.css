@@ -1194,4 +1194,38 @@ html[data-theme="dark"] .laurel-badge {
   border-radius: 18px;
 }
 
+/* === Fix: поведение карточек и медиа ≥1152px (две внутренние колонки, без подрезов) === */
+@media (min-width: 1152px) {
+  /* внутри карточки всегда две колонки (лево/право) */
+  .pp-body {
+    grid-template-columns: minmax(180px, 1fr) minmax(200px, 1.2fr) !important;
+    align-items: stretch;
+  }
+  .pp-side, .pp-text { min-width: 0; overflow-wrap: anywhere; }
+
+  /* ограничение высоты карточки + страховка от переполнений */
+  .pp-card {
+    max-height: 545px;
+    overflow: hidden;
+  }
+
+  /* медиа растёт плавно, но стопорится; картинка вписывается */
+  .pp-media {
+    height: clamp(220px, 28vw, 340px);
+    max-height: 340px;
+    overflow: hidden;
+  }
+  .pp-media img {
+    height: 100%;
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
+    display: block;
+  }
+}
+
+/* === Приводим gap к 24px сразу после 1151, чтобы не прыгал === */
+@media (min-width: 1152px) and (max-width: 1663px) {
+  .pp-grid { gap: 24px; }
+}
 
