@@ -329,8 +329,17 @@ body.page-contact>main{ flex:1 0 auto; }
   align-items:start;
   min-width:0;
 }
-/* На узкой карточке — одна колонка (контейнер-квери оставляем) */
-@container (max-width:560px){ .pp-body{ grid-template-columns:1fr; } }
+/* Узкая карточка — ТЕПЕРЬ только ОЧЕНЬ узкая: стэк в 1 колонку */
+@container (max-width:360px){
+  .pp-body{ grid-template-columns:1fr; }
+}
+
+@container (min-width:361px) and (max-width:640px){
+  .pp-body{
+    grid-template-columns:minmax(160px,1fr) minmax(180px,1.25fr);
+    gap:12px;
+  }
+}
 
 .pp-media{ min-height:180px; overflow:hidden; }
 .pp-media img{
@@ -341,7 +350,7 @@ body.page-contact>main{ flex:1 0 auto; }
   margin:0 auto;
 }
 
-.pp-side{ display:flex; flex-direction:column; min-width:320px; min-height:180px; }
+.pp-side{ display:flex; flex-direction:column;  min-width:260px; min-height:180px; }
 .pp-text{ display:grid; gap:8px; min-width:0; }
 .pp-subtitle{ color:#e2e5e7; opacity:.93; font-size:1.02rem; }
 .pp-desc{ color:#cdd3db; opacity:.92; font-size:.98rem; line-height:1.35; }
