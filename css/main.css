@@ -327,8 +327,8 @@ body.page-contact>main{ flex:1 0 auto; }
   align-items:start;
   min-width:0;
 }
-/* Узкая карточка ≤360px — одна колонка */
-@container (max-width:360px){
+/* Узкая карточка ≤520px — одна колонка */
+@container (max-width:520px){
   .pp-body{ grid-template-columns:1fr; }
 }
 /* Узкий ноутбук — две колонки, но без жёстких минимумов */
