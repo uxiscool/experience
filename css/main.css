@@ -362,7 +362,7 @@ body.page-contact>main{ flex:1 0 auto; }
   min-width:0;
   min-height:180px;
   align-self:stretch;
-  row-gap: 16px;
+  row-gap: 24px;
 }
 
 /* Блок с текстом: держим всё у верхнего края */
