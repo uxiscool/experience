@@ -114,18 +114,6 @@ header{ display:flex; align-items:flex-start; gap:36px; margin-top:36px; }
 .case-gallery{ display:grid; gap:22px; grid-template-columns:repeat(2,minmax(0,1fr)); }
 @media (max-width:979px){ .case-gallery{ grid-template-columns:1fr; } }
 
-/* 980–1151: уменьшаем только правый паддинг сетки так,
-   чтобы ширина плашки была ≥660px */
-@media (min-width: 980px) and (max-width: 1151px) {
-  .pp-grid {
-    padding-left: 280px;
-    padding-right: clamp(40px, calc(100vw - 940px), 211px);
-  }
-  .pp-body {
-    grid-template-columns: minmax(180px, 1fr) minmax(200px, 1.2fr) !important;
-  }
-}
-
 
 @media (min-width:1290px){ .case-gallery{ grid-template-columns:repeat(auto-fit,minmax(350px,1fr)); } }
 .case-gallery-item{
@@ -266,162 +254,112 @@ body.page-contact>main{ flex:1 0 auto; }
 
 /* ===== Pet projects ===== */
 
-/* Описание раздела */
+/* Короткое описание раздела */
 .pet-meta{ padding:48px 280px; margin:0 0 28px; }
 @media (max-width:980px){ .pet-meta{ padding:0 64px; } }
 .pet-meta .case-summary2{ margin:0; }
 
-/* ===== Pet projects v2 (from scratch) ===== */
+/* ===== Pet projects — упрощённая сетка ===== */
 
-/* Раздел (можно оставить твой .pet-meta как есть — сетка отдельно) */
-/* Сетка плашек: 1 колонка до 1342px, затем ровно 2 */
+/* База: одна колонка, привычные боковые отступы */
 .pp-grid {
   padding: 0 280px 32px;
   display: grid;
-  gap: 22px;
   grid-template-columns: 1fr;
-  justify-content: start;
+  gap: 22px;
 }
-@media (max-width: 979px) {
+@media (max-width:980px){
   .pp-grid { padding: 0 64px 24px; }
 }
 
-/* 1902px = 560 паддингов + 2×660 + 22 gap */
-@media (min-width: 1902px) {
+/* Десктоп >= 980px: ровно 2 колонки, каждая не уже 660px */
+@media (min-width:980px){
   .pp-grid { grid-template-columns: repeat(2, minmax(660px, 1fr)); }
 }
 
-/* Кликабельный элемент сетки — вся карточка */
+/* Кликабельность карточки */
 .pp-item{
   display:block;
   text-decoration:none;
   color:inherit;
-  width:auto;
-  height:auto;
 }
 
-/* Карточка: шапка / тело / низ */
+/* Карточка */
 .pp-card {
-  display: grid;
-  grid-template-rows: auto 1fr;
-  gap: 12px;
-  background: #232429;
-  border-radius: 18px;
-  box-shadow: 0 2px 14px #181a1c29;
-  padding: 16px;
-  min-height: 220px;
-  transition: transform .18s ease, box-shadow .18s ease;
-  min-width: 0;
-  container-type: inline-size;
-  max-width: 920px;     /* ← добавлено ограничение ширины */
-  margin-left: auto;    /* центрируем */
-  margin-right: auto;   /* центрируем */
-  margin:0; 
-}
-.pp-card:hover { transform: translateY(-2px); box-shadow: 0 4px 24px #19c0ff2c; }
-
-/* Шапка: иконка + заголовок */
-.pp-header {
-  display: grid;
-  grid-template-columns: 32px 1fr;
-  gap: 10px;
-  align-items: center;
-  min-width: 0;
-  margin-top: 0;
-}
-.pp-icon { width: 32px; height: 32px; display: block; }
-.pp-title {
-  margin: 0;
-  font-size: 1.15rem;
-  color: #fff;
-  letter-spacing: .01em;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  display:grid;
+  grid-template-rows:auto 1fr;
+  gap:12px;
+  background:#232429;
+  border-radius:18px;
+  box-shadow:0 2px 14px #181a1c29;
+  padding:16px;
+  min-height:220px;
+  min-width:0;
+  container-type:inline-size;
+  max-width:920px;
+  margin-left:auto;
+  margin-right:auto;
 }
 
-/* Тело: слева медиа, справа — колонка с текстом и «приклеенным» футером */
-.pp-body {
-  display: grid;
-  grid-template-columns: minmax(180px, 1fr) minmax(200px, 1.2fr); /* 180+200=380 */
-  gap: 16px;
-  align-items: start;
-  min-width: 0;
+/* Шапка */
+.pp-header{
+  display:grid;
+  grid-template-columns:32px 1fr;
+  gap:10px;
+  align-items:center;
+  min-width:0;
+  margin-top:0;
 }
-@container (max-width: 560px) { .pp-body { grid-template-columns: 1fr; } }
-
-.pp-media {
-  min-height: 180px;
-  overflow: hidden;
-}
-.pp-media img {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
-  display: block;
-  margin: 0 auto; /* центрируем по горизонтали */
+.pp-icon{ width:32px; height:32px; display:block; }
+.pp-title{
+  margin:0;
+  font-size:1.15rem;
+  color:#fff;
+  letter-spacing:.01em;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
 }
 
-/* Текст справа */
-.pp-text {
-  display: grid;
-  gap: 8px;
-  min-width: 0;
+/* Тело */
+.pp-body{
+  display:grid;
+  grid-template-columns:minmax(180px,1fr) minmax(200px,1.2fr);
+  gap:16px;
+  align-items:start;
+  min-width:0;
+}
+/* На узкой карточке — одна колонка (контейнер-квери оставляем) */
+@container (max-width:560px){ .pp-body{ grid-template-columns:1fr; } }
+
+.pp-media{ min-height:180px; overflow:hidden; }
+.pp-media img{
+  max-width:100%;
+  max-height:100%;
+  object-fit:contain;
+  display:block;
+  margin:0 auto;
 }
 
-/* ПРАВАЯ колонка: текст сверху, футер приклеен к низу */
-.pp-side {
-  display: flex;
-  flex-direction: column;
-  min-width: 0;
-  min-height: 180px;
+.pp-side{ display:flex; flex-direction:column; min-width:0; min-height:180px; }
+.pp-text{ display:grid; gap:8px; min-width:0; }
+.pp-subtitle{ color:#e2e5e7; opacity:.93; font-size:1.02rem; }
+.pp-desc{ color:#cdd3db; opacity:.92; font-size:.98rem; line-height:1.35; }
+
+/* Футер (приклеен вниз правой колонки) */
+.pp-footer{ margin-top:auto; display:grid; gap:8px; align-content:end; }
+.pp-kind{ color:#cbd2db; font-size:.9rem; opacity:.95; }
+.pp-links{ display:flex; gap:10px; align-items:center; }
+.pp-links img{ height:32px; width:auto; display:block; }
+
+/* Доступность — фокус оставляем, hover убран */
+.pp-item:focus-visible{
+  outline:2px solid #ff9900;
+  outline-offset:4px;
+  border-radius:18px;
 }
-
-.pp-text { display: grid; gap: 8px; min-width: 0; }
-.pp-subtitle { color: #e2e5e7; opacity: .93; font-size: 1.02rem; }
-.pp-desc     { color: #cdd3db; opacity: .92; font-size: .98rem; line-height: 1.35; }
-
-/* Футер справа, у нижнего края правой колонки */
-.pp-footer {
-  margin-top: auto;         /* прижать вниз в правой колонке */
-  display: grid;
-  gap: 8px;
-  align-content: end;
-}
-
-.pp-kind  { color: #cbd2db; font-size: .9rem; opacity: .95; }
-.pp-links { display: flex; gap: 10px; align-items: center; }
-.pp-links img { height: 32px; width: auto; display: block; }
-
-/* Фокус/ховер: оранжевый как в меню */
-.pp-item:hover .pp-title,
-.pp-item:focus-visible .pp-title { color: #ff9900; transition: color 2s cubic-bezier(.19,1,.22,1); }
-.pp-item:focus-visible { outline: 2px solid #ff9900; outline-offset: 4px; border-radius: 18px; }
-
-/* === Lock two columns inside card from 1152px and up === */
-@media (min-width: 1152px) {
-  .pp-body {
-    grid-template-columns: minmax(180px, 1fr) minmax(200px, 1.2fr) !important;
-    align-items: stretch;
-  }
-  .pp-side,
-  .pp-text { min-width: 0; overflow-wrap: anywhere; }
-
-  .pp-card {
-    max-height: 545px;
-    overflow: hidden;
-  }
-  .pp-media {
-    height: clamp(220px, 28vw, 340px);
-    max-height: 340px;
-    overflow: hidden;
-  }
-  .pp-media img {
-    height: 100%;
-    width: auto;
-    max-width: 100%;
-    object-fit: contain;
-    display: block;
-  }
+.pp-item:focus-visible .pp-title{
+  color:#ff9900;
+  transition:color 2s cubic-bezier(.19,1,.22,1);
 }
 
