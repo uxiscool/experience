@@ -265,17 +265,15 @@ body.page-contact>main{ flex:1 0 auto; }
 .pp-grid {
   padding: 0 280px 32px;
   display: grid;
-  grid-template-columns: 1fr;
   gap: 22px;
+  /* Автоколонки: 1 колонка, пока не помещаются 2×660px (+ gap); на мобилках не даём горизонтальный скролл */
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 660px), 1fr));
 }
 @media (max-width:980px){
   .pp-grid { padding: 0 64px 24px; }
 }
 
-/* Десктоп >= 980px: ровно 2 колонки, каждая не уже 660px */
-@media (min-width:980px){
-  .pp-grid { grid-template-columns: repeat(2, minmax(660px, 1fr)); }
-}
+
 
 /* Кликабельность карточки */
 .pp-item{
