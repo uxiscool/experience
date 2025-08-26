@@ -1290,5 +1290,26 @@ html[data-theme="dark"] .laurel-badge {
     min-height: 220px;       /* чтобы высота строки была корректной */
   }
 }
+/* ≥1152px: 2 реальные колонки (660→920) + 3-я гибкая под «пустышку» */
+@media (min-width: 1152px) {
+  .pp-grid {
+    grid-template-columns: repeat(2, minmax(660px, 920px)) 1fr;
+    gap: 24px;
+    padding-left: 280px;
+    padding-right: clamp(40px, calc(100vw - (280px + 24px + 2 * 660px)), 280px);
+    justify-content: start;
+  }
+  /* раскладываем реальные плашки строго в первые две колонки */
+  .pp-item.col1 { grid-column: 1; }
+  .pp-item.col2 { grid-column: 2; }
+
+  /* «пустышка» всегда занимает 3-й трек (гибкий), одна на каждую строку */
+  .pp-filler {
+    grid-column: 3;
+    visibility: hidden;
+    pointer-events: none;
+    min-height: 220px;
+  }
+}
 
 
