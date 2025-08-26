@@ -376,7 +376,7 @@ body.page-contact>main{ flex:1 0 auto; }
   gap:6px;
   align-items:flex-end;
   align-self:end;     /* ← фикс: прижать к нижней границе .pp-side */
-  margin-top:24px;
+  margin-top:0px;
   margin-right: 18px;
   margin-bottom: 24px;
 }
