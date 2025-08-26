@@ -324,7 +324,7 @@ body.page-contact>main{ flex:1 0 auto; }
   display:grid;
   grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);
   gap:16px;
-  align-items:start;
+  align-items:stretch; 
   min-width:0;
 }
 /* Узкая карточка ≤520px — одна колонка */
