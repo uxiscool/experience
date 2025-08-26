@@ -298,7 +298,6 @@ body.page-contact>main{ flex:1 0 auto; }
   color:inherit;
   width:auto;
   height:auto;
-  justify-self:start;
 }
 
 /* Карточка: шапка / тело / низ */
