@@ -256,7 +256,7 @@ body.page-contact>main{ flex:1 0 auto; }
 
 /* Короткое описание раздела */
 .pet-meta{ 
-  padding:32px 280px 24px 280px; 
+  padding:48px 280px 32px 280px; 
 }
 
 @media (max-width:980px){ .pet-meta{ padding:0 64px; } }
