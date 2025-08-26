@@ -80,17 +80,19 @@ permalink: /pet-projects/
 
 <script>
   (function () {
-    // Создаём «пустышки» так, чтобы в каждой строке была третья колонка-заполнитель
     const grid = document.getElementById('pp-grid');
     if (!grid) return;
 
     function syncFillers() {
-      // Удаляем старые
+      // убрать старые
       grid.querySelectorAll('.pp-filler').forEach(el => el.remove());
 
-      // Считаем строки как ceil(число реальных / 2), т.к. реальные лежат только в col1/col2
+      // пустышки нужны только когда включён 3-й трек (≥1664px)
+      if (window.innerWidth < 1664) return;
+
+      // считаем строки как ceil(real/2), т.к. реальные лежат только в col1/col2
       const realItems = grid.querySelectorAll('.pp-item').length;
-      if (realItems === 0) return;
+      if (!realItems) return;
 
       const rows = Math.ceil(realItems / 2);
       for (let i = 0; i < rows; i++) {
@@ -101,7 +103,6 @@ permalink: /pet-projects/
       }
     }
 
-    // дебаунс ресайза, чтобы не дёргать лишний раз
     let t;
     function onResize() {
       clearTimeout(t);
