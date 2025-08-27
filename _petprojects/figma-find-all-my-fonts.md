@@ -1,7 +1,7 @@
 ---
 title: Find All My Fonts
-subtitle: A plugin that will show which fonts were used in the layout, find hidden texts and non-standard font sizes.
-desc: "For my own needs, I was looking for a plugin to display and manage font styles used in Figma layouts. Not finding a third-party solution, I made my own."
+subtitle: A&nbsp;plugin that will show which fonts were used in&nbsp;the&nbsp;layout, find hidden texts and&nbsp;non-standard font sizes.
+desc: "For my&nbsp;own needs, I&nbsp;was looking for&nbsp;a&nbsp;plugin to&nbsp;display and&nbsp;manage font styles used in&nbsp;Figma layouts. Not&nbsp;finding a&nbsp;third-party solution, I&nbsp;made my&nbsp;own."
 icon: /assets/pix/pet/fgm_fndfnts/icon.png
 kind: Plugin for Figma
 
