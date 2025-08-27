@@ -30,46 +30,52 @@ permalink: /pet-projects/
       {% endif %}
     {% endif %}
 
-    <a class="pp-item" href="javascript:void(0)" onclick="openPetGallery({{ pet_index }}, 0)">
   <article class="pp-card">
     <!-- Шапка -->
     <header class="pp-header">
       <img class="pp-icon" src="{{ site.baseurl }}{{ p.icon }}" alt="">
       <h3 class="pp-title">{{ p.title }}</h3>
     </header>
-
     <!-- Тело: слева медиа, справа текст + футер, приклеенный к низу -->
     <div class="pp-body">
-      <div class="pp-media">
-        {% if thumb_src %}
+    <div class="pp-media">
+      {% if thumb_src %}
+        <a class="pp-media-link"
+           href="javascript:void(0)"
+           onclick="openPetGallery({{ pet_index }}, 0)"
+           aria-label="Open gallery">
           <img src="{{ site.baseurl }}{{ thumb_src }}" alt="">
-        {% endif %}
+        </a>
+      {% endif %}
+    </div>
+    <div class="pp-side">
+      <div class="pp-text">
+        {% if p.subtitle %}<div class="pp-subtitle">{{ p.subtitle }}</div>{% endif %}
+        {% if p.desc %}<div class="pp-desc">{{ p.desc }}</div>{% endif %}
       </div>
-
-      <div class="pp-side">
-        <div class="pp-text">
-          {% if p.subtitle %}<div class="pp-subtitle">{{ p.subtitle }}</div>{% endif %}
-          {% if p.desc %}<div class="pp-desc">{{ p.desc }}</div>{% endif %}
-        </div>
-
-        <div class="pp-footer">
-          {% if p.kind %}<div class="pp-kind">{{ p.kind }}</div>{% endif %}
-          <div class="pp-links">
-            {% if p.figma %}
+      <div class="pp-footer">
+        {% if p.kind %}<div class="pp-kind">{{ p.kind }}</div>{% endif %}
+        <div class="pp-links">
+          {% if p.figma %}
+            <a class="pp-store" href="{{ p.figma }}" target="_blank" rel="noopener">
               <img src="{{ site.baseurl }}/ui/stores/figma.svg" alt="Figma">
-            {% endif %}
-            {% if p.stores and p.stores.play %}
+            </a>
+          {% endif %}
+          {% if p.stores and p.stores.play %}
+            <a class="pp-store" href="{{ p.stores.play }}" target="_blank" rel="noopener">
               <img src="{{ site.baseurl }}/ui/stores/googleplay.svg" alt="Google Play">
-            {% endif %}
-            {% if p.stores and p.stores.appstore %}
+            </a>
+          {% endif %}
+          {% if p.stores and p.stores.appstore %}
+            <a class="pp-store" href="{{ p.stores.appstore }}" target="_blank" rel="noopener">
               <img src="{{ site.baseurl }}/ui/stores/appstore.svg" alt="App Store">
-            {% endif %}
-          </div>
+            </a>
+          {% endif %}
         </div>
       </div>
     </div>
-  </article>
-</a>
+  </div>
+</article>
   {% endfor %}
 </div>
 <!-- используем общий lightbox из default.html -->
