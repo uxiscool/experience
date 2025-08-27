@@ -407,13 +407,29 @@ body.page-contact>main{ flex:1 0 auto; }
 }
 .pp-links img{ height:32px; width:auto; display:block; }
 
-/* Доступность */
-.pp-item:focus-visible{
+.pp-media-link{
+  display:block;
+  border-radius:12px;
+  text-decoration:none;
+  color:inherit;
+}
+.pp-media-link:focus-visible{
   outline:2px solid #ff9900;
   outline-offset:4px;
-  border-radius:18px;
+  border-radius:12px;
 }
-.pp-item:focus-visible .pp-title{
-  color:#ff9900;
-  transition:color 2s cubic-bezier(.19,1,.22,1);
+/* Ссылки сторов в футере */
+.pp-links a.pp-store{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:8px;
+  text-decoration:none;
 }
+.pp-links a.pp-store:focus-visible{
+  outline:2px solid #ff9900;
+  outline-offset:3px;
+  border-radius:8px;
+}
+/* (Опционально) убрать браузерный контур у картинок-иконок */
+.pp-links a.pp-store img{ display:block; height:32px; width:auto; }
