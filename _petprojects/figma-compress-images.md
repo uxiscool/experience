@@ -3,7 +3,7 @@ title: Image compressor
 subtitle: Batch‑compress PNG/JPG right from Figma
 desc: "Tiny side‑tool that compresses exported assets while keeping visual quality. Handy for UI mockups, banners and any heavy imagery."
 icon: /assets/pix/pet/fgm_compress/icon.svg
-kind: Плагин для Figma
+kind: Plugin for Figma
 
 # Базовый префикс для картинок галереи
 images_base: /assets/pix/pet/fgm_compress/
