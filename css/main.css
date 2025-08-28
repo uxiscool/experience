@@ -389,7 +389,7 @@ body.page-contact>main{ flex:1 0 auto; }
   text-indent: 20px;
 }
 
-.pp-subtitle{ color:#e2e5e7; opacity:.93; font: size 98rem; }
+.pp-subtitle{ color:#cdd3db; opacity:.92; font: size 98rem; }
 .pp-desc{ color:#cdd3db; opacity:.92; font-size:.98rem; line-height:1.35; }
 
 /* Футер — жёстко к правому нижнему углу */
