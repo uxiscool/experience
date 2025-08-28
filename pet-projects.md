@@ -91,5 +91,8 @@ permalink: /pet-projects/
       <img src="{{ site.baseurl }}/ui/lightbox_arrow_right.svg" width="36" height="36" alt="Next">
     </button>
     <div id="lightbox-caption" class="lightbox-caption"></div>
+    <div id="lightbox-thumbs" class="lightbox-thumbs-wrap" aria-label="Gallery thumbnails">
+  <div class="lightbox-thumbs" id="lightbox-thumbs-row"></div>
+</div>
   </div>
 </div>

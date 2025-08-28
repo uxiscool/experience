@@ -141,6 +141,90 @@
     if (e.key === 'ArrowLeft') lightboxPrev();
     if (e.key === 'ArrowRight') lightboxNext();
   });
+
+  function renderThumbs(){
+  const row = document.getElementById('lightbox-thumbs-row');
+  if (!row) return;
+  const imgs = getGallery(currentCaseIdx);
+  row.innerHTML = '';
+  imgs.forEach((it, i) => {
+    const t = document.createElement('img');
+    t.src = it.src; t.alt = it.caption || '';
+    t.className = 'lightbox-thumb' + (i === currentImgIdx ? ' is-active' : '');
+    t.tabIndex = 0;
+    t.addEventListener('click', () => { currentImgIdx = i; showCaseLightbox(); });
+    t.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { currentImgIdx = i; showCaseLightbox(); }});
+    row.appendChild(t);
+  });
+  requestAnimationFrame(updateThumbSizing);
+}
+
+function updateThumbActive(){
+  const nodes = document.querySelectorAll('.lightbox-thumb');
+  nodes.forEach((n, i) => n.classList.toggle('is-active', i === currentImgIdx));
+}
+
+/* Подгоняем размер миниатюр под ширину:
+   1) пытаемся уместить в одну строку, уменьшая размер до порога;
+   2) если не влезают даже на минимуме — включаем «двухрядный» режим. */
+function updateThumbSizing(){
+  const wrap = document.getElementById('lightbox-thumbs');
+  const row = document.getElementById('lightbox-thumbs-row');
+  if (!wrap || !row) return;
+
+  const n = row.children.length;
+  if (!n) return;
+
+  const wrapW = wrap.clientWidth;
+  const gap = 8;
+  const min = 48;
+  let size = Math.floor((wrapW - gap * (n - 1)) / n);
+  let twoRows = false;
+
+  if (size < min){
+    // пробуем в две строки
+    const perRow = Math.ceil(n / 2);
+    size = Math.floor((wrapW - gap * (perRow - 1)) / perRow);
+    size = Math.max(size, min);
+    twoRows = true;
+  }
+
+  row.style.setProperty('--lb-thumb-size', size + 'px');
+  row.style.setProperty('--lb-thumb-min', min + 'px');
+  row.style.flexWrap = twoRows ? 'wrap' : 'nowrap';
+}
+
+window.addEventListener('resize', updateThumbSizing);
+
+// Модифицируем отображение, чтобы вызывать рендер миниатюр
+const _showCaseLightbox = showCaseLightbox;
+showCaseLightbox = function(){
+  const imgs = getGallery(currentCaseIdx);
+  const data = imgs[currentImgIdx] || {};
+  // загрузка изображения будет на Шаге 3; пока — как было:
+  document.getElementById('lightbox-img').src = data.src || '';
+  document.getElementById('lightbox-caption').textContent = data.caption || '';
+  document.getElementById('lightbox').style.display = 'flex';
+  document.body.classList.add('lb-lock');
+  renderThumbs();
+  updateThumbActive();
+};
+
+// при листании — только подсветка миниатюры + обновление картинки
+const _lightboxPrev = lightboxPrev;
+lightboxPrev = function(){
+  const imgs = getGallery(currentCaseIdx);
+  const n = imgs.length || 1;
+  currentImgIdx = (currentImgIdx + n - 1) % n;
+  showCaseLightbox();
+};
+const _lightboxNext = lightboxNext;
+lightboxNext = function(){
+  const imgs = getGallery(currentCaseIdx);
+  const n = imgs.length || 1;
+  currentImgIdx = (currentImgIdx + 1) % n;
+  showCaseLightbox();
+};
 </script>
   </body>
 </html>

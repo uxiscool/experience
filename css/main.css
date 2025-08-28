@@ -168,6 +168,34 @@ header{ display:flex; align-items:flex-start; gap:36px; margin-top:36px; }
 @media (max-width:590px){ .lightbox-arrow img,.lightbox-close img{ width:18px; height:18px; } }
 .lightbox-caption{ margin-top:18px; color:#e7eaf0; font-size:1.12rem; text-align:center; max-width:82vw; min-height:28px; opacity:.90; }
 
+/* --- Lightbox thumbnails --- */
+.lightbox-thumbs-wrap{
+  width:100%;
+  max-width:92vw;
+  margin:12px 0 6px;
+  padding:8px 12px;
+  box-sizing:border-box;
+  display:flex;
+  justify-content:center;
+}
+.lightbox-thumbs{
+  --lb-thumb-size:72px;      /* целевой размер */
+  --lb-thumb-min:48px;       /* минимальный размер */
+  --lb-gap:8px;
+  display:flex; gap:var(--lb-gap); flex-wrap:nowrap;
+  align-items:center; justify-content:center;
+}
+.lightbox-thumb{
+  width:var(--lb-thumb-size); height:var(--lb-thumb-size);
+  min-width:var(--lb-thumb-min); min-height:var(--lb-thumb-min);
+  object-fit:cover; border-radius:8px; opacity:.45; filter:saturate(.9);
+  transition:opacity .18s, transform .18s;
+  cursor:pointer; user-select:none; display:block;
+}
+.lightbox-thumb.is-active{ opacity:1; outline:2px solid #ff9900; outline-offset:2px; }
+.lightbox-thumb:focus-visible{ outline:2px solid #ff9900; outline-offset:2px; }
+
+
 /* ---- Tools ---- */
 .tools-grid{ display:flex; flex-wrap:wrap; column-gap:35px; row-gap:24px; align-items:center; justify-content:flex-start; }
 .tool{
@@ -388,7 +416,7 @@ body.page-contact>main{ flex:1 0 auto; }
   padding-right: 32px;
 }
 
-.pp-subtitle{ color:#cdd3db; opacity:.92; font: size 98rem; text-indent: 20px;}
+.pp-subtitle{ color:#cdd3db; opacity:.92; font: size 98rem; }
 .pp-desc{ color:#cdd3db; opacity:.92; font-size:.98rem; line-height:1.35; }
 
 /* Футер — жёстко к правому нижнему углу */
