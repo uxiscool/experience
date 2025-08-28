@@ -189,43 +189,52 @@ function updateThumbActive(){
   nodes.forEach((n, i) => n.classList.toggle('is-active', i === currentImgIdx));
 }
 
- function updateThumbSizing(){
+function updateThumbSizing(){
   const wrap = document.getElementById('lightbox-thumbs');
   const row  = document.getElementById('lightbox-thumbs-row');
-  if (!wrap || !row) return;
+  const lb   = document.getElementById('lightbox');
+  if (!wrap || !row || !lb) return;
 
   const n = row.children.length;
   if (!n) return;
 
   const wrapW = wrap.clientWidth;
 
-  // Требования
-  const startSize = 50;  // px
-  const minSize   = 30;   // px
-  const gap       = 25;   // px
+  // Параметры
+  const startSize = 50;   // базовый размер миниатюры
+  const minSize   = 30;   // минимальный размер миниатюры
+  const gap       = 25;   // промежуток между миниатюрами
+  const padV      = 0 + 0; // вертикальный паддинг внутри wrap (мы его занулили в CSS)
 
-  // Пытаемся уместить в одну строку на стартовом размере
+  // 1 строка по умолчанию
   let size = startSize;
   let needWidth = n * size + (n - 1) * gap;
-
   let twoRows = false;
 
   if (needWidth > wrapW){
-    // Пробуем уменьшать до минимума
+    // Ужимаем до минимума
     size = Math.floor((wrapW - (n - 1) * gap) / n);
     if (size < minSize){
-      // Переходим в два ряда, делим примерно пополам
+      // В две строки
       twoRows = true;
       const perRow = Math.ceil(n / 2);
       size = Math.floor((wrapW - (perRow - 1) * gap) / perRow);
       size = Math.max(size, minSize);
     }
   }
-
+  // Применяем размеры к CSS-переменным
   row.style.setProperty('--lb-thumb-size', size + 'px');
   row.style.setProperty('--lb-thumb-min',  minSize + 'px');
   row.style.setProperty('--lb-gap',        gap + 'px');
   row.style.flexWrap = twoRows ? 'wrap' : 'nowrap';
+
+  // ВЫСОТА РЕЛЬСА для расчёта max-height картинки.
+  // Если две строки — учитываем 2 размера + один gap между рядами.
+  const rows = twoRows ? 2 : 1;
+  const railHeight = rows * size + (rows - 1) * gap + padV;
+
+  // Прокидываем в :root лайтбокса
+  lb.style.setProperty('--lb-thumbs-h', railHeight + 'px');
 }
 </script>
   </body>

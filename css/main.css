@@ -138,25 +138,36 @@ header{ display:flex; align-items:flex-start; gap:36px; margin-top:36px; }
 .case-thumb-caption{ font-size:.97rem; color:#bac0c9; text-align:center; margin-top:3px; opacity:.86; }
 
 /* ---- Lightbox ---- */
-.lightbox{ position:fixed; inset:0; z-index:9999; display:flex; align-items:center; justify-content:center; background:#16181ef0; animation:lightbox-fade-in .5s; }
+/* Лайтбокс-контейнер: задаём переменные и сетку */
+.lightbox{
+  position:fixed; inset:0; z-index:9999;
+  display:flex; align-items:center; justify-content:center;
+  background:#16181ef0; animation:lightbox-fade-in .5s;
+  /* Новые переменные для расчёта размеров */
+  --lb-top-pad: 35px;          /* отступ сверху */
+  --lb-bottom-pad: 35px;       /* отступ снизу */
+  --lb-caption-reserve: 60px;  /* запас под подпись */
+  --lb-thumbs-h: 120px;        /* высота блока миниатюр (JS обновит) */
+}
 @keyframes lightbox-fade-in{ from{opacity:0;} to{opacity:1;} }
 .lightbox-bg{ position:absolute; inset:0; background:transparent; z-index:0; }
 /* Лайтбокс — контейнер (ОБНОВЛЕНО) */
+/* Контент лайтбокса — 2 строки: 1) зона картинки (1fr), 2) caption (auto) */
 .lightbox-content{
   position:relative; z-index:2;
-  display:grid;                      /* вместо flex */
-  grid-template-rows: 1fr auto auto; /* 1) IMG зона, 2) caption, 3) thumbs */
+  display:grid;
+  grid-template-rows: 1fr auto;
   align-items:center;
   justify-items:center;
   max-width:98vw; width:100%;
-  height:100vh;                      /* занимать весь вьюпорт */
-  max-height:100dvh;                 /* учитывает mobile UI */
-  padding:24px 0 16px;               /* немного воздуха сверху/снизу */
+  height:100dvh;
+  padding-top: var(--lb-top-pad);
+  /* снизу паддинг не делаем — там миниатюры фиксированы */
 }
 /* Картинка в лайтбоксе (ОБНОВЛЕНО) */
 .lightbox-img{
   max-width:76vw;
-  max-height:100%;                   /* вписываемся в строку 1fr */
+  max-height: calc(100dvh - var(--lb-top-pad) - var(--lb-bottom-pad) - var(--lb-thumbs-h) - var(--lb-caption-reserve));
   border-radius:18px;
   box-shadow:0 8px 56px #000a;
   background:#181c22;
@@ -185,51 +196,47 @@ header{ display:flex; align-items:flex-start; gap:36px; margin-top:36px; }
   .lightbox-arrow img,.lightbox-close img{ width:24px; height:24px; }
 }
 @media (max-width:590px){ .lightbox-arrow img,.lightbox-close img{ width:18px; height:18px; } }
-.lightbox-caption{ margin-top:18px; color:#e7eaf0; font-size:1.12rem; text-align:center; max-width:82vw; min-height:28px; opacity:.90; }
-
-/* --- Lightbox thumbnails --- */
-.lightbox-thumbs-wrap{
-  width:100%;
-  max-width:92vw;
-  margin:12px 0 6px;
-  padding:8px 12px;
-  box-sizing:border-box;
-  display:flex;
-  justify-content:center; /* центрируем ряд */
+/* Подпись — обычная, без лишних внешних отступов */
+.lightbox-caption{
+  margin-top:12px;          /* стало поменьше, чтобы экономить высоту */
+  color:#e7eaf0; font-size:1.12rem; text-align:center;
+  max-width:82vw; min-height:28px; opacity:.90;
 }
 
+/* Рельс миниатюр — фиксируем у нижнего края экрана */
+.lightbox-thumbs-wrap{
+  position:fixed;
+  left:0; right:0; bottom: var(--lb-bottom-pad);
+  z-index:11003;
+  width:100%;
+  max-width:100vw;
+  padding:0 12px;           /* вертикальный паддинг теперь управляет JS в расчёте высоты */
+  box-sizing:border-box;
+  display:flex; justify-content:center;
+}
+
+/* Ряд миниатюр — как и было, только без внешних margin */
 .lightbox-thumbs{
-  --lb-thumb-size:50px;  /* стартовый размер */
-  --lb-thumb-min:30px;    /* минимальный размер */
-  --lb-gap:25px;          /* требуемый зазор */
-  display:flex;
-  gap:var(--lb-gap);
-  flex-wrap:nowrap;
-  align-items:center;
-  justify-content:center; /* по центру */
+  --lb-thumb-size:50px;     /* стартовый размер (можно было 100px, но экономим высоту) */
+  --lb-thumb-min:30px;
+  --lb-gap:25px;
+  display:flex; gap:var(--lb-gap);
+  flex-wrap:nowrap; align-items:center; justify-content:center;
 }
 .lightbox-thumb{
-  width:var(--lb-thumb-size);
-  height:var(--lb-thumb-size);
-  min-width:var(--lb-thumb-min);
-  min-height:var(--lb-thumb-min);
-  object-fit:cover;
-  border-radius:8px;
-  opacity:.4;             /* неактивные — полупрозрачные */
-  filter:saturate(.9);
+  width:var(--lb-thumb-size); height:var(--lb-thumb-size);
+  min-width:var(--lb-thumb-min); min-height:var(--lb-thumb-min);
+  object-fit:cover; border-radius:8px;
+  opacity:.4; filter:saturate(.9);
   transition:opacity .18s, transform .18s;
-  cursor:pointer;
-  user-select:none;
-  display:block;
+  cursor:pointer; user-select:none; display:block;
 }
 .lightbox-thumb.is-active{
-  opacity:1;               /* активная — 100% */
-  outline:2px solid #ff9900;
-  outline-offset:2px;
+  opacity:1;
+  outline:2px solid #ff9900; outline-offset:2px;
 }
 .lightbox-thumb:focus-visible{
-  outline:2px solid #ff9900;
-  outline-offset:2px;
+  outline:2px solid #ff9900; outline-offset:2px;
 }
 
 /* ---- Tools ---- */
