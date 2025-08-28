@@ -180,7 +180,7 @@ header{ display:flex; align-items:flex-start; gap:36px; margin-top:36px; }
 }
 
 .lightbox-thumbs{
-  --lb-thumb-size:100px;  /* стартовый размер */
+  --lb-thumb-size:50px;  /* стартовый размер */
   --lb-thumb-min:30px;    /* минимальный размер */
   --lb-gap:25px;          /* требуемый зазор */
   display:flex;
