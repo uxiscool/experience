@@ -148,6 +148,7 @@ header{ display:flex; align-items:flex-start; gap:36px; margin-top:36px; }
   --lb-bottom-pad: 35px;       /* отступ снизу */
   --lb-caption-reserve: 60px;  /* запас под подпись */
   --lb-thumbs-h: 120px;        /* высота блока миниатюр (JS обновит) */
+  --lb-gap-to-thumbs: 20px;
 }
 @keyframes lightbox-fade-in{ from{opacity:0;} to{opacity:1;} }
 .lightbox-bg{ position:absolute; inset:0; background:transparent; z-index:0; }
@@ -167,7 +168,14 @@ header{ display:flex; align-items:flex-start; gap:36px; margin-top:36px; }
 /* Картинка в лайтбоксе (ОБНОВЛЕНО) */
 .lightbox-img{
   max-width:76vw;
-  max-height: calc(100dvh - var(--lb-top-pad) - var(--lb-bottom-pad) - var(--lb-thumbs-h) - var(--lb-caption-reserve));
+  max-height: calc(
+    100dvh 
+    - var(--lb-top-pad) 
+    - var(--lb-bottom-pad) 
+    - var(--lb-thumbs-h) 
+    - var(--lb-caption-reserve)
+    - var(--lb-gap-to-thumbs)
+    );
   border-radius:18px;
   box-shadow:0 8px 56px #000a;
   background:#181c22;
