@@ -16,7 +16,6 @@ permalink: /pet-projects/
     {% for pp in site.petprojects %}
       {% if pp.url == p.url %}{% assign pet_index = forloop.index0 %}{% break %}{% endif %}
     {% endfor %}
-
     {%- assign first = p.gallery[0] -%}
     {%- assign thumb_src = nil -%}
     {% if first %}
@@ -29,7 +28,6 @@ permalink: /pet-projects/
         {% endif %}
       {% endif %}
     {% endif %}
-
   <article class="pp-card">
     <!-- Шапка -->
     <header class="pp-header">
