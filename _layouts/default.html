@@ -110,30 +110,55 @@
     showCaseLightbox();
   }
 
-  function showCaseLightbox(){
-    const imgs = getGallery(currentCaseIdx);
-    const data = imgs[currentImgIdx] || {};
-    document.getElementById('lightbox-img').src = data.src || '';
-    document.getElementById('lightbox-caption').textContent = data.caption || '';
-    document.getElementById('lightbox').style.display = 'flex';
-    document.body.classList.add('lb-lock');
-  }
+// ОТКРЫТИЕ: рисуем миниатюры + подсветка активной + первичный sizing
+function showCaseLightbox(){
+  const imgs = getGallery(currentCaseIdx);
+  const data = imgs[currentImgIdx] || {};
+
+  // показать лайтбокс
+  document.getElementById('lightbox').style.display = 'flex';
+  document.body.classList.add('lb-lock');
+
+  // основное изображение и подпись
+  document.getElementById('lightbox-img').src = data.src || '';
+  document.getElementById('lightbox-caption').textContent = data.caption || '';
+
+  // миниатюры
+  renderThumbs();
+  updateThumbActive();
+  updateThumbSizing();
+}
   function closeLightbox(){
     document.getElementById('lightbox').style.display = 'none';
     document.body.classList.remove('lb-lock');
   }
-  function lightboxPrev(){
-    const imgs = getGallery(currentCaseIdx);
-    const n = imgs.length || 1;
-    currentImgIdx = (currentImgIdx + n - 1) % n;
-    showCaseLightbox();
-  }
-  function lightboxNext(){
-    const imgs = getGallery(currentCaseIdx);
-    const n = imgs.length || 1;
-    currentImgIdx = (currentImgIdx + 1) % n;
-    showCaseLightbox();
-  }
+// ЛИСТАНИЕ ВЛЕВО/ВПРАВО: меняем индекс и обновляем картинку + подсветку
+function lightboxPrev(){
+  const imgs = getGallery(currentCaseIdx);
+  const n = imgs.length || 1;
+  currentImgIdx = (currentImgIdx + n - 1) % n;
+
+  const data = imgs[currentImgIdx] || {};
+  document.getElementById('lightbox-img').src = data.src || '';
+  document.getElementById('lightbox-caption').textContent = data.caption || '';
+
+  updateThumbActive();
+}
+function lightboxNext(){
+  const imgs = getGallery(currentCaseIdx);
+  const n = imgs.length || 1;
+  currentImgIdx = (currentImgIdx + 1) % n;
+
+  const data = imgs[currentImgIdx] || {};
+  document.getElementById('lightbox-img').src = data.src || '';
+  document.getElementById('lightbox-caption').textContent = data.caption || '';
+
+  updateThumbActive();
+}
+
+// ресайз для подгонки размеров миниатюр
+window.addEventListener('resize', updateThumbSizing);
+
   document.addEventListener('keydown', function(e){
     const lb = document.getElementById('lightbox');
     if (!lb || lb.style.display !== 'flex') return;
