@@ -144,7 +144,7 @@ header{ display:flex; align-items:flex-start; gap:36px; margin-top:36px; }
   display:flex; align-items:center; justify-content:center;
   background:#16181ef0; animation:lightbox-fade-in .5s;
   /* Новые переменные для расчёта размеров */
-  --lb-top-pad: 35px;          /* отступ сверху */
+  --lb-top-pad: 5px;          /* отступ сверху */
   --lb-bottom-pad: 35px;       /* отступ снизу */
   --lb-caption-reserve: 60px;  /* запас под подпись */
   --lb-thumbs-h: 120px;        /* высота блока миниатюр (JS обновит) */
@@ -182,7 +182,7 @@ header{ display:flex; align-items:flex-start; gap:36px; margin-top:36px; }
   object-fit:contain;
   display:block;
   position:relative;
-  margin:0 64px;
+  /* margin:0 64px; */
 }
 .lightbox-arrow{
   position:fixed; top:50%; transform:translateY(-50%); z-index:11001;
