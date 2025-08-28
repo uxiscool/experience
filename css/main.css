@@ -386,10 +386,9 @@ body.page-contact>main{ flex:1 0 auto; }
   align-items:flex-start;
   min-width:0;
   padding-right: 32px;
-  text-indent: 20px;
 }
 
-.pp-subtitle{ color:#cdd3db; opacity:.92; font: size 98rem; }
+.pp-subtitle{ color:#cdd3db; opacity:.92; font: size 98rem; text-indent: 20px;}
 .pp-desc{ color:#cdd3db; opacity:.92; font-size:.98rem; line-height:1.35; }
 
 /* Футер — жёстко к правому нижнему углу */
