@@ -113,6 +113,6 @@ title: Works
 
   // Не ломаем существующую типографику — просто префикс с тире
   var text = el.innerHTML;
-  el.innerHTML = '<span class="greet">'+greet+'</span> — ' + text;
+  el.innerHTML = '<span class="greet">'+greet+'</span> 🖖 ' + text;
 })();
 </script>
