@@ -87,7 +87,9 @@ title: Works
     <button class="lightbox-arrow left" onclick="lightboxPrev()" aria-label="Previous">
       <img src="{{ site.baseurl }}/ui/lightbox_arrow_left.svg" width="36" height="36" alt="Prev">
     </button>
-    <img id="lightbox-img" class="lightbox-img" src="">
+    <div class="lightbox-stage">
+  <img id="lightbox-img" class="lightbox-img" src="">
+</div>
     <button class="lightbox-arrow right" onclick="lightboxNext()" aria-label="Next">
       <img src="{{ site.baseurl }}/ui/lightbox_arrow_right.svg" width="36" height="36" alt="Next">
     </button>
