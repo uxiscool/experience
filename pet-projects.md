@@ -88,6 +88,7 @@ permalink: /pet-projects/
     </button>
     <div class="lightbox-stage">
   <img id="lightbox-img" class="lightbox-img" src="">
+    {% include lightbox_loader.html %}
 </div>
     <button class="lightbox-arrow right" onclick="lightboxNext()" aria-label="Next">
       <img src="{{ site.baseurl }}/ui/lightbox_arrow_right.svg" width="36" height="36" alt="Next">

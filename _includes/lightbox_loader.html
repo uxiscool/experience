@@ -1,0 +1,20 @@
+<div id="lightbox-loading" class="lightbox-loading" aria-hidden="true">
+  <div id="lottie-loader"></div>
+</div>
+
+<!-- Подключаем lottie только там, где этот include вставлен -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+<script>
+  (function(){
+    var c = document.getElementById('lottie-loader');
+    if (!c || window.__lottieLBInit) return;
+    window.__lottieLBInit = true; // защитимся от повторной инициализации на странице
+    lottie.loadAnimation({
+      container: c,
+      renderer: 'svg',
+      loop: true,
+      autoplay: true,
+      path: '{{ site.baseurl }}/ui/loader.json'
+    });
+  })();
+</script>

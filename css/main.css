@@ -243,6 +243,18 @@ header{ display:flex; align-items:flex-start; gap:36px; margin-top:36px; }
 .lightbox-thumb:focus-visible{
   outline:2px solid #ff9900; outline-offset:2px;
 }
+/* слой прелоадера поверх картинки */
+.lightbox-stage{ position:relative; } /* если уже есть — оставь */
+.lightbox-loading{
+  position:absolute; inset:0;
+  display:none; align-items:center; justify-content:center;
+  pointer-events:none; /* не блокируем клики по стрелкам */
+}
+.lightbox-stage.is-loading .lightbox-loading{ display:flex; }
+.lightbox-stage.is-loading .lightbox-img{ visibility:hidden; }
+
+/* Размер контейнера Lottie (подгони при желании) */
+#lottie-loader{ width:64px; height:64px; }
 
 /* ---- Tools ---- */
 .tools-grid{ display:flex; flex-wrap:wrap; column-gap:35px; row-gap:24px; align-items:center; justify-content:flex-start; }

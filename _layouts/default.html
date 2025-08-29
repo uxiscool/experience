@@ -81,6 +81,33 @@
   /* Режимы: 'all', 'home', 'pet' */
   let currentCaseIdx = 0, currentImgIdx = 0, currentMode = 'all';
 
+  function loadIntoLightbox(src, caption){
+  const stage = document.querySelector('.lightbox-stage');
+  const img   = document.getElementById('lightbox-img');
+  const capEl = document.getElementById('lightbox-caption');
+  if (!stage || !img) return Promise.resolve();
+
+  stage.classList.add('is-loading');  // показываем Lottie и скрываем img
+
+  return new Promise(function(resolve){
+    const ph = new Image();
+    ph.onload = function(){
+      img.src = src || '';
+      if (capEl) capEl.textContent = caption || '';
+      stage.classList.remove('is-loading');  // убираем Lottie, показываем img
+      resolve();
+    };
+    ph.onerror = function(){
+      // даже при ошибке убираем прелоадер и пытаемся показать картинку (alt/404)
+      img.src = src || '';
+      if (capEl) capEl.textContent = caption || '';
+      stage.classList.remove('is-loading');
+      resolve();
+    };
+    ph.src = src || '';
+  });
+}
+
   function getGallery(idx){
     if (currentMode === 'home') return window.CASE_GALLERY_HOME[idx] || [];
     if (currentMode === 'pet')  return window.PET_GALLERY[idx] || [];
@@ -110,50 +137,46 @@
     showCaseLightbox();
   }
 
-// ОТКРЫТИЕ: рисуем миниатюры + подсветка активной + первичный sizing
-function showCaseLightbox(){
+// ОТКРЫТИЕ: рисуем миниатюры и грузим кадр с прелоадером
+async function showCaseLightbox(){
   const imgs = getGallery(currentCaseIdx);
   const data = imgs[currentImgIdx] || {};
 
-  // показать лайтбокс
   document.getElementById('lightbox').style.display = 'flex';
   document.body.classList.add('lb-lock');
 
-  // основное изображение и подпись
-  document.getElementById('lightbox-img').src = data.src || '';
-  document.getElementById('lightbox-caption').textContent = data.caption || '';
-
-  // миниатюры
   renderThumbs();
   updateThumbActive();
   updateThumbSizing();
+
+  await loadIntoLightbox(data.src, data.caption);
 }
   function closeLightbox(){
     document.getElementById('lightbox').style.display = 'none';
     document.body.classList.remove('lb-lock');
   }
-// ЛИСТАНИЕ ВЛЕВО/ВПРАВО: меняем индекс и обновляем картинку + подсветку
-function lightboxPrev(){
+
+// ЛИСТАНИЕ ВЛЕВО: меняем индекс → подсветка → загрузка с прелоадером
+async function lightboxPrev(){
   const imgs = getGallery(currentCaseIdx);
   const n = imgs.length || 1;
   currentImgIdx = (currentImgIdx + n - 1) % n;
 
-  const data = imgs[currentImgIdx] || {};
-  document.getElementById('lightbox-img').src = data.src || '';
-  document.getElementById('lightbox-caption').textContent = data.caption || '';
-
   updateThumbActive();
+
+  const data = imgs[currentImgIdx] || {};
+  await loadIntoLightbox(data.src, data.caption);
 }
-function lightboxNext(){
+// ЛИСТАНИЕ ВПРАВО: меняем индекс → подсветка → загрузка с прелоадером
+async function lightboxNext(){
   const imgs = getGallery(currentCaseIdx);
   const n = imgs.length || 1;
   currentImgIdx = (currentImgIdx + 1) % n;
 
-  const data = imgs[currentImgIdx] || {};
-  document.getElementById('lightbox-img').src = data.src || '';
-  document.getElementById('lightbox-caption').textContent = data.caption || '';
-
   updateThumbActive();
+
+  const data = imgs[currentImgIdx] || {};
+  await loadIntoLightbox(data.src, data.caption);
 }
 
 // ресайз для подгонки размеров миниатюр
