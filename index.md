@@ -105,7 +105,7 @@ title: Works
   var h = new Date().getHours();
   var greet = (h < 5)  ? 'Late night greetings'
             : (h < 12) ? 'Good morning'
-            : (h < 18) ? 'Good afternoon'
+            : (h < 18) ? 'Hello there'
             :            'Good evening';
 
   var el = document.getElementById('intro-line');
