@@ -103,7 +103,7 @@ title: Works
 (function(){
   // Локальное время пользователя
   var h = new Date().getHours();
-  var greet = (h < 5)  ? 'Good night'
+  var greet = (h < 5)  ? 'Late night greetings'
             : (h < 12) ? 'Good morning'
             : (h < 18) ? 'Good afternoon'
             :            'Good evening';
