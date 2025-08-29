@@ -18,6 +18,11 @@ section{ padding-top:2rem; }
 }
 @media (max-width:980px){ .container{ padding-left:64px; padding-right:64px; } }
 
+.greet{
+  font-weight:500;
+  opacity:.95;
+}
+
 /* ---- Header / Nav ---- */
 header{ display:flex; align-items:flex-start; gap:36px; margin-top:36px; }
 .nav-wrapper{ display:flex; flex-direction:column; align-items:flex-start; width:100%; }
