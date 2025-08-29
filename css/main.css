@@ -200,14 +200,13 @@ header{ display:flex; align-items:flex-start; gap:36px; margin-top:36px; }
 /* Подпись — авто-высота, вписывается между stage и миниатюрами */
 .lightbox-caption{
   flex:0 0 auto;
-  margin:10px 0 8px;
-  color:#e7eaf0; 
-  font-size:1.12rem; 
-  max-width:82vw;
-  text-align:center; 
+  margin:10px auto 8px;   /* ← auto по бокам центрирует сам блок */
+  color:#e7eaf0;
+  font-size:1.12rem;
+  text-align:center;
+  max-width:82vw;         /* ограничение по ширине остаётся */
   opacity:.90;
   overflow-wrap:break-word;
-  align-content: center;
 }
 
 /* Миниатюры — теперь в обычном потоке, прижаты к низу за счёт третьей строки грида */
