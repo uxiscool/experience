@@ -227,14 +227,6 @@ function updateThumbSizing(){
   row.style.setProperty('--lb-thumb-min',  minSize + 'px');
   row.style.setProperty('--lb-gap',        gap + 'px');
   row.style.flexWrap = twoRows ? 'wrap' : 'nowrap';
-
-  // ВЫСОТА РЕЛЬСА для расчёта max-height картинки.
-  // Если две строки — учитываем 2 размера + один gap между рядами.
-  const rows = twoRows ? 2 : 1;
-  const railHeight = rows * size + (rows - 1) * gap + padV;
-
-  // Прокидываем в :root лайтбокса
-  lb.style.setProperty('--lb-thumbs-h', railHeight + 'px');
 }
 </script>
   </body>
