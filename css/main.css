@@ -154,36 +154,28 @@ header{ display:flex; align-items:flex-start; gap:36px; margin-top:36px; }
 .lightbox-bg{ position:absolute; inset:0; background:transparent; z-index:0; }
 /* Лайтбокс — контейнер (ОБНОВЛЕНО) */
 /* Контент лайтбокса — 2 строки: 1) зона картинки (1fr), 2) caption (auto) */
+/* Контейнер контента лайтбокса — три строки в одном потоке (IMG / caption / thumbs) */
 .lightbox-content{
   position:relative; z-index:2;
   display:grid;
-  grid-template-rows: 1fr auto;
-  align-items:center;
+  grid-template-rows: 1fr auto auto;  /* 1) картинка занимает остаток, 2) подпись, 3) миниатюры */
+  align-items:center;                 /* картинка по центру своей строки */
   justify-items:center;
   max-width:98vw; width:100%;
-  height:100dvh;
-  padding-top: var(--lb-top-pad);
-  /* снизу паддинг не делаем — там миниатюры фиксированы */
+  height:100dvh;                      /* всё строго в пределах окна */
+  padding:35px 0;                     /* верх/низ по 35px, как просил */
 }
-/* Картинка в лайтбоксе (ОБНОВЛЕНО) */
+/* Картинка — вписываемся в свою строку, не вылезаем и не перекрываем caption/thumbs */
 .lightbox-img{
   max-width:76vw;
-  max-height: calc(
-    100dvh 
-    - var(--lb-top-pad) 
-    - var(--lb-bottom-pad) 
-    - var(--lb-thumbs-h) 
-    - var(--lb-caption-reserve)
-    - var(--lb-gap-to-thumbs)
-    );
+  max-height:100%;          /* ключ: заполняем первую строку грид-рядка */
   border-radius:18px;
   box-shadow:0 8px 56px #000a;
   background:#181c22;
   object-fit:contain;
   display:block;
-  position:relative;
-  /* margin:0 64px; */
 }
+
 .lightbox-arrow{
   position:fixed; top:50%; transform:translateY(-50%); z-index:11001;
   background:none; border:none; padding:0; margin:0; cursor:pointer;
@@ -204,23 +196,24 @@ header{ display:flex; align-items:flex-start; gap:36px; margin-top:36px; }
   .lightbox-arrow img,.lightbox-close img{ width:24px; height:24px; }
 }
 @media (max-width:590px){ .lightbox-arrow img,.lightbox-close img{ width:18px; height:18px; } }
-/* Подпись — обычная, без лишних внешних отступов */
+/* Подпись — обычный авто-блок, без «резервов» и перекрытий */
 .lightbox-caption{
-  margin-top:12px;          /* стало поменьше, чтобы экономить высоту */
+  margin:12px 0 10px;
   color:#e7eaf0; font-size:1.12rem; text-align:center;
-  max-width:82vw; min-height:28px; opacity:.90;
+  max-width:82vw; opacity:.90;
+  overflow-wrap:break-word;
 }
 
-/* Рельс миниатюр — фиксируем у нижнего края экрана */
+/* Миниатюры — теперь в обычном потоке, прижаты к низу за счёт третьей строки грида */
 .lightbox-thumbs-wrap{
-  position:fixed;
-  left:0; right:0; bottom: var(--lb-bottom-pad);
-  z-index:11003;
+  position:static;          /* было fixed */
   width:100%;
   max-width:100vw;
-  padding:0 12px;           /* вертикальный паддинг теперь управляет JS в расчёте высоты */
+  padding:0 12px;
   box-sizing:border-box;
-  display:flex; justify-content:center;
+  display:flex; 
+  justify-content:center;   /* по центру */
+  margin-top:6px;           /* небольшой зазор от подписи */
 }
 
 /* Ряд миниатюр — как и было, только без внешних margin */
