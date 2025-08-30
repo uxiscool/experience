@@ -85,7 +85,20 @@ header{ display:flex; align-items:flex-start; gap:36px; margin-top:36px; }
   display:flex; flex-direction:column;
 }
 .case-card:hover{ box-shadow:0 4px 28px #19c0ff2c; transform:translateY(-2px) scale(1.018); }
-.case-img-wrap{ background:#17191e; width:100%; aspect-ratio:4/3; display:flex; align-items:center; justify-content:center; overflow:hidden; }
+
+.case-img-wrap{ 
+  background:#17191e; 
+  width:100%; 
+  aspect-ratio:4/3; 
+  display:flex; 
+  align-items:center; 
+  justify-content:center; 
+  overflow:hidden; 
+  position:relative;
+  overflow:hidden;
+  border-radius:12px;
+}
+
 .case-thumb{ max-width:100%; max-height:100%; width:auto; height:auto; object-fit:contain; border-radius:0; transition:filter .18s; cursor:pointer; }
 .case-meta{ padding:22px 18px 18px; display:flex; flex-direction:column; gap:7px; }
 .case-title{ font-size:1.19rem; font-weight:600; color:#fff; margin-bottom:2px; text-decoration:underline dotted; text-underline-offset:4px; transition:color .15s; }
@@ -447,7 +460,15 @@ body.page-contact>main{ flex:1 0 auto; }
   }
 }
 
-.pp-media{ min-height:180px; overflow:hidden; }
+.pp-media{ 
+  min-height:180px; 
+  overflow:hidden;
+  position:relative;
+  border-radius:12px;
+  aspect-ratio: 4 / 3; 
+  background:#232429;
+}
+
 .pp-media img{
   max-width:100%;
   max-height:100%;
@@ -535,3 +556,29 @@ body.page-contact>main{ flex:1 0 auto; }
 }
 /* (Опционально) убрать браузерный контур у картинок-иконок */
 .pp-links a.pp-store img{ display:block; height:32px; width:auto; }
+
+/* --- Image skeleton / shimmer (общий) --- */
+.img-skel{
+  position:absolute; inset:0; border-radius:12px;
+  background: linear-gradient(90deg,#2b2e33 25%, #3a3f45 37%, #2b2e33 63%);
+  background-size: 400% 100%;
+  animation: skel-shimmer 1.2s ease-in-out infinite;
+}
+@keyframes skel-shimmer { 0%{background-position:100% 0} 100%{background-position:0 0} }
+
+/* Сама картинка: скрыта до полной загрузки, потом плавно проявляется */
+.lazy-img{
+  opacity:0;
+  transition:opacity .25s ease;
+  display:block;
+  width:100%; height:100%;
+  object-fit:contain; /* переопредели cover там, где надо */
+}
+.lazy-img.is-loaded{ opacity:1; }
+
+/* Когда картинка загрузилась — гасим скелетон (если он сосед) */
+.lazy-img + .img-skel,
+.img-skel.is-done{ display:none; }
+
+/* Опционально: для кейсов часто лучше cover */
+.case-thumb2.lazy-img{ object-fit:cover; }

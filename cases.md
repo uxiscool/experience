@@ -25,14 +25,12 @@ permalink: /cases/
         </div>
         <div class="case-summary2">{{ case.summary }}</div>
       </div>
-
       {% if case.stages %}
         {% assign flat_idx = 0 %}
         {% for st in case.stages %}
           {% if st.desc %}
             <div class="stage-summary">{{ st.desc }}</div>
           {% endif %}
-
           <div class="case-gallery">
             {% for img in st.images %}
               {%- comment -%}
@@ -48,21 +46,26 @@ permalink: /cases/
                   {% assign img_src = case.images_base | append: img_path %}
                 {% endif %}
               {% endif %}
-
-              <div class="case-gallery-item">
-                <img
-                  class="case-thumb2"
-                  src="{{ site.baseurl }}{{ img_src }}"
-                  alt="{{ img.caption | escape }}"
-                  loading="lazy"
-                  decoding="async"
-                  onclick="openCaseGallery({{ case_index }}, {{ flat_idx }})"
-                >
-                {% if img.caption %}
-                  <div class="case-thumb-caption">{{ img.caption }}</div>
-                {% endif %}
-              </div>
-
+         <div class="case-gallery-item">
+  <div class="case-img-wrap">
+    <div class="img-skel" aria-hidden="true"></div>
+    <img
+      class="case-thumb2 lazy-img"
+      loading="lazy" decoding="async"
+      data-src="{{ site.baseurl }}{{ img_src }}"
+      alt="{{ img.caption | escape }}"
+      onclick="openCaseGallery({{ case_index }}, {{ flat_idx }})"
+    >
+    <noscript>
+      <img class="case-thumb2"
+           src="{{ site.baseurl }}{{ img_src }}"
+           alt="{{ img.caption | escape }}">
+    </noscript>
+  </div>
+  {% if img.caption %}
+    <div class="case-thumb-caption">{{ img.caption }}</div>
+  {% endif %}
+</div>
               {% assign flat_idx = flat_idx | plus: 1 %}
             {% endfor %}
           </div>
@@ -71,19 +74,27 @@ permalink: /cases/
         <!-- Бэкап для старых кейсов с плоским images: -->
         <div class="case-gallery">
           {% for img in case.images %}
-            <div class="case-gallery-item">
-              <img
-                class="case-thumb2"
-                src="{{ site.baseurl }}{{ img.src }}"
-                alt="{{ img.caption | escape }}"
-                loading="lazy"
-                decoding="async"
-                onclick="openCaseGallery({{ case_index }}, {{ forloop.index0 }})"
-              >
-              {% if img.caption %}
-                <div class="case-thumb-caption">{{ img.caption }}</div>
-              {% endif %}
-            </div>
+       <div class="case-gallery-item">
+  <div class="case-img-wrap">
+    <div class="img-skel" aria-hidden="true"></div>
+    <img
+      class="case-thumb2 lazy-img"
+      loading="lazy" decoding="async"
+      data-src="{{ site.baseurl }}{{ img.src }}"
+      alt="{{ img.caption | escape }}"
+      onclick="openCaseGallery({{ case_index }}, {{ forloop.index0 }})"
+    >
+    <noscript>
+      <img class="case-thumb2"
+           src="{{ site.baseurl }}{{ img.src }}"
+           alt="{{ img.caption | escape }}">
+    </noscript>
+  </div>
+  {% if img.caption %}
+    <div class="case-thumb-caption">{{ img.caption }}</div>
+  {% endif %}
+</div>
+
           {% endfor %}
         </div>
       {% endif %}

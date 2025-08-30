@@ -36,16 +36,23 @@ permalink: /pet-projects/
     </header>
     <!-- Тело: слева медиа, справа текст + футер, приклеенный к низу -->
     <div class="pp-body">
-    <div class="pp-media">
-      {% if thumb_src %}
-        <a class="pp-media-link"
-           href="javascript:void(0)"
-           onclick="openPetGallery({{ pet_index }}, 0)"
-           aria-label="Open gallery">
-          <img src="{{ site.baseurl }}{{ thumb_src }}" alt="">
-        </a>
-      {% endif %}
-    </div>
+<div class="pp-media">
+  {% if thumb_src %}
+    <a class="pp-media-link"
+       href="javascript:void(0)"
+       onclick="openPetGallery({{ pet_index }}, 0)"
+       aria-label="Open gallery">
+      <div class="img-skel" aria-hidden="true"></div>
+      <img class="lazy-img"
+           loading="lazy" decoding="async"
+           data-src="{{ site.baseurl }}{{ thumb_src }}"
+           alt="">
+      <noscript>
+        <img src="{{ site.baseurl }}{{ thumb_src }}" alt="">
+      </noscript>
+    </a>
+  {% endif %}
+</div>
     <div class="pp-side">
       <div class="pp-text">
         {% if p.subtitle %}<div class="pp-subtitle">{{ p.subtitle }}</div>{% endif %}
