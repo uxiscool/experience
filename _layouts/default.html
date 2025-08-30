@@ -299,6 +299,11 @@ function updateThumbSizing(){
       }, { rootMargin: '200px 0px' })
     : null;
 
+// помечаем контейнер как загруженный (надёжно гасит скелетон)
+var box = img.closest('.case-img-wrap, .pp-media, .pp-media-link');
+if (box) box.classList.add('has-loaded');
+
+
   function initLazy(){
     var imgs = document.querySelectorAll('img.lazy-img[data-src]');
     imgs.forEach(function(img){

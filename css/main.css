@@ -87,13 +87,12 @@ header{ display:flex; align-items:flex-start; gap:36px; margin-top:36px; }
 .case-card:hover{ box-shadow:0 4px 28px #19c0ff2c; transform:translateY(-2px) scale(1.018); }
 
 .case-img-wrap{ 
-  background:#17191e; 
-  width:100%; 
-  aspect-ratio:4/3; 
-  display:flex; 
-  align-items:center; 
-  justify-content:center; 
-  overflow:hidden; 
+  background: transparent;        /* было #17191e — убираем двойную плашку */
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  display:flex;
+  align-items:center;
+  justify-content:center;
   position:relative;
   overflow:hidden;
   border-radius:12px;
@@ -147,7 +146,20 @@ header{ display:flex; align-items:flex-start; gap:36px; margin-top:36px; }
   background:#232429; border-radius:12px; padding:12px; box-shadow:0 2px 8px #0002; transition:box-shadow .25s;
 }
 .case-gallery-item:hover{ box-shadow:0 0 18px 0 #fd493169; }
-.case-thumb2{ max-width:100%; max-height:350px; width:auto; aspect-ratio:4/3; object-fit:contain; border-radius:8px; background:#232429; margin-bottom:6px; cursor:pointer; transition:filter .14s; }
+
+.case-thumb2{
+  width:100%;
+  height:100%;
+  max-width:100%;
+  max-height:100%;
+  object-fit:contain;            /* ключ: больше не cover */
+  background: transparent;       /* не рисуем отдельный тёмный прямоугольник */
+  border-radius:0;
+  margin-bottom:0;
+  cursor:pointer;
+  transition:filter .14s;
+}
+
 .case-thumb-caption{ font-size:.97rem; color:#bac0c9; text-align:center; margin-top:3px; opacity:.86; }
 
 /* ---- Lightbox ---- */
@@ -580,5 +592,5 @@ body.page-contact>main{ flex:1 0 auto; }
 .lazy-img + .img-skel,
 .img-skel.is-done{ display:none; }
 
-/* Опционально: для кейсов часто лучше cover */
-.case-thumb2.lazy-img{ object-fit:cover; }
+/* когда родитель помечен как загруженный — гасим скелетон */
+.has-loaded .img-skel{ display:none; }
