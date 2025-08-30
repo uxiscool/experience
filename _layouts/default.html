@@ -254,39 +254,49 @@ function updateThumbSizing(){
 
 (function(){
   function loadLazyImage(img){
-    if (img.dataset._loading) return;
-    img.dataset._loading = '1';
+  if (img.dataset._loading) return;
+  img.dataset._loading = '1';
 
-    var src = img.getAttribute('data-src');
-    if (!src) return;
+  var src = img.getAttribute('data-src');
+  if (!src) return;
 
-    var ph = new Image();
-    ph.onload = function(){
-      img.src = src;
-      (img.decode ? img.decode() : Promise.resolve())
-        .catch(function(){})
-        .finally(function(){
-          img.classList.add('is-loaded');
-          // спрячем скелетон, если он рядом
-          if (img.nextElementSibling && img.nextElementSibling.classList.contains('img-skel')){
-            img.nextElementSibling.classList.add('is-done');
-          }
-          if (img.previousElementSibling && img.previousElementSibling.classList.contains('img-skel')){
-            img.previousElementSibling.classList.add('is-done');
-          }
-        });
-    };
-    ph.onerror = function(){
-      img.classList.add('is-loaded');
-      if (img.nextElementSibling && img.nextElementSibling.classList.contains('img-skel')){
-        img.nextElementSibling.classList.add('is-done');
-      }
-      if (img.previousElementSibling && img.previousElementSibling.classList.contains('img-skel')){
-        img.previousElementSibling.classList.add('is-done');
-      }
-    };
-    ph.src = src;
-  }
+  var ph = new Image();
+  ph.onload = function(){
+    img.src = src;
+    (img.decode ? img.decode() : Promise.resolve())
+      .catch(function(){})
+      .finally(function(){
+        img.classList.add('is-loaded');
+
+        // ⬇️ ПОМЕТИТЬ РОДИТЕЛЯ — СКРЫТЬ СКЕЛЕТОН НАДЁЖНО
+        var box = img.closest('.case-img-wrap, .pp-media, .pp-media-link');
+        if (box) box.classList.add('has-loaded');
+
+        // если рядом есть скелетон — на всякий случай тоже гасим
+        if (img.nextElementSibling && img.nextElementSibling.classList.contains('img-skel')){
+          img.nextElementSibling.classList.add('is-done');
+        }
+        if (img.previousElementSibling && img.previousElementSibling.classList.contains('img-skel')){
+          img.previousElementSibling.classList.add('is-done');
+        }
+      });
+  };
+  ph.onerror = function(){
+    img.classList.add('is-loaded');
+
+    // ⬇️ ПОМЕТИТЬ РОДИТЕЛЯ И ПРИ ОШИБКЕ
+    var box = img.closest('.case-img-wrap, .pp-media, .pp-media-link');
+    if (box) box.classList.add('has-loaded');
+
+    if (img.nextElementSibling && img.nextElementSibling.classList.contains('img-skel')){
+      img.nextElementSibling.classList.add('is-done');
+    }
+    if (img.previousElementSibling && img.previousElementSibling.classList.contains('img-skel')){
+      img.previousElementSibling.classList.add('is-done');
+    }
+  };
+  ph.src = src;
+}
 
   var io = ('IntersectionObserver' in window)
     ? new IntersectionObserver(function(entries){
@@ -298,11 +308,6 @@ function updateThumbSizing(){
         });
       }, { rootMargin: '200px 0px' })
     : null;
-
-// помечаем контейнер как загруженный (надёжно гасит скелетон)
-var box = img.closest('.case-img-wrap, .pp-media, .pp-media-link');
-if (box) box.classList.add('has-loaded');
-
 
   function initLazy(){
     var imgs = document.querySelectorAll('img.lazy-img[data-src]');
