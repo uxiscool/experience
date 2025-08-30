@@ -11,6 +11,15 @@ body{
 body.lb-lock{ overflow:hidden; }
 section{ padding-top:2rem; }
 
+html, body { height:100%; }
+body{
+  min-height:100dvh;
+  display:flex;
+  flex-direction:column;
+}
+main{ flex:1 0 auto; }
+
+
 /* ---- Layout ---- */
 .container{
   margin:0; padding-left:280px; padding-right:280px;
@@ -427,14 +436,6 @@ body.page-contact>main{ flex:1 0 auto; }
   text-overflow:ellipsis;
 }
 
-/* Тело карточки */
-.pp-body{
-  display:grid;
-  grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);
-  gap:16px;
-  align-items:stretch; 
-  min-width:0;
-}
 /* Узкая карточка ≤520px — одна колонка */
 @container (max-width:520px){
   .pp-body{ grid-template-columns:1fr; }
@@ -447,36 +448,6 @@ body.page-contact>main{ flex:1 0 auto; }
   }
 }
 
-.pp-media{ min-height:180px; overflow:hidden; }
-.pp-media img{
-  max-width:100%;
-  max-height:100%;
-  object-fit:contain;
-  display:block;
-  margin:0 auto;
-}
-
-/* Правая колонка: первая строка тянется, вторая под футер */
-.pp-side{
-  display:grid;
-  grid-template-rows:1fr auto;  /* возвращаем 1fr auto */
-  min-width:0;
-  min-height:180px;
-  align-self:stretch;
-  row-gap: 24px;
-}
-
-/* Блок с текстом: держим всё у верхнего края */
-.pp-text{
-  display:flex;                  /* вместо grid */
-  flex-direction:column;
-  gap:8px;
-  align-items:flex-start;
-  min-width:0;
-  padding-right: 32px;
-}
-
-.pp-subtitle{ color:#cdd3db; opacity:.92; font: size 98rem; }
 .pp-desc{ color:#cdd3db; opacity:.92; font-size:.98rem; line-height:1.35; }
 
 /* Футер — жёстко к правому нижнему углу */
@@ -552,14 +523,26 @@ body.page-contact>main{ flex:1 0 auto; }
 .has-loaded .img-skel{ display:none; }
 
 /* Pet projects — медиаблок и лэйаут справа */
+/* Медиа-поле слева в карточке */
 .pp-media{
-  position:relative; overflow:hidden; border-radius:12px;
-  background:#232429; aspect-ratio:4 / 3; min-width:0;
+  position:relative;
+  overflow:hidden;
+  border-radius:12px;
+  background:#232429;
+  aspect-ratio:4 / 3;   /* держим высоту, пока грузится */
+  min-width:0;
 }
-.pp-media-link{ position:relative; display:block; width:100%; height:100%; }
+.pp-media-link{
+  position:relative;
+  display:block;
+  width:100%;
+  height:100%;           /* ← важно: ссылка растягивается на весь блок */
+}
 .pp-media .lazy-img{
-  width:100%; height:100%; max-width:100%; max-height:100%;
-  object-fit:contain; display:block;
+  width:100%; height:100%;
+  max-width:100%; max-height:100%;
+  object-fit:contain;
+  display:block;
 }
 /* Тело/правая колонка — тянем по высоте, футер внизу */
 .pp-body{ align-items:stretch; }
