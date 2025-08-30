@@ -509,7 +509,7 @@ body.page-contact>main{ flex:1 0 auto; }
   padding-right: 32px;
 }
 
-.pp-subtitle{ color:#cdd3db; opacity:.92; font: size 98rem; }
+.pp-subtitle{ color:#cdd3db; opacity:.92; font: size .98rem; }
 .pp-desc{ color:#cdd3db; opacity:.92; font-size:.98rem; line-height:1.35; }
 
 /* Футер — жёстко к правому нижнему углу */
@@ -575,6 +575,7 @@ body.page-contact>main{ flex:1 0 auto; }
   background: linear-gradient(90deg,#2b2e33 25%, #3a3f45 37%, #2b2e33 63%);
   background-size: 400% 100%;
   animation: skel-shimmer 1.2s ease-in-out infinite;
+  pointer-events:none; /* не блокируем клик по медиа */
 }
 @keyframes skel-shimmer { 0%{background-position:100% 0} 100%{background-position:0 0} }
 
