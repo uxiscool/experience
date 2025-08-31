@@ -94,7 +94,19 @@ header{ display:flex; align-items:flex-start; gap:36px; margin-top:36px; }
   display:flex; flex-direction:column;
 }
 .case-card:hover{ box-shadow:0 4px 28px #19c0ff2c; transform:translateY(-2px) scale(1.018); }
-.case-img-wrap{ background:#17191e; width:100%; aspect-ratio:4/3; display:flex; align-items:center; justify-content:center; overflow:hidden; }
+
+.case-img-wrap{ 
+  width:100%; 
+  aspect-ratio:4/3; 
+  display:flex; 
+  align-items:center; 
+  justify-content:center; 
+  background:transparent; 
+  position:relative; 
+  overflow:hidden;
+  border-radius:12px;
+}
+
 .case-thumb{ max-width:100%; max-height:100%; width:auto; height:auto; object-fit:contain; border-radius:0; transition:filter .18s; cursor:pointer; }
 .case-meta{ padding:22px 18px 18px; display:flex; flex-direction:column; gap:7px; }
 .case-title{ font-size:1.19rem; font-weight:600; color:#fff; margin-bottom:2px; text-decoration:underline dotted; text-underline-offset:4px; transition:color .15s; }
@@ -362,201 +374,6 @@ body.page-contact>main{ flex:1 0 auto; }
 .disabled-text .contact-hint,.disabled-text .soon-tag{ color:var(--disabled-fg); opacity:.9; }
 .disabled-text img,.disabled-text svg{ filter:grayscale(100%) brightness(.5); }
 
-/* ===== Pet projects ===== */
-
-/* Короткое описание раздела */
-.pet-meta{ 
-  padding:48px 280px 32px 280px; 
-}
-
-@media (max-width:980px){ 
-  .pet-meta{ 
-    padding:48px 64px 32px 64px; 
-  } 
-}
-.pet-meta .case-summary2{ 
-  margin:0; 
-}
-
-/* ===== Pet projects — финальная сетка ===== */
-.pp-grid {
-  padding: 0 280px 32px;
-  display: grid;
-  gap: 22px;
-  /* фиксированные треки по 660px, прижаты влево */
-  grid-template-columns: repeat(auto-fill, minmax(min(100%, 660px), 660px));
-  justify-content: start;
-}
-@media (max-width:980px){
-  .pp-grid { padding: 0 64px 24px; }
-}
-@media (min-width:1152px){
-  .pp-grid { padding-right:100px; }
-}
-
-/* Кликабельная карточка */
-.pp-item{
-  display:block;
-  text-decoration:none;
-  color:inherit;
-}
-
-/* Карточка */
-/* Карточка — GRID на самой карточке (без .pp-body) */
-.pp-card{
-  display:grid;
-  gap:12px;
-  background:#232429;
-  border-radius:18px;
-  box-shadow:0 2px 14px #181a1c29;
-  padding:16px;
-  min-height:220px;
-  min-width:0;
-  container-type:inline-size;
-  width:100%;
-
-  /* две колонки: слева медиа, справа контент */
-  grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);
-  grid-template-areas:
-    "header header"
-    "media  side";
-  align-items:stretch;
-}
-
-/* Привязываем элементы к областям */
-.pp-header{ grid-area:header; }
-.pp-media, .pp-media-link{ grid-area:media; }
-.pp-side{
-  grid-area:side;
-  display:grid;
-  grid-template-rows:1fr auto; /* текст тянется, футер внизу */
-  min-width:0;
-  align-self:stretch;
-}
-
-/* Мобильная карточка: одна колонка */
-@container (max-width:700px){
-  .pp-card{
-    grid-template-columns:1fr;
-    grid-template-areas:
-      "header"
-      "media"
-      "side";
-  }
-}
-
-/* Фолбэк, если нет container queries */
-@supports not (container-type:inline-size){
-  @media (max-width:700px){
-    .pp-card{
-      grid-template-columns:1fr;
-      grid-template-areas:
-        "header"
-        "media"
-        "side";
-    }
-  }
-}
-
-
-/* Шапка */
-.pp-header{
-  display:grid;
-  grid-template-columns:32px 1fr;
-  gap:10px;
-  align-items:center;
-  min-width:0;
-  margin-top:0;
-}
-.pp-icon{ width:32px; height:32px; display:block; }
-.pp-title{
-  margin:0;
-  font-size:1.15rem;
-  color:#fff;
-  letter-spacing:.01em;
-  white-space:nowrap;
-  overflow:hidden;
-  text-overflow:ellipsis;
-}
-
-/* ⬇️⬇️ КЛЮЧЕВОЕ ИСПРАВЛЕНИЕ ЛЭЙАУТА ⬇️⬇️ */
-/* База: две колонки — слева медиа, справа текст (десктоп и планшеты) */
-.pp-body{
-  display:grid;
-  grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);
-  gap:16px;
-  align-items:stretch;
-}
-/* Мобильная карточка (≤700px по ширине самой карточки): одна колонка — картинка над текстом */
-@container (max-width:700px){
-  .pp-body{ 
-    grid-template-columns:1fr; 
-    gap:12px;
-  }
-}
-/* ⬆️⬆️ КОНЕЦ ИСПРАВЛЕНИЯ ⬆️⬆️ */
-
-.pp-desc{ color:#cdd3db; opacity:.92; font-size:.98rem; line-height:1.35; }
-
-/* Футер — жёстко к правому нижнему углу */
-.pp-footer{
-  display:flex;
-  flex-direction:column;
-  gap:6px;
-  align-items:flex-end;
-  align-self:end;     /* ← прижать к нижней границе .pp-side */
-  margin-top:0px;
-  margin-right: 18px;
-  margin-bottom: 24px;
-}
-
-@media (max-width:980px){
-  .pp-footer {   margin-right: 8px;
-  margin-bottom: 12px; }
-}
-@media (min-width:1152px){
-  .pp-footer {   margin-right: 14px;
-  margin-bottom: 18px; }
-}
-
-.pp-kind{
-  color:#cbd2db; font-size:.9rem; opacity:.95;
-  text-align:right;
-}
-.pp-links{
-  display:flex; gap:10px; align-items:center; justify-content:flex-end;
-}
-.pp-links img{ height:32px; width:auto; display:block; }
-
-.pp-media-link{
-  display:block;
-  border-radius:12px;
-  text-decoration:none;
-  color:inherit;
-}
-.pp-media-link:focus-visible{
-  outline:2px solid #ff9900;
-  outline-offset:4px;
-  border-radius:12px;
-}
-/* Ссылки сторов в футере */
-.pp-links a.pp-store{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  border-radius:8px;
-  text-decoration:none;
-}
-.pp-links a.pp-store:focus-visible{
-  outline:2px solid #ff9900;
-  outline-offset:3px;
-  border-radius:8px;
-}
-/* (Опционально) убрать браузерный контур у картинок-иконок */
-.pp-links a.pp-store img{ display:block; height:32px; width:auto; }
-
-/* ===== SAFE PATCH: skeleton + pet projects + cases ===== */
-
 /* Skeleton shimmer (общий) */
 .img-skel{
   position:absolute; inset:0; border-radius:12px;
@@ -570,32 +387,13 @@ body.page-contact>main{ flex:1 0 auto; }
 .lazy-img.is-loaded{ opacity:1; }
 .has-loaded .img-skel{ display:none; }
 
-/* Pet projects — медиаблок и лэйаут справа */
-.pp-media{
-  position:relative;
-  overflow:hidden;
-  border-radius:12px;
-  background:#232429;
-  aspect-ratio:4 / 3;   /* держим высоту, пока грузится */
-  min-width:0;
-}
-.pp-media-link{
-  position:relative;
-  display:block;
-  width:100%;
-  height:100%;
-}
-.pp-media .lazy-img{
+
+.lazy-img{
   width:100%; height:100%;
   max-width:100%; max-height:100%;
   object-fit:contain;
   display:block;
 }
-
-.pp-side{ display:grid; grid-template-rows:1fr auto; align-self:stretch; min-width:0; }
-.pp-text{ display:flex; flex-direction:column; gap:8px; min-width:0; }
-/* Исправление опечатки */
-.pp-subtitle{ color:#cdd3db; opacity:.92; font-size:.98rem; }
 
 /* Cases — превью вписывается, без второй тёмной подложки */
 .case-img-wrap{
@@ -607,4 +405,124 @@ body.page-contact>main{ flex:1 0 auto; }
   object-fit:contain; background:transparent; border-radius:0; margin:0;
 }
 
-/* УДАЛИ, если есть где-то в файле:  .case-thumb2.lazy-img { object-fit: cover; } */
+/* ===== Pet projects ===== */
+
+/* Короткое описание раздела */
+.ppx-meta{
+  padding:48px 280px 32px;
+}
+@media (max-width:980px){
+  .ppx-meta{ padding:48px 64px 24px; }
+}
+
+/* Сетка карточек — колонки по ~660px, прижаты влево */
+.ppx-grid{
+  padding:0 280px 32px;
+  display:grid;
+  gap:22px;
+  grid-template-columns:repeat(auto-fill, minmax(min(100%,660px), 1fr));
+  justify-content:start;
+}
+@media (max-width:980px){
+  .ppx-grid{ padding:0 64px 24px; }
+}
+
+/* Карточка */
+.ppx-card{
+  display:grid;
+  gap:16px;
+  background:#232429;
+  border-radius:18px;
+  box-shadow:0 2px 14px #181a1c29;
+  padding:16px;
+  min-width:0;
+  grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);
+  grid-template-areas:
+    "head head"
+    "media side";
+  align-items:stretch;
+}
+
+/* Мобильный брейкпоинт: картинка над текстом */
+@media (max-width:700px){
+  .ppx-card{
+    grid-template-columns:1fr;
+    grid-template-areas:
+      "head"
+      "media"
+      "side";
+  }
+}
+
+/* Шапка */
+.ppx-head{
+  grid-area:head;
+  display:grid;
+  grid-template-columns:32px 1fr;
+  align-items:center;
+  gap:10px;
+  min-width:0;
+}
+.ppx-icon{ width:32px; height:32px; display:block; }
+.ppx-title{
+  margin:0;
+  font-size:1.15rem;
+  color:#fff;
+  letter-spacing:.01em;
+  white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+}
+
+/* Медиа (слева) */
+.ppx-media{
+  grid-area:media;
+  position:relative;
+  overflow:hidden;
+  border-radius:12px;
+  background:#232429;
+  aspect-ratio:4/3; /* держим высоту до загрузки */
+  min-width:0;
+}
+.ppx-media-link{ display:block; width:100%; height:100%; border-radius:12px; text-decoration:none; }
+.ppx-media-link:focus-visible{ outline:2px solid #ff9900; outline-offset:4px; border-radius:12px; }
+
+.ppx-img{
+  width:100%; height:100%;
+  object-fit:contain; display:block;
+  opacity:0; transition:opacity .25s ease;
+}
+.ppx-img.is-loaded{ opacity:1; }
+
+/* Скелетон — только у медиы */
+.ppx-skel{
+  position:absolute; inset:0; border-radius:12px;
+  background:linear-gradient(90deg,#2b2e33 25%, #3a3f45 37%, #2b2e33 63%);
+  background-size:400% 100%;
+  animation:ppx-skel 1.2s ease-in-out infinite;
+  pointer-events:none;
+}
+@keyframes ppx-skel{ 0%{background-position:100% 0} 100%{background-position:0 0} }
+.ppx-media.has-loaded .ppx-skel{ display:none; }
+
+/* Правая колонка: текст тянется, футер прижат вниз/вправо */
+.ppx-side{
+  grid-area:side;
+  display:grid;
+  grid-template-rows:1fr auto;
+  min-width:0;
+}
+.ppx-text{ display:flex; flex-direction:column; gap:8px; min-width:0; }
+.ppx-subtitle{ color:#cdd3db; opacity:.92; font-size:.98rem; }
+.ppx-desc{ color:#cdd3db; opacity:.92; font-size:.98rem; line-height:1.35; }
+
+/* Футер внизу справа */
+.ppx-footer{
+  align-self:end;
+  justify-self:end;
+  display:flex; flex-direction:column; gap:6px; align-items:flex-end;
+  margin:0 12px 12px 12px;
+}
+.ppx-kind{ color:#cbd2db; font-size:.9rem; opacity:.95; text-align:right; }
+.ppx-links{ display:flex; align-items:center; gap:10px; }
+.ppx-store{ display:inline-flex; align-items:center; justify-content:center; border-radius:8px; text-decoration:none; }
+.ppx-store:focus-visible{ outline:2px solid #ff9900; outline-offset:3px; border-radius:8px; }
+.ppx-links img{ height:32px; width:auto; display:block; }
