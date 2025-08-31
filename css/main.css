@@ -576,11 +576,10 @@ body.page-contact>main{ flex:1 0 auto; }
 
 /* Дополнительно: скелетон для медиа-контейнера */
 .pp-media {
-  background: #2b2e33;
   border-radius: 8px;
   min-height: 180px;
   display: flex;
-  align-items: center;
+  align-items: start;
   justify-content: center;
   overflow: hidden;
   position: relative;
