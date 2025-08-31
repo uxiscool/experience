@@ -45,15 +45,23 @@ title: Works
       {% for img in st.images %}
         {% unless img.home == false %}
           {% assign img_src = img.src | default: img.file | prepend: case.images_base | default: img.src %}
-          <div class="case-gallery-item">
-            <img
-              class="case-thumb2"
-              src="{{ site.baseurl }}{{ img_src }}"
-              alt="{{ img.caption | escape }}"
-              loading="lazy" decoding="async"
-              onclick="openHomeGallery({{ case_index }}, {{ idx }})">
-            {% if img.caption %}<div class="case-thumb-caption">{{ img.caption }}</div>{% endif %}
-          </div>
+    <div class="case-gallery-item">
+  <div class="case-img-wrap">
+    <div class="img-skel" aria-hidden="true"></div>
+    <img
+      class="case-thumb2 lazy-img"
+      loading="lazy" decoding="async"
+      data-src="{{ site.baseurl }}{{ img_src }}"
+      alt="{{ img.caption | escape }}"
+      onclick="openHomeGallery({{ case_index }}, {{ idx }})">
+    <noscript>
+      <img class="case-thumb2"
+           src="{{ site.baseurl }}{{ img_src }}"
+           alt="{{ img.caption | escape }}">
+    </noscript>
+  </div>
+  {% if img.caption %}<div class="case-thumb-caption">{{ img.caption }}</div>{% endif %}
+</div>
           {% assign idx = idx | plus: 1 %}
         {% endunless %}
       {% endfor %}
@@ -62,14 +70,22 @@ title: Works
     {% for img in case.images %}
       {% unless img.home == false %}
         <div class="case-gallery-item">
-          <img
-            class="case-thumb2"
-            src="{{ site.baseurl }}{{ img.src }}"
-            alt="{{ img.caption | escape }}"
-            loading="lazy" decoding="async"
-            onclick="openHomeGallery({{ case_index }}, {{ forloop.index0 }})">
-          {% if img.caption %}<div class="case-thumb-caption">{{ img.caption }}</div>{% endif %}
-        </div>
+  <div class="case-img-wrap">
+    <div class="img-skel" aria-hidden="true"></div>
+    <img
+      class="case-thumb2 lazy-img"
+      loading="lazy" decoding="async"
+      data-src="{{ site.baseurl }}{{ img.src }}"
+      alt="{{ img.caption | escape }}"
+      onclick="openHomeGallery({{ case_index }}, {{ forloop.index0 }})">
+    <noscript>
+      <img class="case-thumb2"
+           src="{{ site.baseurl }}{{ img.src }}"
+           alt="{{ img.caption | escape }}">
+    </noscript>
+  </div>
+  {% if img.caption %}<div class="case-thumb-caption">{{ img.caption }}</div>{% endif %}
+</div>
       {% endunless %}
     {% endfor %}
   {% endif %}
