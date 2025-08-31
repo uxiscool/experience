@@ -251,6 +251,22 @@ function updateThumbSizing(){
   row.style.setProperty('--lb-gap',        gap + 'px');
   row.style.flexWrap = twoRows ? 'wrap' : 'nowrap';
 }
+
+(function(){
+  function markLoaded(img){ img.classList.add('is-loaded'); }
+  function wireAll(selector){
+    document.querySelectorAll(selector).forEach(function(img){
+      if (!img) return;
+      if (img.complete && img.naturalWidth > 0) { markLoaded(img); return; }
+      img.addEventListener('load',  function(){ markLoaded(img); }, {once:true});
+      img.addEventListener('error', function(){ markLoaded(img); }, {once:true});
+    });
+  }
+  // Картинки в pet projects и в галереях кейсов/главной
+  wireAll('.pp-media img');
+  wireAll('.case-thumb2');
+})();
+
 </script>
   </body>
 </html>
