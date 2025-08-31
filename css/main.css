@@ -310,8 +310,8 @@ html[data-theme="dark"] .laurel-badge{ --leaf:#c2c9d3; }
 
 /* ---- Prefers-reduced-motion ---- */
 @media (prefers-reduced-motion:reduce){
-  .intro-hero,.tool.appear.in-view,.lb-leaf,.laurel-badge .lb-number,.laurel-badge .lb-label,.contacts-list .contact-item{ animation:none !important; }
-  .lb-leaf,.laurel-badge .lb-number,.laurel-badge .lb-label{ opacity:1 !important; transform:none !important; filter:none !important; }
+  .intro-hero,.tool.appear.in-view,.lb-leaf,.laurel-badge .lb-number,.laurel-badge .lb-label,.contacts-list .contact-item{ animation:none !重要; }
+  .lb-leaf,.laurel-badge .lb-number,.laurel-badge .lb-label{ opacity:1 !重要; transform:none !重要; filter:none !重要; }
 }
 
 /* ---- Contacts ---- */
@@ -436,17 +436,22 @@ body.page-contact>main{ flex:1 0 auto; }
   text-overflow:ellipsis;
 }
 
-/* Узкая карточка ≤520px — одна колонка */
-@container (max-width:520px){
-  .pp-body{ grid-template-columns:1fr; }
+/* ⬇️⬇️ КЛЮЧЕВОЕ ИСПРАВЛЕНИЕ ЛЭЙАУТА ⬇️⬇️ */
+/* База: две колонки — слева медиа, справа текст (десктоп и планшеты) */
+.pp-body{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);
+  gap:16px;
+  align-items:stretch;
 }
-/* Узкий ноутбук — две колонки, но без жёстких минимумов */
-@container (min-width:361px) and (max-width:640px){
-  .pp-body{
-    grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);
+/* Мобильная карточка (≤700px по ширине самой карточки): одна колонка — картинка над текстом */
+@container (max-width:700px){
+  .pp-body{ 
+    grid-template-columns:1fr; 
     gap:12px;
   }
 }
+/* ⬆️⬆️ КОНЕЦ ИСПРАВЛЕНИЯ ⬆️⬆️ */
 
 .pp-desc{ color:#cdd3db; opacity:.92; font-size:.98rem; line-height:1.35; }
 
@@ -456,7 +461,7 @@ body.page-contact>main{ flex:1 0 auto; }
   flex-direction:column;
   gap:6px;
   align-items:flex-end;
-  align-self:end;     /* ← фикс: прижать к нижней границе .pp-side */
+  align-self:end;     /* ← прижать к нижней границе .pp-side */
   margin-top:0px;
   margin-right: 18px;
   margin-bottom: 24px;
@@ -523,7 +528,6 @@ body.page-contact>main{ flex:1 0 auto; }
 .has-loaded .img-skel{ display:none; }
 
 /* Pet projects — медиаблок и лэйаут справа */
-/* Медиа-поле слева в карточке */
 .pp-media{
   position:relative;
   overflow:hidden;
@@ -536,7 +540,7 @@ body.page-contact>main{ flex:1 0 auto; }
   position:relative;
   display:block;
   width:100%;
-  height:100%;           /* ← важно: ссылка растягивается на весь блок */
+  height:100%;
 }
 .pp-media .lazy-img{
   width:100%; height:100%;
@@ -544,8 +548,7 @@ body.page-contact>main{ flex:1 0 auto; }
   object-fit:contain;
   display:block;
 }
-/* Тело/правая колонка — тянем по высоте, футер внизу */
-.pp-body{ align-items:stretch; }
+
 .pp-side{ display:grid; grid-template-rows:1fr auto; align-self:stretch; min-width:0; }
 .pp-text{ display:flex; flex-direction:column; gap:8px; min-width:0; }
 /* Исправление опечатки */
