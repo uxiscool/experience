@@ -254,31 +254,30 @@ body.page-contact>main{ flex:1 0 auto; }
 
 /* ===== Pet projects ===== */
 
+/* ===== Pet projects ===== */
+
 /* Короткое описание раздела */
 .pet-meta{ padding:48px 280px; margin:0 0 28px; }
 @media (max-width:980px){ .pet-meta{ padding:0 64px; } }
 .pet-meta .case-summary2{ margin:0; }
 
-/* ===== Pet projects — упрощённая сетка ===== */
-
-/* База: одна колонка, привычные боковые отступы */
+/* ===== Pet projects — финальная сетка ===== */
 .pp-grid {
   padding: 0 280px 32px;
   display: grid;
   gap: 22px;
-  /* Фикс-ширина треков 660px на десктопе, сжимается до 100% на узких */
+  /* фиксированные треки по 660px, прижаты влево */
   grid-template-columns: repeat(auto-fill, minmax(min(100%, 660px), 660px));
-  justify-content: start; /* прижимаем карточки влево */
+  justify-content: start;
 }
 @media (max-width:980px){
   .pp-grid { padding: 0 64px 24px; }
 }
-/* только для больших экранов — ослабляем правый паддинг */
 @media (min-width:1152px){
-  .pp-grid { padding-right: 100px; }
+  .pp-grid { padding-right:100px; }
 }
 
-/* Кликабельность карточки */
+/* Кликабельная карточка */
 .pp-item{
   display:block;
   text-decoration:none;
@@ -287,18 +286,17 @@ body.page-contact>main{ flex:1 0 auto; }
 
 /* Карточка */
 .pp-card {
-  display: grid;
-  grid-template-rows: auto 1fr;
-  gap: 12px;
-  background: #232429;
-  border-radius: 18px;
-  box-shadow: 0 2px 14px #181a1c29;
-  padding: 16px;
-  min-height: 220px;
-  min-width: 0;
-  container-type: inline-size;
-  width: 100%;           /* трек даёт 660px, карточка занимает его целиком */
-  /* Убрано: max-width:920px; margin-left:auto; margin-right:auto; */
+  display:grid;
+  grid-template-rows:auto 1fr;
+  gap:12px;
+  background:#232429;
+  border-radius:18px;
+  box-shadow:0 2px 14px #181a1c29;
+  padding:16px;
+  min-height:220px;
+  min-width:0;
+  container-type:inline-size;
+  width:100%; /* трек задаёт 660px */
 }
 
 /* Шапка */
@@ -321,16 +319,25 @@ body.page-contact>main{ flex:1 0 auto; }
   text-overflow:ellipsis;
 }
 
-/* Тело */
+/* Тело карточки */
 .pp-body{
   display:grid;
-  grid-template-columns:minmax(180px,1fr) minmax(200px,1.2fr);
+  grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);
   gap:16px;
   align-items:start;
   min-width:0;
 }
-/* На узкой карточке — одна колонка (контейнер-квери оставляем) */
-@container (max-width:560px){ .pp-body{ grid-template-columns:1fr; } }
+/* Узкая карточка ≤520px — одна колонка */
+@container (max-width:520px){
+  .pp-body{ grid-template-columns:1fr; }
+}
+/* Узкий ноутбук — две колонки, но без жёстких минимумов */
+@container (min-width:361px) and (max-width:640px){
+  .pp-body{
+    grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);
+    gap:12px;
+  }
+}
 
 .pp-media{ min-height:180px; overflow:hidden; }
 .pp-media img{
@@ -341,18 +348,23 @@ body.page-contact>main{ flex:1 0 auto; }
   margin:0 auto;
 }
 
-.pp-side{ display:flex; flex-direction:column; min-width:320px; min-height:180px; }
+.pp-side{
+  display:flex;
+  flex-direction:column;
+  min-width:0; /* фикс: текст не вылезает */
+  min-height:180px;
+}
 .pp-text{ display:grid; gap:8px; min-width:0; }
 .pp-subtitle{ color:#e2e5e7; opacity:.93; font-size:1.02rem; }
 .pp-desc{ color:#cdd3db; opacity:.92; font-size:.98rem; line-height:1.35; }
 
-/* Футер (приклеен вниз правой колонки) */
+/* Футер */
 .pp-footer{ margin-top:auto; display:grid; gap:8px; align-content:end; }
 .pp-kind{ color:#cbd2db; font-size:.9rem; opacity:.95; }
 .pp-links{ display:flex; gap:10px; align-items:center; }
 .pp-links img{ height:32px; width:auto; display:block; }
 
-/* Доступность — фокус оставляем, hover убран */
+/* Доступность */
 .pp-item:focus-visible{
   outline:2px solid #ff9900;
   outline-offset:4px;
@@ -362,4 +374,3 @@ body.page-contact>main{ flex:1 0 auto; }
   color:#ff9900;
   transition:color 2s cubic-bezier(.19,1,.22,1);
 }
-
