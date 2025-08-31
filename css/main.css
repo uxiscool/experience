@@ -11,15 +11,6 @@ body{
 body.lb-lock{ overflow:hidden; }
 section{ padding-top:2rem; }
 
-html, body { height:100%; }
-body{
-  min-height:100dvh;
-  display:flex;
-  flex-direction:column;
-}
-main{ flex:1 0 auto; }
-
-
 /* ---- Layout ---- */
 .container{
   margin:0; padding-left:280px; padding-right:280px;
@@ -310,8 +301,8 @@ html[data-theme="dark"] .laurel-badge{ --leaf:#c2c9d3; }
 
 /* ---- Prefers-reduced-motion ---- */
 @media (prefers-reduced-motion:reduce){
-  .intro-hero,.tool.appear.in-view,.lb-leaf,.laurel-badge .lb-number,.laurel-badge .lb-label,.contacts-list .contact-item{ animation:none !重要; }
-  .lb-leaf,.laurel-badge .lb-number,.laurel-badge .lb-label{ opacity:1 !重要; transform:none !重要; filter:none !重要; }
+  .intro-hero,.tool.appear.in-view,.lb-leaf,.laurel-badge .lb-number,.laurel-badge .lb-label,.contacts-list .contact-item{ animation:none !important; }
+  .lb-leaf,.laurel-badge .lb-number,.laurel-badge .lb-label{ opacity:1 !important; transform:none !important; filter:none !important; }
 }
 
 /* ---- Contacts ---- */
@@ -402,9 +393,9 @@ body.page-contact>main{ flex:1 0 auto; }
 }
 
 /* Карточка */
-/* Карточка — GRID на самой карточке (без .pp-body) */
-.pp-card{
+.pp-card {
   display:grid;
+  grid-template-rows:auto 1fr;
   gap:12px;
   background:#232429;
   border-radius:18px;
@@ -413,51 +404,8 @@ body.page-contact>main{ flex:1 0 auto; }
   min-height:220px;
   min-width:0;
   container-type:inline-size;
-  width:100%;
-
-  /* две колонки: слева медиа, справа контент */
-  grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);
-  grid-template-areas:
-    "header header"
-    "media  side";
-  align-items:stretch;
+  width:100%; /* трек задаёт 660px */
 }
-
-/* Привязываем элементы к областям */
-.pp-header{ grid-area:header; }
-.pp-media, .pp-media-link{ grid-area:media; }
-.pp-side{
-  grid-area:side;
-  display:grid;
-  grid-template-rows:1fr auto; /* текст тянется, футер внизу */
-  min-width:0;
-  align-self:stretch;
-}
-
-/* Мобильная карточка: одна колонка */
-@container (max-width:700px){
-  .pp-card{
-    grid-template-columns:1fr;
-    grid-template-areas:
-      "header"
-      "media"
-      "side";
-  }
-}
-
-/* Фолбэк, если нет container queries */
-@supports not (container-type:inline-size){
-  @media (max-width:700px){
-    .pp-card{
-      grid-template-columns:1fr;
-      grid-template-areas:
-        "header"
-        "media"
-        "side";
-    }
-  }
-}
-
 
 /* Шапка */
 .pp-header{
@@ -479,23 +427,56 @@ body.page-contact>main{ flex:1 0 auto; }
   text-overflow:ellipsis;
 }
 
-/* ⬇️⬇️ КЛЮЧЕВОЕ ИСПРАВЛЕНИЕ ЛЭЙАУТА ⬇️⬇️ */
-/* База: две колонки — слева медиа, справа текст (десктоп и планшеты) */
+/* Тело карточки */
 .pp-body{
   display:grid;
-  grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);
+  grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);
   gap:16px;
-  align-items:stretch;
+  align-items:stretch; 
+  min-width:0;
 }
-/* Мобильная карточка (≤700px по ширине самой карточки): одна колонка — картинка над текстом */
-@container (max-width:700px){
-  .pp-body{ 
-    grid-template-columns:1fr; 
+/* Узкая карточка ≤520px — одна колонка */
+@container (max-width:520px){
+  .pp-body{ grid-template-columns:1fr; }
+}
+/* Узкий ноутбук — две колонки, но без жёстких минимумов */
+@container (min-width:361px) and (max-width:640px){
+  .pp-body{
+    grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);
     gap:12px;
   }
 }
-/* ⬆️⬆️ КОНЕЦ ИСПРАВЛЕНИЯ ⬆️⬆️ */
 
+.pp-media{ min-height:180px; overflow:hidden; }
+.pp-media img{
+  max-width:100%;
+  max-height:100%;
+  object-fit:contain;
+  display:block;
+  margin:0 auto;
+}
+
+/* Правая колонка: первая строка тянется, вторая под футер */
+.pp-side{
+  display:grid;
+  grid-template-rows:1fr auto;  /* возвращаем 1fr auto */
+  min-width:0;
+  min-height:180px;
+  align-self:stretch;
+  row-gap: 24px;
+}
+
+/* Блок с текстом: держим всё у верхнего края */
+.pp-text{
+  display:flex;                  /* вместо grid */
+  flex-direction:column;
+  gap:8px;
+  align-items:flex-start;
+  min-width:0;
+  padding-right: 32px;
+}
+
+.pp-subtitle{ color:#cdd3db; opacity:.92; font: size 98rem; }
 .pp-desc{ color:#cdd3db; opacity:.92; font-size:.98rem; line-height:1.35; }
 
 /* Футер — жёстко к правому нижнему углу */
@@ -504,7 +485,7 @@ body.page-contact>main{ flex:1 0 auto; }
   flex-direction:column;
   gap:6px;
   align-items:flex-end;
-  align-self:end;     /* ← прижать к нижней границе .pp-side */
+  align-self:end;     /* ← фикс: прижать к нижней границе .pp-side */
   margin-top:0px;
   margin-right: 18px;
   margin-bottom: 24px;
@@ -554,57 +535,3 @@ body.page-contact>main{ flex:1 0 auto; }
 }
 /* (Опционально) убрать браузерный контур у картинок-иконок */
 .pp-links a.pp-store img{ display:block; height:32px; width:auto; }
-
-/* ===== SAFE PATCH: skeleton + pet projects + cases ===== */
-
-/* Skeleton shimmer (общий) */
-.img-skel{
-  position:absolute; inset:0; border-radius:12px;
-  background:linear-gradient(90deg,#2b2e33 25%, #3a3f45 37%, #2b2e33 63%);
-  background-size:400% 100%;
-  animation:skel-shimmer 1.2s ease-in-out infinite;
-  pointer-events:none;
-}
-@keyframes skel-shimmer{0%{background-position:100% 0}100%{background-position:0 0}}
-.lazy-img{ opacity:0; transition:opacity .25s ease; display:block; }
-.lazy-img.is-loaded{ opacity:1; }
-.has-loaded .img-skel{ display:none; }
-
-/* Pet projects — медиаблок и лэйаут справа */
-.pp-media{
-  position:relative;
-  overflow:hidden;
-  border-radius:12px;
-  background:#232429;
-  aspect-ratio:4 / 3;   /* держим высоту, пока грузится */
-  min-width:0;
-}
-.pp-media-link{
-  position:relative;
-  display:block;
-  width:100%;
-  height:100%;
-}
-.pp-media .lazy-img{
-  width:100%; height:100%;
-  max-width:100%; max-height:100%;
-  object-fit:contain;
-  display:block;
-}
-
-.pp-side{ display:grid; grid-template-rows:1fr auto; align-self:stretch; min-width:0; }
-.pp-text{ display:flex; flex-direction:column; gap:8px; min-width:0; }
-/* Исправление опечатки */
-.pp-subtitle{ color:#cdd3db; opacity:.92; font-size:.98rem; }
-
-/* Cases — превью вписывается, без второй тёмной подложки */
-.case-img-wrap{
-  background:transparent; position:relative; overflow:hidden;
-  border-radius:12px;
-}
-.case-thumb2{
-  width:100%; height:100%; max-width:100%; max-height:100%;
-  object-fit:contain; background:transparent; border-radius:0; margin:0;
-}
-
-/* УДАЛИ, если есть где-то в файле:  .case-thumb2.lazy-img { object-fit: cover; } */
