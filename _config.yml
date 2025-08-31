@@ -5,6 +5,3 @@ url: ""     # не трогай если в Pages
 collections:
   cases:
     output: true
-  petprojects:
-    output: true
-    permalink: /pet/:name/

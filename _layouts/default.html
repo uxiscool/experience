@@ -14,133 +14,48 @@
     </main>
     {% include footer.html %}
 <script>
-  window.siteBaseurl = "{{ site.baseurl }}";
+window.siteBaseurl = "{{ site.baseurl }}";
+let allCases = {{ site.cases | jsonify }};
+let currentCaseIdx = 0, currentImgIdx = 0;
 
-  // 1) Полные галереи (для /cases/ и страниц кейса)
-  window.CASE_GALLERY_ALL = [
-    {% for c in site.cases %}
-      (function(){
-        var arr = [];
-        {% if c.stages %}
-          {% for st in c.stages %}
-            {% for img in st.images %}
-              {% assign src = img.src | default: img.file | prepend: c.images_base | default: img.src %}
-              arr.push({ src: "{{ site.baseurl }}{{ src }}", caption: {{ img.caption | jsonify }} });
-            {% endfor %}
-          {% endfor %}
-        {% elsif c.images %}
-          {% for img in c.images %}
-            arr.push({ src: "{{ site.baseurl }}{{ img.src }}", caption: {{ img.caption | jsonify }} });
-          {% endfor %}
-        {% endif %}
-        return arr;
-      })(){% unless forloop.last %},{% endunless %}
-    {% endfor %}
-  ];
+function openCaseGallery(caseIdx, imgIdx) {
+  currentCaseIdx = caseIdx;
+  currentImgIdx = imgIdx;
+  showCaseLightbox();
+}
 
-  // 2) Галереи только для главной (home == true|undefined)
-  window.CASE_GALLERY_HOME = [
-    {% for c in site.cases %}
-      (function(){
-        var arr = [];
-        {% if c.stages %}
-          {% for st in c.stages %}
-            {% for img in st.images %}
-              {% unless img.home == false %}
-                {% assign src = img.src | default: img.file | prepend: c.images_base | default: img.src %}
-                arr.push({ src: "{{ site.baseurl }}{{ src }}", caption: {{ img.caption | jsonify }} });
-              {% endunless %}
-            {% endfor %}
-          {% endfor %}
-        {% elsif c.images %}
-          {% for img in c.images %}
-            {% unless img.home == false %}
-              arr.push({ src: "{{ site.baseurl }}{{ img.src }}", caption: {{ img.caption | jsonify }} });
-            {% endunless %}
-          {% endfor %}
-        {% endif %}
-        return arr;
-      })(){% unless forloop.last %},{% endunless %}
-    {% endfor %}
-  ];
+function showCaseLightbox() {
+  const imgs = allCases[currentCaseIdx].images;
+  const data = imgs[currentImgIdx];
+  document.getElementById('lightbox-img').src = window.siteBaseurl + data.src;
+  document.getElementById('lightbox-caption').textContent = data.caption || '';
+  document.getElementById('lightbox').style.display = 'flex';
+  // Новый: блокируем скролл фона
+  document.body.classList.add('lb-lock');
+}
 
-  /* 3) Галерея Pet projects */
-  window.PET_GALLERY = [
-    {% for p in site.petprojects %}
-      (function(){
-        var arr = [];
-        {% for img in p.gallery %}
-          {% assign src = img.src | default: img.file | prepend: p.images_base | default: img.src %}
-          arr.push({ src: "{{ site.baseurl }}{{ src }}", caption: {{ img.caption | jsonify }} });
-        {% endfor %}
-        return arr;
-      })(){% unless forloop.last %},{% endunless %}
-    {% endfor %}
-  ];
-
-  /* Режимы: 'all', 'home', 'pet' */
-  let currentCaseIdx = 0, currentImgIdx = 0, currentMode = 'all';
-
-  function getGallery(idx){
-    if (currentMode === 'home') return window.CASE_GALLERY_HOME[idx] || [];
-    if (currentMode === 'pet')  return window.PET_GALLERY[idx] || [];
-    return window.CASE_GALLERY_ALL[idx] || [];
-  }
-
-  // Вход из /cases/ и страниц кейса — полный набор
-  function openCaseGallery(caseIdx, imgIdx){
-    currentMode = 'all';
-    currentCaseIdx = caseIdx;
-    currentImgIdx = imgIdx || 0;
-    showCaseLightbox();
-  }
-
-  // Вход с главной — только видимые (home)
-  function openHomeGallery(caseIdx, imgIdx){
-    currentMode = 'home';
-    currentCaseIdx = caseIdx;
-    currentImgIdx = imgIdx || 0;
-    showCaseLightbox();
-  }
-
-    function openPetGallery(petIdx, imgIdx){
-    currentMode = 'pet';
-    currentCaseIdx = petIdx;
-    currentImgIdx = imgIdx || 0;
-    showCaseLightbox();
-  }
-
-  function showCaseLightbox(){
-    const imgs = getGallery(currentCaseIdx);
-    const data = imgs[currentImgIdx] || {};
-    document.getElementById('lightbox-img').src = data.src || '';
-    document.getElementById('lightbox-caption').textContent = data.caption || '';
-    document.getElementById('lightbox').style.display = 'flex';
-    document.body.classList.add('lb-lock');
-  }
-  function closeLightbox(){
-    document.getElementById('lightbox').style.display = 'none';
-    document.body.classList.remove('lb-lock');
-  }
-  function lightboxPrev(){
-    const imgs = getGallery(currentCaseIdx);
-    const n = imgs.length || 1;
-    currentImgIdx = (currentImgIdx + n - 1) % n;
-    showCaseLightbox();
-  }
-  function lightboxNext(){
-    const imgs = getGallery(currentCaseIdx);
-    const n = imgs.length || 1;
-    currentImgIdx = (currentImgIdx + 1) % n;
-    showCaseLightbox();
-  }
-  document.addEventListener('keydown', function(e){
-    const lb = document.getElementById('lightbox');
-    if (!lb || lb.style.display !== 'flex') return;
-    if (e.key === 'Escape') closeLightbox();
-    if (e.key === 'ArrowLeft') lightboxPrev();
-    if (e.key === 'ArrowRight') lightboxNext();
-  });
+function closeLightbox() {
+  document.getElementById('lightbox').style.display = 'none';
+  // Новый: возвращаем скролл
+  document.body.classList.remove('lb-lock');
+}
+function lightboxPrev() {
+  const imgs = allCases[currentCaseIdx].images;
+  currentImgIdx = (currentImgIdx + imgs.length - 1) % imgs.length;
+  showCaseLightbox();
+}
+function lightboxNext() {
+  const imgs = allCases[currentCaseIdx].images;
+  currentImgIdx = (currentImgIdx + 1) % imgs.length;
+  showCaseLightbox();
+}
+document.addEventListener('keydown', function(e) {
+  const lb = document.getElementById('lightbox');
+  if (!lb || lb.style.display !== 'flex') return;
+  if (e.key === "Escape") closeLightbox();
+  if (e.key === "ArrowLeft") lightboxPrev();
+  if (e.key === "ArrowRight") lightboxNext();
+});
 </script>
   </body>
 </html>
