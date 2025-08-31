@@ -81,6 +81,33 @@
   /* Режимы: 'all', 'home', 'pet' */
   let currentCaseIdx = 0, currentImgIdx = 0, currentMode = 'all';
 
+  function loadIntoLightbox(src, caption){
+  const stage = document.querySelector('.lightbox-stage');
+  const img   = document.getElementById('lightbox-img');
+  const capEl = document.getElementById('lightbox-caption');
+  if (!stage || !img) return Promise.resolve();
+
+  stage.classList.add('is-loading');  // показываем Lottie и скрываем img
+
+  return new Promise(function(resolve){
+    const ph = new Image();
+    ph.onload = function(){
+      img.src = src || '';
+      if (capEl) capEl.textContent = caption || '';
+      stage.classList.remove('is-loading');  // убираем Lottie, показываем img
+      resolve();
+    };
+    ph.onerror = function(){
+      // даже при ошибке убираем прелоадер и пытаемся показать картинку (alt/404)
+      img.src = src || '';
+      if (capEl) capEl.textContent = caption || '';
+      stage.classList.remove('is-loading');
+      resolve();
+    };
+    ph.src = src || '';
+  });
+}
+
   function getGallery(idx){
     if (currentMode === 'home') return window.CASE_GALLERY_HOME[idx] || [];
     if (currentMode === 'pet')  return window.PET_GALLERY[idx] || [];
@@ -110,30 +137,51 @@
     showCaseLightbox();
   }
 
-  function showCaseLightbox(){
-    const imgs = getGallery(currentCaseIdx);
-    const data = imgs[currentImgIdx] || {};
-    document.getElementById('lightbox-img').src = data.src || '';
-    document.getElementById('lightbox-caption').textContent = data.caption || '';
-    document.getElementById('lightbox').style.display = 'flex';
-    document.body.classList.add('lb-lock');
-  }
+// ОТКРЫТИЕ: рисуем миниатюры и грузим кадр с прелоадером
+async function showCaseLightbox(){
+  const imgs = getGallery(currentCaseIdx);
+  const data = imgs[currentImgIdx] || {};
+
+  document.getElementById('lightbox').style.display = 'flex';
+  document.body.classList.add('lb-lock');
+
+  renderThumbs();
+  updateThumbActive();
+  updateThumbSizing();
+
+  await loadIntoLightbox(data.src, data.caption);
+}
   function closeLightbox(){
     document.getElementById('lightbox').style.display = 'none';
     document.body.classList.remove('lb-lock');
   }
-  function lightboxPrev(){
-    const imgs = getGallery(currentCaseIdx);
-    const n = imgs.length || 1;
-    currentImgIdx = (currentImgIdx + n - 1) % n;
-    showCaseLightbox();
-  }
-  function lightboxNext(){
-    const imgs = getGallery(currentCaseIdx);
-    const n = imgs.length || 1;
-    currentImgIdx = (currentImgIdx + 1) % n;
-    showCaseLightbox();
-  }
+
+// ЛИСТАНИЕ ВЛЕВО: меняем индекс → подсветка → загрузка с прелоадером
+async function lightboxPrev(){
+  const imgs = getGallery(currentCaseIdx);
+  const n = imgs.length || 1;
+  currentImgIdx = (currentImgIdx + n - 1) % n;
+
+  updateThumbActive();
+
+  const data = imgs[currentImgIdx] || {};
+  await loadIntoLightbox(data.src, data.caption);
+}
+// ЛИСТАНИЕ ВПРАВО: меняем индекс → подсветка → загрузка с прелоадером
+async function lightboxNext(){
+  const imgs = getGallery(currentCaseIdx);
+  const n = imgs.length || 1;
+  currentImgIdx = (currentImgIdx + 1) % n;
+
+  updateThumbActive();
+
+  const data = imgs[currentImgIdx] || {};
+  await loadIntoLightbox(data.src, data.caption);
+}
+
+// ресайз для подгонки размеров миниатюр
+window.addEventListener('resize', updateThumbSizing);
+
   document.addEventListener('keydown', function(e){
     const lb = document.getElementById('lightbox');
     if (!lb || lb.style.display !== 'flex') return;
@@ -141,6 +189,68 @@
     if (e.key === 'ArrowLeft') lightboxPrev();
     if (e.key === 'ArrowRight') lightboxNext();
   });
+
+  function renderThumbs(){
+  const row = document.getElementById('lightbox-thumbs-row');
+  if (!row) return;
+  const imgs = getGallery(currentCaseIdx);
+  row.innerHTML = '';
+  imgs.forEach((it, i) => {
+    const t = document.createElement('img');
+    t.src = it.src; t.alt = it.caption || '';
+    t.className = 'lightbox-thumb' + (i === currentImgIdx ? ' is-active' : '');
+    t.tabIndex = 0;
+    t.addEventListener('click', () => { currentImgIdx = i; showCaseLightbox(); });
+    t.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { currentImgIdx = i; showCaseLightbox(); }});
+    row.appendChild(t);
+  });
+  requestAnimationFrame(updateThumbSizing);
+}
+
+function updateThumbActive(){
+  const nodes = document.querySelectorAll('.lightbox-thumb');
+  nodes.forEach((n, i) => n.classList.toggle('is-active', i === currentImgIdx));
+}
+
+function updateThumbSizing(){
+  const wrap = document.getElementById('lightbox-thumbs');
+  const row  = document.getElementById('lightbox-thumbs-row');
+  const lb   = document.getElementById('lightbox');
+  if (!wrap || !row || !lb) return;
+
+  const n = row.children.length;
+  if (!n) return;
+
+  const wrapW = wrap.clientWidth;
+
+  // Параметры
+  const startSize = 50;   // базовый размер миниатюры
+  const minSize   = 30;   // минимальный размер миниатюры
+  const gap       = 25;   // промежуток между миниатюрами
+  const padV      = 0 + 0; // вертикальный паддинг внутри wrap (мы его занулили в CSS)
+
+  // 1 строка по умолчанию
+  let size = startSize;
+  let needWidth = n * size + (n - 1) * gap;
+  let twoRows = false;
+
+  if (needWidth > wrapW){
+    // Ужимаем до минимума
+    size = Math.floor((wrapW - (n - 1) * gap) / n);
+    if (size < minSize){
+      // В две строки
+      twoRows = true;
+      const perRow = Math.ceil(n / 2);
+      size = Math.floor((wrapW - (perRow - 1) * gap) / perRow);
+      size = Math.max(size, minSize);
+    }
+  }
+  // Применяем размеры к CSS-переменным
+  row.style.setProperty('--lb-thumb-size', size + 'px');
+  row.style.setProperty('--lb-thumb-min',  minSize + 'px');
+  row.style.setProperty('--lb-gap',        gap + 'px');
+  row.style.flexWrap = twoRows ? 'wrap' : 'nowrap';
+}
 </script>
   </body>
 </html>

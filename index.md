@@ -5,7 +5,7 @@ title: Works
 
 <div class="container">
   <div class="intro-hero">
-    <p>
+    <p id="intro-line" class="intro-line">
     I’m Vladimir — UX&nbsp;enthusiast and&nbsp;interaction architect based in&nbsp;Moscow, Russia.<br><br>
     I’m&nbsp;passionate about a&nbsp;systematic approach to&nbsp;design and&nbsp;believe that real product value starts with well-thought-out user journeys.<br>I&nbsp;love working on&nbsp;a&nbsp;wide variety of&nbsp;interfaces, with a&nbsp;special passion for&nbsp;internal tools and&nbsp;complex B2B web&nbsp;services.<br><br>
     My&nbsp;experience covers different project roles: from solo contributor to&nbsp;core team member. I&nbsp;enjoy tackling business tasks, building structure out&nbsp;of&nbsp;chaos, and&nbsp;making digital products truly useful and&nbsp;delightful for&nbsp;people.<br><br>
@@ -87,10 +87,33 @@ title: Works
     <button class="lightbox-arrow left" onclick="lightboxPrev()" aria-label="Previous">
       <img src="{{ site.baseurl }}/ui/lightbox_arrow_left.svg" width="36" height="36" alt="Prev">
     </button>
-    <img id="lightbox-img" class="lightbox-img" src="">
+    <div class="lightbox-stage">
+  <img id="lightbox-img" class="lightbox-img" src="">
+    {% include lightbox_loader.html %}
+</div>
     <button class="lightbox-arrow right" onclick="lightboxNext()" aria-label="Next">
       <img src="{{ site.baseurl }}/ui/lightbox_arrow_right.svg" width="36" height="36" alt="Next">
     </button>
     <div id="lightbox-caption" class="lightbox-caption"></div>
+    <div id="lightbox-thumbs" class="lightbox-thumbs-wrap" aria-label="Gallery thumbnails">
+  <div class="lightbox-thumbs" id="lightbox-thumbs-row"></div>
+</div>
   </div>
 </div>
+<script>
+(function(){
+  // Локальное время пользователя
+  var h = new Date().getHours();
+  var greet = (h < 5)  ? 'Late night greetings'
+            : (h < 12) ? 'Good morning'
+            : (h < 18) ? 'Hello there'
+            :            'Good evening';
+
+  var el = document.getElementById('intro-line');
+  if (!el) return;
+
+  // Не ломаем существующую типографику — просто префикс с тире
+  var text = el.innerHTML;
+  el.innerHTML = '<span class="greet">'+greet+'</span> 🖖 ' + text;
+})();
+</script>
