@@ -6,6 +6,14 @@
     <link rel="stylesheet" href="{{ site.baseurl }}/css/main.css">
     <link rel="stylesheet" href="{{ site.baseurl }}/css/skills.css">
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    <style>
+.pp-media img:not(.is-loaded),
+.case-thumb2:not(.is-loaded) {
+  opacity: 0;
+  background: linear-gradient(90deg, #2b2e33 25%, #3a3f45 37%, #2b2e33 63%);
+  animation: skel-shimmer 1.5s ease-in-out infinite;
+}
+</style>
   </head>
   <body class="{{ page.body_class }}">
     {% include header.html %}
@@ -252,19 +260,80 @@ function updateThumbSizing(){
   row.style.flexWrap = twoRows ? 'wrap' : 'nowrap';
 }
 
+// Добавить в конец <script> секции в default.html
+
+// Инициализация скелетон-анимации ДО загрузки DOM
 (function(){
-  function markLoaded(img){ img.classList.add('is-loaded'); }
-  function wireAll(selector){
-    document.querySelectorAll(selector).forEach(function(img){
+  function initSkeleton() {
+    function markLoaded(img){ 
+      img.classList.add('is-loaded'); 
+    }
+    
+    function markLoading(img) {
+      // Убеждаемся, что картинка показывает скелетон
+      img.classList.remove('is-loaded');
+    }
+    
+    function wireImage(img) {
       if (!img) return;
-      if (img.complete && img.naturalWidth > 0) { markLoaded(img); return; }
-      img.addEventListener('load',  function(){ markLoaded(img); }, {once:true});
-      img.addEventListener('error', function(){ markLoaded(img); }, {once:true});
+      
+      // Если картинка уже загружена (например, из кэша)
+      if (img.complete && img.naturalWidth > 0) { 
+        markLoaded(img); 
+        return; 
+      }
+      
+      // Если не загружена - показываем скелетон
+      markLoading(img);
+      
+      // Добавляем обработчики
+      img.addEventListener('load', function(){ 
+        markLoaded(img); 
+      }, {once: true});
+      
+      img.addEventListener('error', function(){ 
+        markLoaded(img); 
+      }, {once: true});
+    }
+    
+    function wireAll(selector){
+      document.querySelectorAll(selector).forEach(wireImage);
+    }
+    
+    // Обрабатываем существующие картинки
+    wireAll('.pp-media img');
+    wireAll('.case-thumb2');
+    
+    // Наблюдаем за новыми картинками (если они добавляются динамически)
+    const observer = new MutationObserver(function(mutations) {
+      mutations.forEach(function(mutation) {
+        mutation.addedNodes.forEach(function(node) {
+          if (node.nodeType === 1) { // Element node
+            // Проверяем сам элемент
+            if (node.matches && (node.matches('.pp-media img') || node.matches('.case-thumb2'))) {
+              wireImage(node);
+            }
+            // Проверяем дочерние элементы
+            if (node.querySelectorAll) {
+              node.querySelectorAll('.pp-media img, .case-thumb2').forEach(wireImage);
+            }
+          }
+        });
+      });
+    });
+    
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true
     });
   }
-  // Картинки в pet projects и в галереях кейсов/главной
-  wireAll('.pp-media img');
-  wireAll('.case-thumb2');
+  
+  // Запускаем сразу, если DOM уже готов
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initSkeleton);
+  } else {
+    initSkeleton();
+  }
 })();
 
 </script>
