@@ -71,6 +71,7 @@ permalink: /pet-projects/
           {% endif %}
         </div>
       </div>
+    </div>
   </div>
 </article>
   {% endfor %}
