@@ -3,20 +3,19 @@ layout: default
 title: Pet projects
 permalink: /pet-projects/
 ---
-
-<!-- Короткое описание раздела -->
-<div class="ppx-meta">
+<!-- краткое описание раздела, как «лейбл кейса», но только текст -->
+<div class="pet-meta">
   <div class="case-summary2">
-    Side projects, experiments and "little joys" where you can quickly try out ideas and roll them out into the world.
+    Side projects, experiments and “little joys” where you can quickly try out ideas and roll them out into the world.
   </div>
 </div>
-
-<!-- Сетка карточек -->
-<div class="ppx-grid">
+<div class="pp-grid">
   {% assign items = site.petprojects %}
-
   {% for p in items %}
-    {% assign pet_index = forloop.index0 %}
+    {% assign pet_index = 0 %}
+    {% for pp in site.petprojects %}
+      {% if pp.url == p.url %}{% assign pet_index = forloop.index0 %}{% break %}{% endif %}
+    {% endfor %}
 
     {%- assign first = p.gallery[0] -%}
     {%- assign thumb_src = nil -%}
@@ -31,62 +30,62 @@ permalink: /pet-projects/
       {% endif %}
     {% endif %}
 
-    <article class="ppx-card">
-      <!-- Шапка -->
-      <header class="ppx-head">
-        {% if p.icon %}
-          <img class="ppx-icon" src="{{ site.baseurl }}{{ p.icon }}" alt="">
-        {% endif %}
-        <h3 class="ppx-title">{{ p.title }}</h3>
-      </header>
+    <a class="pp-item" href="javascript:void(0)" onclick="openPetGallery({{ pet_index }}, 0)">
+  <article class="pp-card">
+    <!-- Шапка -->
+    <header class="pp-header">
+      <img class="pp-icon" src="{{ site.baseurl }}{{ p.icon }}" alt="">
+      <h3 class="pp-title">{{ p.title }}</h3>
+    </header>
 
-      <!-- Медиа слева -->
-      <div class="ppx-media">
+    <!-- Тело: слева медиа, справа текст + футер, приклеенный к низу -->
+    <div class="pp-body">
+      <div class="pp-media">
         {% if thumb_src %}
-          {% assign click_url = p.figma | default: p.url %}
-          {% if click_url %}
-            <a class="ppx-media-link" href="{{ click_url }}" target="_blank" rel="noopener">
-          {% endif %}
-
-            <div class="ppx-skel" aria-hidden="true"></div>
-            <img class="ppx-img"
-                 loading="lazy" decoding="async"
-                 src="{{ site.baseurl }}{{ thumb_src }}"
-                 alt=""
-                 onload="this.classList.add('is-loaded'); this.closest('.ppx-media').classList.add('has-loaded');">
-
-          {% if click_url %}</a>{% endif %}
+          <img src="{{ site.baseurl }}{{ thumb_src }}" alt="">
         {% endif %}
       </div>
 
-      <!-- Текст справа -->
-      <div class="ppx-side">
-        <div class="ppx-text">
-          {% if p.subtitle %}<div class="ppx-subtitle">{{ p.subtitle }}</div>{% endif %}
-          {% if p.desc %}<div class="ppx-desc">{{ p.desc }}</div>{% endif %}
+      <div class="pp-side">
+        <div class="pp-text">
+          {% if p.subtitle %}<div class="pp-subtitle">{{ p.subtitle }}</div>{% endif %}
+          {% if p.desc %}<div class="pp-desc">{{ p.desc }}</div>{% endif %}
         </div>
 
-        <div class="ppx-footer">
-          {% if p.kind %}<div class="ppx-kind">{{ p.kind }}</div>{% endif %}
-          <div class="ppx-links">
+        <div class="pp-footer">
+          {% if p.kind %}<div class="pp-kind">{{ p.kind }}</div>{% endif %}
+          <div class="pp-links">
             {% if p.figma %}
-              <a class="ppx-store" href="{{ p.figma }}" target="_blank" rel="noopener" aria-label="Open in Figma">
-                <img src="{{ site.baseurl }}/ui/stores/figma.svg" alt="Figma">
-              </a>
+              <img src="{{ site.baseurl }}/ui/stores/figma.svg" alt="Figma">
             {% endif %}
             {% if p.stores and p.stores.play %}
-              <a class="ppx-store" href="{{ p.stores.play }}" target="_blank" rel="noopener" aria-label="Google Play">
-                <img src="{{ site.baseurl }}/ui/stores/googleplay.svg" alt="Google Play">
-              </a>
+              <img src="{{ site.baseurl }}/ui/stores/googleplay.svg" alt="Google Play">
             {% endif %}
             {% if p.stores and p.stores.appstore %}
-              <a class="ppx-store" href="{{ p.stores.appstore }}" target="_blank" rel="noopener" aria-label="App Store">
-                <img src="{{ site.baseurl }}/ui/stores/appstore.svg" alt="App Store">
-              </a>
+              <img src="{{ site.baseurl }}/ui/stores/appstore.svg" alt="App Store">
             {% endif %}
           </div>
         </div>
       </div>
-    </article>
+    </div>
+  </article>
+</a>
   {% endfor %}
+</div>
+<!-- используем общий lightbox из default.html -->
+<div id="lightbox" class="lightbox" style="display:none;">
+  <div class="lightbox-bg" onclick="closeLightbox()"></div>
+  <div class="lightbox-content">
+    <button class="lightbox-close" onclick="closeLightbox()" aria-label="Close">
+      <img src="{{ site.baseurl }}/ui/lightbox_close.svg" width="36" height="36" alt="Close">
+    </button>
+    <button class="lightbox-arrow left" onclick="lightboxPrev()" aria-label="Previous">
+      <img src="{{ site.baseurl }}/ui/lightbox_arrow_left.svg" width="36" height="36" alt="Prev">
+    </button>
+    <img id="lightbox-img" class="lightbox-img" src="">
+    <button class="lightbox-arrow right" onclick="lightboxNext()" aria-label="Next">
+      <img src="{{ site.baseurl }}/ui/lightbox_arrow_right.svg" width="36" height="36" alt="Next">
+    </button>
+    <div id="lightbox-caption" class="lightbox-caption"></div>
+  </div>
 </div>
