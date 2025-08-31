@@ -109,6 +109,19 @@ header{ display:flex; align-items:flex-start; gap:36px; margin-top:36px; }
 .case-year2{ color:#9fa7b2; font-size:1.05rem; opacity:.9; margin-left:8px; white-space:nowrap; }
 .case-type2{ color:#b7c1cc; font-size:1.01rem; opacity:.96; }
 .case-summary2{ font-size:1.09rem; color:#e2e5e7; opacity:.93; }
+/* Текст описания этапа внутри кейса (используется на /cases/) */
+.stage-summary {
+  font-family: "Playfair", ui-serif, Georgia, serif;
+  font-size: 1.2rem;
+  font-style: italic;
+  color: #e2e5e7;
+  opacity: .93;
+  margin-top: 24px;
+}
+
+@media (max-width: 980px) {
+  .stage-summary { margin-top: 12px; }
+}
 
 /* Case gallery */
 .case-gallery{ display:grid; gap:22px; grid-template-columns:repeat(2,minmax(0,1fr)); }
@@ -254,12 +267,19 @@ body.page-contact>main{ flex:1 0 auto; }
 
 /* ===== Pet projects ===== */
 
-/* ===== Pet projects ===== */
-
 /* Короткое описание раздела */
-.pet-meta{ padding:48px 280px; margin:0 0 28px; }
-@media (max-width:980px){ .pet-meta{ padding:0 64px; } }
-.pet-meta .case-summary2{ margin:0; }
+.pet-meta{ 
+  padding:48px 280px 32px 280px; 
+}
+
+@media (max-width:980px){ 
+  .pet-meta{ 
+    padding:48px 64px 32px 64px; 
+  } 
+}
+.pet-meta .case-summary2{ 
+  margin:0; 
+}
 
 /* ===== Pet projects — финальная сетка ===== */
 .pp-grid {
@@ -324,7 +344,7 @@ body.page-contact>main{ flex:1 0 auto; }
   display:grid;
   grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);
   gap:16px;
-  align-items:start;
+  align-items:stretch; 
   min-width:0;
 }
 /* Узкая карточка ≤520px — одна колонка */
@@ -348,29 +368,82 @@ body.page-contact>main{ flex:1 0 auto; }
   margin:0 auto;
 }
 
+/* Правая колонка: первая строка тянется, вторая под футер */
 .pp-side{
-  display:flex;
-  flex-direction:column;
-  min-width:0; /* фикс: текст не вылезает */
+  display:grid;
+  grid-template-rows:1fr auto;  /* возвращаем 1fr auto */
+  min-width:0;
   min-height:180px;
+  align-self:stretch;
+  row-gap: 24px;
 }
-.pp-text{ display:grid; gap:8px; min-width:0; }
-.pp-subtitle{ color:#e2e5e7; opacity:.93; font-size:1.02rem; }
+
+/* Блок с текстом: держим всё у верхнего края */
+.pp-text{
+  display:flex;                  /* вместо grid */
+  flex-direction:column;
+  gap:8px;
+  align-items:flex-start;
+  min-width:0;
+  padding-right: 32px;
+}
+
+.pp-subtitle{ color:#cdd3db; opacity:.92; font: size 98rem; }
 .pp-desc{ color:#cdd3db; opacity:.92; font-size:.98rem; line-height:1.35; }
 
-/* Футер */
-.pp-footer{ margin-top:auto; display:grid; gap:8px; align-content:end; }
-.pp-kind{ color:#cbd2db; font-size:.9rem; opacity:.95; }
-.pp-links{ display:flex; gap:10px; align-items:center; }
+/* Футер — жёстко к правому нижнему углу */
+.pp-footer{
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+  align-items:flex-end;
+  align-self:end;     /* ← фикс: прижать к нижней границе .pp-side */
+  margin-top:0px;
+  margin-right: 18px;
+  margin-bottom: 24px;
+}
+
+@media (max-width:980px){
+  .pp-footer {   margin-right: 8px;
+  margin-bottom: 12px; }
+}
+@media (min-width:1152px){
+  .pp-footer {   margin-right: 14px;
+  margin-bottom: 18px; }
+}
+
+.pp-kind{
+  color:#cbd2db; font-size:.9rem; opacity:.95;
+  text-align:right;
+}
+.pp-links{
+  display:flex; gap:10px; align-items:center; justify-content:flex-end;
+}
 .pp-links img{ height:32px; width:auto; display:block; }
 
-/* Доступность */
-.pp-item:focus-visible{
+.pp-media-link{
+  display:block;
+  border-radius:12px;
+  text-decoration:none;
+  color:inherit;
+}
+.pp-media-link:focus-visible{
   outline:2px solid #ff9900;
   outline-offset:4px;
-  border-radius:18px;
+  border-radius:12px;
 }
-.pp-item:focus-visible .pp-title{
-  color:#ff9900;
-  transition:color 2s cubic-bezier(.19,1,.22,1);
+/* Ссылки сторов в футере */
+.pp-links a.pp-store{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:8px;
+  text-decoration:none;
 }
+.pp-links a.pp-store:focus-visible{
+  outline:2px solid #ff9900;
+  outline-offset:3px;
+  border-radius:8px;
+}
+/* (Опционально) убрать браузерный контур у картинок-иконок */
+.pp-links a.pp-store img{ display:block; height:32px; width:auto; }
