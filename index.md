@@ -47,11 +47,12 @@ title: Works
           {% assign img_src = img.src | default: img.file | prepend: case.images_base | default: img.src %}
           <div class="case-gallery-item">
             <img
-              class="case-thumb2"
-              src="{{ site.baseurl }}{{ img_src }}"
-              alt="{{ img.caption | escape }}"
-              loading="lazy" decoding="async"
-              onclick="openHomeGallery({{ case_index }}, {{ idx }})">
+  class="case-thumb2 lazy-img"
+  data-src="{{ site.baseurl }}{{ img_src }}"
+  alt="{{ img.caption | escape }}"
+  decoding="async"
+  onclick="openHomeGallery({{ case_index }}, {{ idx }})">
+<noscript><img src="{{ site.baseurl }}{{ img_src }}" alt="{{ img.caption | escape }}"></noscript>
             {% if img.caption %}<div class="case-thumb-caption">{{ img.caption }}</div>{% endif %}
           </div>
           {% assign idx = idx | plus: 1 %}
@@ -63,11 +64,12 @@ title: Works
       {% unless img.home == false %}
         <div class="case-gallery-item">
           <img
-            class="case-thumb2"
-            src="{{ site.baseurl }}{{ img.src }}"
-            alt="{{ img.caption | escape }}"
-            loading="lazy" decoding="async"
-            onclick="openHomeGallery({{ case_index }}, {{ forloop.index0 }})">
+  class="case-thumb2 lazy-img"
+  data-src="{{ site.baseurl }}{{ img_src }}"
+  alt="{{ img.caption | escape }}"
+  decoding="async"
+  onclick="openHomeGallery({{ case_index }}, {{ forloop.index0 }})">
+<noscript><img src="{{ site.baseurl }}{{ img_src }}" alt="{{ img.caption | escape }}"></noscript>
           {% if img.caption %}<div class="case-thumb-caption">{{ img.caption }}</div>{% endif %}
         </div>
       {% endunless %}
