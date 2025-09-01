@@ -696,7 +696,7 @@ body.page-contact>main{ flex:1 0 auto; }
   opacity: 1;
   transform: translateY(0) scale(1);
   pointer-events: auto;
-  cursor: hand;
+  cursor: pointer;
 }
 
 #to-top img{
