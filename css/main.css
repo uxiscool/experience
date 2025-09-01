@@ -545,11 +545,15 @@ body.page-contact>main{ flex:1 0 auto; }
 /* (Опционально) убрать браузерный контур у картинок-иконок */
 .pp-links a.pp-store img{ display:block; height:32px; width:auto; }
 
-
 /* Базовые стили для всех картинок с скелетоном */
 .pp-media img,
 .case-thumb2 {
- 
+  /* Скелетон-фон по умолчанию */
+  background: linear-gradient(90deg, 
+    #2b2e33 25%, 
+    #3a3f45 37%, 
+    #2b2e33 63%
+  );
   background-size: 200% 100%;
   
   /* Изначально прозрачны */
