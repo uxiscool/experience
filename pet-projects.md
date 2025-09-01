@@ -101,6 +101,9 @@ permalink: /pet-projects/
     <button class="lightbox-close" onclick="closeLightbox()" aria-label="Close">
       <img src="{{ site.baseurl }}/ui/lightbox_close.svg" width="36" height="36" alt="Close">
     </button>
+        <button class="lightbox-arrow left" onclick="lightboxPrev()" aria-label="Previous">
+      <img src="{{ site.baseurl }}/ui/lightbox_arrow_left.svg" width="36" height="36" alt="Prev">
+    </button>
     <div class="lightbox-stage">
       <img id="lightbox-img" class="lightbox-img" src="">
       {% include lightbox_loader.html %}
