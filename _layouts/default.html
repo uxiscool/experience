@@ -78,8 +78,17 @@
     unbindKeys();
   };
 
-  window.lightboxPrev = function(){ if (state.i>0){ state.i--; render(); } };
-  window.lightboxNext = function(){ if (state.i<state.arr.length-1){ state.i++; render(); } };
+window.lightboxPrev = function(){
+  if (!state.arr.length) return;
+  state.i = (state.i - 1 + state.arr.length) % state.arr.length;
+  render();
+};
+window.lightboxNext = function(){
+  if (!state.arr.length) return;
+  state.i = (state.i + 1) % state.arr.length;
+  render();
+};
+
 
   function render(){
     var item = state.arr[state.i]; if (!item) return;
