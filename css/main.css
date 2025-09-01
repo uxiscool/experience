@@ -559,21 +559,6 @@ body.page-contact>main{ flex:1 0 auto; }
 /* (Опционально) убрать браузерный контур у картинок-иконок */
 .pp-links a.pp-store img{ display:block; height:32px; width:auto; }
 
-/* Скелетон/фейдин только для pet projects */
-.pp-media .lazy-img {
-  background: linear-gradient(90deg,#2b2e33 25%, #3a3f45 37%, #2b2e33 63%);
-  background-size: 200% 100%;
-  opacity: 0;
-  transition: opacity .3s ease, background .3s ease;
-  min-width: 60px;
-  min-height: 60px;
-}
-.pp-media .lazy-img.is-loaded {
-  background: transparent;
-  animation: none;
-  opacity: 1;
-}
-
 /* кейсовые превью показываем сразу (не зависят от .is-loaded) */
 .case-thumb2 { opacity: 1; background: transparent; }
 
