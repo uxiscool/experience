@@ -636,19 +636,3 @@ body.page-contact>main{ flex:1 0 auto; }
     transform: scale(1);
   }
 }
-
-/* Показываем шиммер прямо фоном у картинки, пока нет .is-loaded */
-.pp-media .lazy-img:not(.is-loaded),
-.case-thumb2:not(.is-loaded){
-  background: linear-gradient(90deg,#2b2e33 25%, #3a3f45 37%, #2b2e33 63%);
-  background-size: 400% 100%;
-  animation: skel-shimmer 1.2s ease-in-out infinite;
-}
-
-/* Гарантируем, что фоновый скелетон занимает всю область медиаблока */
-.pp-media .lazy-img{
-  width:100%;
-  height:100%;
-  object-fit:contain;
-  display:block;
-}
