@@ -138,12 +138,26 @@ header{ display:flex; align-items:flex-start; gap:36px; margin-top:36px; }
   padding:12px; 
   box-shadow:0 2px 8px #0002; 
   transition:box-shadow .25s;
+  position:relative;
 }
 .case-gallery-item:hover{ 
   background:#313339; 
 }
 
-.case-thumb2{ max-width:100%; max-height:350px; width:auto; aspect-ratio:4/3; object-fit:contain; border-radius:8px; background:#232429; margin-bottom:6px; cursor:pointer; transition:filter .14s; }
+.case-thumb2{
+  display:block;
+  width:100%;
+  height:auto;
+  aspect-ratio:4/3;
+  max-height:350px;
+  object-fit:contain;
+  border-radius:8px;
+  background:#232429;
+  margin-bottom:6px;
+  cursor:pointer;
+  transition:filter .14s;
+}
+
 .case-thumb-caption{ font-size:.97rem; color:#bac0c9; text-align:center; margin-top:3px; opacity:.86; }
 
 /* ---- Lightbox ---- */
@@ -620,3 +634,22 @@ body.page-contact>main{ flex:1 0 auto; }
     transform: scale(1);
   }
 }
+
+/* Лоадер для превью кейсов (как в pet-projects) */
+.case-gallery-item:has(.case-thumb2.lazy-img:not(.is-loaded))::before{
+  content:"";
+  position:absolute;
+  top:50%; left:50%;
+  width:32px; height:32px;
+  margin:-16px 0 0 -16px;
+  border:3px solid #444;
+  border-top-color:#ff9900;
+  border-radius:50%;
+  animation:spin 1s linear infinite;
+  z-index:2;
+}
+
+/* Мягкое проявление только для ленивых case-изображений */
+.case-thumb2.lazy-img{ opacity:0; transition:opacity .25s ease; }
+.case-thumb2.lazy-img.is-loaded{ opacity:1; }
+
