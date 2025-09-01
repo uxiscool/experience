@@ -38,7 +38,11 @@
     if (!g || !g.length) return;
     window.openLightbox(g, startIndex || 0);
   };
-  window.openCaseGallery = window.openHomeGallery; // одинакова структура
+  window.openCaseGallery = function(caseIndex, startIndex){
+  const g = (window.CASE_GALLERY_ALL && window.CASE_GALLERY_ALL[caseIndex]) || null;
+  if (!g || !g.length) return;
+  window.openLightbox(g, startIndex || 0);
+};
 })();
 
 /* ===== Lightbox ===== */
@@ -114,6 +118,28 @@ window.CASE_GALLERY_HOME = [
               {% assign src = img.src | default: img.file | prepend: c.images_base | default: img.src %}
               arr.push({ src: "{{ site.baseurl }}{{ src }}", caption: {{ img.caption | jsonify }} });
             {% endunless %}
+          {% endfor %}
+        {% endfor %}
+      {% elsif c.images %}
+        {% for img in c.images %}
+          {% assign src = img.src | default: img.file | prepend: c.images_base | default: img.src %}
+          arr.push({ src: "{{ site.baseurl }}{{ src }}", caption: {{ img.caption | jsonify }} });
+        {% endfor %}
+      {% endif %}
+      return arr;
+    })(){% unless forloop.last %},{% endunless %}
+  {% endfor %}
+];
+
+window.CASE_GALLERY_ALL = [
+  {% for c in site.cases %}
+    (function(){
+      var arr = [];
+      {% if c.stages %}
+        {% for st in c.stages %}
+          {% for img in st.images %}
+            {% assign src = img.src | default: img.file | prepend: c.images_base | default: img.src %}
+            arr.push({ src: "{{ site.baseurl }}{{ src }}", caption: {{ img.caption | jsonify }} });
           {% endfor %}
         {% endfor %}
       {% elsif c.images %}
