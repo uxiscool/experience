@@ -545,33 +545,24 @@ body.page-contact>main{ flex:1 0 auto; }
 /* (Опционально) убрать браузерный контур у картинок-иконок */
 .pp-links a.pp-store img{ display:block; height:32px; width:auto; }
 
-/* Базовые стили для всех картинок с скелетоном */
-.pp-media img,
-.case-thumb2 {
-  /* Скелетон-фон по умолчанию */
-  background: linear-gradient(90deg, 
-    #2b2e33 25%, 
-    #3a3f45 37%, 
-    #2b2e33 63%
-  );
+/* Скелетон/фейдин только для pet projects */
+.pp-media .lazy-img {
+  background: linear-gradient(90deg,#2b2e33 25%, #3a3f45 37%, #2b2e33 63%);
   background-size: 200% 100%;
-  
-  /* Изначально прозрачны */
   opacity: 0;
   transition: opacity .3s ease, background .3s ease;
-  
-  /* Обеспечиваем минимальные размеры для показа скелетона */
   min-width: 60px;
   min-height: 60px;
 }
-
-/* Состояние загруженной картинки */
-.pp-media img.is-loaded,
-.case-thumb2.is-loaded {
+.pp-media .lazy-img.is-loaded {
   background: transparent;
   animation: none;
   opacity: 1;
 }
+
+/* кейсовые превью показываем сразу (не зависят от .is-loaded) */
+.case-thumb2 { opacity: 1; background: transparent; }
+
 
 /* Дополнительно: скелетон для медиа-контейнера */
 .pp-media {

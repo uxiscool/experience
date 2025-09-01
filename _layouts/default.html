@@ -24,6 +24,23 @@
   };
 })();
 
+(function(){
+  // уже есть:
+  window.openPetGallery = function(cardIndex, startIndex){
+    const g = (window.PET_GALLERIES && window.PET_GALLERIES[cardIndex]) || null;
+    if (!g || !g.length) return;
+    window.openLightbox(g, startIndex || 0);
+  };
+
+  // добавь это:
+  window.openHomeGallery = function(caseIndex, startIndex){
+    const g = (window.CASE_GALLERY_HOME && window.CASE_GALLERY_HOME[caseIndex]) || null;
+    if (!g || !g.length) return;
+    window.openLightbox(g, startIndex || 0);
+  };
+  window.openCaseGallery = window.openHomeGallery; // одинакова структура
+})();
+
 /* ===== Lightbox ===== */
 (function(){
   var LIGHTBOX = document.getElementById('lightbox');
