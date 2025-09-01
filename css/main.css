@@ -658,5 +658,6 @@ body.page-contact>main{ flex:1 0 auto; }
 .pp-media .lazy-img{ will-change: opacity, transform; }
 
 .pp-media .lazy-img.is-loaded{
+  opacity: 1; /* конечное состояние явно */
   animation: fadeInImage .45s cubic-bezier(.19,1,.22,1);
 }
