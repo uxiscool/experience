@@ -545,9 +545,6 @@ body.page-contact>main{ flex:1 0 auto; }
 /* (Опционально) убрать браузерный контур у картинок-иконок */
 .pp-links a.pp-store img{ display:block; height:32px; width:auto; }
 
-/* ===== Image skeleton (zero-layout impact) ===== */
-/* Замените существующие стили скелетона в main.css на эти */
-
 /* ===== Image skeleton (improved) ===== */
 @keyframes skel-shimmer {
   0% { background-position: -200% 0; }
@@ -638,4 +635,20 @@ body.page-contact>main{ flex:1 0 auto; }
     opacity: 1;
     transform: scale(1);
   }
+}
+
+/* Показываем шиммер прямо фоном у картинки, пока нет .is-loaded */
+.pp-media .lazy-img:not(.is-loaded),
+.case-thumb2:not(.is-loaded){
+  background: linear-gradient(90deg,#2b2e33 25%, #3a3f45 37%, #2b2e33 63%);
+  background-size: 400% 100%;
+  animation: skel-shimmer 1.2s ease-in-out infinite;
+}
+
+/* Гарантируем, что фоновый скелетон занимает всю область медиаблока */
+.pp-media .lazy-img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  display:block;
 }
