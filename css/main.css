@@ -668,3 +668,8 @@ body.page-contact>main{ flex:1 0 auto; }
   .lazy-img.is-loaded{ animation: none !important; }
 }
 
+.pp-media .lazy-img{ will-change: opacity, transform; }
+
+.pp-media .lazy-img.is-loaded{
+  animation: fadeInImage .45s cubic-bezier(.19,1,.22,1);
+}
