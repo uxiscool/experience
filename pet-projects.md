@@ -6,7 +6,7 @@ permalink: /pet-projects/
 <!-- краткое описание раздела, как «лейбл кейса», но только текст -->
 <div class="pet-meta">
   <div class="case-summary2">
-    Side projects, experiments and "little joys" where you can quickly try out ideas and roll them out into the world.
+    Side projects, experiments and&nbsp;&ldquo;little joys&rdquo; where you&nbsp;can quickly try&nbsp;out ideas and&nbsp;roll them out into&nbsp;the&nbsp;world.
   </div>
 </div>
 
