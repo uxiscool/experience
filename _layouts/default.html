@@ -53,6 +53,7 @@
   var THUMBS = document.getElementById('lightbox-thumbs');
   var STAGE = document.querySelector('.lightbox-stage');
   var state = { arr:[], i:0 };
+  var onKey = null;
 
   function setLoading(on){
     if (!STAGE) return;
@@ -67,12 +68,14 @@
 
     LIGHTBOX.style.display = 'block';
     document.body.classList.add('lb-lock');
+    bindKeys();
     render();
   };
 
   window.closeLightbox = function(){
     LIGHTBOX.style.display = 'none';
     document.body.classList.remove('lb-lock');
+    unbindKeys();
   };
 
   window.lightboxPrev = function(){ if (state.i>0){ state.i--; render(); } };
@@ -102,6 +105,21 @@
     THUMBS.innerHTML = '';
     THUMBS.appendChild(wrap);
   }
+  function bindKeys(){
+    if (onKey) return;
+    onKey = function(e){
+      if (e.key === 'Escape'){ window.closeLightbox(); }
+      else if (e.key === 'ArrowLeft'){ window.lightboxPrev(); }
+      else if (e.key === 'ArrowRight'){ window.lightboxNext(); }
+    };
+    window.addEventListener('keydown', onKey);
+  }
+  function unbindKeys(){
+    if (!onKey) return;
+    window.removeEventListener('keydown', onKey);
+    onKey = null;
+  }
+
 })();
 </script>
 
