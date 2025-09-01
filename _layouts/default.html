@@ -15,33 +15,33 @@
     {% include footer.html %}
 
 <script>
-/* ===== Mini helpers (унифицировано) ===== */
+/* ===== Mini helpers ===== */
 (function(){
-  // Pet projects
+  window.openPetGallery = function(cardIndex, startIndex){
+    const g = (window.PET_GALLERIES && window.PET_GALLERIES[cardIndex]) || null;
+    if (!g || !g.length) return;
+    window.openLightbox(g, startIndex || 0);
+  };
+})();
+
+(function(){
+  // уже есть:
   window.openPetGallery = function(cardIndex, startIndex){
     const g = (window.PET_GALLERIES && window.PET_GALLERIES[cardIndex]) || null;
     if (!g || !g.length) return;
     window.openLightbox(g, startIndex || 0);
   };
 
-  // Works (главная)
+  // добавь это:
   window.openHomeGallery = function(caseIndex, startIndex){
     const g = (window.CASE_GALLERY_HOME && window.CASE_GALLERY_HOME[caseIndex]) || null;
     if (!g || !g.length) return;
     window.openLightbox(g, startIndex || 0);
   };
-
-  // Cases (все картинки)
-  window.openCaseGallery = function(caseIndex, startIndex){
-    const g = (window.CASE_GALLERY_ALL && window.CASE_GALLERY_ALL[caseIndex]) || null;
-    if (!g || !g.length) return;
-    window.openLightbox(g, startIndex || 0);
-  };
+  window.openCaseGallery = window.openHomeGallery; // одинакова структура
 })();
-</script>
 
-<script>
-/* ===== Lightbox (с клавиатурой) ===== */
+/* ===== Lightbox ===== */
 (function(){
   var LIGHTBOX = document.getElementById('lightbox');
   var IMG = document.getElementById('lightbox-img');
@@ -49,11 +49,11 @@
   var THUMBS = document.getElementById('lightbox-thumbs');
   var STAGE = document.querySelector('.lightbox-stage');
   var state = { arr:[], i:0 };
-  var onKey = null;
 
   function setLoading(on){
     if (!STAGE) return;
-    STAGE.classList.toggle('is-loading', !!on);
+    if (on) STAGE.classList.add('is-loading');
+    else STAGE.classList.remove('is-loading');
   }
 
   window.openLightbox = function(arr, index){
@@ -63,33 +63,16 @@
 
     LIGHTBOX.style.display = 'block';
     document.body.classList.add('lb-lock');
-    bindKeys();
     render();
   };
 
   window.closeLightbox = function(){
     LIGHTBOX.style.display = 'none';
     document.body.classList.remove('lb-lock');
-    unbindKeys();
   };
 
   window.lightboxPrev = function(){ if (state.i>0){ state.i--; render(); } };
   window.lightboxNext = function(){ if (state.i<state.arr.length-1){ state.i++; render(); } };
-
-  function bindKeys(){
-    if (onKey) return;
-    onKey = function(e){
-      if (e.key === 'Escape'){ window.closeLightbox(); }
-      else if (e.key === 'ArrowLeft'){ window.lightboxPrev(); }
-      else if (e.key === 'ArrowRight'){ window.lightboxNext(); }
-    };
-    window.addEventListener('keydown', onKey);
-  }
-  function unbindKeys(){
-    if (!onKey) return;
-    window.removeEventListener('keydown', onKey);
-    onKey = null;
-  }
 
   function render(){
     var item = state.arr[state.i]; if (!item) return;
@@ -128,17 +111,15 @@ window.CASE_GALLERY_HOME = [
         {% for st in c.stages %}
           {% for img in st.images %}
             {% unless img.home == false %}
-              {% assign src = img.src | default:img.file | prepend:c.images_base | default:img.src %}
-              arr.push({ src:"{{ site.baseurl }}{{ src }}", caption:{{ img.caption | jsonify }} });
+              {% assign src = img.src | default: img.file | prepend: c.images_base | default: img.src %}
+              arr.push({ src: "{{ site.baseurl }}{{ src }}", caption: {{ img.caption | jsonify }} });
             {% endunless %}
           {% endfor %}
         {% endfor %}
       {% elsif c.images %}
         {% for img in c.images %}
-          {% unless img.home == false %}
-            {% assign src = img.src | default:img.file | prepend:c.images_base | default:img.src %}
-            arr.push({ src:"{{ site.baseurl }}{{ src }}", caption:{{ img.caption | jsonify }} });
-          {% endunless %}
+          {% assign src = img.src | default: img.file | prepend: c.images_base | default: img.src %}
+          arr.push({ src: "{{ site.baseurl }}{{ src }}", caption: {{ img.caption | jsonify }} });
         {% endfor %}
       {% endif %}
       return arr;
@@ -146,31 +127,6 @@ window.CASE_GALLERY_HOME = [
   {% endfor %}
 ];
 
-window.CASE_GALLERY_ALL = [
-  {% for c in site.cases %}
-    (function(){
-      var arr = [];
-      {% if c.stages %}
-        {% for st in c.stages %}
-          {% for img in st.images %}
-            {% assign src = img.src | default:img.file | prepend:c.images_base | default:img.src %}
-            arr.push({ src:"{{ site.baseurl }}{{ src }}", caption:{{ img.caption | jsonify }} });
-          {% endfor %}
-        {% endfor %}
-      {% elsif c.images %}
-        {% for img in c.images %}
-          {% assign src = img.src | default:img.file | prepend:c.images_base | default:img.src %}
-          arr.push({ src:"{{ site.baseurl }}{{ src }}", caption:{{ img.caption | jsonify }} });
-        {% endfor %}
-      {% endif %}
-      return arr;
-    })(){% unless forloop.last %},{% endunless %}
-  {% endfor %}
-];
-</script>
-
-<script>
-/* ===== Pet galleries data ===== */
 window.PET_GALLERIES = [
   {% assign items = site.petprojects %}
   {% for p in items %}
@@ -178,8 +134,8 @@ window.PET_GALLERIES = [
       var arr = [];
       {% if p.gallery %}
         {% for img in p.gallery %}
-          {% assign src = img.src | default:img.file | prepend:p.images_base | default:img.src %}
-          arr.push({ src:"{{ site.baseurl }}{{ src }}", caption:{{ img.caption | jsonify }} });
+          {% assign src = img.src | default: img.file | prepend: p.images_base | default: img.src %}
+          arr.push({ src: "{{ site.baseurl }}{{ src }}", caption: {{ img.caption | jsonify }} });
         {% endfor %}
       {% endif %}
       return arr;
@@ -189,7 +145,7 @@ window.PET_GALLERIES = [
 </script>
 
 <script>
-/* ===== Lazy images (pet projects + cases/works) ===== */
+/* ===== Lazy images (pet projects + cases) ===== */
 (function(){
   function loadLazyImage(img){
     if (img.dataset._loading) return;
@@ -205,12 +161,16 @@ window.PET_GALLERIES = [
         .catch(function(){})
         .finally(function(){
           img.classList.add('is-loaded');
+
+          // пометить родителя (на случай стилизации)
           var box = img.closest('.case-img-wrap, .pp-media, .pp-media-link');
           if (box) box.classList.add('has-loaded');
         });
     };
     ph.onerror = function(){
       img.classList.add('is-loaded');
+
+      // пометить родителя и при ошибке
       var box = img.closest('.case-img-wrap, .pp-media, .pp-media-link');
       if (box) box.classList.add('has-loaded');
     };
