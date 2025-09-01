@@ -52,9 +52,9 @@ permalink: /pet-projects/
              onclick="openPetGallery({{ pet_index }}, 0)"
              aria-label="Open gallery">
             <img class="lazy-img"
-                 loading="lazy" decoding="async"
-                 data-src="{{ site.baseurl }}{{ thumb_src }}"
-                 alt="">
+     decoding="async"
+     data-src="{{ site.baseurl }}{{ thumb_src }}"
+     alt="">
             <noscript>
               <img src="{{ site.baseurl }}{{ thumb_src }}" alt="">
             </noscript>
