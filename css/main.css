@@ -601,7 +601,8 @@ body.page-contact>main{ flex:1 0 auto; }
 }
 
 @keyframes spin {
-  to { transform: translate(-50%, -50%) rotate(360deg); }
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to   { transform: translate(-50%, -50%) rotate(360deg); }
 }
 
 /* Улучшенная анимация появления */
@@ -620,17 +621,18 @@ body.page-contact>main{ flex:1 0 auto; }
   }
 }
 
-/* Лоадер для превью кейсов (как в pet-projects) */
+/* Лоадер для превью кейсов */
 .case-gallery-item:has(.case-thumb2.lazy-img:not(.is-loaded))::before{
   content:"";
   position:absolute;
   top:50%; left:50%;
-  width:32px; height:32px;
-  margin:-16px 0 0 -16px;
-  border:3px solid #444;
-  border-top-color:#ff9900;
+  width:40px; height:40px;
+  border:2px solid #3a3f45;
+  border-top-color:#5a6570;
   border-radius:50%;
-  animation:spin 1s linear infinite;
+  transform: translate(-50%, -50%);
+  animation: spin 1s linear infinite;
+  opacity:.6;
   z-index:2;
 }
 
