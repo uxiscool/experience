@@ -13,321 +13,178 @@
       {{ content }}
     </main>
     {% include footer.html %}
-<script>
-  window.siteBaseurl = "{{ site.baseurl }}";
 
-  // 1) Полные галереи (для /cases/ и страниц кейса)
-  window.CASE_GALLERY_ALL = [
-    {% for c in site.cases %}
-      (function(){
-        var arr = [];
-        {% if c.stages %}
-          {% for st in c.stages %}
-            {% for img in st.images %}
+<script>
+/* ===== Mini helpers ===== */
+(function(){
+  window.openPetGallery = function(cardIndex, startIndex){
+    const g = (window.PET_GALLERIES && window.PET_GALLERIES[cardIndex]) || null;
+    if (!g || !g.length) return;
+    window.openLightbox(g, startIndex || 0);
+  };
+})();
+
+/* ===== Lightbox ===== */
+(function(){
+  var LIGHTBOX = document.getElementById('lightbox');
+  var IMG = document.getElementById('lightbox-img');
+  var CAP = document.getElementById('lightbox-caption');
+  var THUMBS = document.getElementById('lightbox-thumbs');
+  var STAGE = document.querySelector('.lightbox-stage');
+  var state = { arr:[], i:0 };
+
+  function setLoading(on){
+    if (!STAGE) return;
+    if (on) STAGE.classList.add('is-loading');
+    else STAGE.classList.remove('is-loading');
+  }
+
+  window.openLightbox = function(arr, index){
+    state.arr = arr || [];
+    state.i = Math.max(0, Math.min(index || 0, state.arr.length - 1));
+    if (!state.arr.length) return;
+
+    LIGHTBOX.style.display = 'block';
+    document.body.classList.add('lb-lock');
+    render();
+  };
+
+  window.closeLightbox = function(){
+    LIGHTBOX.style.display = 'none';
+    document.body.classList.remove('lb-lock');
+  };
+
+  window.lightboxPrev = function(){ if (state.i>0){ state.i--; render(); } };
+  window.lightboxNext = function(){ if (state.i<state.arr.length-1){ state.i++; render(); } };
+
+  function render(){
+    var item = state.arr[state.i]; if (!item) return;
+    setLoading(true);
+    IMG.onload = function(){ setLoading(false); };
+    IMG.onerror = function(){ setLoading(false); };
+    IMG.src = item.src;
+    CAP.textContent = item.caption || '';
+    renderThumbs();
+  }
+
+  function renderThumbs(){
+    if (!THUMBS) return;
+    var wrap = document.createElement('div');
+    wrap.className = 'lightbox-thumbs';
+    state.arr.forEach(function(it, idx){
+      var t = document.createElement('img');
+      t.className = 'lightbox-thumb' + (idx===state.i ? ' is-active' : '');
+      t.src = it.src; t.alt = it.caption || '';
+      t.onclick = function(){ state.i = idx; render(); };
+      wrap.appendChild(t);
+    });
+    THUMBS.innerHTML = '';
+    THUMBS.appendChild(wrap);
+  }
+})();
+</script>
+
+<script>
+/* ===== Cases galleries data ===== */
+window.CASE_GALLERY_HOME = [
+  {% for c in site.cases %}
+    (function(){
+      var arr = [];
+      {% if c.stages %}
+        {% for st in c.stages %}
+          {% for img in st.images %}
+            {% unless img.home == false %}
               {% assign src = img.src | default: img.file | prepend: c.images_base | default: img.src %}
               arr.push({ src: "{{ site.baseurl }}{{ src }}", caption: {{ img.caption | jsonify }} });
-            {% endfor %}
-          {% endfor %}
-        {% elsif c.images %}
-          {% for img in c.images %}
-            arr.push({ src: "{{ site.baseurl }}{{ img.src }}", caption: {{ img.caption | jsonify }} });
-          {% endfor %}
-        {% endif %}
-        return arr;
-      })(){% unless forloop.last %},{% endunless %}
-    {% endfor %}
-  ];
-
-  // 2) Галереи только для главной (home == true|undefined)
-  window.CASE_GALLERY_HOME = [
-    {% for c in site.cases %}
-      (function(){
-        var arr = [];
-        {% if c.stages %}
-          {% for st in c.stages %}
-            {% for img in st.images %}
-              {% unless img.home == false %}
-                {% assign src = img.src | default: img.file | prepend: c.images_base | default: img.src %}
-                arr.push({ src: "{{ site.baseurl }}{{ src }}", caption: {{ img.caption | jsonify }} });
-              {% endunless %}
-            {% endfor %}
-          {% endfor %}
-        {% elsif c.images %}
-          {% for img in c.images %}
-            {% unless img.home == false %}
-              arr.push({ src: "{{ site.baseurl }}{{ img.src }}", caption: {{ img.caption | jsonify }} });
             {% endunless %}
           {% endfor %}
-        {% endif %}
-        return arr;
-      })(){% unless forloop.last %},{% endunless %}
-    {% endfor %}
-  ];
+        {% endfor %}
+      {% elsif c.images %}
+        {% for img in c.images %}
+          {% assign src = img.src | default: img.file | prepend: c.images_base | default: img.src %}
+          arr.push({ src: "{{ site.baseurl }}{{ src }}", caption: {{ img.caption | jsonify }} });
+        {% endfor %}
+      {% endif %}
+      return arr;
+    })(){% unless forloop.last %},{% endunless %}
+  {% endfor %}
+];
 
-  /* 3) Галерея Pet projects */
-  window.PET_GALLERY = [
-    {% for p in site.petprojects %}
-      (function(){
-        var arr = [];
+window.PET_GALLERIES = [
+  {% assign items = site.petprojects %}
+  {% for p in items %}
+    (function(){
+      var arr = [];
+      {% if p.gallery %}
         {% for img in p.gallery %}
           {% assign src = img.src | default: img.file | prepend: p.images_base | default: img.src %}
           arr.push({ src: "{{ site.baseurl }}{{ src }}", caption: {{ img.caption | jsonify }} });
         {% endfor %}
-        return arr;
-      })(){% unless forloop.last %},{% endunless %}
-    {% endfor %}
-  ];
+      {% endif %}
+      return arr;
+    })(){% unless forloop.last %},{% endunless %}
+  {% endfor %}
+];
+</script>
 
-  /* Режимы: 'all', 'home', 'pet' */
-  let currentCaseIdx = 0, currentImgIdx = 0, currentMode = 'all';
+<script>
+/* ===== Lazy images (pet projects + cases) ===== */
+(function(){
+  function loadLazyImage(img){
+    if (img.dataset._loading) return;
+    img.dataset._loading = '1';
 
-  function loadIntoLightbox(src, caption){
-  const stage = document.querySelector('.lightbox-stage');
-  const img   = document.getElementById('lightbox-img');
-  const capEl = document.getElementById('lightbox-caption');
-  if (!stage || !img) return Promise.resolve();
+    var src = img.getAttribute('data-src');
+    if (!src) return;
 
-  stage.classList.add('is-loading');  // показываем Lottie и скрываем img
-
-  return new Promise(function(resolve){
-    const ph = new Image();
+    var ph = new Image();
     ph.onload = function(){
-      img.src = src || '';
-      if (capEl) capEl.textContent = caption || '';
-      stage.classList.remove('is-loading');  // убираем Lottie, показываем img
-      resolve();
+      img.src = src;
+      (img.decode ? img.decode() : Promise.resolve())
+        .catch(function(){})
+        .finally(function(){
+          img.classList.add('is-loaded');
+
+          // пометить родителя (на случай стилизации)
+          var box = img.closest('.case-img-wrap, .pp-media, .pp-media-link');
+          if (box) box.classList.add('has-loaded');
+        });
     };
     ph.onerror = function(){
-      // даже при ошибке убираем прелоадер и пытаемся показать картинку (alt/404)
-      img.src = src || '';
-      if (capEl) capEl.textContent = caption || '';
-      stage.classList.remove('is-loading');
-      resolve();
+      img.classList.add('is-loaded');
+
+      // пометить родителя и при ошибке
+      var box = img.closest('.case-img-wrap, .pp-media, .pp-media-link');
+      if (box) box.classList.add('has-loaded');
     };
-    ph.src = src || '';
-  });
-}
-
-  function getGallery(idx){
-    if (currentMode === 'home') return window.CASE_GALLERY_HOME[idx] || [];
-    if (currentMode === 'pet')  return window.PET_GALLERY[idx] || [];
-    return window.CASE_GALLERY_ALL[idx] || [];
+    ph.src = src;
   }
 
-  // Вход из /cases/ и страниц кейса — полный набор
-  function openCaseGallery(caseIdx, imgIdx){
-    currentMode = 'all';
-    currentCaseIdx = caseIdx;
-    currentImgIdx = imgIdx || 0;
-    showCaseLightbox();
-  }
-
-  // Вход с главной — только видимые (home)
-  function openHomeGallery(caseIdx, imgIdx){
-    currentMode = 'home';
-    currentCaseIdx = caseIdx;
-    currentImgIdx = imgIdx || 0;
-    showCaseLightbox();
-  }
-
-    function openPetGallery(petIdx, imgIdx){
-    currentMode = 'pet';
-    currentCaseIdx = petIdx;
-    currentImgIdx = imgIdx || 0;
-    showCaseLightbox();
-  }
-
-// ОТКРЫТИЕ: рисуем миниатюры и грузим кадр с прелоадером
-async function showCaseLightbox(){
-  const imgs = getGallery(currentCaseIdx);
-  const data = imgs[currentImgIdx] || {};
-
-  document.getElementById('lightbox').style.display = 'flex';
-  document.body.classList.add('lb-lock');
-
-  renderThumbs();
-  updateThumbActive();
-  updateThumbSizing();
-
-  await loadIntoLightbox(data.src, data.caption);
-}
-  function closeLightbox(){
-    document.getElementById('lightbox').style.display = 'none';
-    document.body.classList.remove('lb-lock');
-  }
-
-// ЛИСТАНИЕ ВЛЕВО: меняем индекс → подсветка → загрузка с прелоадером
-async function lightboxPrev(){
-  const imgs = getGallery(currentCaseIdx);
-  const n = imgs.length || 1;
-  currentImgIdx = (currentImgIdx + n - 1) % n;
-
-  updateThumbActive();
-
-  const data = imgs[currentImgIdx] || {};
-  await loadIntoLightbox(data.src, data.caption);
-}
-// ЛИСТАНИЕ ВПРАВО: меняем индекс → подсветка → загрузка с прелоадером
-async function lightboxNext(){
-  const imgs = getGallery(currentCaseIdx);
-  const n = imgs.length || 1;
-  currentImgIdx = (currentImgIdx + 1) % n;
-
-  updateThumbActive();
-
-  const data = imgs[currentImgIdx] || {};
-  await loadIntoLightbox(data.src, data.caption);
-}
-
-// ресайз для подгонки размеров миниатюр
-window.addEventListener('resize', updateThumbSizing);
-
-  document.addEventListener('keydown', function(e){
-    const lb = document.getElementById('lightbox');
-    if (!lb || lb.style.display !== 'flex') return;
-    if (e.key === 'Escape') closeLightbox();
-    if (e.key === 'ArrowLeft') lightboxPrev();
-    if (e.key === 'ArrowRight') lightboxNext();
-  });
-
-  function renderThumbs(){
-  const row = document.getElementById('lightbox-thumbs-row');
-  if (!row) return;
-  const imgs = getGallery(currentCaseIdx);
-  row.innerHTML = '';
-  imgs.forEach((it, i) => {
-    const t = document.createElement('img');
-    t.src = it.src; t.alt = it.caption || '';
-    t.className = 'lightbox-thumb' + (i === currentImgIdx ? ' is-active' : '');
-    t.tabIndex = 0;
-    t.addEventListener('click', () => { currentImgIdx = i; showCaseLightbox(); });
-    t.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { currentImgIdx = i; showCaseLightbox(); }});
-    row.appendChild(t);
-  });
-  requestAnimationFrame(updateThumbSizing);
-}
-
-function updateThumbActive(){
-  const nodes = document.querySelectorAll('.lightbox-thumb');
-  nodes.forEach((n, i) => n.classList.toggle('is-active', i === currentImgIdx));
-}
-
-function updateThumbSizing(){
-  const wrap = document.getElementById('lightbox-thumbs');
-  const row  = document.getElementById('lightbox-thumbs-row');
-  const lb   = document.getElementById('lightbox');
-  if (!wrap || !row || !lb) return;
-
-  const n = row.children.length;
-  if (!n) return;
-
-  const wrapW = wrap.clientWidth;
-
-  // Параметры
-  const startSize = 50;   // базовый размер миниатюры
-  const minSize   = 30;   // минимальный размер миниатюры
-  const gap       = 25;   // промежуток между миниатюрами
-  const padV      = 0 + 0; // вертикальный паддинг внутри wrap (мы его занулили в CSS)
-
-  // 1 строка по умолчанию
-  let size = startSize;
-  let needWidth = n * size + (n - 1) * gap;
-  let twoRows = false;
-
-  if (needWidth > wrapW){
-    // Ужимаем до минимума
-    size = Math.floor((wrapW - (n - 1) * gap) / n);
-    if (size < minSize){
-      // В две строки
-      twoRows = true;
-      const perRow = Math.ceil(n / 2);
-      size = Math.floor((wrapW - (perRow - 1) * gap) / perRow);
-      size = Math.max(size, minSize);
-    }
-  }
-  // Применяем размеры к CSS-переменным
-  row.style.setProperty('--lb-thumb-size', size + 'px');
-  row.style.setProperty('--lb-thumb-min',  minSize + 'px');
-  row.style.setProperty('--lb-gap',        gap + 'px');
-  row.style.flexWrap = twoRows ? 'wrap' : 'nowrap';
-}
-
-// Добавить в конец <script> секции в default.html
-
-// Инициализация скелетон-анимации ДО загрузки DOM
-(function(){
-  function initSkeleton() {
-    function markLoaded(img){ 
-      img.classList.add('is-loaded'); 
-    }
-    
-    function markLoading(img) {
-      // Убеждаемся, что картинка показывает скелетон
-      img.classList.remove('is-loaded');
-    }
-    
-    function wireImage(img) {
-      if (!img) return;
-      
-      // Если картинка уже загружена (например, из кэша)
-      if (img.complete && img.naturalWidth > 0) { 
-        markLoaded(img); 
-        return; 
-      }
-      
-      // Если не загружена - показываем скелетон
-      markLoading(img);
-      
-      // Добавляем обработчики
-      img.addEventListener('load', function(){ 
-        markLoaded(img); 
-      }, {once: true});
-      
-      img.addEventListener('error', function(){ 
-        markLoaded(img); 
-      }, {once: true});
-    }
-    
-    function wireAll(selector){
-      document.querySelectorAll(selector).forEach(wireImage);
-    }
-    
-    // Обрабатываем существующие картинки
-    wireAll('.pp-media img');
-    wireAll('.case-thumb2');
-    
-    // Наблюдаем за новыми картинками (если они добавляются динамически)
-    const observer = new MutationObserver(function(mutations) {
-      mutations.forEach(function(mutation) {
-        mutation.addedNodes.forEach(function(node) {
-          if (node.nodeType === 1) { // Element node
-            // Проверяем сам элемент
-            if (node.matches && (node.matches('.pp-media img') || node.matches('.case-thumb2'))) {
-              wireImage(node);
-            }
-            // Проверяем дочерние элементы
-            if (node.querySelectorAll) {
-              node.querySelectorAll('.pp-media img, .case-thumb2').forEach(wireImage);
-            }
+  var io = ('IntersectionObserver' in window)
+    ? new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          if (entry.isIntersecting) {
+            io.unobserve(entry.target);
+            loadLazyImage(entry.target);
           }
         });
-      });
-    });
-    
-    observer.observe(document.body, {
-      childList: true,
-      subtree: true
+      }, { rootMargin: '200px 0px' })
+    : null;
+
+  function initLazy(){
+    var imgs = document.querySelectorAll('img.lazy-img[data-src]');
+    imgs.forEach(function(img){
+      if (io) io.observe(img);
+      else loadLazyImage(img);
     });
   }
-  
-  // Запускаем сразу, если DOM уже готов
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initSkeleton);
+
+  if (document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', initLazy);
   } else {
-    initSkeleton();
+    initLazy();
   }
 })();
-
 </script>
   </body>
 </html>
