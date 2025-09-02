@@ -149,7 +149,7 @@ header{ display:flex; align-items:flex-start; gap:36px; margin-top:36px; }
   position:relative;
 }
 .case-gallery-item:hover{ 
-  background:#313339; 
+  background:#2c2d33; 
 }
 
 .case-thumb2{
