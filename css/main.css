@@ -347,8 +347,20 @@ header{ display:flex; align-items:flex-start; gap:36px; margin-top:36px; }
 }
 .laurel-badge svg{ width:100%; height:100%; display:block; transform:translateY(var(--lift)); }
 .laurel-badge .lb-text{ position:absolute; inset:0; display:grid; place-items:center; pointer-events:none; text-align:center; }
-.laurel-badge .lb-number{ color:var(--text); font-size:calc(var(--size)*0.20); line-height:1; font-weight:600; letter-spacing:.01em; }
-.laurel-badge .lb-label{ color:var(--leaf); font-size:calc(var(--size)*0.11); opacity:.9; margin-top:calc(var(--size)*0.16); }
+.laurel-badge .lb-number{ 
+  color:var(--text); 
+  font-size:calc(var(--size)*0.20); 
+  line-height:1; 
+  font-weight:600; 
+  letter-spacing:.01em; 
+}
+
+.laurel-badge .lb-label{ 
+  color:var(--leaf); 
+  font-size:calc(var(--size)*0.11); 
+  margin-top:calc(var(--size)*0.16);
+}
+
 html[data-theme="dark"] .laurel-badge{ --leaf:#c2c9d3; }
 .lb-leaf{ opacity:0; transform:translateY(8px) scale(.96); animation:lb-leaf-in 520ms cubic-bezier(.19,1,.22,1) both; animation-delay:calc(var(--leaf-delay,.35s) + var(--i,0) * var(--leaf-gap,120ms)); }
 @keyframes lb-leaf-in{ to{ opacity:1; transform:none; } }
