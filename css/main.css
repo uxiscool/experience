@@ -712,7 +712,7 @@ body.lb-lock #to-top{ opacity: 0; pointer-events: none; }
 
 /* Адаптив: 980 и 580 — меньше иконка и отступы */
 @media (max-width: 980px){
-  :root{ --tt-size: 44px; --tt-right: 14px; --tt-bottom: 18px; }
+  :root{ --tt-size: 44px; --tt-right: 10px; --tt-bottom: 18px; }
 }
 @media (max-width: 580px){
   :root{ --tt-size: 40px; --tt-right: 14px; --tt-bottom: 18px; }
