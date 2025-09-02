@@ -124,6 +124,7 @@ header{ display:flex; align-items:flex-start; gap:36px; margin-top:36px; }
   color: #e2e5e7;
   opacity: .93;
   margin-top: 24px;
+  font-synthesis: none;
 }
 
 @media (max-width: 980px) {
@@ -322,7 +323,7 @@ header{ display:flex; align-items:flex-start; gap:36px; margin-top:36px; }
 }
 .footer-inner{ display:flex; align-items:center; justify-content:flex-end; padding:0 200px 40px 293px; margin-top:auto; margin-left:auto; }
 @media (max-width:980px){ .footer-inner{ padding:0 64px 12px; } }
-.footer-updated{ color:#bbb; font-size:1.1rem; line-height:1.2; opacity:.95; }
+.footer-updated{ color:#bbb; font-size:.85rem; line-height:1.2; opacity:.70; }
 
 /* ---- Laurel badge ---- */
 .achievements-grid{ display:grid; grid-template-columns:repeat(2,minmax(140px,1fr)); gap:18px; align-items:center; justify-items:center; }
@@ -333,7 +334,7 @@ header{ display:flex; align-items:flex-start; gap:36px; margin-top:36px; }
 }
 .laurel-badge svg{ width:100%; height:100%; display:block; transform:translateY(var(--lift)); }
 .laurel-badge .lb-text{ position:absolute; inset:0; display:grid; place-items:center; pointer-events:none; text-align:center; }
-.laurel-badge .lb-number{ color:var(--text); font-size:calc(var(--size)*0.20); line-height:1; font-weight:700; letter-spacing:.01em; }
+.laurel-badge .lb-number{ color:var(--text); font-size:calc(var(--size)*0.20); line-height:1; font-weight:600; letter-spacing:.01em; }
 .laurel-badge .lb-label{ color:var(--leaf); font-size:calc(var(--size)*0.11); opacity:.9; margin-top:calc(var(--size)*0.16); }
 html[data-theme="dark"] .laurel-badge{ --leaf:#c2c9d3; }
 .lb-leaf{ opacity:0; transform:translateY(8px) scale(.96); animation:lb-leaf-in 520ms cubic-bezier(.19,1,.22,1) both; animation-delay:calc(var(--leaf-delay,.35s) + var(--i,0) * var(--leaf-gap,120ms)); }
