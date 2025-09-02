@@ -16,9 +16,10 @@ permalink: /cases/
     <div class="case-block">
       <div class="case-meta2">
         <div class="case-title-row">
-          <a href="{{ case.url }}" class="case-title2">{{ case.title }}</a>
-        </div>
-        <div class="case-meta2-inline">
+  {% assign case_anchor = case.url | replace:'/cases/','' | replace:'/','' | downcase %}
+  <h2 id="case-{{ case_anchor }}" class="case-title2">{{ case.title }}</h2>
+</div>
+      <div class="case-meta2-inline">
           {{ case.year }}
           {% if case.company %} · {{ case.company }}{% endif %}
           {% if case.type %} · {{ case.type }}{% endif %}

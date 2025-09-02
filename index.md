@@ -29,8 +29,9 @@ title: Works
     <div class="case-block">
       <div class="case-meta2">
         <div class="case-title-row">
-          <a href="{{ case.url }}" class="case-title2">{{ case.title }}</a>
-        </div>
+  {% assign case_anchor = case.url | replace:'/cases/','' | replace:'/','' | downcase %}
+  <a href="{{ site.baseurl }}/cases/#case-{{ case_anchor }}" class="case-title2">{{ case.title }}</a>
+</div>
         <div class="case-meta2-inline">
           {{ case.year }}
           {% if case.company %} · {{ case.company }}{% endif %}
