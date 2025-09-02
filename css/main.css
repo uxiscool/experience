@@ -771,7 +771,6 @@ body.lb-lock #to-top{ opacity: 0; pointer-events: none; }
 
 /* === Case year rail: overlay, не двигает контент === */
 :root{
-  --case-rail-w: 40px;
   --case-rail-gap: 91px;
   --case-rail-top: 6px;
 }
@@ -788,7 +787,7 @@ body.lb-lock #to-top{ opacity: 0; pointer-events: none; }
     position:absolute;
     top: var(--case-rail-top);
     left: calc(-1 * var(--case-rail-gap));
-    /*width: var(--case-rail-w);*/
+    transform: translateX(-100%); 
     color:#9fa7b2;
     font-size:1.05rem; 
     opacity:.9;
