@@ -28,7 +28,7 @@ section{ padding-top:2rem; }
 /* ---- Header / Nav ---- */
 header{ display:flex; align-items:flex-start; gap:36px; margin-top:36px; }
 .nav-wrapper{ display:flex; flex-direction:column; align-items:flex-start; width:100%; }
-.logo-img{ display:block; height:1.1rem; width:auto; margin:6px 12px 0 56px; opacity:.85; }
+.logo-img{ display:block; height:1.1rem; width:auto; margin:6px 12px 0 56px; opacity:0.5; }
 .menu-panel{ position:relative; display:flex; align-items:flex-start; }
 .menu-panel::before{ content:""; position:absolute; inset:0 auto 0 0; width:1px; background:#323437; border-radius:1px; }
 @media (max-width:700px){ .menu-panel::before{ display:none; } }
