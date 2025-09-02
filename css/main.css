@@ -778,7 +778,22 @@ body.lb-lock #to-top{ opacity: 0; pointer-events: none; }
 .case-year-inline{ display:inline; }
 
 .case-meta2-inline{ display:flex; gap:0; flex-wrap:nowrap; }
-.case-meta2-inline span + span::before{ content:" · "; }
+/* Буллеты между видимыми частями меты.
+   Не ставим маркер если предыдущий элемент — .case-year-inline (который на десктопе скрыт) */
+.case-meta2-inline span + span::before{
+  content: "\00A0\00B7\00A0";
+}
+
+/* На десктопе (когда .case-year-inline скрыт) — ставим буллет только между видимыми спанами */
+@media (min-width:980px){
+  /* убираем общий маркер (перекроем более специфичным селектором ниже) */
+  .case-meta2-inline span + span::before{ content: ""; }
+
+  /* ставим буллеты только между span'ами, которые НЕ .case-year-inline */
+  .case-meta2-inline span:not(.case-year-inline) + span:not(.case-year-inline)::before{
+    content: "\00A0\00B7\00A0";
+  }
+}
 
 @media (min-width:980px){
   .case-block{ position:relative; }
