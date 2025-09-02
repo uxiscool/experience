@@ -684,10 +684,10 @@ body.page-contact>main{ flex:1 0 auto; }
   box-shadow: 0 6px 18px rgba(0,0,0,.35);
 
   opacity: 0;
-  /*transform: translateY(10px) scale(.95);
-  transition: opacity .25s cubic-bezier(.19,1,.22,1),
-              transform .25s cubic-bezier(.19,1,.22,1),
-              filter .2s;*/
+  transform: scale(.95);
+  transition: opacity .5s cubic-bezier(.19,1,.22,1),
+              transform .5s cubic-bezier(.19,1,.22,1),
+              filter .2s;
   z-index: 1000;           /* ниже лайтбокса; лайтбокс всё равно скрывает кнопкой body.lb-lock */
   pointer-events: none;    /* пока скрыта — кликов нет */
 }
@@ -707,8 +707,8 @@ body.page-contact>main{ flex:1 0 auto; }
   filter: brightness(1.1);
   opacity: .7; 
 }
-/*#to-top:active{ transform: translateY(1px) scale(.98); }
-#to-top:focus-visible{ outline: 2px solid var(--orange); outline-offset: 3px; }*/
+#to-top:active{ transform: scale(.98); }
+#to-top:focus-visible{ outline: 2px solid var(--orange); outline-offset: 3px; }
 
 /* Не показываем, когда открыт лайтбокс */
 body.lb-lock #to-top{ opacity: 0; pointer-events: none; }
