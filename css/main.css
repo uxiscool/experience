@@ -110,7 +110,7 @@ header{ display:flex; align-items:flex-start; gap:36px; margin-top:36px; }
 .case-meta2-inline{ 
   color:#fff; 
   font-size:1.01rem; 
-  opacity:.6; 
+  opacity: 0.5; 
   margin:2px 0 4px; 
   white-space:nowrap; 
 }
@@ -128,7 +128,7 @@ header{ display:flex; align-items:flex-start; gap:36px; margin-top:36px; }
 .case-summary2{ 
   font-size:1.09rem; 
   color:#fff; 
-  opacity:.6; }
+  opacity: 0.5; }
 /* Текст описания этапа внутри кейса (используется на /cases/) */
 .stage-summary {
   font-family: "Playfair", ui-serif, Georgia, serif;
