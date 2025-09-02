@@ -6,6 +6,36 @@
     <link rel="stylesheet" href="{{ site.baseurl }}/css/main.css">
     <link rel="stylesheet" href="{{ site.baseurl }}/css/skills.css">
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    <!-- Load Inter только на не-Apple платформах -->
+<script>
+(function(){
+  var isApple =
+    /Mac|iPhone|iPad|iPod/.test(navigator.platform) ||
+    /Mac OS X|iPhone|iPad|iPod/.test(navigator.userAgent);
+
+  if (isApple) return; // На macOS/iOS не грузим вообще
+
+  // Не дублируем, если вдруг уже вставлено
+  if (document.getElementById('gf-inter')) return;
+
+  var l1 = document.createElement('link');
+  l1.rel = 'preconnect';
+  l1.href = 'https://fonts.googleapis.com';
+
+  var l2 = document.createElement('link');
+  l2.rel = 'preconnect';
+  l2.href = 'https://fonts.gstatic.com';
+  l2.crossOrigin = 'anonymous';
+
+  var css = document.createElement('link');
+  css.id = 'gf-inter';
+  css.rel = 'stylesheet';
+  css.href = 'https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap';
+
+  document.head.append(l1, l2, css);
+})();
+</script>
+
   </head>
   <body class="{{ page.body_class }}">
     {% include header.html %}
