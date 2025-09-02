@@ -97,34 +97,29 @@ window.lightboxNext = function(){
 function render(dir){
   var item = state.arr[state.i]; if (!item) return;
 
-  // 1) грузим новый кадр «в сторонке»
   setLoading(true);
-  var oldImg = IMG;                                  // текущая картинка (может отсутствовать на первом рендере)
+  var oldImg = IMG;
   var nextImg = new Image();
   nextImg.className = 'lightbox-img lb-anim ' + (dir > 0 ? 'lb-enter-right' : dir < 0 ? 'lb-enter-left' : 'lb-center');
   nextImg.alt = item.caption || '';
+
   nextImg.onload = function(){
     setLoading(false);
     CAP.textContent = item.caption || '';
 
-    // 2) вставляем новый IMG, готовим классы для анимации
+    // первый показ — без слайда, но миниатюры ОБЯЗАТЕЛЬНО рисуем
     if (dir === 0){
-      // первый показ: без слайда, просто подменяем src у старого элемента
       oldImg.src = nextImg.src;
       oldImg.alt = nextImg.alt;
+      renderThumbs();                 // ← вернули
       return;
     }
 
-    // уберём id у старого, чтобы не было дубликатов
+    // замена элемента с анимацией
     if (oldImg && oldImg.id === 'lightbox-img') oldImg.id = '';
-
     nextImg.id = 'lightbox-img';
     STAGE.appendChild(nextImg);
-
-    // принудительный reflow, чтобы transition стартовал корректно
-    void nextImg.offsetWidth;
-
-    // вход нового и выход старого
+    void nextImg.offsetWidth; // reflow для старта transition
     nextImg.classList.remove('lb-enter-right','lb-enter-left');
     nextImg.classList.add('lb-center');
 
@@ -136,23 +131,25 @@ function render(dir){
       }, { once:true });
     }
 
-    // 3) обновляем ссылку на текущую картинку
     IMG = nextImg;
+    renderThumbs();                   // ← и здесь тоже
   };
 
   nextImg.onerror = function(){
     setLoading(false);
-    // на ошибке просто меняем src без анимации
+    // на ошибке просто показываем без слайда, но миниатюры всё равно строим
     if (dir === 0){
       oldImg.src = item.src;
+      renderThumbs();                 // ← не забываем
     } else {
       if (oldImg && oldImg.id === 'lightbox-img') oldImg.id = '';
       nextImg.id = 'lightbox-img';
       nextImg.className = 'lightbox-img lb-center';
-      nextImg.src = item.src; // всё равно покажем «битую» ссылку — поведёт себя как пустой
+      nextImg.src = item.src;
       STAGE.appendChild(nextImg);
       if (oldImg){ try { STAGE.removeChild(oldImg); } catch(e){} }
       IMG = nextImg;
+      renderThumbs();                 // ← и здесь
     }
   };
 
@@ -168,7 +165,7 @@ function render(dir){
       var t = document.createElement('img');
       t.className = 'lightbox-thumb' + (idx===state.i ? ' is-active' : '');
       t.src = it.src; t.alt = it.caption || '';
-      t.onclick = function(){ state.i = idx; render(); };
+      t.onclick = function(){ state.i = idx; render(0); };
       wrap.appendChild(t);
     });
     THUMBS.innerHTML = '';
