@@ -188,6 +188,7 @@ header{ display:flex; align-items:flex-start; gap:36px; margin-top:36px; }
   display:flex;
   align-items:center;       /* центрируем картинку по вертикали */
   justify-content:center;   /* и по горизонтали */
+  overflow: hidden; /* чтобы не было проклёвываний за края */
 }
 
 /* Картинка — вписываемся в свою строку, не вылезаем и не перекрываем caption/thumbs */
@@ -197,6 +198,10 @@ header{ display:flex; align-items:flex-start; gap:36px; margin-top:36px; }
   max-height:100%;          /* занимает высоту stage, но не больше */
   object-fit:contain;
   display:block;
+  position: absolute;          /* две картинки поверх друг друга */
+  top: 50%; left: 50%;
+  transform: translate(-50%,-50%);
+  will-change: transform, opacity;
 }
 
 .lightbox-arrow{
@@ -275,6 +280,16 @@ header{ display:flex; align-items:flex-start; gap:36px; margin-top:36px; }
 }
 .lightbox-stage.is-loading .lightbox-loading{ display:flex; }
 .lightbox-stage.is-loading .lightbox-img{ visibility:hidden; }
+
+/* классы-анимации */
+.lightbox-img.lb-anim{
+  transition: transform .38s cubic-bezier(.2,.8,.2,1), opacity .38s ease;
+}
+.lightbox-img.lb-center{ transform: translate(-50%,-50%); opacity: 1; }
+.lightbox-img.lb-enter-right{ transform: translate(150%,-50%); opacity: 0; }
+.lightbox-img.lb-enter-left{  transform: translate(-250%,-50%); opacity: 0; }
+.lightbox-img.lb-exit-left{   transform: translate(-250%,-50%); opacity: 0; }
+.lightbox-img.lb-exit-right{  transform: translate(150%,-50%);  opacity: 0; }
 
 /* Размер контейнера Lottie (подгони при желании) */
 #lottie-loader{ width:64px; height:64px; }
@@ -705,7 +720,7 @@ body.page-contact>main{ flex:1 0 auto; }
 
 #to-top:hover{ 
   filter: brightness(1.1);
-  opacity: .7; 
+  opacity: .6; 
 }
 #to-top:active{ transform: scale(.98); }
 #to-top:focus-visible{ outline: 2px solid var(--orange); outline-offset: 3px; }

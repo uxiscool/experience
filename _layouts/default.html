@@ -74,7 +74,7 @@
     LIGHTBOX.style.display = 'block';
     document.body.classList.add('lb-lock');
     bindKeys();
-    render();
+    render(0);
   };
 
   window.closeLightbox = function(){
@@ -86,24 +86,79 @@
 window.lightboxPrev = function(){
   if (!state.arr.length) return;
   state.i = (state.i - 1 + state.arr.length) % state.arr.length;
-  render();
+  render(-1); // ← направление: влево
 };
 window.lightboxNext = function(){
   if (!state.arr.length) return;
   state.i = (state.i + 1) % state.arr.length;
-  render();
+  render(1);  // ← направление: вправо
 };
 
+function render(dir){
+  var item = state.arr[state.i]; if (!item) return;
 
-  function render(){
-    var item = state.arr[state.i]; if (!item) return;
-    setLoading(true);
-    IMG.onload = function(){ setLoading(false); };
-    IMG.onerror = function(){ setLoading(false); };
-    IMG.src = item.src;
+  // 1) грузим новый кадр «в сторонке»
+  setLoading(true);
+  var oldImg = IMG;                                  // текущая картинка (может отсутствовать на первом рендере)
+  var nextImg = new Image();
+  nextImg.className = 'lightbox-img lb-anim ' + (dir > 0 ? 'lb-enter-right' : dir < 0 ? 'lb-enter-left' : 'lb-center');
+  nextImg.alt = item.caption || '';
+  nextImg.onload = function(){
+    setLoading(false);
     CAP.textContent = item.caption || '';
-    renderThumbs();
-  }
+
+    // 2) вставляем новый IMG, готовим классы для анимации
+    if (dir === 0){
+      // первый показ: без слайда, просто подменяем src у старого элемента
+      oldImg.src = nextImg.src;
+      oldImg.alt = nextImg.alt;
+      return;
+    }
+
+    // уберём id у старого, чтобы не было дубликатов
+    if (oldImg && oldImg.id === 'lightbox-img') oldImg.id = '';
+
+    nextImg.id = 'lightbox-img';
+    STAGE.appendChild(nextImg);
+
+    // принудительный reflow, чтобы transition стартовал корректно
+    void nextImg.offsetWidth;
+
+    // вход нового и выход старого
+    nextImg.classList.remove('lb-enter-right','lb-enter-left');
+    nextImg.classList.add('lb-center');
+
+    if (oldImg){
+      oldImg.classList.add('lb-anim', dir > 0 ? 'lb-exit-left' : 'lb-exit-right');
+      oldImg.addEventListener('transitionend', function onEnd(){
+        oldImg.removeEventListener('transitionend', onEnd);
+        try { STAGE.removeChild(oldImg); } catch(e){}
+      }, { once:true });
+    }
+
+    // 3) обновляем ссылку на текущую картинку
+    IMG = nextImg;
+  };
+
+  nextImg.onerror = function(){
+    setLoading(false);
+    // на ошибке просто меняем src без анимации
+    if (dir === 0){
+      oldImg.src = item.src;
+    } else {
+      if (oldImg && oldImg.id === 'lightbox-img') oldImg.id = '';
+      nextImg.id = 'lightbox-img';
+      nextImg.className = 'lightbox-img lb-center';
+      nextImg.src = item.src; // всё равно покажем «битую» ссылку — поведёт себя как пустой
+      STAGE.appendChild(nextImg);
+      if (oldImg){ try { STAGE.removeChild(oldImg); } catch(e){} }
+      IMG = nextImg;
+    }
+  };
+
+  nextImg.src = item.src;
+}
+
 
   function renderThumbs(){
     if (!THUMBS) return;
