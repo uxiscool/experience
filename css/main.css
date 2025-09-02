@@ -705,9 +705,9 @@ body.page-contact>main{ flex:1 0 auto; }
 
 #to-top:hover{ 
   filter: brightness(1.1);
-  opacity: .8; 
+  opacity: .7; 
 }
-#to-top:active{ transform: translateY(1px) scale(.98); }
+/*#to-top:active{ transform: translateY(1px) scale(.98); }*/
 #to-top:focus-visible{ outline: 2px solid var(--orange); outline-offset: 3px; }
 
 /* Не показываем, когда открыт лайтбокс */
