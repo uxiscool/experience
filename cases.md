@@ -13,9 +13,9 @@ permalink: /cases/
   {% assign allcases = site.cases | sort: 'year' | reverse %}
   {% for case in allcases %}
     {% assign case_index = forloop.index0 %}
-    <div class="case-block">
-      <div class="case-meta2">
-        <div class="case-year-rail">{{ case.year }}</div>
+   <div class="case-block">
+  <div class="case-year-rail">{{ case.year }}</div>
+  <div class="case-meta2">
 
 <div class="case-title-row">
   {% assign case_anchor = case.url | replace:'/cases/','' | replace:'/','' | downcase %}

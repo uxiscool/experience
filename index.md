@@ -26,10 +26,9 @@ title: Works
         {% break %}
       {% endif %}
     {% endfor %}
-    <div class="case-block">
-      <div class="case-meta2">
-        <!-- Новое: "рельса" с годом (показываем только на ≥980px) -->
-<div class="case-year-rail">{{ case.year }}</div>
+<div class="case-block">
+  <div class="case-year-rail">{{ case.year }}</div>
+  <div class="case-meta2">
 
 <div class="case-title-row">
   {% assign case_anchor = case.url | replace:'/cases/','' | replace:'/','' | downcase %}

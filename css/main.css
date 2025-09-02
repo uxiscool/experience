@@ -782,6 +782,7 @@ body.lb-lock #to-top{ opacity: 0; pointer-events: none; }
   }
   .case-meta2{ grid-column:2; }
   .case-gallery{ grid-column:2; }
+  .stage-summary{ grid-column:2; } 
 
   /* год в строке метаданных скрываем */
   .case-year-inline{ display:none; }
