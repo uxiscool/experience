@@ -106,7 +106,14 @@ header{ display:flex; align-items:flex-start; gap:36px; margin-top:36px; }
 .case-block{ border-radius:18px; box-shadow:0 2px 18px #181a1c29; padding:0; display:flex; flex-direction:column; gap:24px; }
 .case-meta2{ display:flex; flex-direction:column; gap:7px; margin-bottom:12px; }
 @media (max-width:980px){ .case-meta2{ padding-left:0; padding-right:0; } }
-.case-meta2-inline{ color:#b7c1cc; font-size:1.01rem; opacity:.96; margin:2px 0 4px; white-space:nowrap; }
+
+.case-meta2-inline{ 
+  color:#fff; 
+  font-size:1.01rem; 
+  opacity:.6; 
+  margin:2px 0 4px; 
+  white-space:nowrap; 
+}
 .case-title-row{ display:flex; align-items:center; gap:18px; }
 .case-title2{
   margin:0; font-size:clamp(1.3rem,1.1rem + 1vw,1.5rem); font-weight:400; letter-spacing:.02em; color:#fff; text-decoration:none;
@@ -118,7 +125,10 @@ header{ display:flex; align-items:flex-start; gap:36px; margin-top:36px; }
 }
 .case-year2{ color:#9fa7b2; font-size:1.05rem; opacity:.9; margin-left:8px; white-space:nowrap; }
 .case-type2{ color:#b7c1cc; font-size:1.01rem; opacity:.96; }
-.case-summary2{ font-size:1.09rem; color:#e2e5e7; opacity:.93; }
+.case-summary2{ 
+  font-size:1.09rem; 
+  color:#fff; 
+  opacity:.6; }
 /* Текст описания этапа внутри кейса (используется на /cases/) */
 .stage-summary {
   font-family: "Playfair", ui-serif, Georgia, serif;
