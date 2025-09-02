@@ -27,7 +27,6 @@ permalink: /cases/
   {% if case.company %}<span class="case-company">{{ case.company }}</span>{% endif %}
   {% if case.type %}<span class="case-type">{{ case.type }}</span>{% endif %}
 </div>
-
         <div class="case-summary2">{{ case.summary }}</div>
       </div>
       {% if case.stages %}
