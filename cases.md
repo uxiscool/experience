@@ -15,15 +15,19 @@ permalink: /cases/
     {% assign case_index = forloop.index0 %}
     <div class="case-block">
       <div class="case-meta2">
-        <div class="case-title-row">
+        <div class="case-year-rail">{{ case.year }}</div>
+
+<div class="case-title-row">
   {% assign case_anchor = case.url | replace:'/cases/','' | replace:'/','' | downcase %}
   <h2 id="case-{{ case_anchor }}" class="case-title3">{{ case.title }}</h2>
 </div>
-      <div class="case-meta2-inline">
-          {{ case.year }}
-          {% if case.company %} · {{ case.company }}{% endif %}
-          {% if case.type %} · {{ case.type }}{% endif %}
-        </div>
+
+<div class="case-meta2-inline">
+  <span class="case-year-inline">{{ case.year }}</span>
+  {% if case.company %}<span class="case-company">{{ case.company }}</span>{% endif %}
+  {% if case.type %}<span class="case-type">{{ case.type }}</span>{% endif %}
+</div>
+
         <div class="case-summary2">{{ case.summary }}</div>
       </div>
       {% if case.stages %}

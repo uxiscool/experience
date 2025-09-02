@@ -28,15 +28,21 @@ title: Works
     {% endfor %}
     <div class="case-block">
       <div class="case-meta2">
-        <div class="case-title-row">
+        <!-- Новое: "рельса" с годом (показываем только на ≥980px) -->
+<div class="case-year-rail">{{ case.year }}</div>
+
+<div class="case-title-row">
   {% assign case_anchor = case.url | replace:'/cases/','' | replace:'/','' | downcase %}
   <a href="{{ site.baseurl }}/cases/#case-{{ case_anchor }}" class="case-title2">{{ case.title }}</a>
 </div>
-        <div class="case-meta2-inline">
-          {{ case.year }}
-          {% if case.company %} · {{ case.company }}{% endif %}
-          {% if case.type %} · {{ case.type }}{% endif %}
-        </div>
+
+<!-- Мета: каждая часть в своем span; год для мобильной версии -->
+<div class="case-meta2-inline">
+  <span class="case-year-inline">{{ case.year }}</span>
+  {% if case.company %}<span class="case-company">{{ case.company }}</span>{% endif %}
+  {% if case.type %}<span class="case-type">{{ case.type }}</span>{% endif %}
+</div>
+
         <div class="case-summary2">{{ case.summary }}</div>
       </div>
       <div class="case-gallery">
