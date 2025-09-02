@@ -113,6 +113,9 @@ header{ display:flex; align-items:flex-start; gap:36px; margin-top:36px; }
 }
 .case-title2:link,.case-title2:visited,.case-title2:active,.case-title2:focus{ color:#fff; text-decoration:none; }
 .case-title2:hover,.case-title2:focus-visible{ color:var(--orange); transition:color 2s cubic-bezier(.19,1,.22,1); }
+.case-title3{
+  margin:0; font-size:clamp(1.3rem,1.1rem + 1vw,1.5rem); font-weight:400; letter-spacing:.02em; color:#fff; text-decoration:none;
+}
 .case-year2{ color:#9fa7b2; font-size:1.05rem; opacity:.9; margin-left:8px; white-space:nowrap; }
 .case-type2{ color:#b7c1cc; font-size:1.01rem; opacity:.96; }
 .case-summary2{ font-size:1.09rem; color:#e2e5e7; opacity:.93; }

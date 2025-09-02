@@ -17,7 +17,7 @@ permalink: /cases/
       <div class="case-meta2">
         <div class="case-title-row">
   {% assign case_anchor = case.url | replace:'/cases/','' | replace:'/','' | downcase %}
-  <h2 id="case-{{ case_anchor }}" class="case-title2">{{ case.title }}</h2>
+  <h2 id="case-{{ case_anchor }}" class="case-title3">{{ case.title }}</h2>
 </div>
       <div class="case-meta2-inline">
           {{ case.year }}
