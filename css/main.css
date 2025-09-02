@@ -776,10 +776,11 @@ body.lb-lock #to-top{ opacity: 0; pointer-events: none; }
     position:absolute;
     top: var(--case-rail-top);
     left: calc(-1 * (var(--case-rail-w) + var(--case-rail-gap)));
-    width: var(--case-rail-w);
+    /*width: var(--case-rail-w);*/
     color:#9fa7b2; font-size:1.05rem; opacity:.9;
     background-color: #ff643d7b;
-    white-space:nowrap; text-align:left;
+    white-space:nowrap; 
+    text-align:left;
     pointer-events:none;
   }
   .case-year-inline{ display:none; }
