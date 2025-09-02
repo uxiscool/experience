@@ -781,7 +781,7 @@ body.lb-lock #to-top{ opacity: 0; pointer-events: none; }
 .case-meta2-inline{ display:flex; gap:0; flex-wrap:nowrap; }
 .case-meta2-inline span + span::before{ content:" · "; }
 
-@media (min-width:981px){
+@media (min-width:980px){
   .case-block{ position:relative; }
   .case-year-rail{
     display:block;
@@ -789,10 +789,10 @@ body.lb-lock #to-top{ opacity: 0; pointer-events: none; }
     top: var(--case-rail-top);
     left: calc(-1 * var(--case-rail-gap));
     /*width: var(--case-rail-w);*/
-    color:#171819; 
-    font-size:1.05rem; opacity:.9;
-    background-color: #9fa7b2;
-    white-space:nowrap; 
+    color:#9fa7b2;
+    font-size:1.05rem; 
+    opacity:.9;
+    white-space:nowrap;
     text-align:left;
     pointer-events:none;
   }
