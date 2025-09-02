@@ -678,7 +678,7 @@ body.page-contact>main{ flex:1 0 auto; }
   align-items: center;
   justify-content: center;
 
-  background: rgba(35,36,41,.92);
+  background: rgba(35, 36, 41, 0.151);
   border: 1px solid #2b2e33;
   border-radius: 12px;
   box-shadow: 0 6px 18px rgba(0,0,0,.35);
