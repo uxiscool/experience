@@ -276,7 +276,7 @@ header{ display:flex; align-items:flex-start; gap:36px; margin-top:36px; }
 }
 
 @media (max-width:900px){
-  .lightbox-arrow.left{ left:22px; } 
+  .lightbox-arrow.left{ left:16px; } 
   .lightbox-arrow.right{ right:12px; }
   .lightbox-close{ right:35px; top:35px; }
   /* Увеличиваем отступы для изображения, учитывая кнопки 40px + 12px = 52px с каждой стороны */
