@@ -247,8 +247,8 @@ header{ display:flex; align-items:flex-start; gap:36px; margin-top:36px; }
   justify-content:center;
 }
 
-.lightbox-arrow.left{ left:18px; }
-.lightbox-arrow.right{ right:18px; }
+.lightbox-arrow.left{ left:42px; }
+.lightbox-arrow.right{ right:42px; }
 
 .lightbox-arrow img,.lightbox-close img{ 
   width:42px; 
