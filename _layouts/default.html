@@ -87,7 +87,7 @@
   var CAP = document.getElementById('lightbox-caption');
   var THUMBS = document.getElementById('lightbox-thumbs');
   var STAGE = document.querySelector('.lightbox-stage');
-  var state = { arr:[], i:0 };
+  var state = { arr:[], i:0, req:0 };
   var onKey = null;
 
   function setLoading(on){
@@ -127,6 +127,9 @@ window.lightboxNext = function(){
 function render(dir){
   var item = state.arr[state.i]; if (!item) return;
 
+  // помечаем этот вызов как «последний»
+  var req = ++state.req;
+
   setLoading(true);
   var oldImg = IMG;
   var nextImg = new Image();
@@ -134,22 +137,24 @@ function render(dir){
   nextImg.alt = item.caption || '';
 
   nextImg.onload = function(){
+    // если за это время пришёл другой render — выходим
+    if (req !== state.req) return;
+
     setLoading(false);
     CAP.textContent = item.caption || '';
 
-    // первый показ — без слайда, но миниатюры ОБЯЗАТЕЛЬНО рисуем
     if (dir === 0){
+      // первый показ / клик по миниатюре — без слайда
       oldImg.src = nextImg.src;
       oldImg.alt = nextImg.alt;
-      renderThumbs();                 // ← вернули
+      renderThumbs();
       return;
     }
 
-    // замена элемента с анимацией
     if (oldImg && oldImg.id === 'lightbox-img') oldImg.id = '';
     nextImg.id = 'lightbox-img';
     STAGE.appendChild(nextImg);
-    void nextImg.offsetWidth; // reflow для старта transition
+    void nextImg.offsetWidth;
     nextImg.classList.remove('lb-enter-right','lb-enter-left');
     nextImg.classList.add('lb-center');
 
@@ -162,15 +167,16 @@ function render(dir){
     }
 
     IMG = nextImg;
-    renderThumbs();                   // ← и здесь тоже
+    renderThumbs();
   };
 
   nextImg.onerror = function(){
+    if (req !== state.req) return;
+
     setLoading(false);
-    // на ошибке просто показываем без слайда, но миниатюры всё равно строим
     if (dir === 0){
       oldImg.src = item.src;
-      renderThumbs();                 // ← не забываем
+      renderThumbs();
     } else {
       if (oldImg && oldImg.id === 'lightbox-img') oldImg.id = '';
       nextImg.id = 'lightbox-img';
@@ -179,13 +185,12 @@ function render(dir){
       STAGE.appendChild(nextImg);
       if (oldImg){ try { STAGE.removeChild(oldImg); } catch(e){} }
       IMG = nextImg;
-      renderThumbs();                 // ← и здесь
+      renderThumbs();
     }
   };
 
   nextImg.src = item.src;
 }
-
 
   function renderThumbs(){
     if (!THUMBS) return;
