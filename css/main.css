@@ -242,16 +242,16 @@ header{ display:flex; align-items:flex-start; gap:36px; margin-top:36px; }
   .lightbox-arrow.left{ left:18px; } 
   .lightbox-arrow.right{ right:18px; }
   .lightbox-close{ right:34px; top:34px; }
-  /* Исправляем отступы изображения - делаем их симметричными и достаточными для стрелок */
-  .lightbox-img{ margin:0 60px; max-width:calc(100vw - 120px); }
+  /* Убираем margin, он не работает с абсолютным позиционированием */
+  /* Уменьшаем max-width чтобы освободить место для стрелок с обеих сторон */
+  .lightbox-img{ max-width:calc(100vw - 80px); } /* 40px с каждой стороны для стрелок */
   .lightbox-arrow img,.lightbox-close img{ width:24px; height:24px; }
 }
 
-/* Дополнительная точка для очень узких экранов */
 @media (max-width:590px){ 
   .lightbox-arrow img,.lightbox-close img{ width:18px; height:18px; }
-  /* Уменьшаем отступы на очень маленьких экранах, но сохраняем симметрию */
-  .lightbox-img{ margin:0 50px; max-width:calc(100vw - 100px); }
+  /* На маленьких экранах еще больше ужимаем ширину */
+  .lightbox-img{ max-width:calc(100vw - 70px); } /* 35px с каждой стороны */
 }
 /* Подпись — обычный авто-блок, без «резервов» и перекрытий */
 /* Подпись — авто-высота, вписывается между stage и миниатюрами */
