@@ -239,11 +239,24 @@ header{ display:flex; align-items:flex-start; gap:36px; margin-top:36px; }
 }
 .lightbox-arrow:hover img,.lightbox-close:hover img{ filter:brightness(.70); opacity:.84; }
 @media (max-width:900px){
-  .lightbox-arrow.left{ left:18px; } .lightbox-arrow.right{ right:18px; }
-  .lightbox-close{ right:34px; top:34px; }
-  .lightbox-img{ margin:0 54px; max-width:84vw; }
-  .lightbox-arrow img,.lightbox-close img{ width:24px; height:24px; }
+  .lightbox-arrow.left{ left:18px; } 
+  .lightbox-arrow.right{ right:18px; }
+  .lightbox-close{ right:24px; top:24px; }
+
+  /* симметричный «геттер» внутри сцены: картинка отойдёт от краёв слева и справа */
+  .lightbox-stage{ padding: 0 54px; }
+
+  /* абсолютную картинку вписываем в сцену целиком (с учётом padding'ов) */
+  .lightbox-img{ max-width: 100%; }
+
+  .lightbox-arrow img, .lightbox-close img{ width:24px; height:24px; }
 }
+
+/* ещё компактнее на очень узких */
+@media (max-width:590px){
+  .lightbox-stage{ padding: 0 36px; }
+}
+
 @media (max-width:590px){ .lightbox-arrow img,.lightbox-close img{ width:18px; height:18px; } }
 /* Подпись — обычный авто-блок, без «резервов» и перекрытий */
 /* Подпись — авто-высота, вписывается между stage и миниатюрами */
