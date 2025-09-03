@@ -225,33 +225,74 @@ header{ display:flex; align-items:flex-start; gap:36px; margin-top:36px; }
   will-change: transform, opacity;
 }
 
+/* Исправление асимметрии стрелок лайтбокса */
+/* Заменить блок с .lightbox-arrow в main.css */
+
 .lightbox-arrow{
-  position:fixed; top:50%; transform:translateY(-50%); z-index:11001;
-  background:none; border:none; padding:0; margin:0; cursor:pointer;
+  position:fixed; 
+  top:50%; 
+  transform:translateY(-50%); 
+  z-index:11001;
+  background:none; 
+  border:none; 
+  padding:8px; /* Одинаковый padding для обеих стрелок */
+  margin:0; 
+  cursor:pointer;
+  transition:filter .5s cubic-bezier(.42,0,.58,1), opacity .18s;
+  /* Явно задаем размеры кнопки для симметрии */
+  width:40px;
+  height:40px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.lightbox-arrow.left{ left:18px; }
+.lightbox-arrow.right{ right:18px; }
+
+.lightbox-arrow img,.lightbox-close img{ 
+  width:24px; 
+  height:24px; 
+  display:block; 
+  pointer-events:none; 
+  transition:filter .5s cubic-bezier(.42,0,.58,1), opacity .18s; 
+}
+
+.lightbox-close{
+  position:fixed; 
+  top:42px; 
+  right:32px; 
+  background:none; 
+  border:none; 
+  cursor:pointer; 
+  z-index:11002;
+  padding:6px 10px; 
   transition:filter .5s cubic-bezier(.42,0,.58,1), opacity .18s;
 }
-.lightbox-arrow.left{ left:32px; }
-.lightbox-arrow.right{ right:32px; }
-.lightbox-arrow img,.lightbox-close img{ width:36px; height:36px; display:block; pointer-events:none; transition:filter .5s cubic-bezier(.42,0,.58,1), opacity .18s; }
-.lightbox-close{
-  position:fixed; top:42px; right:32px; background:none; border:none; cursor:pointer; z-index:11002;
-  padding:6px 10px; transition:filter .5s cubic-bezier(.42,0,.58,1), opacity .18s;
+
+.lightbox-arrow:hover img,.lightbox-close:hover img{ 
+  filter:brightness(.70); 
+  opacity:.84; 
 }
-.lightbox-arrow:hover img,.lightbox-close:hover img{ filter:brightness(.70); opacity:.84; }
+
 @media (max-width:900px){
-  .lightbox-arrow.left{ left:18px; } 
-  .lightbox-arrow.right{ right:18px; }
-  .lightbox-close{ right:34px; top:34px; }
-  /* Убираем margin, он не работает с абсолютным позиционированием */
-  /* Уменьшаем max-width чтобы освободить место для стрелок с обеих сторон */
-  .lightbox-img{ max-width:calc(100vw - 80px); } /* 40px с каждой стороны для стрелок */
-  .lightbox-arrow img,.lightbox-close img{ width:24px; height:24px; }
+  .lightbox-arrow.left{ left:12px; } 
+  .lightbox-arrow.right{ right:12px; }
+  .lightbox-close{ right:30px; top:30px; }
+  /* Увеличиваем отступы для изображения, учитывая кнопки 40px + 12px = 52px с каждой стороны */
+  .lightbox-img{ max-width:calc(100vw - 110px); }
+  .lightbox-arrow img,.lightbox-close img{ width:20px; height:20px; }
+  /* Уменьшаем размер кнопки на мобильных */
+  .lightbox-arrow{ width:36px; height:36px; padding:6px; }
 }
 
 @media (max-width:590px){ 
-  .lightbox-arrow img,.lightbox-close img{ width:18px; height:18px; }
-  /* На маленьких экранах еще больше ужимаем ширину */
-  .lightbox-img{ max-width:calc(100vw - 70px); } /* 35px с каждой стороны */
+  .lightbox-arrow img,.lightbox-close img{ width:16px; height:16px; }
+  .lightbox-arrow{ width:32px; height:32px; padding:4px; }
+  .lightbox-arrow.left{ left:8px; } 
+  .lightbox-arrow.right{ right:8px; }
+  /* Еще больше отступов: 32px + 8px = 40px с каждой стороны */
+  .lightbox-img{ max-width:calc(100vw - 85px); }
 }
 /* Подпись — обычный авто-блок, без «резервов» и перекрытий */
 /* Подпись — авто-высота, вписывается между stage и миниатюрами */
