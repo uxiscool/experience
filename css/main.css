@@ -276,7 +276,7 @@ header{ display:flex; align-items:flex-start; gap:36px; margin-top:36px; }
 }
 
 @media (max-width:900px){
-  .lightbox-arrow.left{ left:12px; } 
+  .lightbox-arrow.left{ left:22px; } 
   .lightbox-arrow.right{ right:12px; }
   .lightbox-close{ right:35px; top:35px; }
   /* Увеличиваем отступы для изображения, учитывая кнопки 40px + 12px = 52px с каждой стороны */
@@ -289,10 +289,10 @@ header{ display:flex; align-items:flex-start; gap:36px; margin-top:36px; }
 @media (max-width:590px){ 
   .lightbox-arrow img,.lightbox-close img{ width:24px; height:24px; }
   .lightbox-arrow{ width:32px; height:32px; padding:4px; }
-  .lightbox-arrow.left{ left:8px; } 
+  .lightbox-arrow.left{ left:18px; } 
   .lightbox-arrow.right{ right:8px; }
   /* Еще больше отступов: 32px + 8px = 40px с каждой стороны */
-  .lightbox-img{ max-width:calc(100vw - 85px); }
+  .lightbox-img{ max-width:calc(100vw - 120px); }
 }
 /* Подпись — обычный авто-блок, без «резервов» и перекрытий */
 /* Подпись — авто-высота, вписывается между stage и миниатюрами */
