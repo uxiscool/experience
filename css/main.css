@@ -215,7 +215,7 @@ header{ display:flex; align-items:flex-start; gap:36px; margin-top:36px; }
 /* Картинка — вписываемся в свою строку, не вылезаем и не перекрываем caption/thumbs */
 /* Картинка вписывается в stage, не вылезает и не тянет низ */
 .lightbox-img{
-  max-width:76vw;
+  max-width:75vw;
   max-height:100%;          /* занимает высоту stage, но не больше */
   object-fit:contain;
   display:block;
@@ -280,10 +280,11 @@ header{ display:flex; align-items:flex-start; gap:36px; margin-top:36px; }
   .lightbox-arrow.right{ right:12px; }
   .lightbox-close{ right:35px; top:35px; }
   /* Увеличиваем отступы для изображения, учитывая кнопки 40px + 12px = 52px с каждой стороны */
-  .lightbox-img{ max-width:calc(100vw - 110px); }
+  .lightbox-img{ max-width: 100%; }
   .lightbox-arrow img,.lightbox-close img{ width:20px; height:20px; }
   /* Уменьшаем размер кнопки на мобильных */
   .lightbox-arrow{ width:36px; height:36px; padding:6px; }
+  .lightbox-stage{ padding: 0 54px; }
 }
 
 @media (max-width:590px){ 
@@ -293,6 +294,7 @@ header{ display:flex; align-items:flex-start; gap:36px; margin-top:36px; }
   .lightbox-arrow.right{ right:12px; }
   /* Еще больше отступов: 32px + 8px = 40px с каждой стороны */
   .lightbox-img{ max-width:calc(100vw - 120px); }
+  .lightbox-stage{ padding: 0 36px; }
 }
 /* Подпись — обычный авто-блок, без «резервов» и перекрытий */
 /* Подпись — авто-высота, вписывается между stage и миниатюрами */
