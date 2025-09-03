@@ -281,7 +281,6 @@ header{ display:flex; align-items:flex-start; gap:36px; margin-top:36px; }
   .lightbox-close{ right:34px; top:34px; }
   /* Увеличиваем отступы для изображения, учитывая кнопки 40px + 12px = 52px с каждой стороны */
   .lightbox-img{ max-width:75vw; }
-  .lightbox-arrow img,.lightbox-close img{ width:24px; height:24px; }
   /* Уменьшаем размер кнопки на мобильных */
   .lightbox-arrow{ width:36px; height:36px; padding:6px; }
   .lightbox-stage{ padding: 0 54px; }
