@@ -239,12 +239,20 @@ header{ display:flex; align-items:flex-start; gap:36px; margin-top:36px; }
 }
 .lightbox-arrow:hover img,.lightbox-close:hover img{ filter:brightness(.70); opacity:.84; }
 @media (max-width:900px){
-  .lightbox-arrow.left{ left:18px; } .lightbox-arrow.right{ right:18px; }
+  .lightbox-arrow.left{ left:18px; } 
+  .lightbox-arrow.right{ right:18px; }
   .lightbox-close{ right:34px; top:34px; }
-  .lightbox-img{ margin:0 54px; max-width:84vw; }
+  /* Исправляем отступы изображения - делаем их симметричными и достаточными для стрелок */
+  .lightbox-img{ margin:0 60px; max-width:calc(100vw - 120px); }
   .lightbox-arrow img,.lightbox-close img{ width:24px; height:24px; }
 }
-@media (max-width:590px){ .lightbox-arrow img,.lightbox-close img{ width:18px; height:18px; } }
+
+/* Дополнительная точка для очень узких экранов */
+@media (max-width:590px){ 
+  .lightbox-arrow img,.lightbox-close img{ width:18px; height:18px; }
+  /* Уменьшаем отступы на очень маленьких экранах, но сохраняем симметрию */
+  .lightbox-img{ margin:0 50px; max-width:calc(100vw - 100px); }
+}
 /* Подпись — обычный авто-блок, без «резервов» и перекрытий */
 /* Подпись — авто-высота, вписывается между stage и миниатюрами */
 .lightbox-caption{
