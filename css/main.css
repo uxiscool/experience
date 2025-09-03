@@ -251,8 +251,8 @@ header{ display:flex; align-items:flex-start; gap:36px; margin-top:36px; }
 .lightbox-arrow.right{ right:18px; }
 
 .lightbox-arrow img,.lightbox-close img{ 
-  width:24px; 
-  height:24px; 
+  width:42px; 
+  height:42px; 
   display:block; 
   pointer-events:none; 
   transition:filter .5s cubic-bezier(.42,0,.58,1), opacity .18s; 
@@ -278,7 +278,7 @@ header{ display:flex; align-items:flex-start; gap:36px; margin-top:36px; }
 @media (max-width:900px){
   .lightbox-arrow.left{ left:12px; } 
   .lightbox-arrow.right{ right:12px; }
-  .lightbox-close{ right:30px; top:30px; }
+  .lightbox-close{ right:35px; top:35px; }
   /* Увеличиваем отступы для изображения, учитывая кнопки 40px + 12px = 52px с каждой стороны */
   .lightbox-img{ max-width:calc(100vw - 110px); }
   .lightbox-arrow img,.lightbox-close img{ width:20px; height:20px; }
@@ -287,7 +287,7 @@ header{ display:flex; align-items:flex-start; gap:36px; margin-top:36px; }
 }
 
 @media (max-width:590px){ 
-  .lightbox-arrow img,.lightbox-close img{ width:16px; height:16px; }
+  .lightbox-arrow img,.lightbox-close img{ width:24px; height:24px; }
   .lightbox-arrow{ width:32px; height:32px; padding:4px; }
   .lightbox-arrow.left{ left:8px; } 
   .lightbox-arrow.right{ right:8px; }
