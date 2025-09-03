@@ -280,7 +280,7 @@ header{ display:flex; align-items:flex-start; gap:36px; margin-top:36px; }
   .lightbox-arrow.right{ right:12px; }
   .lightbox-close{ right:35px; top:35px; }
   /* Увеличиваем отступы для изображения, учитывая кнопки 40px + 12px = 52px с каждой стороны */
-  .lightbox-img{ max-width: 100%; }
+  .lightbox-img{ max-width:calc(100vw - 70px); }
   .lightbox-arrow img,.lightbox-close img{ width:20px; height:20px; }
   /* Уменьшаем размер кнопки на мобильных */
   .lightbox-arrow{ width:36px; height:36px; padding:6px; }
