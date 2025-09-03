@@ -817,3 +817,17 @@ body.lb-lock #to-top{ opacity: 0; pointer-events: none; }
   .case-year-inline{ display:inline; }
 }
 
+/* === Lightbox: симметричные поля на узких === */
+@media (max-width:900px){
+  /* Делаем одинаковый отступ слева/справа внутри сцены */
+  .lightbox-stage{ padding: 0 54px; }
+
+  /* margin у абсолютной картинки не нужен — убираем; ширину ограничиваем сценой */
+  .lightbox-img{ margin:0; max-width:100%; }
+}
+
+/* ещё компактнее на очень узких */
+@media (max-width:590px){
+  .lightbox-stage{ padding: 0 36px; }
+  /* картинку не трогаем — уже вписывается в сцену */
+}
