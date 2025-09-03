@@ -13,8 +13,13 @@ body{
     BlinkMacSystemFont,
     "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans",
     sans-serif;
+    min-height: 100dvh;        /* вся страница минимум на высоту окна */
+    display: flex;             /* вертикальный флекс-контейнер */
+    flex-direction: column;
 }
-
+body > main{
+  flex: 1 0 auto;            /* контент тянется, футер уходит вниз */
+}
 body.lb-lock{ overflow:hidden; }
 section{ padding-top:2rem; }
 
@@ -383,6 +388,7 @@ header{ display:flex; align-items:flex-start; gap:36px; margin-top:36px; }
   width:100%; min-height:clamp(80px,14vw,400px);
   background:linear-gradient(to bottom,#171819 0%,#171819 80%,#212223 100%);
   display:flex; flex-direction:column;
+  margin-top: auto;
 }
 .footer-inner{ display:flex; align-items:center; justify-content:flex-end; padding:0 200px 40px 293px; margin-top:auto; margin-left:auto; }
 @media (max-width:980px){ .footer-inner{ padding:0 64px 12px; } }
