@@ -42,7 +42,6 @@ permalink: /pet-projects/
       <img class="pp-icon" src="{{ site.baseurl }}{{ p.icon }}" alt="">
       <h3 class="pp-title">{{ p.title }}</h3>
     </header>
-
     <!-- Тело: слева медиа, справа текст + футер, приклеенный к низу -->
     <div class="pp-body">
       <div class="pp-media">
@@ -61,39 +60,26 @@ permalink: /pet-projects/
           </a>
         {% endif %}
       </div>
-
       <div class="pp-side">
         <div class="pp-text">
           {% if p.subtitle %}<div class="pp-subtitle">{{ p.subtitle }}</div>{% endif %}
           {% if p.desc %}<div class="pp-desc">{{ p.desc }}</div>{% endif %}
         </div>
-
-        <div class="pp-footer">
-          {% if p.kind %}<div class="pp-kind">{{ p.kind }}</div>{% endif %}
-          <div class="pp-links">
-            {% if p.figma %}
-              <a class="pp-store" href="{{ p.figma }}" target="_blank" rel="noopener">
-                <img src="{{ site.baseurl }}/ui/stores/figma.svg" alt="Figma">
-              </a>
-            {% endif %}
-            {% if p.stores and p.stores.play %}
-              <a class="pp-store" href="{{ p.stores.play }}" target="_blank" rel="noopener">
-                <img src="{{ site.baseurl }}/ui/stores/googleplay.svg" alt="Google Play">
-              </a>
-            {% endif %}
-            {% if p.stores and p.stores.appstore %}
-              <a class="pp-store" href="{{ p.stores.appstore }}" target="_blank" rel="noopener">
-                <img src="{{ site.baseurl }}/ui/stores/appstore.svg" alt="App Store">
-              </a>
-            {% endif %}
-          </div>
-        </div>
+       <div class="pp-footer">
+  {% if p.kind %}<div class="pp-kind">{{ p.kind }}</div>{% endif %}
+  <div class="pp-links">
+    {% if p.store_url and p.store_icon %}
+      <a class="pp-store" href="{{ p.store_url }}" target="_blank" rel="noopener">
+        <img src="{{ p.store_icon | prepend: site.baseurl }}" alt="{{ p.store_alt | default: 'Store' }}">
+      </a>
+    {% endif %}
+  </div>
+</div>
       </div>
     </div>
   </article>
   {% endfor %}
 </div>
-
 <!-- используем общий lightbox из default.html -->
 <div id="lightbox" class="lightbox" style="display:none;">
   <div class="lightbox-bg" onclick="closeLightbox()"></div>
