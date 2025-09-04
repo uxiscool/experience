@@ -8,14 +8,10 @@ kind: Plugin for Figma
 # Базовый префикс для картинок галереи
 images_base: /assets/pix/pet/fgm_compress/
 
-# Если нет фоновой картинки — используем мягкий градиент из этих цветов
-bg_colors: ["#2c3d64", "#0c2240", "#1b1f2e"]
-
-# Опционально: теги‑пиллы
-tags: ["Figma", "Productivity", "Utilities"]
-
-# Ссылка на страницу плагина в Figma Community (иконка в правом нижнем углу плитки)
-figma: https://www.figma.com/community/plugin/1509229645333597690/image-compressor-free
+# Стор/где посмотреть проект
+store_url: https://www.figma.com/community/plugin/1509229645333597690/image-compressor-free
+store_icon: /ui/stores/figma.svg
+store_alt: "Figma"
 
 # Галерея изображений (первая используется в левой колонке плитки)
 gallery:
@@ -26,7 +22,5 @@ gallery:
     caption: "Various localization options available."
   - file: scr3.png
     caption: "If there is no gain in image weight after the compression procedure, the process is not applied and a corresponding message is displayed."
-#stores:
-#  play: https://play.google.com/store/apps/details?id=your.app
-#  appstore: https://apps.apple.com/app/id000000000
+
 ---

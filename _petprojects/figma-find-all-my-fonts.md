@@ -8,14 +8,10 @@ kind: Plugin for Figma
 # Базовый префикс для картинок галереи
 images_base: /assets/pix/pet/fgm_fndfnts/
 
-# Если нет фоновой картинки — используем мягкий градиент из этих цветов
-bg_colors: ["#2c3d64", "#0c2240", "#1b1f2e"]
-
-# Опционально: теги‑пиллы
-tags: ["Figma", "Productivity", "Utilities"]
-
-# Ссылка на страницу плагина в Figma Community (иконка в правом нижнем углу плитки)
-figma: https://www.figma.com/community/plugin/1518928832562264382/find-all-my-fonts
+# Стор/где посмотреть проект
+store_url: https://www.figma.com/community/plugin/1518928832562264382/find-all-my-fonts
+store_icon: /ui/stores/figma.svg
+store_alt: "Figma"
 
 # Галерея изображений (первая используется в левой колонке плитки)
 gallery:
@@ -26,7 +22,5 @@ gallery:
     caption: "Theme switching and a large number of localizations are available, selected options are saved between sessions."
   - file: scr3.png
     caption: "List of found layers with texts, you can immediately evaluate in which object the text is - just text, a component or an instance and whether it is hidden."
-#stores:
-#  play: https://play.google.com/store/apps/details?id=your.app
-#  appstore: https://apps.apple.com/app/id000000000
+
 ---
