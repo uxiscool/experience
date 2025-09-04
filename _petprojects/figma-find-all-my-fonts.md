@@ -1,4 +1,5 @@
 ---
+order: 1
 title: Find All My Fonts
 subtitle: A&nbsp;plugin that will show which fonts were used in&nbsp;the&nbsp;layout, find hidden texts and&nbsp;non-standard font sizes.
 desc: "For my&nbsp;own needs, I&nbsp;was looking for&nbsp;a&nbsp;plugin to&nbsp;display and&nbsp;manage font styles used in&nbsp;Figma layouts. Not&nbsp;finding a&nbsp;third-party solution, I&nbsp;made my&nbsp;own."

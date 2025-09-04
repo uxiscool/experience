@@ -1,4 +1,5 @@
 ---
+order: 2
 title: Image compressor
 subtitle: JPEG compression and&nbsp;image scale normalization inside figma layout
 desc: "I&nbsp;made this&nbsp;plugin myself, because the&nbsp;existing ones didn't suit&nbsp;me. The&nbsp;plugin can&nbsp;compress specific or&nbsp;all&nbsp;images of&nbsp;a&nbsp;frame into jpeg with&nbsp;a&nbsp;specified compression level, finds nested images, normalizes their scale (if&nbsp;they were scaled&nbsp;to&nbsp;a&nbsp;smaller visible size and&nbsp;in&nbsp;fact they&nbsp;are&nbsp;larger). Useful for&nbsp;reducing the&nbsp;weight of&nbsp;figma mockups and&nbsp;before exporting to&nbsp;pdf."

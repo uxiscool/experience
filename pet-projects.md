@@ -11,30 +11,45 @@ permalink: /pet-projects/
 </div>
 
 <div class="pp-grid">
-  {% assign items = site.petprojects %}
+  {%- assign items = site.petprojects -%}
 
-  {% for p in items %}
-    {% assign pet_index = 0 %}
-    {% for pp in site.petprojects %}
-      {% if pp.title == p.title %}
-        {% break %}
-      {% else %}
-        {% assign pet_index = pet_index | plus: 1 %}
-      {% endif %}
-    {% endfor %}
+  {%- comment -%}
+    Порядок вывода:
+    1) Берём все элементы с заданным 'order' и сортируем по возрастанию.
+    2) После них — элементы без 'order' в исходном порядке (как Jekyll собрал).
+    Примечание: одинаковый 'order' не пересортировывает — сохранится исходный порядок.
+  {%- endcomment -%}
+  {%- assign with_order = items | where_exp: "it", "it.order" -%}
+  {%- assign without_order = items | where_exp: "it", "it.order == nil" -%}
+  {%- assign with_order_sorted = with_order | sort: "order" -%}
+  {%- assign items_sorted = with_order_sorted | concat: without_order -%}
 
-    {% assign first = p.gallery[0] %}
-    {% assign thumb_src = nil %}
-    {% if first %}
-      {% assign thumb_path = first.src | default:first.file %}
-      {% if thumb_path %}
-        {% if p.images_base %}
-          {% assign thumb_src = p.images_base | append: thumb_path %}
-        {% else %}
-          {% assign thumb_src = thumb_path %}
-        {% endif %}
-      {% endif %}
-    {% endif %}
+  {%- for p in items_sorted -%}
+    {%- comment -%}
+      pet_index — реальный индекс проекта в исходной коллекции site.petprojects.
+      Нужен для корректной работы openPetGallery, независим от визуальной сортировки.
+    {%- endcomment -%}
+    {%- assign pet_index = 0 -%}
+    {%- for pp in site.petprojects -%}
+      {%- if pp.title == p.title -%}
+        {%- break -%}
+      {%- else -%}
+        {%- assign pet_index = pet_index | plus: 1 -%}
+      {%- endif -%}
+    {%- endfor -%}
+
+    {%- assign first = p.gallery[0] -%}
+    {%- assign thumb_src = nil -%}
+    {%- if first -%}
+      {%- assign thumb_path = first.src | default:first.file -%}
+      {%- if thumb_path -%}
+        {%- if p.images_base -%}
+          {%- assign thumb_src = p.images_base | append: thumb_path -%}
+        {%- else -%}
+          {%- assign thumb_src = thumb_path -%}
+        {%- endif -%}
+      {%- endif -%}
+    {%- endif -%}
 
   <article class="pp-card">
     <!-- Шапка -->
@@ -51,9 +66,9 @@ permalink: /pet-projects/
              onclick="openPetGallery({{ pet_index }}, 0)"
              aria-label="Open gallery">
             <img class="lazy-img"
-     decoding="async"
-     data-src="{{ site.baseurl }}{{ thumb_src }}"
-     alt="">
+                 decoding="async"
+                 data-src="{{ site.baseurl }}{{ thumb_src }}"
+                 alt="">
             <noscript>
               <img src="{{ site.baseurl }}{{ thumb_src }}" alt="">
             </noscript>
@@ -65,21 +80,22 @@ permalink: /pet-projects/
           {% if p.subtitle %}<div class="pp-subtitle">{{ p.subtitle }}</div>{% endif %}
           {% if p.desc %}<div class="pp-desc">{{ p.desc }}</div>{% endif %}
         </div>
-       <div class="pp-footer">
-  {% if p.kind %}<div class="pp-kind">{{ p.kind }}</div>{% endif %}
-  <div class="pp-links">
-    {% if p.store_url and p.store_icon %}
-      <a class="pp-store" href="{{ p.store_url }}" target="_blank" rel="noopener">
-        <img src="{{ p.store_icon | prepend: site.baseurl }}" alt="{{ p.store_alt | default: 'Store' }}">
-      </a>
-    {% endif %}
-  </div>
-</div>
+        <div class="pp-footer">
+          {% if p.kind %}<div class="pp-kind">{{ p.kind }}</div>{% endif %}
+          <div class="pp-links">
+            {% if p.store_url and p.store_icon %}
+              <a class="pp-store" href="{{ p.store_url }}" target="_blank" rel="noopener">
+                <img src="{{ p.store_icon | prepend: site.baseurl }}" alt="{{ p.store_alt | default: 'Store' }}">
+              </a>
+            {% endif %}
+          </div>
+        </div>
       </div>
     </div>
   </article>
-  {% endfor %}
+  {%- endfor -%}
 </div>
+
 <!-- используем общий lightbox из default.html -->
 <div id="lightbox" class="lightbox" style="display:none;">
   <div class="lightbox-bg" onclick="closeLightbox()"></div>
@@ -87,7 +103,7 @@ permalink: /pet-projects/
     <button class="lightbox-close" onclick="closeLightbox()" aria-label="Close">
       <img src="{{ site.baseurl }}/ui/lightbox_close.svg" width="36" height="36" alt="Close">
     </button>
-        <button class="lightbox-arrow left" onclick="lightboxPrev()" aria-label="Previous">
+    <button class="lightbox-arrow left" onclick="lightboxPrev()" aria-label="Previous">
       <img src="{{ site.baseurl }}/ui/lightbox_arrow_left.svg" width="36" height="36" alt="Prev">
     </button>
     <div class="lightbox-stage">
