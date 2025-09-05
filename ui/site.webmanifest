@@ -1,6 +1,6 @@
 {
-  "name": "Portfolio",
-  "short_name": "Portfolio",
+  "name": "Vladimir Zhukov",
+  "short_name": "Online Portfolio",
   "icons": [
     {
       "src": "/ui/favicon-192.png",
@@ -13,7 +13,7 @@
       "type": "image/png"
     }
   ],
-  "theme_color": "#0c2240",
-  "background_color": "#0c2240",
+  "theme_color": "#232429",
+  "background_color": "#232429",
   "display": "standalone"
 }
