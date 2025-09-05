@@ -859,9 +859,9 @@ body.lb-lock #to-top{ opacity: 0; pointer-events: none; }
     top: var(--case-rail-top);
     left: calc(-1 * var(--case-rail-gap));
     transform: translateX(-100%); 
-    color:#9fa7b2;
+    color:#fff;
     font-size:1.05rem; 
-    opacity:.9;
+    opacity:.5;
     white-space:nowrap;
     text-align:left;
     pointer-events:none;
