@@ -1,8 +1,8 @@
 ---
 order: 3
 title: Personal Portfolio Website
-subtitle: A&nbsp;plugin that will show which fonts were used in&nbsp;the&nbsp;layout, find hidden texts and&nbsp;non-standard font sizes.
-desc: "For my&nbsp;own needs, I&nbsp;was looking for&nbsp;a&nbsp;plugin to&nbsp;display and&nbsp;manage font styles used in&nbsp;Figma layouts. Not&nbsp;finding a&nbsp;third-party solution, I&nbsp;made my&nbsp;own."
+subtitle: Static site on&nbsp;Jekyll, portfolio for&nbsp;my&nbsp;projects.
+desc: "I&nbsp;was thinking whether to&nbsp;put the&nbsp;portfolio site itself in&nbsp;the&nbsp;portfolio or&nbsp;not? - I&nbsp;decided that&nbsp;I&nbsp;should, because it&nbsp;is&nbsp;an&nbsp;interesting project, it&nbsp;was&nbsp;written from&nbsp;scratch, hosted for&nbsp;free on&nbsp;GitHub Pages."
 icon: /assets/pix/pet/jekyll_portfolio/icon.svg
 kind: Personal portfolio
 
@@ -17,7 +17,7 @@ store_alt: "Web link"
 # Галерея изображений (первая используется в левой колонке плитки)
 gallery:
   - file: scr1.png
-    caption: "TThis is a page with pet projects, displayed on a page with pet projects, here is such a fractality 🤯"
+    caption: "This is&nbsp;a&nbsp;page with pet projects, displayed on&nbsp;a&nbsp;page with pet&nbsp;projects, here is&nbsp;such a&nbsp;fractality 🤯"
     thumb: true
 
 ---
