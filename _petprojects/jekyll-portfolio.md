@@ -2,7 +2,7 @@
 order: 3
 title: Personal Portfolio Website
 subtitle: Static site on&nbsp;Jekyll, portfolio for&nbsp;my&nbsp;projects.
-desc: "I&nbsp;was thinking whether to&nbsp;put the&nbsp;portfolio site itself in&nbsp;the&nbsp;portfolio or&nbsp;not? - I&nbsp;decided that&nbsp;I&nbsp;should, because it&nbsp;is&nbsp;an&nbsp;interesting project, it&nbsp;was&nbsp;written from&nbsp;scratch, hosted for&nbsp;free on&nbsp;GitHub Pages."
+desc: "I was wondering whether to&nbsp;include my&nbsp;portfolio site in&nbsp;the&nbsp;portfolio itself. I&nbsp;decided to&nbsp;include&nbsp;it because it’s&nbsp;an&nbsp;interesting project, written from&nbsp;scratch, and&nbsp;hosted for&nbsp;free on&nbsp;GitHub Pages."
 icon: /assets/pix/pet/jekyll_portfolio/icon.svg
 kind: Personal portfolio
 
