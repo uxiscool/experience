@@ -309,7 +309,15 @@ window.PET_GALLERIES = [
 ];
 
 /* ===== Lazy images (pet projects + cases) ===== */
+/* ===== Lazy images (pet projects + cases) ===== */
+/* Надёжный вариант: IO + резервная проверка на scroll/resize/load */
 (function(){
+  function markLoaded(img){
+    img.classList.add('is-loaded');
+    var box = img.closest('.case-img-wrap, .pp-media, .pp-media-link');
+    if (box) box.classList.add('has-loaded');
+  }
+
   function loadLazyImage(img){
     if (img.dataset._loading) return;
     img.dataset._loading = '1';
@@ -317,53 +325,87 @@ window.PET_GALLERIES = [
     var src = img.getAttribute('data-src');
     if (!src) return;
 
+    // На всякий случай попросим браузер лениво грузить и сам
+    img.setAttribute('loading', 'lazy');
+
     var ph = new Image();
     ph.onload = function(){
       img.src = src;
       (img.decode ? img.decode() : Promise.resolve())
         .catch(function(){})
-        .finally(function(){
-          img.classList.add('is-loaded');
-
-          // пометить родителя (на случай стилизации)
-          var box = img.closest('.case-img-wrap, .pp-media, .pp-media-link');
-          if (box) box.classList.add('has-loaded');
-        });
+        .finally(function(){ markLoaded(img); });
     };
-    ph.onerror = function(){
-      img.classList.add('is-loaded');
-
-      // пометить родителя и при ошибке
-      var box = img.closest('.case-img-wrap, .pp-media, .pp-media-link');
-      if (box) box.classList.add('has-loaded');
-    };
+    ph.onerror = function(){ markLoaded(img); };
     ph.src = src;
   }
 
+  // IntersectionObserver — основной триггер
   var io = ('IntersectionObserver' in window)
     ? new IntersectionObserver(function(entries){
         entries.forEach(function(entry){
-          if (entry.isIntersecting) {
+          if (entry.isIntersecting){
             io.unobserve(entry.target);
             loadLazyImage(entry.target);
           }
         });
-      }, { rootMargin: '200px 0px' })
+      }, { rootMargin: '400px 0px' })  // захватываем побольше за пределами экрана
     : null;
 
+  function forEachLazy(cb){
+    document.querySelectorAll('img.lazy-img[data-src]:not(.is-loaded)').forEach(cb);
+  }
+
   function initLazy(){
-    var imgs = document.querySelectorAll('img.lazy-img[data-src]');
-    imgs.forEach(function(img){
+    forEachLazy(function(img){
       if (io) io.observe(img);
       else loadLazyImage(img);
     });
   }
 
+  // Резервная проверка (если IO не отработал из-за нулевой геометрии)
+  var scheduled = false;
+  function checkLazyNow(){
+    scheduled = false;
+    var vh = window.innerHeight || document.documentElement.clientHeight || 0;
+    forEachLazy(function(img){
+      if (img.dataset._loading) return;
+      var r = img.getBoundingClientRect();
+      // если элемент в пределах расширенного вьюпорта — грузим
+      if (r.bottom > -400 && r.top < vh + 400){
+        if (io) io.unobserve(img);
+        loadLazyImage(img);
+      }
+    });
+  }
+  function scheduleCheck(){
+    if (scheduled) return;
+    scheduled = true;
+    requestAnimationFrame(checkLazyNow);
+  }
+
   if (document.readyState === 'loading'){
-    document.addEventListener('DOMContentLoaded', initLazy);
+    document.addEventListener('DOMContentLoaded', function(){
+      initLazy();
+      scheduleCheck();
+      setTimeout(scheduleCheck, 300);
+      setTimeout(scheduleCheck, 1200);
+    });
   } else {
     initLazy();
+    scheduleCheck();
+    setTimeout(scheduleCheck, 300);
+    setTimeout(scheduleCheck, 1200);
   }
+
+  // Реакция на изменения вьюпорта/страницы
+  window.addEventListener('scroll', scheduleCheck, { passive: true });
+  window.addEventListener('resize', scheduleCheck, { passive: true });
+  window.addEventListener('orientationchange', scheduleCheck, { passive: true });
+  window.addEventListener('load', scheduleCheck, { passive: true });
+  document.addEventListener('visibilitychange', function(){
+    if (document.visibilityState === 'visible') scheduleCheck();
+  });
+
 })();
 
 /* Back-to-top behavior (smooth show/hide + smooth scroll) */

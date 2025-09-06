@@ -574,10 +574,16 @@ body.page-contact>main{ flex:1 0 auto; }
   }
 }
 
-.pp-media{ min-height:180px; overflow:hidden; }
+.pp-media{ 
+  min-height:180px; 
+  overflow:hidden; 
+}
+
+/* Фикс lazy в Chrome: даём стабильную геометрию картинке */
 .pp-media img{
   width:100%;
-  height:100%;
+  height:auto;                 /* раньше было 100% → могло давать 0px при узком вьюпорте */
+  aspect-ratio: 4 / 3;         /* как в /cases: стабильная высота до загрузки */
   object-fit:contain;
   display:block;
   margin:0;
