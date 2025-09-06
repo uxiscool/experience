@@ -872,3 +872,93 @@ body.lb-lock #to-top{ opacity: 0; pointer-events: none; }
   .case-year-rail{ display:none; }
   .case-year-inline{ display:inline; }
 }
+
+/* ==== Mobile header / menu ==== */
+
+/* Кнопка-бургер (показываем только на мобильных) */
+.burger-btn{
+  position: fixed;
+  top: 18px;
+  right: 16px;
+  z-index: 1100;
+  display: none; /* по умолчанию скрыта — на десктопе не нужна */
+  background: none;
+  border: 0;
+  padding: 6px;
+  cursor: pointer;
+  transition: filter .5s cubic-bezier(.42,0,.58,1), opacity .18s;
+}
+.burger-btn img{
+  width: 32px; height: 32px; display: block;
+  will-change: transform, filter, opacity;
+  transition: transform .45s cubic-bezier(.19,1,.22,1),
+              filter .5s cubic-bezier(.42,0,.58,1),
+              opacity .18s;
+}
+/* такой же hover, как у стрелок лайтбокса */
+.burger-btn:hover img{ filter: brightness(.70); opacity: .84; }
+
+/* Состояние "открыто": лёгкая перекрутка и размытие при смене иконок */
+.burger-btn.is-open img{
+  transform: rotate(180deg);
+  filter: blur(0.5px);
+}
+
+/* Показываем бургер только на <= 980px */
+@media (max-width:980px){
+  .burger-btn{ display: inline-flex; align-items:center; justify-content:center; }
+  /* В шапке скрываем десктопные меню */
+  .main-menu{ display: none !important; }
+  .subnav{ display: none !important; }
+  .logo-img{ margin-right: 48px; }
+}
+
+/* Оверлей мобильного меню */
+.mobile-menu{
+  position: fixed;
+  inset: 0;
+  z-index: 1100;
+  background: rgba(22,24,30,0.94);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  display: none; /* по умолчанию скрыто */
+}
+.mobile-menu.is-open{ display: grid; }
+
+/* Контент и список */
+.mobile-menu__inner{
+  display: grid;
+  grid-template-rows: auto 1fr;
+  padding: 90px 28px 28px;
+  gap: 16px;
+}
+.mobile-menu__list{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+}
+.mobile-menu__link{
+  display: block;
+  padding: 14px 12px;
+  font-size: clamp(1.1rem, 0.95rem + 1.5vw, 1.6rem);
+  color: #e7eaf0;
+  text-decoration: none;
+  border-radius: 10px;
+  transition: background .25s, color 2s;
+}
+.mobile-menu__link:hover,
+.mobile-menu__link:focus-visible{
+  color: var(--orange);
+  outline: none;
+  background: #23262b;
+}
+
+/* Когда меню открыто — блокируем прокрутку страницы (как лайтбокс) */
+body.mm-open{ overflow: hidden; }
+
+/* Учитываем reduced motion */
+@media (prefers-reduced-motion: reduce){
+  .burger-btn img{ transition: none !important; }
+}
