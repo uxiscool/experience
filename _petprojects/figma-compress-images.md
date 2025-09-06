@@ -1,8 +1,8 @@
 ---
 order: 2
 title: Image compressor
-subtitle: JPEG compression and&nbsp;image scale normalization inside figma layout
-desc: "I&nbsp;made this&nbsp;plugin myself, because the&nbsp;existing ones didn't suit&nbsp;me. The&nbsp;plugin can&nbsp;compress specific or&nbsp;all&nbsp;images of&nbsp;a&nbsp;frame into jpeg with&nbsp;a&nbsp;specified compression level, finds nested images, normalizes their scale (if&nbsp;they were scaled&nbsp;to&nbsp;a&nbsp;smaller visible size and&nbsp;in&nbsp;fact they&nbsp;are&nbsp;larger). Useful for&nbsp;reducing the&nbsp;weight of&nbsp;figma mockups and&nbsp;before exporting to&nbsp;pdf."
+subtitle: JPEG compression and&nbsp;image scale normalization for&nbsp;Figma layouts.
+desc: "This plugin optimizes images directly in&nbsp;Figma, eliminating exports or&nbsp;manual replacements. It&nbsp;compresses frame images to&nbsp;JPEG with&nbsp;adjustable compression, detects nested images, and&nbsp;normalizes their scale (e.g., when visually smaller but&nbsp;larger in&nbsp;data). Built to&nbsp;address unsuitable existing plugins, it&nbsp;reduces Figma mockup size for&nbsp;PDF export."
 icon: /assets/pix/pet/fgm_compress/icon.svg
 kind: Plugin for Figma
 
@@ -17,11 +17,11 @@ store_alt: "Figma"
 # Галерея изображений (первая используется в левой колонке плитки)
 gallery:
   - file: scr1.png
-    caption: "The main screen of the plugin, the results of compression are visible - the gain in file size is highlighted."
+    caption: "The&nbsp;main screen of&nbsp;the&nbsp;plugin, the&nbsp;results of&nbsp;compression are&nbsp;visible -&nbsp;the&nbsp;gain in&nbsp;file size is&nbsp;highlighted."
     thumb: true
   - file: scr2.png
     caption: "Various localization options available."
   - file: scr3.png
-    caption: "If there is no gain in image weight after the compression procedure, the process is not applied and a corresponding message is displayed."
+    caption: "If&nbsp;there is&nbsp;no gain in&nbsp;image weight after&nbsp;the&nbsp;compression procedure, the&nbsp;process is&nbsp;not&nbsp;applied and&nbsp;a&nbsp;corresponding message is&nbsp;displayed."
 
 ---
