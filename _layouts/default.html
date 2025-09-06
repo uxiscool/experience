@@ -415,10 +415,25 @@ window.PET_GALLERIES = [
   var btnHomeParent = btn.parentNode;  // куда вернуть кнопку после закрытия
   var btnNextSibling = btn.nextSibling;
 
-  function buildMobileMenu(){
+   function buildMobileMenu(){
     list.innerHTML = '';
     if (!SRC_MENU) return;
-    SRC_MENU.querySelectorAll('a[href]').forEach(function(a){
+
+    // 1) Собираем все ссылки верхнего уровня
+    var topLinks = Array.from(SRC_MENU.querySelectorAll('a[href]'));
+
+    // 2) Собираем подпункты (если есть на странице)
+    var subLinks = Array.from(document.querySelectorAll('.subnav a[href]'));
+
+    // 3) Определим, к какому пункту в топ-меню подвесить подпункты:
+    //    ищем пункт, название которого похоже на "Works"
+    var worksIndex = topLinks.findIndex(function(a){
+      var t = (a.textContent || '').trim().toLowerCase();
+      return t.includes('work'); // достаточно надёжно для твоей структуры
+    });
+
+    // 4) Рендерим верхний уровень
+    topLinks.forEach(function(a, idx){
       var li = document.createElement('li');
       var m = document.createElement('a');
       m.className = 'mobile-menu__link';
@@ -426,6 +441,26 @@ window.PET_GALLERIES = [
       m.textContent = a.textContent.trim();
       m.addEventListener('click', closeMenu);
       li.appendChild(m);
+
+      // 5) Если это пункт Works и у нас есть подпункты — добавляем подсписок
+      if (idx === worksIndex && subLinks.length){
+        var subUl = document.createElement('ul');
+        subUl.className = 'mobile-menu__sublist';
+
+        subLinks.forEach(function(sa){
+          var sli = document.createElement('li');
+          var s = document.createElement('a');
+          s.className = 'mobile-menu__sublink';
+          s.href = sa.getAttribute('href');
+          s.textContent = sa.textContent.trim();
+          s.addEventListener('click', closeMenu);
+          sli.appendChild(s);
+          subUl.appendChild(sli);
+        });
+
+        li.appendChild(subUl);
+      }
+
       list.appendChild(li);
     });
   }

@@ -963,3 +963,29 @@ body.mm-open{ overflow: hidden; }
 @media (prefers-reduced-motion: reduce){
   .burger-btn img{ transition: none !important; }
 }
+
+/* Подсписок в мобильном меню */
+.mobile-menu__sublist{
+  list-style:none;
+  margin:4px 0 0 0;
+  padding: 6px 0 0 12px;
+  border-left: 1px solid #2b2e33;
+  display:grid;
+  gap:8px;
+}
+
+.mobile-menu__sublink{
+  display:block;
+  padding:10px 10px;
+  font-size: clamp(1.0rem, 0.92rem + 0.8vw, 1.25rem);
+  color:#dfe4ea;
+  text-decoration:none;
+  border-radius:8px;
+  transition: background .2s, color 2s;
+}
+.mobile-menu__sublink:hover,
+.mobile-menu__sublink:focus-visible{
+  color: var(--orange);
+  background:#23262b;
+  outline: none;
+}
