@@ -412,13 +412,13 @@ window.PET_GALLERIES = [
 
   var OPEN_CLASS = 'mm-open';
   var SRC_MENU = document.querySelector('.main-menu');
+  var btnHomeParent = btn.parentNode;  // куда вернуть кнопку после закрытия
+  var btnNextSibling = btn.nextSibling;
 
-  // Собираем пункты из .main-menu (если есть)
   function buildMobileMenu(){
     list.innerHTML = '';
     if (!SRC_MENU) return;
-    var links = SRC_MENU.querySelectorAll('a[href]');
-    links.forEach(function(a){
+    SRC_MENU.querySelectorAll('a[href]').forEach(function(a){
       var li = document.createElement('li');
       var m = document.createElement('a');
       m.className = 'mobile-menu__link';
@@ -437,7 +437,10 @@ window.PET_GALLERIES = [
     btn.classList.add('is-open');
     btn.setAttribute('aria-expanded', 'true');
     icon.src = '{{ site.baseurl }}/ui/close.svg';
-    // Trap ESC
+
+    // Переносим кнопку внутрь оверлея, чтобы точно была поверх
+    panel.appendChild(btn);
+
     window.addEventListener('keydown', onKey, { passive: true });
   }
   function closeMenu(){
@@ -446,8 +449,14 @@ window.PET_GALLERIES = [
     btn.classList.remove('is-open');
     btn.setAttribute('aria-expanded', 'false');
     icon.src = '{{ site.baseurl }}/ui/menu.svg';
+
+    // Возвращаем кнопку туда, где она была
+    if (btnHomeParent){
+      if (btnNextSibling) btnHomeParent.insertBefore(btn, btnNextSibling);
+      else btnHomeParent.appendChild(btn);
+    }
+
     window.removeEventListener('keydown', onKey);
-    // hide after transition frame (чтобы не мигало)
     requestAnimationFrame(function(){ panel.setAttribute('hidden',''); });
   }
   function toggleMenu(){
@@ -458,22 +467,10 @@ window.PET_GALLERIES = [
     if (e.key === 'Escape') closeMenu();
   }
 
-  btn.addEventListener('click', function(e){
-    e.preventDefault();
-    toggleMenu();
-  });
+  btn.addEventListener('click', function(e){ e.preventDefault(); toggleMenu(); });
 
-  // Первичное построение списка
-  if (document.readyState === 'loading'){
-    document.addEventListener('DOMContentLoaded', buildMobileMenu);
-  } else {
-    buildMobileMenu();
-  }
-
-  // Подстрахуемся: если кто-то изменит .main-menu динамически
-  var mo = ('MutationObserver' in window) ? new MutationObserver(buildMobileMenu) : null;
-  if (mo && SRC_MENU) mo.observe(SRC_MENU, { childList: true, subtree: true });
-
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', buildMobileMenu);
+  else buildMobileMenu();
 })();
 </script>
   </body>
