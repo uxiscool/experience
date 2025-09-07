@@ -4,7 +4,7 @@ title: CV
 permalink: /cv/
 ---
 
-<div class="container"><!-- держимся базовой сетки сайта -->
+<div class="container">
 
   <header class="cv-head">
     <h1 class="cv-name">Vladimir Zhukov</h1>
@@ -22,12 +22,11 @@ permalink: /cv/
     </p>
   </header>
 
-  <!-- Двухколоночная сетка с «виртуальным» левым рейлом -->
   <section class="cv-grid">
 
     <!-- ABOUT -->
     <div class="cv-rail"></div>
-    <div class="cv-right"><h2 class="subheading">About</h2></div>
+    <div class="cv-right"><h2 class="subheading cv-subheading">About</h2></div>
 
     <div class="cv-rail"></div>
     <div class="cv-right">
@@ -36,15 +35,16 @@ permalink: /cv/
 
     <!-- EXPERIENCE -->
     <div class="cv-rail"></div>
-    <div class="cv-right"><h2 class="subheading">Experience</h2></div>
+    <div class="cv-right"><h2 class="subheading cv-subheading">Experience</h2></div>
 
     <!-- Job: Yandex -->
+    <!-- Строка 1: компания слева, роль справа -->
     <div class="cv-rail"><span class="cv-company">Yandex</span></div>
-    <div class="cv-right"></div>
-
-    <div class="cv-rail"><span class="cv-dates">Jul 2023 — Present</span></div>
     <div class="cv-right"><div class="cv-role">Senior Product Designer</div></div>
-
+    <!-- Строка 2: даты слева, справа пусто -->
+    <div class="cv-rail"><span class="cv-dates">Jul 2023 — Present</span></div>
+    <div class="cv-right"></div>
+    <!-- Контент -->
     <div class="cv-rail"></div>
     <div class="cv-right">
       <ul class="cv-bullets">
@@ -55,11 +55,9 @@ permalink: /cv/
 
     <!-- Job: IVI -->
     <div class="cv-rail"><span class="cv-company">IVI</span></div>
-    <div class="cv-right"></div>
-
-    <div class="cv-rail"><span class="cv-dates">Dec 2019 — Jul 2023</span></div>
     <div class="cv-right"><div class="cv-role">Lead / Senior Product Designer</div></div>
-
+    <div class="cv-rail"><span class="cv-dates">Dec 2019 — Jul 2023</span></div>
+    <div class="cv-right"></div>
     <div class="cv-rail"></div>
     <div class="cv-right">
       <ul class="cv-bullets">
@@ -70,11 +68,9 @@ permalink: /cv/
 
     <!-- Job: Futumarket -->
     <div class="cv-rail"><span class="cv-company">Futumarket</span></div>
-    <div class="cv-right"></div>
-
-    <div class="cv-rail"><span class="cv-dates">May 2017 — Dec 2019</span></div>
     <div class="cv-right"><div class="cv-role">Product Designer</div></div>
-
+    <div class="cv-rail"><span class="cv-dates">May 2017 — Dec 2019</span></div>
+    <div class="cv-right"></div>
     <div class="cv-rail"></div>
     <div class="cv-right">
       <ul class="cv-bullets">
@@ -84,7 +80,7 @@ permalink: /cv/
 
     <!-- SKILLS -->
     <div class="cv-rail"></div>
-    <div class="cv-right"><h2 class="subheading">Skills</h2></div>
+    <div class="cv-right"><h2 class="subheading cv-subheading">Skills</h2></div>
 
     <div class="cv-rail"></div>
     <div class="cv-right">
@@ -93,7 +89,7 @@ permalink: /cv/
 
     <!-- TOOLS -->
     <div class="cv-rail"></div>
-    <div class="cv-right"><h2 class="subheading">Tools</h2></div>
+    <div class="cv-right"><h2 class="subheading cv-subheading">Tools</h2></div>
 
     <div class="cv-rail"></div>
     <div class="cv-right">
@@ -102,7 +98,7 @@ permalink: /cv/
 
     <!-- SIDE PROJECTS -->
     <div class="cv-rail"></div>
-    <div class="cv-right"><h2 class="subheading">Side projects</h2></div>
+    <div class="cv-right"><h2 class="subheading cv-subheading">Side projects</h2></div>
 
     <div class="cv-rail"></div>
     <div class="cv-right">
@@ -111,7 +107,7 @@ permalink: /cv/
 
     <!-- LANGUAGES -->
     <div class="cv-rail"></div>
-    <div class="cv-right"><h2 class="subheading">Languages</h2></div>
+    <div class="cv-right"><h2 class="subheading cv-subheading">Languages</h2></div>
 
     <div class="cv-rail"></div>
     <div class="cv-right">

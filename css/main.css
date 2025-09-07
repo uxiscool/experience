@@ -1062,3 +1062,8 @@ body.mm-open{ overflow: hidden; }
     pointer-events: auto;
   }
 }
+/* CV: subheading с индивидуальными отступами */
+.cv-subheading{
+  /* типографика берётся из .subheading, здесь — только отступы */
+  padding: 2rem 0 0.5rem 0;
+}
