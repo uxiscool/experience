@@ -42,10 +42,8 @@ permalink: /cv/
       <span class="cv-company">Yandex</span><br>
       <span class="cv-dates">Jul 2023 — Present</span>
     </div>
-    <div class="cv-right"><div class="cv-role">Senior Product Designer</div></div>
-
-    <div class="cv-rail"></div>
     <div class="cv-right">
+      <div class="cv-role">Senior Product Designer</div>
       <ul class="cv-bullets">
         <li>Solo designer on international B2B initiatives: strategy, UX, brand communication.</li>
         <li>Brought qualitative research into the delivery loop, helping improve LTV/CAC.</li>
@@ -57,10 +55,8 @@ permalink: /cv/
       <span class="cv-company">IVI</span><br>
       <span class="cv-dates">Dec 2019 — Jul 2023</span>
     </div>
-    <div class="cv-right"><div class="cv-role">Lead / Senior Product Designer</div></div>
-
-    <div class="cv-rail"></div>
     <div class="cv-right">
+      <div class="cv-role">Lead / Senior Product Designer</div>
       <ul class="cv-bullets">
         <li>Led a team of 3 designers; end-to-end process from research to A/B tests; Design System growth.</li>
         <li>Launched key streams (vertical video, storefront & card redesign, kids profile) with retention and conversion lifts.</li>
@@ -72,10 +68,8 @@ permalink: /cv/
       <span class="cv-company">Futumarket</span><br>
       <span class="cv-dates">May 2017 — Dec 2019</span>
     </div>
-    <div class="cv-right"><div class="cv-role">Product Designer</div></div>
-
-    <div class="cv-rail"></div>
     <div class="cv-right">
+      <div class="cv-role">Product Designer</div>
       <ul class="cv-bullets">
         <li>Only designer: from social network to marketplace after pivot; groundwork for a Design System.</li>
       </ul>
