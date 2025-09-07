@@ -6,21 +6,13 @@ permalink: /cv/
 
 <div class="container">
 
-  <header class="cv-head">
-    <h1 class="cv-name">Vladimir Zhukov</h1>
-    <div class="cv-title">Product / UX Designer</div>
-    <div class="cv-contacts">
-      <a href="mailto:uxuimaster@gmail.com" class="cv-contact">uxuimaster@gmail.com</a>
-      <span class="cv-sep">•</span>
-      <a href="https://github.com/uxiscool" class="cv-contact" target="_blank" rel="noopener">github.com/uxiscool</a>
-      <span class="cv-sep">•</span>
-      <span class="cv-contact">Netherlands (relocation-ready)</span>
-    </div>
+<header class="cv-head">
+  <div class="cv-title">Product / UX Designer</div>
 
-    <p class="cv-download disabled-text">
-      <a href="{{ site.baseurl }}/ui/cv.pdf" aria-disabled="true">Download PDF (coming soon)</a>
-    </p>
-  </header>
+  <p class="cv-download disabled-text">
+    <a href="{{ site.baseurl }}/ui/cv.pdf" aria-disabled="true">Download PDF (coming soon)</a>
+  </p>
+</header>
 
   <section class="cv-grid">
 

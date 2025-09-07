@@ -1088,3 +1088,12 @@ body.mm-open{ overflow: hidden; }
   font-weight:600; 
   color:#fff; 
 }
+.cv-download{
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  margin: 0;
+}
+.cv-download a{
+  text-decoration: none;
+}
