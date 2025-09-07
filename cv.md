@@ -16,68 +16,91 @@ permalink: /cv/
       <span class="cv-sep">•</span>
       <span class="cv-contact">Netherlands (relocation-ready)</span>
     </div>
+
     <!-- Download PDF button — placeholder for now -->
     <p class="cv-download disabled-text">
       <a href="{{ site.baseurl }}/ui/cv.pdf" aria-disabled="true">Download PDF (coming soon)</a>
     </p>
   </header>
+
   <!-- CV grid: labels on the left, content on the right -->
   <section class="cv-grid">
+
     <div class="cv-left">About</div>
     <div class="cv-right">
       Product designer with a systems mindset. I like bringing order to complex interfaces and processes, mixing UX research, product thinking and hands-on UI work. Focus areas: web, mobile, internal tools and B2B services.
     </div>
+
+    <!-- EXPERIENCE -->
     <div class="cv-left">Experience</div>
+    <div class="cv-right"></div>
+
+    <!-- Job 1 -->
+    <div class="cv-left"><span class="cv-company">Yandex</span></div>
+    <div class="cv-right"></div>
+
+    <div class="cv-left"><span class="cv-dates">Jul 2023 — Present</span></div>
+    <div class="cv-right"><div class="cv-role">Senior Product Designer</div></div>
+
+    <div class="cv-left"></div>
     <div class="cv-right">
-      <section class="cv-job">
-        <div class="cv-job-head">
-          <span class="cv-company">Yandex</span>
-          <span class="cv-role">Senior Product Designer</span>
-          <span class="cv-dates">Jul 2023 — Present</span>
-        </div>
-        <ul class="cv-bullets">
-          <li>Solo designer on international B2B initiatives: strategy, UX, brand communication.</li>
-          <li>Brought qualitative research into the delivery loop, helping improve LTV/CAC.</li>
-        </ul>
-      </section>
-      <section class="cv-job">
-        <div class="cv-job-head">
-          <span class="cv-company">IVI</span>
-          <span class="cv-role">Lead / Senior Product Designer</span>
-          <span class="cv-dates">Dec 2019 — Jul 2023</span>
-        </div>
-        <ul class="cv-bullets">
-          <li>Led a team of 3 designers; end-to-end process from research to A/B tests; Design System growth.</li>
-          <li>Launched key streams (vertical video, storefront & card redesign, kids profile) with retention and conversion lifts.</li>
-        </ul>
-      </section>
-      <section class="cv-job">
-        <div class="cv-job-head">
-          <span class="cv-company">Futumarket</span>
-          <span class="cv-role">Product Designer</span>
-          <span class="cv-dates">May 2017 — Dec 2019</span>
-        </div>
-        <ul class="cv-bullets">
-          <li>Only designer: from social network to marketplace after pivot; groundwork for a Design System.</li>
-        </ul>
-      </section>
+      <ul class="cv-bullets">
+        <li>Solo designer on international B2B initiatives: strategy, UX, brand communication.</li>
+        <li>Brought qualitative research into the delivery loop, helping improve LTV/CAC.</li>
+      </ul>
     </div>
+
+    <!-- Job 2 -->
+    <div class="cv-left"><span class="cv-company">IVI</span></div>
+    <div class="cv-right"></div>
+
+    <div class="cv-left"><span class="cv-dates">Dec 2019 — Jul 2023</span></div>
+    <div class="cv-right"><div class="cv-role">Lead / Senior Product Designer</div></div>
+
+    <div class="cv-left"></div>
+    <div class="cv-right">
+      <ul class="cv-bullets">
+        <li>Led a team of 3 designers; end-to-end process from research to A/B tests; Design System growth.</li>
+        <li>Launched key streams (vertical video, storefront & card redesign, kids profile) with retention and conversion lifts.</li>
+      </ul>
+    </div>
+
+    <!-- Job 3 -->
+    <div class="cv-left"><span class="cv-company">Futumarket</span></div>
+    <div class="cv-right"></div>
+
+    <div class="cv-left"><span class="cv-dates">May 2017 — Dec 2019</span></div>
+    <div class="cv-right"><div class="cv-role">Product Designer</div></div>
+
+    <div class="cv-left"></div>
+    <div class="cv-right">
+      <ul class="cv-bullets">
+        <li>Only designer: from social network to marketplace after pivot; groundwork for a Design System.</li>
+      </ul>
+    </div>
+
+    <!-- OTHER SECTIONS -->
     <div class="cv-left">Skills</div>
     <div class="cv-right">
       Product discovery, CJM/user journey architecture, UX writing, prototyping, experiment planning, UI/Design Systems, design documentation, workshop facilitation.
     </div>
+
     <div class="cv-left">Tools</div>
     <div class="cv-right">
       Figma (Auto-layout, Variants, Tokens), Protopie; basics — HTML/CSS, React/JS, Python; Cinema 4D for illustrations.
     </div>
+
     <div class="cv-left">Side projects</div>
     <div class="cv-right">
       Figma plugins (Image Compressor, Find-My-Fonts), a prompt-management web service, experimental UI patterns.
     </div>
+
     <div class="cv-left">Languages</div>
     <div class="cv-right">
       Russian — native; English — Upper-Intermediate.
     </div>
+
   </section>
+
   <div class="intro-divider"></div>
 </div>
