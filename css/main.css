@@ -1065,7 +1065,7 @@ body.mm-open{ overflow: hidden; }
 /* CV: subheading с индивидуальными отступами */
 .cvsubheading{
   margin: 0;
-  padding: 3rem 0 0.5rem 0;
+  padding: 2rem 0 0 0;
   font-size:clamp(1.3rem,1.1rem + 1vw,1.5rem);
   font-weight:400; letter-spacing:.02em;
 }
