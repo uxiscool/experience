@@ -1010,7 +1010,10 @@ body.mm-open{ overflow: hidden; }
 }
 
 /* Заголовок */
-.cv-head{ margin: 48px 0 8px; }
+.cv-head{ 
+  margin: 48px 0 8px; 
+  display: block;
+}
 .cv-name{ margin: 0 0 6px; font-size: clamp(1.6rem,1.2rem+2vw,2.2rem); font-weight: 600; color:#fff; }
 .cv-title{ color:#cbd2db; opacity:.92; margin-bottom: 8px; }
 .cv-contacts{ display:flex; flex-wrap:wrap; gap:8px 12px; color:#cbd2db; opacity:.92; }
