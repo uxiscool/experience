@@ -4,7 +4,7 @@ title: CV
 permalink: /cv/
 ---
 
-<div class="cv-wrap"><!-- выравнивание как на cases/index -->
+<div class="container"><!-- держимся базовой сетки сайта -->
 
   <header class="cv-head">
     <h1 class="cv-name">Vladimir Zhukov</h1>
@@ -22,28 +22,30 @@ permalink: /cv/
     </p>
   </header>
 
+  <!-- Двухколоночная сетка с «виртуальным» левым рейлом -->
   <section class="cv-grid">
+
     <!-- ABOUT -->
-    <div class="cv-left"></div>
+    <div class="cv-rail"></div>
     <div class="cv-right"><h2 class="subheading">About</h2></div>
 
-    <div class="cv-left"></div>
+    <div class="cv-rail"></div>
     <div class="cv-right">
       Product designer with a systems mindset. I like bringing order to complex interfaces and processes, mixing UX research, product thinking and hands-on UI work. Focus areas: web, mobile, internal tools and B2B services.
     </div>
 
     <!-- EXPERIENCE -->
-    <div class="cv-left"></div>
+    <div class="cv-rail"></div>
     <div class="cv-right"><h2 class="subheading">Experience</h2></div>
 
     <!-- Job: Yandex -->
-    <div class="cv-left cv-rail"><span class="cv-company">Yandex</span></div>
+    <div class="cv-rail"><span class="cv-company">Yandex</span></div>
     <div class="cv-right"></div>
 
-    <div class="cv-left cv-rail"><span class="cv-dates">Jul 2023 — Present</span></div>
+    <div class="cv-rail"><span class="cv-dates">Jul 2023 — Present</span></div>
     <div class="cv-right"><div class="cv-role">Senior Product Designer</div></div>
 
-    <div class="cv-left"></div>
+    <div class="cv-rail"></div>
     <div class="cv-right">
       <ul class="cv-bullets">
         <li>Solo designer on international B2B initiatives: strategy, UX, brand communication.</li>
@@ -52,13 +54,13 @@ permalink: /cv/
     </div>
 
     <!-- Job: IVI -->
-    <div class="cv-left cv-rail"><span class="cv-company">IVI</span></div>
+    <div class="cv-rail"><span class="cv-company">IVI</span></div>
     <div class="cv-right"></div>
 
-    <div class="cv-left cv-rail"><span class="cv-dates">Dec 2019 — Jul 2023</span></div>
+    <div class="cv-rail"><span class="cv-dates">Dec 2019 — Jul 2023</span></div>
     <div class="cv-right"><div class="cv-role">Lead / Senior Product Designer</div></div>
 
-    <div class="cv-left"></div>
+    <div class="cv-rail"></div>
     <div class="cv-right">
       <ul class="cv-bullets">
         <li>Led a team of 3 designers; end-to-end process from research to A/B tests; Design System growth.</li>
@@ -67,13 +69,13 @@ permalink: /cv/
     </div>
 
     <!-- Job: Futumarket -->
-    <div class="cv-left cv-rail"><span class="cv-company">Futumarket</span></div>
+    <div class="cv-rail"><span class="cv-company">Futumarket</span></div>
     <div class="cv-right"></div>
 
-    <div class="cv-left cv-rail"><span class="cv-dates">May 2017 — Dec 2019</span></div>
+    <div class="cv-rail"><span class="cv-dates">May 2017 — Dec 2019</span></div>
     <div class="cv-right"><div class="cv-role">Product Designer</div></div>
 
-    <div class="cv-left"></div>
+    <div class="cv-rail"></div>
     <div class="cv-right">
       <ul class="cv-bullets">
         <li>Only designer: from social network to marketplace after pivot; groundwork for a Design System.</li>
@@ -81,37 +83,37 @@ permalink: /cv/
     </div>
 
     <!-- SKILLS -->
-    <div class="cv-left"></div>
+    <div class="cv-rail"></div>
     <div class="cv-right"><h2 class="subheading">Skills</h2></div>
 
-    <div class="cv-left"></div>
+    <div class="cv-rail"></div>
     <div class="cv-right">
       Product discovery, CJM/user journey architecture, UX writing, prototyping, experiment planning, UI/Design Systems, design documentation, workshop facilitation.
     </div>
 
     <!-- TOOLS -->
-    <div class="cv-left"></div>
+    <div class="cv-rail"></div>
     <div class="cv-right"><h2 class="subheading">Tools</h2></div>
 
-    <div class="cv-left"></div>
+    <div class="cv-rail"></div>
     <div class="cv-right">
       Figma (Auto-layout, Variants, Tokens), Protopie; basics — HTML/CSS, React/JS, Python; Cinema 4D for illustrations.
     </div>
 
     <!-- SIDE PROJECTS -->
-    <div class="cv-left"></div>
+    <div class="cv-rail"></div>
     <div class="cv-right"><h2 class="subheading">Side projects</h2></div>
 
-    <div class="cv-left"></div>
+    <div class="cv-rail"></div>
     <div class="cv-right">
       Figma plugins (Image Compressor, Find-My-Fonts), a prompt-management web service, experimental UI patterns.
     </div>
 
     <!-- LANGUAGES -->
-    <div class="cv-left"></div>
+    <div class="cv-rail"></div>
     <div class="cv-right"><h2 class="subheading">Languages</h2></div>
 
-    <div class="cv-left"></div>
+    <div class="cv-rail"></div>
     <div class="cv-right">
       Russian — native; English — Upper-Intermediate.
     </div>
