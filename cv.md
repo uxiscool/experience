@@ -26,7 +26,7 @@ permalink: /cv/
 
     <!-- ABOUT -->
     <div class="cv-rail"></div>
-    <div class="cv-right"><h2 class="subheading cv-subheading">About</h2></div>
+    <div class="cv-right"><h2 class="cvsubheading">About</h2></div>
 
     <div class="cv-rail"></div>
     <div class="cv-right">
@@ -35,7 +35,7 @@ permalink: /cv/
 
     <!-- EXPERIENCE -->
     <div class="cv-rail"></div>
-    <div class="cv-right"><h2 class="subheading cv-subheading">Experience</h2></div>
+    <div class="cv-right"><h2 class="cvsubheading">Experience</h2></div>
 
     <!-- Job: Yandex -->
     <div class="cv-rail">
@@ -83,7 +83,7 @@ permalink: /cv/
 
     <!-- SKILLS -->
     <div class="cv-rail"></div>
-    <div class="cv-right"><h2 class="subheading cv-subheading">Skills</h2></div>
+    <div class="cv-right"><h2 class="cvsubheading">Skills</h2></div>
 
     <div class="cv-rail"></div>
     <div class="cv-right">
@@ -92,7 +92,7 @@ permalink: /cv/
 
     <!-- TOOLS -->
     <div class="cv-rail"></div>
-    <div class="cv-right"><h2 class="subheading cv-subheading">Tools</h2></div>
+    <div class="cv-right"><h2 class="cvsubheading">Tools</h2></div>
 
     <div class="cv-rail"></div>
     <div class="cv-right">
@@ -101,7 +101,7 @@ permalink: /cv/
 
     <!-- SIDE PROJECTS -->
     <div class="cv-rail"></div>
-    <div class="cv-right"><h2 class="subheading cv-subheading">Side projects</h2></div>
+    <div class="cv-right"><h2 class="cvsubheading">Side projects</h2></div>
 
     <div class="cv-rail"></div>
     <div class="cv-right">
@@ -110,7 +110,7 @@ permalink: /cv/
 
     <!-- LANGUAGES -->
     <div class="cv-rail"></div>
-    <div class="cv-right"><h2 class="subheading cv-subheading">Languages</h2></div>
+    <div class="cv-right"><h2 class="cvsubheading">Languages</h2></div>
 
     <div class="cv-rail"></div>
     <div class="cv-right">

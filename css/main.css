@@ -1063,9 +1063,11 @@ body.mm-open{ overflow: hidden; }
   }
 }
 /* CV: subheading с индивидуальными отступами */
-.cv-subheading{
+.cvsubheading{
   /* типографика берётся из .subheading, здесь — только отступы */
   padding: 3rem 0 0.5rem 0;
+  font-size:clamp(1.3rem,1.1rem + 1vw,1.5rem);
+  font-weight:400; letter-spacing:.02em;
 }
 .cv-company{ display:block; font-weight:600; color:#fff; }
 .cv-dates{ display:block; color:#9fa7b2; font-size:0.95rem; margin-top:2px; }
