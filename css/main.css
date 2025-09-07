@@ -1032,8 +1032,6 @@ body.mm-open{ overflow: hidden; }
 
 /* Левый «рейл»: стиль как у годового рейла на кейсах */
 .cv-rail{
-  color:#fff;
-  opacity:.5;
   font-size: 1.02rem;
   white-space: nowrap;
   text-align: right;           /* визуально ближе к контенту */
@@ -1082,7 +1080,7 @@ body.mm-open{ overflow: hidden; }
 .cv-dates{ 
   display:block; 
   color:#fff;
-  opacity:.5; 
+  opacity:.35; 
   font-size:0.95rem; 
   margin-top:2px; 
 }
