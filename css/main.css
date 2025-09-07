@@ -1001,3 +1001,81 @@ body.mm-open{ overflow: hidden; }
   background:#23262b;
   outline: none;
 }
+
+/* ===== CV page ===== */
+
+.cv-head{
+  margin-top: 48px;
+  padding: 0 0 8px;
+}
+.cv-name{
+  margin: 0 0 6px;
+  font-size: clamp(1.6rem, 1.2rem + 2vw, 2.2rem);
+  font-weight: 600;
+  letter-spacing: .01em;
+  color: #fff;
+}
+.cv-title{
+  margin: 0 0 10px;
+  font-size: 1.05rem;
+  color: #cbd2db;
+  opacity: .92;
+}
+.cv-contacts{
+  display: flex; flex-wrap: wrap; gap: 8px 12px;
+  color: #cbd2db; opacity: .92; font-size: 1rem;
+}
+.cv-contacts .cv-contact{
+  color: inherit; text-decoration: none;
+}
+.cv-contacts .cv-contact:hover{ color: var(--orange); transition: color 2s; }
+.cv-sep{ opacity: .4; }
+
+.cv-download{ margin: 6px 0 0; font-size: .95rem; }
+
+.cv-grid{
+  /* две колонки: лейбл слева (узкая), контент справа */
+  display: grid;
+  grid-template-columns: 240px minmax(0,1fr);
+  column-gap: 32px;
+  row-gap: 18px;
+  padding: 24px 0 8px;
+}
+
+/* левая колонка — второстепенный цвет */
+.cv-left{
+  color: #b7c1cc;
+  font-size: 1.02rem;
+  opacity: .96;
+  white-space: nowrap;
+}
+.cv-right{
+  font-size: 1.02rem;
+  color: #e2e5e7;
+  opacity: .93;
+}
+
+/* карточки опыта работы */
+.cv-job{ margin: 0 0 14px; }
+.cv-job:last-child{ margin-bottom: 0; }
+.cv-job-head{
+  display: grid; grid-template-columns: 1fr auto; align-items: baseline;
+  gap: 6px 12px; margin-bottom: 6px;
+}
+.cv-company{ font-weight: 600; color:#fff; }
+.cv-role{ color:#cbd2db; opacity:.96; margin-left: 8px; }
+.cv-dates{ color:#9fa7b2; white-space: nowrap; }
+.cv-bullets{ margin: 6px 0 0 0; padding-left: 18px; }
+.cv-bullets li{ margin: 2px 0 0 0; }
+
+/* мобильная адаптация: одна колонка, слева-над-справа */
+@media (max-width: 980px){
+  .cv-grid{ grid-template-columns: 1fr; }
+  .cv-left{ margin-top: 12px; }
+  .cv-right{ margin-top: 0; }
+  .cv-job-head{ grid-template-columns: 1fr; }
+}
+
+/* небольшие штрихи для ссылок в CV */
+.cv-right a{ color:#e2e5e7; text-decoration: underline dotted; text-underline-offset: 3px; }
+.cv-right a:hover{ color:var(--orange); transition: color 2s; }
