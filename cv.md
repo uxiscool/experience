@@ -4,8 +4,8 @@ title: CV
 permalink: /cv/
 ---
 
-<div class="container">
-  <!-- Heading and contacts -->
+<div class="cv-wrap"><!-- выравнивание как на cases/index -->
+
   <header class="cv-head">
     <h1 class="cv-name">Vladimir Zhukov</h1>
     <div class="cv-title">Product / UX Designer</div>
@@ -17,29 +17,30 @@ permalink: /cv/
       <span class="cv-contact">Netherlands (relocation-ready)</span>
     </div>
 
-    <!-- Download PDF button — placeholder for now -->
     <p class="cv-download disabled-text">
       <a href="{{ site.baseurl }}/ui/cv.pdf" aria-disabled="true">Download PDF (coming soon)</a>
     </p>
   </header>
 
-  <!-- CV grid: labels on the left, content on the right -->
   <section class="cv-grid">
+    <!-- ABOUT -->
+    <div class="cv-left"></div>
+    <div class="cv-right"><h2 class="subheading">About</h2></div>
 
-    <div class="cv-left">About</div>
+    <div class="cv-left"></div>
     <div class="cv-right">
       Product designer with a systems mindset. I like bringing order to complex interfaces and processes, mixing UX research, product thinking and hands-on UI work. Focus areas: web, mobile, internal tools and B2B services.
     </div>
 
     <!-- EXPERIENCE -->
-    <div class="cv-left">Experience</div>
+    <div class="cv-left"></div>
+    <div class="cv-right"><h2 class="subheading">Experience</h2></div>
+
+    <!-- Job: Yandex -->
+    <div class="cv-left cv-rail"><span class="cv-company">Yandex</span></div>
     <div class="cv-right"></div>
 
-    <!-- Job 1 -->
-    <div class="cv-left"><span class="cv-company">Yandex</span></div>
-    <div class="cv-right"></div>
-
-    <div class="cv-left"><span class="cv-dates">Jul 2023 — Present</span></div>
+    <div class="cv-left cv-rail"><span class="cv-dates">Jul 2023 — Present</span></div>
     <div class="cv-right"><div class="cv-role">Senior Product Designer</div></div>
 
     <div class="cv-left"></div>
@@ -50,11 +51,11 @@ permalink: /cv/
       </ul>
     </div>
 
-    <!-- Job 2 -->
-    <div class="cv-left"><span class="cv-company">IVI</span></div>
+    <!-- Job: IVI -->
+    <div class="cv-left cv-rail"><span class="cv-company">IVI</span></div>
     <div class="cv-right"></div>
 
-    <div class="cv-left"><span class="cv-dates">Dec 2019 — Jul 2023</span></div>
+    <div class="cv-left cv-rail"><span class="cv-dates">Dec 2019 — Jul 2023</span></div>
     <div class="cv-right"><div class="cv-role">Lead / Senior Product Designer</div></div>
 
     <div class="cv-left"></div>
@@ -65,11 +66,11 @@ permalink: /cv/
       </ul>
     </div>
 
-    <!-- Job 3 -->
-    <div class="cv-left"><span class="cv-company">Futumarket</span></div>
+    <!-- Job: Futumarket -->
+    <div class="cv-left cv-rail"><span class="cv-company">Futumarket</span></div>
     <div class="cv-right"></div>
 
-    <div class="cv-left"><span class="cv-dates">May 2017 — Dec 2019</span></div>
+    <div class="cv-left cv-rail"><span class="cv-dates">May 2017 — Dec 2019</span></div>
     <div class="cv-right"><div class="cv-role">Product Designer</div></div>
 
     <div class="cv-left"></div>
@@ -79,23 +80,38 @@ permalink: /cv/
       </ul>
     </div>
 
-    <!-- OTHER SECTIONS -->
-    <div class="cv-left">Skills</div>
+    <!-- SKILLS -->
+    <div class="cv-left"></div>
+    <div class="cv-right"><h2 class="subheading">Skills</h2></div>
+
+    <div class="cv-left"></div>
     <div class="cv-right">
       Product discovery, CJM/user journey architecture, UX writing, prototyping, experiment planning, UI/Design Systems, design documentation, workshop facilitation.
     </div>
 
-    <div class="cv-left">Tools</div>
+    <!-- TOOLS -->
+    <div class="cv-left"></div>
+    <div class="cv-right"><h2 class="subheading">Tools</h2></div>
+
+    <div class="cv-left"></div>
     <div class="cv-right">
       Figma (Auto-layout, Variants, Tokens), Protopie; basics — HTML/CSS, React/JS, Python; Cinema 4D for illustrations.
     </div>
 
-    <div class="cv-left">Side projects</div>
+    <!-- SIDE PROJECTS -->
+    <div class="cv-left"></div>
+    <div class="cv-right"><h2 class="subheading">Side projects</h2></div>
+
+    <div class="cv-left"></div>
     <div class="cv-right">
       Figma plugins (Image Compressor, Find-My-Fonts), a prompt-management web service, experimental UI patterns.
     </div>
 
-    <div class="cv-left">Languages</div>
+    <!-- LANGUAGES -->
+    <div class="cv-left"></div>
+    <div class="cv-right"><h2 class="subheading">Languages</h2></div>
+
+    <div class="cv-left"></div>
     <div class="cv-right">
       Russian — native; English — Upper-Intermediate.
     </div>

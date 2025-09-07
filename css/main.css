@@ -1091,3 +1091,36 @@ body.mm-open{ overflow: hidden; }
 /* только между «местами работы» добавляем шаг, остальное не трогаем */
 .cv-right + .cv-left .cv-orgline{ margin-top: 12px; }
 @media (max-width:980px){ .cv-right + .cv-left .cv-orgline{ margin-top: 10px; } }
+
+/* ==== CV: выравнивание как у кейсов и левый "рейл" ==== */
+
+/* Такой же «внутренний» отступ, как у .featured-cases (см. cases/index) */
+.cv-wrap{
+  padding: 48px 280px 0;
+}
+@media (max-width:980px){
+  .cv-wrap{ padding-left:64px; padding-right:64px; }
+}
+
+/* Сетка остаётся прежней; просто не добавляем внутренних паддингов сверху/снизу */
+.cv-grid{ padding: 0; }
+
+/* Левая колонка как "year-rail": тот же размер/тон */
+.cv-rail{
+  color:#fff;
+  font-size:1.05rem;
+  opacity:.5;
+  white-space:nowrap;
+}
+
+/* На десктопе — визуально как у .case-year-rail: смещаем влево в «поле рейла» */
+@media (min-width:980px){
+  .cv-grid{ position: relative; }
+  .cv-rail{
+    position: relative;
+    left: calc(-1 * var(--case-rail-gap));  /* используем тот же отступ, что и кейсы */
+    transform: translateX(-100%);
+    text-align:left;
+    pointer-events:none;                    /* как у year-rail */
+  }
+}
