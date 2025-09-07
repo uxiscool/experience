@@ -1063,14 +1063,13 @@ body.mm-open{ overflow: hidden; }
   }
   .cv-rail{
     text-align: left;
-    opacity:.6;
     pointer-events: auto;
   }
 }
 /* CV: subheading с индивидуальными отступами */
 .cvsubheading{
   margin: 0;
-  padding: 2rem 0 0 0;
+  padding: 1.5rem 0 0 0;
   font-size:clamp(1.3rem,1.1rem + 1vw,1.5rem);
   font-weight:400; letter-spacing:.02em;
 }
@@ -1078,15 +1077,18 @@ body.mm-open{ overflow: hidden; }
   display:block; 
   font-weight:600; 
   color:#fff;
+  opacity:.6;
   margin-top:2px;  
 }
 .cv-dates{ 
   display:block; 
-  color:#9fa7b2; 
+  color:#fff;
+  opacity:.6; 
   font-size:0.95rem; 
   margin-top:2px; 
 }
 .cv-role{ 
   font-weight:600; 
-  color:#e8ebee; 
+  color:#fff;
+  opacity:.6; 
 }
