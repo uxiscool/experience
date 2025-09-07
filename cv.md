@@ -5,7 +5,7 @@ permalink: /cv/
 ---
 
 <div class="container">
-  <!-- Заголовок и контакты -->
+  <!-- Heading and contacts -->
   <header class="cv-head">
     <h1 class="cv-name">Vladimir Zhukov</h1>
     <div class="cv-title">Product / UX Designer</div>
@@ -16,24 +16,19 @@ permalink: /cv/
       <span class="cv-sep">•</span>
       <span class="cv-contact">Netherlands (relocation-ready)</span>
     </div>
-
-    <!-- Кнопка скачать PDF — пока заглушка -->
+    <!-- Download PDF button — placeholder for now -->
     <p class="cv-download disabled-text">
-      <a href="{{ site.baseurl }}/ui/cv.pdf" aria-disabled="true">Скачать PDF (скоро)</a>
+      <a href="{{ site.baseurl }}/ui/cv.pdf" aria-disabled="true">Download PDF (coming soon)</a>
     </p>
   </header>
-
-  <!-- Сетка CV: слева лейблы/заголовки, справа контент -->
+  <!-- CV grid: labels on the left, content on the right -->
   <section class="cv-grid">
-
-    <div class="cv-left">О себе</div>
+    <div class="cv-left">About</div>
     <div class="cv-right">
-      Коротко: продуктовый дизайнер с системным мышлением, люблю наводить порядок в сложных интерфейсах и процессах, совмещаю UX-исследования, продуктовую аналитику и интерфейсную практику. Фокус — веб, мобильные, внутренние инструменты и b2b-сервисы.
+      Product designer with a systems mindset. I like bringing order to complex interfaces and processes, mixing UX research, product thinking and hands-on UI work. Focus areas: web, mobile, internal tools and B2B services.
     </div>
-
-    <div class="cv-left">Опыт</div>
+    <div class="cv-left">Experience</div>
     <div class="cv-right">
-
       <section class="cv-job">
         <div class="cv-job-head">
           <span class="cv-company">Yandex</span>
@@ -41,11 +36,10 @@ permalink: /cv/
           <span class="cv-dates">Jul 2023 — Present</span>
         </div>
         <ul class="cv-bullets">
-          <li>Соло-дизайнер на международных b2b-инициативах: стратегия, UX, бренд-коммуникация.</li>
-          <li>Поставил качественные исследования в контур разработки, помог вырастить LTV/CAC.</li>
+          <li>Solo designer on international B2B initiatives: strategy, UX, brand communication.</li>
+          <li>Brought qualitative research into the delivery loop, helping improve LTV/CAC.</li>
         </ul>
       </section>
-
       <section class="cv-job">
         <div class="cv-job-head">
           <span class="cv-company">IVI</span>
@@ -53,11 +47,10 @@ permalink: /cv/
           <span class="cv-dates">Dec 2019 — Jul 2023</span>
         </div>
         <ul class="cv-bullets">
-          <li>Вёл команду из 3 дизайнеров, процессы от ресёрча до A/B тестов, развитие Design System.</li>
-          <li>Запуск ключевых потоков (вертикальное видео, редизайн витрин и карточек, детский профиль) с ростом метрик удержания и конверсий.</li>
+          <li>Led a team of 3 designers; end-to-end process from research to A/B tests; Design System growth.</li>
+          <li>Launched key streams (vertical video, storefront & card redesign, kids profile) with retention and conversion lifts.</li>
         </ul>
       </section>
-
       <section class="cv-job">
         <div class="cv-job-head">
           <span class="cv-company">Futumarket</span>
@@ -65,33 +58,26 @@ permalink: /cv/
           <span class="cv-dates">May 2017 — Dec 2019</span>
         </div>
         <ul class="cv-bullets">
-          <li>Единственный дизайнер: от социальной сети до маркетплейса после пивота; задел под DS.</li>
+          <li>Only designer: from social network to marketplace after pivot; groundwork for a Design System.</li>
         </ul>
       </section>
-
     </div>
-
-    <div class="cv-left">Навыки</div>
+    <div class="cv-left">Skills</div>
     <div class="cv-right">
-      Product discovery, CJM/архитектура сценариев, UX-копирайтинг, прототипирование, планирование экспериментов, UI/дизайн-системы, дизайн-документация, фасилитация воркшопов.
+      Product discovery, CJM/user journey architecture, UX writing, prototyping, experiment planning, UI/Design Systems, design documentation, workshop facilitation.
     </div>
-
-    <div class="cv-left">Инструменты</div>
+    <div class="cv-left">Tools</div>
     <div class="cv-right">
-      Figma (Auto-layout, Variants, Tokens), Protopie; базово — HTML/CSS, React/JS, Python; Cinema 4D для иллюстраций.
+      Figma (Auto-layout, Variants, Tokens), Protopie; basics — HTML/CSS, React/JS, Python; Cinema 4D for illustrations.
     </div>
-
-    <div class="cv-left">Пет-проекты</div>
+    <div class="cv-left">Side projects</div>
     <div class="cv-right">
-      Плагины для Figma (Image Compressor, Find-My-Fonts), веб-сервис для управления промптами, экспериментальные UI-паттерны.
+      Figma plugins (Image Compressor, Find-My-Fonts), a prompt-management web service, experimental UI patterns.
     </div>
-
-    <div class="cv-left">Языки</div>
+    <div class="cv-left">Languages</div>
     <div class="cv-right">
-      Русский — родной; English — Upper-Intermediate.
+      Russian — native; English — Upper-Intermediate.
     </div>
-
   </section>
-
   <div class="intro-divider"></div>
 </div>

@@ -1079,3 +1079,15 @@ body.mm-open{ overflow: hidden; }
 /* небольшие штрихи для ссылок в CV */
 .cv-right a{ color:#e2e5e7; text-decoration: underline dotted; text-underline-offset: 3px; }
 .cv-right a:hover{ color:var(--orange); transition: color 2s; }
+
+/* CV — micro rhythm (safe) */
+.cv-grid{ row-gap: 20px; }                 /* было 18px: +2px воздуха */
+.cv-orgline{ margin-bottom: 6px; }         /* компания+даты чуть отделяем от роли */
+.cv-role{ margin-bottom: 8px; }            /* роль как подзаголовок */
+.cv-right .cv-bullets{ margin-top: 6px; }
+.cv-right li{ margin: 4px 0; line-height: 1.45; }
+.cv-right p{ margin: 0; line-height: 1.45; }
+
+/* только между «местами работы» добавляем шаг, остальное не трогаем */
+.cv-right + .cv-left .cv-orgline{ margin-top: 12px; }
+@media (max-width:980px){ .cv-right + .cv-left .cv-orgline{ margin-top: 10px; } }
