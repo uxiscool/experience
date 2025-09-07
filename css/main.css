@@ -1067,3 +1067,6 @@ body.mm-open{ overflow: hidden; }
   /* типографика берётся из .subheading, здесь — только отступы */
   padding: 2rem 0 0.5rem 0;
 }
+.cv-company{ display:block; font-weight:600; color:#fff; }
+.cv-dates{ display:block; color:#9fa7b2; font-size:0.95rem; margin-top:2px; }
+.cv-role{ font-weight:600; color:#e8ebee; }

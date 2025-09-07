@@ -38,13 +38,12 @@ permalink: /cv/
     <div class="cv-right"><h2 class="subheading cv-subheading">Experience</h2></div>
 
     <!-- Job: Yandex -->
-    <!-- Строка 1: компания слева, роль справа -->
-    <div class="cv-rail"><span class="cv-company">Yandex</span></div>
+    <div class="cv-rail">
+      <span class="cv-company">Yandex</span><br>
+      <span class="cv-dates">Jul 2023 — Present</span>
+    </div>
     <div class="cv-right"><div class="cv-role">Senior Product Designer</div></div>
-    <!-- Строка 2: даты слева, справа пусто -->
-    <div class="cv-rail"><span class="cv-dates">Jul 2023 — Present</span></div>
-    <div class="cv-right"></div>
-    <!-- Контент -->
+
     <div class="cv-rail"></div>
     <div class="cv-right">
       <ul class="cv-bullets">
@@ -54,10 +53,12 @@ permalink: /cv/
     </div>
 
     <!-- Job: IVI -->
-    <div class="cv-rail"><span class="cv-company">IVI</span></div>
+    <div class="cv-rail">
+      <span class="cv-company">IVI</span><br>
+      <span class="cv-dates">Dec 2019 — Jul 2023</span>
+    </div>
     <div class="cv-right"><div class="cv-role">Lead / Senior Product Designer</div></div>
-    <div class="cv-rail"><span class="cv-dates">Dec 2019 — Jul 2023</span></div>
-    <div class="cv-right"></div>
+
     <div class="cv-rail"></div>
     <div class="cv-right">
       <ul class="cv-bullets">
@@ -67,10 +68,12 @@ permalink: /cv/
     </div>
 
     <!-- Job: Futumarket -->
-    <div class="cv-rail"><span class="cv-company">Futumarket</span></div>
+    <div class="cv-rail">
+      <span class="cv-company">Futumarket</span><br>
+      <span class="cv-dates">May 2017 — Dec 2019</span>
+    </div>
     <div class="cv-right"><div class="cv-role">Product Designer</div></div>
-    <div class="cv-rail"><span class="cv-dates">May 2017 — Dec 2019</span></div>
-    <div class="cv-right"></div>
+
     <div class="cv-rail"></div>
     <div class="cv-right">
       <ul class="cv-bullets">
