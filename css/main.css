@@ -1049,7 +1049,7 @@ body.mm-open{ overflow: hidden; }
 .cv-bullets{ 
   margin: 6px 0 0 0; 
   padding-left: 20px;
-  padding-bottom: 25px;
+  padding-bottom: 12px;
 }
 
 .cv-bullets li{ margin: 4px 0; }
