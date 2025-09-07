@@ -1093,3 +1093,62 @@ body.mm-open{ overflow: hidden; }
 @media (max-width:980px){
   .cv-orgline{ gap: 2px 10px; }
 }
+
+/* ==== CV: vertical rhythm tune-up ==== */
+/* базовые переменные под ритм (можешь подправить под вкус) */
+:root{
+  --cv-row-desktop: 26px;   /* вертикальный шаг между строками сетки на десктопе */
+  --cv-row-mobile: 22px;    /* и на мобилке */
+}
+
+/* шапка CV — больше воздуха снизу */
+.cv-head{
+  margin-bottom: 20px;
+}
+
+/* основная сетка CV — больше межстрочного зазора */
+.cv-grid{
+  row-gap: var(--cv-row-desktop);
+  padding-top: 28px;        /* было 24 */
+  padding-bottom: 16px;     /* было 8 */
+}
+
+/* текст — комфортная читаемость */
+.cv-left,
+.cv-right{
+  line-height: 1.5;
+}
+
+/* «Компания — даты» (левая колонка у Experience) — чуть отделим от роли */
+.cv-orgline{
+  margin-bottom: 8px;       /* было 0 */
+}
+
+/* Роль (правая колонка) — как подзаголовок блока опыта */
+.cv-role{
+  margin-top: 2px;          /* добавили лёгкий верхний отступ */
+  margin-bottom: 10px;      /* было 4 */
+  font-weight: 600;
+}
+
+/* Буллеты — свободнее дышат */
+.cv-bullets{
+  margin-top: 10px;         /* было 6 */
+  padding-left: 20px;       /* +2 для читабельности маркеров */
+}
+.cv-bullets li{
+  margin: 6px 0;            /* было 2 */
+}
+
+/* между компаниями — стабильный шаг; работает, т.к. элементы идут: left/right, потом следующий left */
+.cv-right + .cv-left{
+  margin-top: 6px;          /* микро-зазор между блоками опыта */
+}
+
+/* Мобилка ≤980px — шагаем немного компактнее, но без «склейки» */
+@media (max-width:980px){
+  .cv-grid{ row-gap: var(--cv-row-mobile); }
+  .cv-left{ margin-top: 8px; }     /* подпись секции/компания не прилипает к предыдущему контенту */
+  .cv-role{ margin-bottom: 8px; }
+  .cv-bullets{ margin-top: 8px; }
+}
