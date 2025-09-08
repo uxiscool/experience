@@ -1123,3 +1123,9 @@ body.mm-open{ overflow: hidden; }
   color: inherit; /* не меняется при ховере */
 }
 
+/* CV: не применять общий фильтр к иконке PDF в шапке */
+.cv-head .cv-download.disabled-text a > img,
+.cv-head .cv-download.disabled-text a > svg{
+  filter: none !important;
+  opacity: 1;
+}
