@@ -28,8 +28,8 @@ permalink: /cv/
     </div>
     <div class="cv-right">
       <div class="cv-role">UX/UI Designer (Service designer)</div>
-      <ul class="cv-bullets">
       <p>Design and development of an automotive infotainment system, an integrated digital content marketplace, and a companion mobile app for an electric vehicle.</p>
+      <ul class="cv-bullets">
         <li>Built a dedicated in-car marketplace for add-ons and customizations;</li>
         <li>Established a consistent UX practice in an environment of high entropy and fragmented teams;</li>
         <li>Designed the interaction between the mobile app and the marketplace as part of the larger “car–cloud–mobile” ecosystem;</li>
