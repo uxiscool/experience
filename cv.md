@@ -144,6 +144,5 @@ permalink: /cv/
 })();
 </script>
   </section>
-
   <div class="intro-divider"></div>
 </div>
