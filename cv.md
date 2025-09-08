@@ -7,7 +7,7 @@ permalink: /cv/
 <header class="cv-head">
   <div class="cv-title">Product / UX Designer, currently in Moscow, Russia</div>
  <p class="cv-download disabled-text">
-  <a href="{{ site.baseurl }}/ui/cv.pdf" aria-disabled="true"> <img src="{{ site.baseurl }}/ui/icon_pdf.svg" alt="PDF" width="32" height="32" style="vertical-align:middle; margin-right:8px;">Download PDF</a>
+  <a href="{{ site.baseurl }}/ui/vladimir_zhukov_eng.pdf" aria-disabled="true"> <img src="{{ site.baseurl }}/ui/icon_pdf.svg" alt="PDF" width="32" height="32" style="vertical-align:middle; margin-right:8px;">Download PDF</a>
 </p>
 </header>
   <section class="cv-grid">
@@ -63,13 +63,6 @@ permalink: /cv/
     </div>
     <div class="cv-right">
       <div class="cv-role">UX Designer</div>
-      <p>Federal project for the Russian Association of Motor Insurers (RSA) — improvement and enhancement of the nationwide web service for insurance companies.</p>
-      <ul class="cv-bullets">
-        <li>Designed new working modules and user flows;</li>
-        <li>Coordinated and delegated tasks for a team of two designers and oversaw results;</li>
-        <li>Quickly onboarded without requiring a knowledge transfer phase;</li>
-        <li>Received positive feedback from the client, analysts, and developers.</li>
-      </ul>
        <p>Mission-critical internal service Time/Vacation/Calendars (used daily by 58,000+ employees across 25+ countries) — time tracking and project/resource planning.</p>
       <ul class="cv-bullets">
         <li>Increased the value of collected statistics;</li>
@@ -77,6 +70,13 @@ permalink: /cv/
         <li>Expanded functionality with new tools;</li>
         <li>Simplified core features and implemented WCAG accessibility checks;</li>
         <li>Received positive feedback from PO and related departments; user surveys confirmed higher efficiency with the updated layouts.</li>
+      </ul>
+      <p>Federal project for the Russian Association of Motor Insurers (RSA) — improvement and enhancement of the nationwide web service for insurance companies.</p>
+      <ul class="cv-bullets">
+        <li>Designed new working modules and user flows;</li>
+        <li>Coordinated and delegated tasks for a team of two designers and oversaw results;</li>
+        <li>Quickly onboarded without requiring a knowledge transfer phase;</li>
+        <li>Received positive feedback from the client, analysts, and developers.</li>
       </ul>
     </div>
     <!-- SKILLS -->
