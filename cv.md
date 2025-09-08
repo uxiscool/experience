@@ -56,15 +56,27 @@ permalink: /cv/
         <li>Positive feedback from analysts and PMs, with measurable gains in conversion and error handling.</li>
       </ul>
     </div>
-    <!-- Job: Futumarket -->
+    <!-- Job: EPAM -->
     <div class="cv-rail">
-      <span class="cv-company">Futumarket</span><br>
-      <span class="cv-dates">May 2017 — Dec 2019</span>
+      <span class="cv-company">EPAM</span><br>
+      <span class="cv-dates">Feb 2020 — May 2022</span>
     </div>
     <div class="cv-right">
-      <div class="cv-role">Product Designer</div>
+      <div class="cv-role">UX Designer</div>
+      <p>Federal project for the Russian Association of Motor Insurers (RSA) — improvement and enhancement of the nationwide web service for insurance companies.</p>
       <ul class="cv-bullets">
-        <li>Only designer: from social network to marketplace after pivot; groundwork for a Design System.</li>
+        <li>Designed new working modules and user flows;</li>
+        <li>Coordinated and delegated tasks for a team of two designers and oversaw results;</li>
+        <li>Quickly onboarded without requiring a knowledge transfer phase;</li>
+        <li>Received positive feedback from the client, analysts, and developers.</li>
+      </ul>
+       <p>Mission-critical internal service Time/Vacation/Calendars (used daily by 58,000+ employees across 25+ countries) — time tracking and project/resource planning.</p>
+      <ul class="cv-bullets">
+        <li>Increased the value of collected statistics;</li>
+        <li>Optimized routine tasks for resource managers;</li>
+        <li>Expanded functionality with new tools;</li>
+        <li>Simplified core features and implemented WCAG accessibility checks;</li>
+        <li>Received positive feedback from PO and related departments; user surveys confirmed higher efficiency with the updated layouts.</li>
       </ul>
     </div>
     <!-- SKILLS -->
