@@ -110,10 +110,40 @@ permalink: /cv/
     <div class="cv-rail"></div>
     <div class="cv-right">
       <ul class="cv-contacts-list">
-        <li>Email: <a href="mailto:uxuimaster@gmail.com">uxuimaster@gmail.com</a></li>
-        <li>LinkedIn: <a href="https://linkedin.com/in/uxiscool" target="_blank" rel="noopener">linkedin.com/in/uxiscool</a></li>
-        <li>Telegram: <a href="https://t.me/zloy-cactus" target="_blank" rel="noopener">@zloy-cactus</a></li>
+        <li>
+          Email: 
+          <a id="cv-email-link" href="#"
+             data-user="loocsixu" data-host="moc.liamg">
+            <span id="cv-email-text">[show email]</span>
+          </a>
+        </li>
+        <li>
+          LinkedIn: 
+          <a href="https://linkedin.com/in/uxiscool" target="_blank" rel="noopener">
+            linkedin.com/in/uxiscool
+          </a>
+        </li>
+        <li>
+          Telegram: 
+          <a href="https://t.me/zloy-cactus" target="_blank" rel="noopener">
+            @zloy-cactus
+          </a>
+        </li>
       </ul>
+
+      <!-- email обфускация -->
+      <script>
+        (function () {
+          var a = document.getElementById('cv-email-link');
+          if (!a) return;
+          function rev(s){ return s.split('').reverse().join(''); }
+          var addr = rev(a.dataset.user) + '@' + rev(a.dataset.host);
+          a.href = 'mailto:' + addr;
+          var t = document.getElementById('cv-email-text');
+          if (t) t.textContent = addr;
+        })();
+      </script>
+      <noscript><p>Email: uxiscool [at] gmail [dot] com</p></noscript>
     </div>
 
   </section>
