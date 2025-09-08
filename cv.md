@@ -7,8 +7,7 @@ permalink: /cv/
 <header class="cv-head">
   <div class="cv-title">Product / UX Designer</div>
  <p class="cv-download disabled-text">
-  <img src="{{ site.baseurl }}/ui/icon_pdf.svg" alt="PDF" width="32" height="32" style="vertical-align:middle; margin-right:8px;">
-  <a href="{{ site.baseurl }}/ui/cv.pdf" aria-disabled="true">Download PDF (coming soon)</a>
+  <a href="{{ site.baseurl }}/ui/cv.pdf" aria-disabled="true"> <img src="{{ site.baseurl }}/ui/icon_pdf.svg" alt="PDF" width="32" height="32" style="vertical-align:middle; margin-right:8px;">Download PDF (coming soon) </a>
 </p>
 </header>
   <section class="cv-grid">
