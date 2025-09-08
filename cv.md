@@ -143,6 +143,10 @@ permalink: /cv/
   });
 })();
 </script>
+      <noscript><p>Email: uxiscool [at] gmail [dot] com</p></noscript>
+    </div>
+
   </section>
+
   <div class="intro-divider"></div>
 </div>
