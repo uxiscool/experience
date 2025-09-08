@@ -23,14 +23,22 @@ permalink: /cv/
     <div class="cv-right"><h2 class="cvsubheading">Experience</h2></div>
     <!-- Job: Yandex -->
     <div class="cv-rail">
-      <span class="cv-company">Yandex</span><br>
-      <span class="cv-dates">Jul 2023 — Present</span>
+      <span class="cv-company">Kama (Atom.auto)</span><br>
+      <span class="cv-dates">Aug 2023 — Aug 2025</span>
     </div>
     <div class="cv-right">
-      <div class="cv-role">Senior Product Designer</div>
+      <div class="cv-role">UX/UI Designer (Service designer)</div>
       <ul class="cv-bullets">
-        <li>Solo designer on international B2B initiatives: strategy, UX, brand communication.</li>
-        <li>Brought qualitative research into the delivery loop, helping improve LTV/CAC.</li>
+      <p>Design and development of an automotive infotainment system, an integrated digital content marketplace, and a companion mobile app for an electric vehicle.</p>
+        <li>Built a dedicated in-car marketplace for add-ons and customizations;</li>
+        <li>Established a consistent UX practice in an environment of high entropy and fragmented teams;</li>
+        <li>Designed the interaction between the mobile app and the marketplace as part of the larger “car–cloud–mobile” ecosystem;</li>
+        <li>Delivered investor-ready prototypes based on vague and incomplete requirements;</li>
+        <li>Worked at the intersection of UX and product design: creating concepts, building UI, and shaping information and functional architecture;</li>
+        <li>Helped the PO structure and prioritize the design backlog;</li>
+        <li>Achieved 93% KPI on task delivery;</li>
+        <li>Earned strong positive feedback from cross-functional teams, PO, analysts, and engineers;</li>
+        <li>Recognized for improving accessibility, usability, process efficiency, and overall team empathy.</li>
       </ul>
     </div>
     <!-- Job: IVI -->
