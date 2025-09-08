@@ -1019,6 +1019,7 @@ body.mm-open{ overflow: hidden; }
   color:#fff; 
   opacity:.92; 
   margin-bottom: 8px; 
+  width: inherit;
 }
 .cv-contacts{ display:flex; flex-wrap:wrap; gap:8px 12px; color:#fff; opacity:.92; }
 .cv-contact{ color:inherit; text-decoration:none; }
