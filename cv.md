@@ -103,16 +103,16 @@ permalink: /cv/
       Russian — native; English — Upper-Intermediate.
     </div>
 
-        <!-- CONTACTS -->
+    <!-- CONTACTS -->
     <div class="cv-rail"></div>
     <div class="cv-right"><h2 class="cvsubheading">Contacts</h2></div>
 
     <div class="cv-rail"></div>
     <div class="cv-right">
-      <ul class="cv-bullets">
-        <li><a href="mailto:uxuimaster@gmail.com">uxuimaster@gmail.com</a></li>
-        <li><a href="https://linkedin.com/in/uxiscool" target="_blank" rel="noopener">linkedin.com/in/uxiscool</a></li>
-        <li><a href="https://t.me/uxuimaster" target="_blank" rel="noopener">@uxuimaster</a></li>
+      <ul class="cv-contacts-list">
+        <li>Email: <a href="mailto:uxuimaster@gmail.com">uxuimaster@gmail.com</a></li>
+        <li>LinkedIn: <a href="https://linkedin.com/in/uxiscool" target="_blank" rel="noopener">linkedin.com/in/uxiscool</a></li>
+        <li>Telegram: <a href="https://t.me/zloy-cactus" target="_blank" rel="noopener">@zloy-cactus</a></li>
       </ul>
     </div>
 

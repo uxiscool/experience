@@ -1002,7 +1002,7 @@ body.mm-open{ overflow: hidden; }
   outline: none;
 }
 
-/* ==== CV (чистая версия) ===================================== */
+/* ==== CV  ===================================== */
 :root{
   --cv-rail-w: 180px;       /* ширина левого «рейла» */
   --cv-gap: 28px;           /* зазор между рейлом и контентом */
@@ -1103,4 +1103,21 @@ body.mm-open{ overflow: hidden; }
 }
 .cv-download a{
   text-decoration: none;
+}
+
+.cv-contacts-list{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.cv-contacts-list li{
+  margin: 4px 0;
+}
+.cv-contacts-list a{
+  color: inherit;               /* всегда как обычный текст */
+  text-decoration: underline;   /* подчёркнутые */
+  text-underline-offset: 3px;
+}
+.cv-contacts-list a:hover{
+  color: inherit; /* не меняется при ховере */
 }
