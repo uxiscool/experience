@@ -112,10 +112,10 @@ permalink: /cv/
       <ul class="cv-contacts-list">
         <li>
           Email: 
-          <a id="cv-email-link" href="#"
-             data-user="loocsixu" data-host="moc.liamg">
-            <span id="cv-email-text">[show email]</span>
-          </a>
+          <a class="cv-email" href="javascript:void(0)"
+   data-user="loocsixu" data-host="moc.liamg">
+  <span class="cv-email-text">[show email]</span>
+</a>
         </li>
         <li>
           LinkedIn: 
@@ -132,17 +132,17 @@ permalink: /cv/
       </ul>
 
       <!-- email обфускация -->
-      <script>
-        (function () {
-          var a = document.getElementById('cv-email-link');
-          if (!a) return;
-          function rev(s){ return s.split('').reverse().join(''); }
-          var addr = rev(a.dataset.user) + '@' + rev(a.dataset.host);
-          a.href = 'mailto:' + addr;
-          var t = document.getElementById('cv-email-text');
-          if (t) t.textContent = addr;
-        })();
-      </script>
+  <script>
+(function () {
+  function rev(s){ return s.split('').reverse().join(''); }
+  document.querySelectorAll('.cv-email').forEach(function(a){
+    var addr = rev(a.dataset.user) + '@' + rev(a.dataset.host);
+    a.href = 'mailto:' + addr;
+    var t = a.querySelector('.cv-email-text');
+    if (t) t.textContent = addr;
+  });
+})();
+</script>
       <noscript><p>Email: uxiscool [at] gmail [dot] com</p></noscript>
     </div>
 
