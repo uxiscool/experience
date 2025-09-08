@@ -16,7 +16,7 @@ permalink: /cv/
     <div class="cv-right"><h2 class="cvsubheading">About</h2></div>
     <div class="cv-rail"></div>
     <div class="cv-right">
-      Product designer with a systems mindset. I like bringing order to complex interfaces and processes, mixing UX research, product thinking and hands-on UI work. Focus areas: web, mobile, internal tools and B2B services.
+      <p>I have 15+ years of experience designing digital services. I’ve worked both in startup environments and on large-scale corporate projects, combining the best practices of both worlds to deliver results.</p><p>My focus is on creating well-crafted user experiences: building user flows, information architecture, prototypes, and interfaces within design systems — or evolving those systems further. I’m also interested in CX, apply data-driven improvements, and use AI tools to enhance analysis and optimize workflows.</p><p>My strengths lie in bridging design and product strategy, fostering cross-team collaboration, and ensuring a consistent, seamless user experience.</p>
     </div>
     <!-- EXPERIENCE -->
     <div class="cv-rail"></div>
