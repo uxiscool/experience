@@ -21,7 +21,7 @@ permalink: /cv/
     <!-- EXPERIENCE -->
     <div class="cv-rail"></div>
     <div class="cv-right"><h2 class="cvsubheading">Experience</h2></div>
-    <!-- Job: Yandex -->
+    <!-- Job: Atom -->
     <div class="cv-rail">
       <span class="cv-company">Kama (Atom.auto)</span><br>
       <span class="cv-dates">Aug 2023 — Aug 2025</span>
@@ -41,16 +41,19 @@ permalink: /cv/
         <li>Recognized for improving accessibility, usability, process efficiency, and overall team empathy.</li>
       </ul>
     </div>
-    <!-- Job: IVI -->
+    <!-- Job: RTLABS -->
     <div class="cv-rail">
-      <span class="cv-company">IVI</span><br>
-      <span class="cv-dates">Dec 2019 — Jul 2023</span>
+      <span class="cv-company">RTLabs</span><br>
+      <span class="cv-dates">May 2022 — Aug 2023</span>
     </div>
     <div class="cv-right">
-      <div class="cv-role">Lead / Senior Product Designer</div>
+      <div class="cv-role">Senior Product Designer</div>
+      <p>Design of new services, improvement of existing ones, and landing pages for Gosuslugi, a nationwide government service platform.</p>
       <ul class="cv-bullets">
-        <li>Led a team of 3 designers; end-to-end process from research to A/B tests; Design System growth.</li>
-        <li>Launched key streams (vertical video, storefront & card redesign, kids profile) with retention and conversion lifts.</li>
+        <li>Simplified interaction patterns to make communication between citizens and state services more user-friendly and less bureaucratic;</li>
+        <li>Balanced backend constraints with UX needs, extending the design system with new components;</li>
+        <li>Delivered responsive, WCAG-compliant interfaces and consistent experiences across services;</li>
+        <li>Positive feedback from analysts and PMs, with measurable gains in conversion and error handling.</li>
       </ul>
     </div>
     <!-- Job: Futumarket -->
