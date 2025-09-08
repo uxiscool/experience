@@ -5,7 +5,7 @@ permalink: /cv/
 ---
 <div class="container">
 <header class="cv-head">
-  <div class="cv-title">Product / UX Designer</div>
+  <div class="cv-title">Product / UX Designer, currently in Moscow, Russia</div>
  <p class="cv-download disabled-text">
   <a href="{{ site.baseurl }}/ui/cv.pdf" aria-disabled="true"> <img src="{{ site.baseurl }}/ui/icon_pdf.svg" alt="PDF" width="32" height="32" style="vertical-align:middle; margin-right:8px;">Download PDF</a>
 </p>
