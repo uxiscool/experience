@@ -5,7 +5,7 @@ permalink: /cv/
 ---
 <div class="container">
 <header class="cv-head">
-  <div class="cv-title">Product / UX Designer, currently in Moscow, Russia</div>
+  <div class="cv-title">Product / UX Designer. Currently in Moscow, Russia</div>
  <p class="cv-download disabled-text">
   <a href="{{ site.baseurl }}/ui/vladimir_zhukov_eng.pdf" aria-disabled="true"> <img class="cv-download-icon" src="{{ site.baseurl }}/ui/icon_pdf.svg" alt="PDF" width="32" height="32" style="vertical-align:middle; margin-right:8px;">Download PDF</a>
 </p>
@@ -43,7 +43,7 @@ permalink: /cv/
     </div>
     <!-- Job: RTLABS -->
     <div class="cv-rail">
-      <span class="cv-company">RTLabs</span><br>
+      <span class="cv-company">RTLabs (Gosuslugi)</span><br>
       <span class="cv-dates">May 2022 — Aug 2023</span>
     </div>
     <div class="cv-right">
