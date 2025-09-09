@@ -79,6 +79,39 @@ permalink: /cv/
         <li>Received positive feedback from the client, analysts, and developers.</li>
       </ul>
     </div>
+    <!-- Job: Kaspersky -->
+    <div class="cv-rail">
+      <span class="cv-company">Kaspersky</span><br>
+      <span class="cv-dates">Mar 2016 — Jan 2020</span>
+    </div>
+    <div class="cv-right">
+      <div class="cv-role">UX/UI Designer</div>
+      <p>Design and development of desktop, mobile, and web products.</p>
+      <ul class="cv-bullets">
+        <li>Conducted user research and analysis: interviews, CJMs, personas, user stories;</li>
+        <li>Validated hypotheses through prototyping and testing on interactive mockups;</li>
+        <li>Introduced Figma as the primary design tool;</li>
+        <li>Ensured effective cross-team collaboration with marketing, developers, and editors;</li>
+        <li>Performed regular UX audits of new releases, improving usability and interface quality, confirmed by UI statistics;</li>
+        <li>Recognized for constructive teamwork and problem-solving.</li>
+      </ul>
+    </div>
+        <!-- Job: AdWatch -->
+    <div class="cv-rail">
+      <span class="cv-company">AdWatch</span><br>
+      <span class="cv-dates">Oct 2013 — Mar 2016</span>
+    </div>
+    <div class="cv-right">
+      <div class="cv-role">UX Designer</div>
+      <p>UX design in an agency environment: fast-paced work across multiple short-term projects (mobile apps, services, websites, landing pages).</p>
+      <ul class="cv-bullets">
+        <li>Designed user flows and information architecture under tight deadlines;</li>
+        <li>Conducted user interviews and research, building CJMs and personas;</li>
+        <li>Created and tested prototypes to validate hypotheses before launch;</li>
+        <li>Ensured consistency of solutions while collaborating with designers, managers, analysts, and developers;</li>
+        <li>Focused exclusively on UX logic and usability rather than visual design.</li>
+      </ul>
+    </div>
     <!-- SKILLS -->
     <div class="cv-rail"></div>
     <div class="cv-right"><h2 class="cvsubheading">Skills</h2></div>
