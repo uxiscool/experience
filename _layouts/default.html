@@ -464,8 +464,20 @@ window.PET_GALLERIES = [
     // 1) Собираем все ссылки верхнего уровня
     var topLinks = Array.from(SRC_MENU.querySelectorAll('a[href]'));
 
-    // 2) Собираем подпункты (если есть на странице)
-    var subLinks = Array.from(document.querySelectorAll('.subnav a[href]'));
+  // 2) Собираем подпункты (если есть на странице) + ФОЛБЭК
+var subLinks = Array.from(document.querySelectorAll('.subnav a[href]'));
+if (!subLinks.length){
+  // Фолбэк: подменю Works всегда доступно из любого раздела
+  subLinks = [
+    { href: '{{ site.baseurl }}/cases/',         text: 'Cases' },
+    { href: '{{ site.baseurl }}/pet-projects/',  text: 'Pet projects' }
+  ].map(function(it){
+    var a = document.createElement('a');
+    a.setAttribute('href', it.href);
+    a.textContent = it.text;
+    return a;
+  });
+}
 
     // 3) Определим, к какому пункту в топ-меню подвесить подпункты:
     //    ищем пункт, название которого похоже на "Works"
