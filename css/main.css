@@ -1129,3 +1129,10 @@ body.mm-open{ overflow: hidden; }
   filter: none !important;
   opacity: 1;
 }
+
+.cv-download-icon{
+  position: relative;
+  top: -3px;            /* приподняли на 3px */
+  margin-right: 8px;    /* сохраняем отступ справа */
+  vertical-align: middle;
+}

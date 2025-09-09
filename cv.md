@@ -7,7 +7,7 @@ permalink: /cv/
 <header class="cv-head">
   <div class="cv-title">Product / UX Designer, currently in Moscow, Russia</div>
  <p class="cv-download disabled-text">
-  <a href="{{ site.baseurl }}/ui/vladimir_zhukov_eng.pdf" aria-disabled="true"> <img src="{{ site.baseurl }}/ui/icon_pdf.svg" alt="PDF" width="32" height="32" style="vertical-align:middle; margin-right:8px;">Download PDF</a>
+  <a href="{{ site.baseurl }}/ui/vladimir_zhukov_eng.pdf" aria-disabled="true"> <img class="cv-download-icon" src="{{ site.baseurl }}/ui/icon_pdf.svg" alt="PDF" width="32" height="32" style="vertical-align:middle; margin-right:8px;">Download PDF</a>
 </p>
 </header>
   <section class="cv-grid">
