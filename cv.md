@@ -108,8 +108,23 @@ permalink: /cv/
         <li>Designed user flows and information architecture under tight deadlines;</li>
         <li>Conducted user interviews and research, building CJMs and personas;</li>
         <li>Created and tested prototypes to validate hypotheses before launch;</li>
-        <li>Ensured consistency of solutions while collaborating with designers, managers, analysts, and developers;</li>
-        <li>Focused exclusively on UX logic and usability rather than visual design.</li>
+        <li>Ensured consistency of solutions while collaborating with graphic designers, managers, analysts, and developers;</li>
+        <li>Sharpened the ability to quickly immerse into new domains and adapt UX approaches to diverse projects;</li>
+      </ul>
+    </div>
+         <!-- Job: Acronis -->
+    <div class="cv-rail">
+      <span class="cv-company">Acronis</span><br>
+      <span class="cv-dates">Jun 2011 — Oct 2013</span>
+    </div>
+    <div class="cv-right">
+      <div class="cv-role">UI Designer</div>
+      <p>UI design within the large-scale enterprise project Acronis Backup & Recovery.</p>
+      <ul class="cv-bullets">
+        <li>Created pixel-perfect prototypes for multiple product modules and features, ensuring high implementation accuracy;</li>
+        <li>Conducted UI reviews and improved interface consistency across the product;</li>
+        <li>Collaborated with cross-functional teams, accelerating alignment and reducing rework;</li>
+        <li>Strengthened skills in typography, prototyping, and teamwork, contributing to overall interface quality.</li>
       </ul>
     </div>
     <!-- SKILLS -->
