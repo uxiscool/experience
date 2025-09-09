@@ -1135,3 +1135,20 @@ body.mm-open{ overflow: hidden; }
   margin-right: 8px;    /* сохраняем отступ справа */
   vertical-align: middle;
 }
+
+.cv-bullets{
+  list-style: none;       /* убираем стандартные точки */
+  margin: 0;
+  padding: 0 0 18px 0;    /* снизу оставляем как было */
+}
+.cv-bullets li{
+  position: relative;
+  margin: 4px 0;
+  padding-left: 1.2em;    /* отступ для чёрточки */
+}
+.cv-bullets li::before{
+  content: "\2043";           /* маркер — длинное тире */
+  position: absolute;
+  left: 0;
+  color: inherit;         /* цвет такой же, как у текста */
+}
