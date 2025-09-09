@@ -1002,6 +1002,12 @@ body.mm-open{ overflow: hidden; }
   outline: none;
 }
 
+.mobile-menu__link.current,
+.mobile-menu__sublink.current{
+  color: var(--orange);
+  background:#23262b;
+}
+
 /* ==== CV  ===================================== */
 :root{
   --cv-rail-w: 180px;       /* ширина левого «рейла» */

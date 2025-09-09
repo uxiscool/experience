@@ -493,6 +493,10 @@ if (!subLinks.length){
       m.className = 'mobile-menu__link';
       m.href = a.getAttribute('href');
       m.textContent = a.textContent.trim();
+if (location.pathname.replace(/\/+$/, '') === m.pathname.replace(/\/+$/, '')){
+  m.classList.add('current');
+}
+
       m.addEventListener('click', closeMenu);
       li.appendChild(m);
 
@@ -507,6 +511,9 @@ if (!subLinks.length){
           s.className = 'mobile-menu__sublink';
           s.href = sa.getAttribute('href');
           s.textContent = sa.textContent.trim();
+          if (location.pathname.replace(/\/+$/, '') === s.pathname.replace(/\/+$/, '')){
+  s.classList.add('current');
+}
           s.addEventListener('click', closeMenu);
           sli.appendChild(s);
           subUl.appendChild(sli);
