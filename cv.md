@@ -132,21 +132,21 @@ permalink: /cv/
     <div class="cv-right"><h2 class="cvsubheading">Skills</h2></div>
     <div class="cv-rail"></div>
     <div class="cv-right">
-      Product discovery, CJM/user journey architecture, UX writing, prototyping, experiment planning, UI/Design Systems, design documentation, workshop facilitation.
+      Product discovery, CJM/user journey architecture, UX writing, prototyping, Lean UX, JTBD, user research & interviews, personas, CJM (as is/to be), user flows, information architecture, CX, prototyping (lo-fi/hi-fi), hypothesis validation, data-driven UX, usability audits, accessibility (WCAG), DS, cross-functional collaboration, knowledge sharing.
     </div>
     <!-- TOOLS -->
     <div class="cv-rail"></div>
     <div class="cv-right"><h2 class="cvsubheading">Tools</h2></div>
     <div class="cv-rail"></div>
     <div class="cv-right">
-      Figma (Auto-layout, Variants, Tokens), Protopie; basics — HTML/CSS, React/JS, Python; Cinema 4D for illustrations.
+      Figma (Auto-layout, Variants, Tokens), Protopie, basics — HTML/CSS, Photoshop/Illustrator, Lottie, Obsidian, Miro/Holst.so, AI/LLM, Vibecoding.
     </div>
     <!-- SIDE PROJECTS -->
     <div class="cv-rail"></div>
     <div class="cv-right"><h2 class="cvsubheading">Side projects</h2></div>
     <div class="cv-rail"></div>
     <div class="cv-right">
-      Figma plugins (Image Compressor, Find-My-Fonts), a prompt-management web service, experimental UI patterns.
+      Figma plugins (Image Compressor, Find-My-Fonts), a prompt-management web service, Task/list manager for Android.
     </div>
     <!-- LANGUAGES -->
     <div class="cv-rail"></div>
