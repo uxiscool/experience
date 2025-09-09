@@ -153,7 +153,7 @@ permalink: /cv/
     <div class="cv-right"><h2 class="cvsubheading">Languages</h2></div>
     <div class="cv-rail"></div>
     <div class="cv-right">
-      Russian — native; English — Upper-Intermediate.
+      Russian — native; English — Sufficient for reading documentation.
     </div>
     <!-- CONTACTS -->
     <div class="cv-rail"></div>
