@@ -620,16 +620,19 @@ if (location.pathname.replace(/\/+$/, '') === m.pathname.replace(/\/+$/, '')){
     pop.setAttribute('aria-hidden', 'true');
     pop.hidden = true;
   }
-  function openSheet(){
-    sheet.hidden = false;
-    document.body.classList.add('mm-open');
-    var mobileMenu = document.getElementById('mobile-menu');
-    if (mobileMenu) mobileMenu.hidden = true;
-  }
-  function closeSheet(){
-    sheet.hidden = true;
-    document.body.classList.remove('mm-open');
-  }
+function openSheet(){
+  sheet.hidden = false;
+  sheet.classList.add('is-open');        // ← показываем как мобильное меню
+  document.body.classList.add('mm-open');
+  var mobileMenu = document.getElementById('mobile-menu');
+  if (mobileMenu) mobileMenu.hidden = true;
+}
+
+function closeSheet(){
+  sheet.classList.remove('is-open');     // ← снимаем видимость
+  sheet.hidden = true;
+  document.body.classList.remove('mm-open');
+}
 
   // Универсальный клик/тач по триггеру
   function onTrigger(e){
