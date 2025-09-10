@@ -1231,7 +1231,11 @@ body.mm-open{ overflow: hidden; }
   padding-top: clamp(18px, 6vw, 36px);
 }
 #download-overlay .download-list{
-  list-style: none; margin: 0; padding: 0; display: grid; gap: 8px;
+  list-style: none; 
+  margin: 0; 
+  padding: 70px 0 0 0; 
+  display: grid; 
+  gap: 8px;
 }
 #download-overlay .download-link{
   display: grid;
