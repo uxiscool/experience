@@ -18,7 +18,7 @@ permalink: /cv/
     <a class="cv-download-pop__row" href="{{ site.baseurl }}/vladimir_zhukov_cv_rus_v1.1.pdf">
       <img class="cv-download-pop__icon" src="{{ site.baseurl }}/ui/icon_download_32.svg" alt="" aria-hidden="true">
       <span class="cv-download-pop__label">PDF на русском</span>
-      <span class="cv-download-pop__size">1.69&nbsp;MB</span>
+      <span class="cv-download-pop__size">1.66&nbsp;MB</span>
     </a>
     <a class="cv-download-pop__row" href="{{ site.baseurl }}/vladimir_zhukov_cv_eng_v1.pdf">
       <img class="cv-download-pop__icon" src="{{ site.baseurl }}/ui/icon_download_32.svg" alt="" aria-hidden="true">
