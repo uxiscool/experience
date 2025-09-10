@@ -8,7 +8,7 @@ permalink: /cv/
   <div class="cv-title">Product / UX Designer. Currently in Moscow, Russia</div>
 <!-- Download (trigger + popover) -->
 <div class="cv-download-wrap">
-<a id="cv-download-trigger" class="cv-download-link disabled-text" href="#" role="button">
+<a id="cv-download-trigger" class="cv-download-link" href="#" role="button">
   <img class="cv-download-icon" src="{{ site.baseurl }}/ui/icon_pdf.svg" alt="PDF" width="32" height="32" aria-hidden="true">
   <span>Download CV (PDF)</span>
 </a>

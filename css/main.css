@@ -1163,6 +1163,7 @@ body.mm-open{ overflow: hidden; }
 .cv-download-wrap{
   margin-left: auto; /* уводим в правый край шапки CV */
   position: relative;
+  z-index: 3000;
 }
 .cv-download-link{
   display: inline-flex;
@@ -1170,6 +1171,7 @@ body.mm-open{ overflow: hidden; }
   gap: 8px;
   text-decoration: none;
   cursor: pointer;
+  pointer-events: auto;   /* на случай глобальных правил */
 }
 .cv-download-link span{ text-decoration: none; }
 .cv-download-link img{ filter: none !important; } /* не трогаем иконку PDF */

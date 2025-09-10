@@ -597,8 +597,8 @@ if (location.pathname.replace(/\/+$/, '') === m.pathname.replace(/\/+$/, '')){
   var sheet = document.getElementById('download-overlay');
   if (!trigger || !pop || !sheet) return;
 
-  var MQ = window.matchMedia('(min-width: 981px)');
   var hideTimer = null;
+  function isDesktop(){ return window.innerWidth >= 981; }
 
   function openPop(){
     var r = trigger.getBoundingClientRect();
@@ -606,27 +606,23 @@ if (location.pathname.replace(/\/+$/, '') === m.pathname.replace(/\/+$/, '')){
     pop.setAttribute('aria-hidden', 'false');
     pop.classList.add('is-open');
 
-    // позиционируем так, чтобы не вылезло за края
+    // позиционирование
     var w = pop.offsetWidth, h = pop.offsetHeight;
     var left = r.left, top = r.bottom + 8, pad = 12;
-
     if (left + w + pad > window.innerWidth) left = window.innerWidth - w - pad;
     if (left < pad) left = pad;
     if (top + h + pad > window.innerHeight) top = Math.max(pad, r.top - h - 8);
-
     pop.style.left = left + 'px';
-    pop.style.top = top + 'px';
+    pop.style.top  = top  + 'px';
   }
   function closePop(){
     pop.classList.remove('is-open');
     pop.setAttribute('aria-hidden', 'true');
     pop.hidden = true;
   }
-
   function openSheet(){
     sheet.hidden = false;
     document.body.classList.add('mm-open');
-    // закрываем бургер, если вдруг открыт
     var mobileMenu = document.getElementById('mobile-menu');
     if (mobileMenu) mobileMenu.hidden = true;
   }
@@ -635,40 +631,38 @@ if (location.pathname.replace(/\/+$/, '') === m.pathname.replace(/\/+$/, '')){
     document.body.classList.remove('mm-open');
   }
 
-  // --- универсальный клик по триггеру ---
-  trigger.addEventListener('click', function(e){
-    e.preventDefault(); // никакой навигации
-    if (MQ.matches){
-      // десктоп: показываем плашку
+  // Универсальный клик/тач по триггеру
+  function onTrigger(e){
+    e.preventDefault(); // никаких переходов
+    if (isDesktop()){
       clearTimeout(hideTimer);
       openPop();
     } else {
-      // мобильный: открываем полноэкранный лист
       openSheet();
     }
-  });
+  }
+  trigger.addEventListener('click', onTrigger, {passive:false});
+  trigger.addEventListener('touchend', onTrigger, {passive:false});
 
-  // десктоп: hover-поведение (мягкое скрытие)
+  // Десктоп — мягкий hover
   trigger.addEventListener('mouseenter', function(){
-    if (!MQ.matches) return;
-    clearTimeout(hideTimer);
-    openPop();
+    if (!isDesktop()) return;
+    clearTimeout(hideTimer); openPop();
   });
   trigger.addEventListener('mouseleave', function(){
-    if (!MQ.matches) return;
-    clearTimeout(hideTimer);
-    hideTimer = setTimeout(closePop, 140);
+    if (!isDesktop()) return;
+    clearTimeout(hideTimer); hideTimer = setTimeout(closePop, 140);
   });
   pop.addEventListener('mouseenter', function(){
-    if (!MQ.matches) return;
+    if (!isDesktop()) return;
     clearTimeout(hideTimer);
   });
   pop.addEventListener('mouseleave', function(){
-    if (!MQ.matches) return;
+    if (!isDesktop()) return;
     hideTimer = setTimeout(closePop, 140);
   });
 
-  // мобильный: закрытие по клику по бэкдропу и по Esc
+  // Мобайл — закрытие
   sheet.addEventListener('click', function(e){
     if (e.target === sheet) closeSheet();
   });
@@ -679,8 +673,8 @@ if (location.pathname.replace(/\/+$/, '') === m.pathname.replace(/\/+$/, '')){
     a.addEventListener('click', function(){ closeSheet(); });
   });
 
-  // на изменение брейкпоинта прибираем открытые состояния
-  MQ.addEventListener('change', function(){
+  // При ресайзе — прибираем состояния
+  window.addEventListener('resize', function(){
     closePop(); closeSheet();
   });
 })();
