@@ -1158,3 +1158,89 @@ body.mm-open{ overflow: hidden; }
   left: 0;
   color: inherit;         /* цвет такой же, как у текста */
 }
+
+/* === CV download: trigger/link === */
+.cv-download-wrap{
+  margin-left: auto; /* уводим в правый край шапки CV */
+  position: relative;
+}
+.cv-download-link{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  cursor: pointer;
+}
+.cv-download-link span{ text-decoration: underline; text-underline-offset: 3px; }
+.cv-download-link img{ filter: none !important; } /* не трогаем иконку PDF */
+
+/* === CV download: desktop popover === */
+.cv-download-pop{
+  position: fixed; /* позиционируем относительно окна, чтобы не уезжала */
+  z-index: 4000;
+  min-width: 320px;
+  max-width: min(92vw, 420px);
+  background: #000;
+  color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 18px 50px rgba(0,0,0,.55), 0 2px 10px rgba(0,0,0,.35);
+  padding: 14px 14px 10px;
+  opacity: 0;
+  transform: translateY(-4px);
+  pointer-events: none;
+  transition: opacity .18s ease, transform .18s ease;
+}
+.cv-download-pop.is-open{
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+.cv-download-pop__title{
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 2px 4px 10px;
+  color: #fff;
+}
+.cv-download-pop__row{
+  display: grid;
+  grid-template-columns: 32px 1fr auto;
+  align-items: center;
+  column-gap: 10px;
+  padding: 8px 6px;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #e7eaf0;
+}
+.cv-download-pop__row:hover,
+.cv-download-pop__row:focus-visible{
+  background: #111214;
+  outline: 2px solid #2b2e33;
+  outline-offset: 2px;
+}
+.cv-download-pop__icon{ width: 32px; height: 32px; display: block; filter: none !important; }
+.cv-download-pop__label{ font-size: .98rem; }
+.cv-download-pop__size{ font-size: .95rem; opacity: .8; }
+
+/* === CV download: mobile overlay (reuse mobile-menu look) === */
+#download-overlay.mobile-menu .mobile-menu__inner{
+  display: grid;
+  align-content: start;
+  gap: 14px;
+  padding-top: clamp(18px, 6vw, 36px);
+}
+#download-overlay .download-list{
+  list-style: none; margin: 0; padding: 0; display: grid; gap: 8px;
+}
+#download-overlay .download-link{
+  display: grid;
+  grid-template-columns: 32px 1fr auto;
+  align-items: center;
+  gap: 12px;
+}
+#download-overlay .download-link .dl-ico{ width: 32px; height: 32px; display: block; filter: none !important; }
+#download-overlay .download-link .dl-size{ opacity: .8; font-size: .95rem; }
+
+/* Без ховеров/ховеров — на мобилке всё по тачу, но оставим фокус-стиль */
+@media (max-width: 980px){
+  .cv-download-pop{ display: none !important; }
+}

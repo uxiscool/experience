@@ -6,9 +6,27 @@ permalink: /cv/
 <div class="container">
 <header class="cv-head">
   <div class="cv-title">Product / UX Designer. Currently in Moscow, Russia</div>
- <p class="cv-download disabled-text">
-  <a href="{{ site.baseurl }}/ui/vladimir_zhukov_eng.pdf" aria-disabled="true"> <img class="cv-download-icon" src="{{ site.baseurl }}/ui/icon_pdf.svg" alt="PDF" width="32" height="32" style="vertical-align:middle; margin-right:8px;">Download PDF</a>
-</p>
+<!-- Download (trigger + popover) -->
+<div class="cv-download-wrap">
+  <a id="cv-download-trigger" class="cv-download-link disabled-text" href="{{ site.baseurl }}/ui/vladimir_zhukov_cv_eng_v1.pdf">
+    <img class="cv-download-icon" src="{{ site.baseurl }}/ui/icon_pdf.svg" alt="PDF" width="32" height="32" aria-hidden="true">
+    <span>Download CV (PDF)</span>
+  </a>
+  <!-- десктопная плашка -->
+  <div id="cv-download-pop" class="cv-download-pop" hidden aria-hidden="true" role="dialog" aria-label="Download CV">
+    <div class="cv-download-pop__title">Download CV (PDF)</div>
+    <a class="cv-download-pop__row" href="{{ site.baseurl }}/vladimir_zhukov_cv_rus_v1.1.pdf">
+      <img class="cv-download-pop__icon" src="{{ site.baseurl }}/ui/icon_download_32.svg" alt="" aria-hidden="true">
+      <span class="cv-download-pop__label">PDF на русском</span>
+      <span class="cv-download-pop__size">1.69&nbsp;MB</span>
+    </a>
+    <a class="cv-download-pop__row" href="{{ site.baseurl }}/vladimir_zhukov_cv_eng_v1.pdf">
+      <img class="cv-download-pop__icon" src="{{ site.baseurl }}/ui/icon_download_32.svg" alt="" aria-hidden="true">
+      <span class="cv-download-pop__label">PDF in English</span>
+      <span class="cv-download-pop__size">1.99&nbsp;MB</span>
+    </a>
+  </div>
+</div>
 </header>
   <section class="cv-grid">
     <!-- ABOUT -->
