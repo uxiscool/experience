@@ -1228,7 +1228,10 @@ body.mm-open{ overflow: hidden; }
 
 /* === CV download: mobile overlay (reuse mobile-menu look) === */
 #download-overlay.mobile-menu .mobile-menu__inner{
+  position: fixed;
   display: grid;
+  inset: 0;
+  z-index: 6000;
   align-content: start;
   gap: 14px;
   padding-top: clamp(18px, 6vw, 36px);
@@ -1252,4 +1255,8 @@ body.mm-open{ overflow: hidden; }
 /* Без ховеров/ховеров — на мобилке всё по тачу, но оставим фокус-стиль */
 @media (max-width: 980px){
   .cv-download-pop{ display: none !important; }
+}
+
+body.mm-open #cv-download-trigger{
+  pointer-events: none;
 }
