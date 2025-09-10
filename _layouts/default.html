@@ -593,20 +593,45 @@ if (location.pathname.replace(/\/+$/, '') === m.pathname.replace(/\/+$/, '')){
 
 (function(){
   var trigger = document.getElementById('cv-download-trigger');
-  var pop = document.getElementById('cv-download-pop');
-  var sheet = document.getElementById('download-overlay');
+  var pop = document.getElementById('cv-download-pop');           // десктоп-плашка
+  var sheet = document.getElementById('download-overlay');        // мобильный лист
   if (!trigger || !pop || !sheet) return;
 
-  var hideTimer = null;
+  // --- ищем кнопку бургера и её иконку (несколько возможных селекторов) ---
+  var burgerBtn = document.getElementById('menu-toggle')
+               || document.querySelector('[aria-controls="mobile-menu"]')
+               || document.querySelector('.nav-toggle, .burger, .menu-toggle');
+  var burgerIcon = burgerBtn ? (burgerBtn.querySelector('img') || burgerBtn) : null;
+
   function isDesktop(){ return window.innerWidth >= 981; }
 
+  function setBurgerIcon(isClose){
+    if (!burgerIcon) return;
+    var base = (window.site && site.baseurl) ? site.baseurl : '{{ site.baseurl }}';
+    // если внутри <img> — меняем src; если svg/use — можно добавить/снять класс is-close
+    if (burgerIcon.tagName === 'IMG'){
+      var menuSrc  = base + '/ui/menu.svg';
+      var closeSrc = base + '/ui/close.svg';
+      burgerIcon.src = isClose ? closeSrc : menuSrc;
+      burgerIcon.alt = isClose ? 'Close' : 'Menu';
+    } else {
+      burgerIcon.classList.toggle('is-close', !!isClose);
+    }
+    // доступность
+    if (burgerBtn){
+      burgerBtn.setAttribute('aria-expanded', isClose ? 'true' : 'false');
+      burgerBtn.setAttribute('aria-label', isClose ? 'Close' : 'Menu');
+    }
+  }
+
+  // --- десктоп поповер ---
+  var hideTimer = null;
   function openPop(){
     var r = trigger.getBoundingClientRect();
     pop.hidden = false;
-    pop.setAttribute('aria-hidden', 'false');
+    pop.setAttribute('aria-hidden','false');
     pop.classList.add('is-open');
 
-    // позиционирование
     var w = pop.offsetWidth, h = pop.offsetHeight;
     var left = r.left, top = r.bottom + 8, pad = 12;
     if (left + w + pad > window.innerWidth) left = window.innerWidth - w - pad;
@@ -617,26 +642,30 @@ if (location.pathname.replace(/\/+$/, '') === m.pathname.replace(/\/+$/, '')){
   }
   function closePop(){
     pop.classList.remove('is-open');
-    pop.setAttribute('aria-hidden', 'true');
+    pop.setAttribute('aria-hidden','true');
     pop.hidden = true;
   }
-function openSheet(){
-  sheet.hidden = false;
-  sheet.classList.add('is-open');        // ← показываем как мобильное меню
-  document.body.classList.add('mm-open');
-  var mobileMenu = document.getElementById('mobile-menu');
-  if (mobileMenu) mobileMenu.hidden = true;
-}
 
-function closeSheet(){
-  sheet.classList.remove('is-open');     // ← снимаем видимость
-  sheet.hidden = true;
-  document.body.classList.remove('mm-open');
-}
+  // --- мобильный лист ---
+  function openSheet(){
+    sheet.hidden = false;
+    sheet.classList.add('is-open');           // важно для показа листа
+    document.body.classList.add('mm-open');
+    setBurgerIcon(true);                      // ← бургер → крестик
+    // если вдруг открыто мобильное меню — прячем его
+    var mobileMenu = document.getElementById('mobile-menu');
+    if (mobileMenu) mobileMenu.hidden = true;
+  }
+  function closeSheet(){
+    sheet.classList.remove('is-open');
+    sheet.hidden = true;
+    document.body.classList.remove('mm-open');
+    setBurgerIcon(false);                     // ← возвращаем бургер
+  }
 
-  // Универсальный клик/тач по триггеру
+  // --- триггер: клик/тач ---
   function onTrigger(e){
-    e.preventDefault(); // никаких переходов
+    e.preventDefault(); // не навигируем по ссылке
     if (isDesktop()){
       clearTimeout(hideTimer);
       openPop();
@@ -647,7 +676,7 @@ function closeSheet(){
   trigger.addEventListener('click', onTrigger, {passive:false});
   trigger.addEventListener('touchend', onTrigger, {passive:false});
 
-  // Десктоп — мягкий hover
+  // --- десктоп hover-поведение ---
   trigger.addEventListener('mouseenter', function(){
     if (!isDesktop()) return;
     clearTimeout(hideTimer); openPop();
@@ -665,7 +694,7 @@ function closeSheet(){
     hideTimer = setTimeout(closePop, 140);
   });
 
-  // Мобайл — закрытие
+  // --- закрытие мобильного листа по клику снаружи и Esc ---
   sheet.addEventListener('click', function(e){
     if (e.target === sheet) closeSheet();
   });
@@ -676,7 +705,19 @@ function closeSheet(){
     a.addEventListener('click', function(){ closeSheet(); });
   });
 
-  // При ресайзе — прибираем состояния
+  // --- бургер: если открыт лист загрузки, первый клик закрывает ЛИСТ, а не открывает меню ---
+  if (burgerBtn){
+    burgerBtn.addEventListener('click', function(e){
+      if (!sheet.hidden){
+        e.preventDefault();
+        e.stopPropagation();
+        closeSheet();
+        // не даём открыть меню этим же кликом — второй клик уже откроет как обычно
+      }
+    }, true); // capture, чтобы перехватить до логики меню
+  }
+
+  // --- при ресайзе убираем открытые состояния ---
   window.addEventListener('resize', function(){
     closePop(); closeSheet();
   });
