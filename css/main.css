@@ -1260,3 +1260,7 @@ body.mm-open{ overflow: hidden; }
 body.mm-open #cv-download-trigger{
   pointer-events: none;
 }
+
+body.mm-open .cv-download-wrap{
+  z-index: 0;
+}
