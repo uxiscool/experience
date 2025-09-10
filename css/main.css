@@ -1173,7 +1173,10 @@ body.mm-open{ overflow: hidden; }
   cursor: pointer;
   pointer-events: auto;   /* на случай глобальных правил */
 }
-.cv-download-link span{ text-decoration: none; }
+.cv-download-link span{ 
+  text-decoration: none;
+  color: #424242; 
+}
 .cv-download-link img{ filter: none !important; } /* не трогаем иконку PDF */
 
 /* === CV download: desktop popover === */
