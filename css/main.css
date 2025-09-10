@@ -1150,7 +1150,7 @@ body.mm-open{ overflow: hidden; }
 .cv-bullets li{
   position: relative;
   margin: 4px 0;
-  padding-left: 1.2em;    /* отступ для чёрточки */
+  padding-left: .8em;    /* отступ для чёрточки */
 }
 .cv-bullets li::before{
   content: "\2043";           /* маркер — длинное тире */

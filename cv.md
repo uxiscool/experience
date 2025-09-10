@@ -43,7 +43,7 @@ permalink: /cv/
     </div>
     <!-- Job: RTLABS -->
     <div class="cv-rail">
-      <span class="cv-company">RTLabs (Gosuslugi)</span><br>
+      <span class="cv-company">RTLabs (Gosuslu)</span><br>
       <span class="cv-dates">May 2022 — Aug 2023</span>
     </div>
     <div class="cv-right">
@@ -146,7 +146,7 @@ permalink: /cv/
     <div class="cv-right"><h2 class="cvsubheading">Side projects</h2></div>
     <div class="cv-rail"></div>
     <div class="cv-right">
-      Figma plugins (Image Compressor, Find-My-Fonts), a prompt-management web service, Task/list manager for Android.
+      Figma plugins (Image Compressor, Find My Fonts), a prompt-management web service, Task/list manager for Android.
     </div>
     <!-- LANGUAGES -->
     <div class="cv-rail"></div>
@@ -169,14 +169,14 @@ permalink: /cv/
 </a></li>
         <li>
           LinkedIn: 
-          <a href="https://linkedin.com/in/uxiscool" target="_blank" rel="noopener">
-            linkedin.com/in/uxiscool
+          <a href="https://linkedin.com/in/uxvladimir" target="_blank" rel="noopener">
+            linkedin.com/in/uxvladimir
           </a>
         </li>
         <li>
           Telegram: 
-          <a href="https://t.me/zloy-cactus" target="_blank" rel="noopener">
-            @zloy-cactus
+          <a href="https://t.me/zloi_cactus" target="_blank" rel="noopener">
+            @zloi_cactus
           </a>
         </li>
       </ul>
