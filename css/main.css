@@ -1171,7 +1171,7 @@ body.mm-open{ overflow: hidden; }
   text-decoration: none;
   cursor: pointer;
 }
-.cv-download-link span{ text-decoration: underline; text-underline-offset: 3px; }
+.cv-download-link span{ text-decoration: none; }
 .cv-download-link img{ filter: none !important; } /* не трогаем иконку PDF */
 
 /* === CV download: desktop popover === */

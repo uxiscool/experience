@@ -601,19 +601,15 @@ if (location.pathname.replace(/\/+$/, '') === m.pathname.replace(/\/+$/, '')){
   var hideTimer = null;
 
   function openPop(){
-    // позиционирование в пределах окна (fixed к вьюпорту)
     var r = trigger.getBoundingClientRect();
     pop.hidden = false;
     pop.setAttribute('aria-hidden', 'false');
     pop.classList.add('is-open');
 
-    // сначала сделать видимым → получить размеры
+    // позиционируем так, чтобы не вылезло за края
     var w = pop.offsetWidth, h = pop.offsetHeight;
-    var left = r.left; 
-    var top = r.bottom + 8;
+    var left = r.left, top = r.bottom + 8, pad = 12;
 
-    // не вылезаем за края окна
-    var pad = 12;
     if (left + w + pad > window.innerWidth) left = window.innerWidth - w - pad;
     if (left < pad) left = pad;
     if (top + h + pad > window.innerHeight) top = Math.max(pad, r.top - h - 8);
@@ -630,7 +626,7 @@ if (location.pathname.replace(/\/+$/, '') === m.pathname.replace(/\/+$/, '')){
   function openSheet(){
     sheet.hidden = false;
     document.body.classList.add('mm-open');
-    // скроем бургер, если открыт
+    // закрываем бургер, если вдруг открыт
     var mobileMenu = document.getElementById('mobile-menu');
     if (mobileMenu) mobileMenu.hidden = true;
   }
@@ -639,60 +635,55 @@ if (location.pathname.replace(/\/+$/, '') === m.pathname.replace(/\/+$/, '')){
     document.body.classList.remove('mm-open');
   }
 
-  // Десктоп: hover-сценарий
-  function bindDesktop(){
-    trigger.addEventListener('mouseenter', function(e){
+  // --- универсальный клик по триггеру ---
+  trigger.addEventListener('click', function(e){
+    e.preventDefault(); // никакой навигации
+    if (MQ.matches){
+      // десктоп: показываем плашку
       clearTimeout(hideTimer);
       openPop();
-    });
-    trigger.addEventListener('mouseleave', function(){
-      clearTimeout(hideTimer);
-      hideTimer = setTimeout(closePop, 140);
-    });
-    pop.addEventListener('mouseenter', function(){
-      clearTimeout(hideTimer);
-    });
-    pop.addEventListener('mouseleave', function(){
-      hideTimer = setTimeout(closePop, 140);
-    });
-
-    // кликом по ссылке — ведём на ENG PDF, как раньше
-    trigger.addEventListener('click', function(e){
-      // разрешаем обычный переход по href у триггера
-    });
-  }
-
-  // Мобильный: по клику открываем лист
-  function bindMobile(){
-    trigger.addEventListener('click', function(e){
-      e.preventDefault();
+    } else {
+      // мобильный: открываем полноэкранный лист
       openSheet();
-    });
-    // закрытие по Esc и по бэкдропу (клик по внешней зоне)
-    sheet.addEventListener('click', function(e){
-      if (e.target === sheet) closeSheet();
-    });
-    document.addEventListener('keydown', function(e){
-      if (e.key === 'Escape' && !sheet.hidden) closeSheet();
-    });
-    // при клике по пунктам — закрываем
-    sheet.querySelectorAll('.download-link').forEach(function(a){
-      a.addEventListener('click', function(){ closeSheet(); });
-    });
-  }
+    }
+  });
 
-  // Переключение режимов
-  if (MQ.matches){ bindDesktop(); } else { bindMobile(); }
-  MQ.addEventListener('change', function(ev){
-    // прибираем состояние и заново биндимся
+  // десктоп: hover-поведение (мягкое скрытие)
+  trigger.addEventListener('mouseenter', function(){
+    if (!MQ.matches) return;
+    clearTimeout(hideTimer);
+    openPop();
+  });
+  trigger.addEventListener('mouseleave', function(){
+    if (!MQ.matches) return;
+    clearTimeout(hideTimer);
+    hideTimer = setTimeout(closePop, 140);
+  });
+  pop.addEventListener('mouseenter', function(){
+    if (!MQ.matches) return;
+    clearTimeout(hideTimer);
+  });
+  pop.addEventListener('mouseleave', function(){
+    if (!MQ.matches) return;
+    hideTimer = setTimeout(closePop, 140);
+  });
+
+  // мобильный: закрытие по клику по бэкдропу и по Esc
+  sheet.addEventListener('click', function(e){
+    if (e.target === sheet) closeSheet();
+  });
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape' && !sheet.hidden) closeSheet();
+  });
+  sheet.querySelectorAll('.download-link').forEach(function(a){
+    a.addEventListener('click', function(){ closeSheet(); });
+  });
+
+  // на изменение брейкпоинта прибираем открытые состояния
+  MQ.addEventListener('change', function(){
     closePop(); closeSheet();
-    var clone = trigger.cloneNode(true);
-    trigger.parentNode.replaceChild(clone, trigger);
-    trigger = clone;
-    if (ev.matches){ bindDesktop(); } else { bindMobile(); }
   });
 })();
 </script>
-
   </body>
 </html>

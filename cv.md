@@ -8,10 +8,10 @@ permalink: /cv/
   <div class="cv-title">Product / UX Designer. Currently in Moscow, Russia</div>
 <!-- Download (trigger + popover) -->
 <div class="cv-download-wrap">
-  <a id="cv-download-trigger" class="cv-download-link disabled-text" href="{{ site.baseurl }}/ui/vladimir_zhukov_cv_eng_v1.pdf">
-    <img class="cv-download-icon" src="{{ site.baseurl }}/ui/icon_pdf.svg" alt="PDF" width="32" height="32" aria-hidden="true">
-    <span>Download CV (PDF)</span>
-  </a>
+<a id="cv-download-trigger" class="cv-download-link disabled-text" href="#" role="button">
+  <img class="cv-download-icon" src="{{ site.baseurl }}/ui/icon_pdf.svg" alt="PDF" width="32" height="32" aria-hidden="true">
+  <span>Download CV (PDF)</span>
+</a>
   <!-- десктопная плашка -->
   <div id="cv-download-pop" class="cv-download-pop" hidden aria-hidden="true" role="dialog" aria-label="Download CV">
     <div class="cv-download-pop__title">Download CV (PDF)</div>
