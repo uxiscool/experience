@@ -50,6 +50,20 @@
 
   </head>
   <body class="{{ page.body_class }}">
+    <!-- Site-wide notice banner -->
+<div id="site-banner" class="site-banner" role="region" aria-label="Site notice" hidden>
+  <div class="site-banner__inner">
+    <div class="site-banner__text">
+      Пока готова только техническая часть сайта-портфолио: данные — плейсхолдеры.
+      Можно посмотреть, как всё работает (сайт на Jekyll, статичный). Контент готовлю,
+      CV — реальные.
+    </div>
+    <button class="site-banner__close" id="siteBannerClose" aria-label="Close notice">
+      <img src="{{ site.baseurl }}/ui/close.svg" alt="" width="18" height="18">
+    </button>
+  </div>
+</div>
+ <!-- Site-wide notice banner end -->
     {% include header.html %}
     <!-- Mobile menu button -->
 <button id="burger" class="burger-btn" aria-label="Open menu" aria-controls="mobile-menu" aria-expanded="false">
@@ -722,6 +736,36 @@ if (location.pathname.replace(/\/+$/, '') === m.pathname.replace(/\/+$/, '')){
     closePop(); closeSheet();
   });
 })();
+
+/* === Site notice banner === */
+(function(){
+  var B = document.getElementById('site-banner');
+  if (!B) return;
+  var CLOSE = document.getElementById('siteBannerClose');
+  var KEY = 'siteBannerDismissed-v1';
+
+  // показать, если не закрывали ранее
+  if (!localStorage.getItem(KEY)) {
+    B.hidden = false;
+    requestAnimationFrame(function(){ B.classList.add('is-visible'); });
+  }
+
+  function hide(){
+    B.classList.remove('is-visible');
+    setTimeout(function(){ B.hidden = true; }, 350);
+  }
+
+  if (CLOSE) CLOSE.addEventListener('click', function(){
+    localStorage.setItem(KEY, '1');
+    hide();
+  });
+
+  // на esc тоже прячем
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape' && B.classList.contains('is-visible')) hide();
+  }, {passive:true});
+})();
+/* === Site notice banner end === */
 </script>
   </body>
 </html>
