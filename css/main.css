@@ -1347,7 +1347,7 @@ html[data-lang="ru"] .i18n-ru { display: initial; }
   left: auto;
   opacity: 1;
   animation: lang-nudge 3.6s ease-out forwards;
-  animation-delay: 3s; /* ← задержка между появлением и стартом движения */
+  animation-delay: 1s; /* ← задержка между появлением и стартом движения */
 }
 
 /* повторные визиты — сразу финал */
