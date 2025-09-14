@@ -53,7 +53,9 @@
 <!-- Корректное определение языка (учёт baseurl) -->
 <script>
 (function(){
-  var isRU = location.pathname.indexOf('/ru/')===0;
+  var base='{{ site.baseurl }}';
+  function stripBase(p){ return p.indexOf(base)===0 ? p.slice(base.length) : p; }
+  var isRU = stripBase(location.pathname).indexOf('/ru/')===0;
   document.documentElement.setAttribute('lang', isRU?'ru':'en');
   document.documentElement.setAttribute('data-lang', isRU?'ru':'en');
 })();
@@ -83,6 +85,103 @@
     <ul id="mobileMenuList" class="mobile-menu__list"></ul>
   </div>
 </nav>
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+  var list = document.getElementById('mobileMenuList');
+  if (!list) return;
+
+  var base='{{ site.baseurl }}';
+  function stripBase(p){ return p.indexOf(base)===0 ? p.slice(base.length) : p; }
+  function norm(u){ return (u||'').replace(/\/+$/,''); }
+  var isRU = stripBase(location.pathname).indexOf('/ru/')===0;
+
+  // 1) Достаём нав-дерево из _data
+  var NAV = {% if page.lang == 'ru' and site.data.navigation_ru %}
+              {{ site.data.navigation_ru | jsonify }}
+            {% elsif page.lang == 'en' and site.data.navigation_en %}
+              {{ site.data.navigation_en | jsonify }}
+            {% elsif site.data.navigation_en %}
+              {{ site.data.navigation_en | jsonify }}
+            {% elsif site.data.navigation_ru %}
+              {{ site.data.navigation_ru | jsonify }}
+            {% else %}
+              {{ site.data.navigation | jsonify }}
+            {% endif %} || [];
+
+  // 2) Рисуем верхний уровень
+  list.innerHTML = '';
+  var worksUrl = isRU ? '/ru/' : '/';
+  var worksNode = null;
+
+  NAV.forEach(function(node){
+    var li = document.createElement('li');
+    var a  = document.createElement('a');
+    a.className = 'mobile-menu__link';
+    a.href = base + (node.url || '/');
+    a.textContent = node.title || '';
+    li.appendChild(a);
+    list.appendChild(li);
+
+    if (norm(node.url) === norm(worksUrl)) worksNode = node;
+  });
+
+  // 3) Если у "Работы/Works" есть дети — добавляем подпункты
+  if (worksNode && Array.isArray(worksNode.children) && worksNode.children.length){
+    // ищем li, к которому крепить сабменю
+    var items = list.querySelectorAll('li > a.mobile-menu__link');
+    items.forEach(function(aEl){
+      if (norm(aEl.getAttribute('href').replace(location.origin,'')) === norm(base + worksUrl)){
+        var ul = document.createElement('ul');
+        ul.className = 'mobile-sub';
+        worksNode.children.forEach(function(ch){
+          var sli = document.createElement('li');
+          var sa  = document.createElement('a');
+          sa.className = 'mobile-menu__link sub';
+          sa.href = base + (ch.url || '#');
+          sa.textContent = ch.title || '';
+          sli.appendChild(sa);
+          ul.appendChild(sli);
+        });
+        aEl.parentElement.appendChild(ul);
+      }
+    });
+  }
+});
+</script>
+<script>
+(function(){
+  var burger = document.getElementById('burger');
+  var menu   = document.getElementById('mobile-menu');
+  if (!burger || !menu) return;
+
+  function openMenu(){
+    menu.hidden = false;
+    menu.setAttribute('aria-hidden','false');
+    burger.setAttribute('aria-expanded','true');
+    document.body.classList.add('lb-lock');
+  }
+  function closeMenu(){
+    menu.setAttribute('aria-hidden','true');
+    burger.setAttribute('aria-expanded','false');
+    document.body.classList.remove('lb-lock');
+    setTimeout(function(){ menu.hidden = true; }, 120);
+  }
+
+  burger.addEventListener('click', function(){
+    var expanded = burger.getAttribute('aria-expanded') === 'true';
+    expanded ? closeMenu() : openMenu();
+  });
+  // клик вне панели — закрыть (если у тебя есть затемнение/скрим)
+  document.addEventListener('click', function(e){
+    if (!menu.contains(e.target) && e.target !== burger && menu.getAttribute('aria-hidden')==='false'){
+      closeMenu();
+    }
+  });
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape') closeMenu();
+  });
+})();
+</script>
 <!-- Download overlay (mobile) -->
 <nav id="download-overlay" class="mobile-menu" hidden aria-label="Download CV">
   <div class="mobile-menu__inner">
