@@ -2,6 +2,8 @@
 layout: default
 title: CV
 permalink: /cv/
+lang: en
+alt_url: /ru/cv/
 ---
 <div class="container">
 <header class="cv-head">

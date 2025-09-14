@@ -1,7 +1,9 @@
 ---
 layout: default
-title: CV
-permalink: /cv/
+title: Резюме
+permalink: /ru/cv/
+lang: ru
+alt_url: /cv/
 ---
 <div class="container">
 <header class="cv-head">

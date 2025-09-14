@@ -1,9 +1,9 @@
 ---
 layout: default
-title: Contact
-permalink: /contact/
-lang: en
-alt_url: /ru/contact/
+title: Контакты
+permalink: /ru/contact/
+lang: ru
+alt_url: /contact/
 body_class: page-contact
 ---
 

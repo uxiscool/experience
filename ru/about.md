@@ -1,7 +1,9 @@
 ---
 layout: default
-title: About
-permalink: /about/
+title: Обо мне
+permalink: /ru/about/
+lang: ru
+alt_url: /about/
 ---
 
 <div class="container">

@@ -2,6 +2,8 @@
 layout: default
 title: About
 permalink: /about/
+lang: en
+alt_url: /ru/about/
 ---
 
 <div class="container">
