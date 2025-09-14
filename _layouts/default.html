@@ -487,117 +487,90 @@ window.PET_GALLERIES = [
 })();
 
 /* ==== Mobile menu (clone .main-menu) ==== */
-(function(){
-  var btn = document.getElementById('burger');
-  var icon = document.getElementById('burgerIcon');
-  var panel = document.getElementById('mobile-menu');
+<script>
+(function buildMobileMenu(){
   var list = document.getElementById('mobileMenuList');
-  if (!btn || !icon || !panel || !list) return;
+  if (!list) return;
 
-  var OPEN_CLASS = 'mm-open';
-  var SRC_MENU = document.querySelector('.main-menu');
-  var btnHomeParent = btn.parentNode;  // куда вернуть кнопку после закрытия
-  var btnNextSibling = btn.nextSibling;
+  var base = '{{ site.baseurl }}'; // напр. '/experience'
+  // убираем baseurl из начала пути, чтобы корректно проверять префиксы
+  function stripBase(p){ return (p.indexOf(base)===0) ? p.slice(base.length) : p; }
 
-   function buildMobileMenu(){
-    list.innerHTML = '';
-    if (!SRC_MENU) return;
+  var pathNoBase = stripBase(location.pathname);
+  var isRU = pathNoBase.indexOf('/ru/') === 0;
 
-    // 1) Собираем все ссылки верхнего уровня
-    var topLinks = Array.from(SRC_MENU.querySelectorAll('a[href]'));
+  // 1) Верхний уровень берём из десктопного меню
+  var topLinks = Array.from(document.querySelectorAll('.main-menu a[href]'));
 
-// 2) Собираем подпункты (если есть на странице) + ФОЛБЭК
-var subLinks = Array.from(document.querySelectorAll('.subnav a[href]'));
-if (!subLinks.length){
-  var isRU = location.pathname.indexOf('/ru/') === 0;
-  // Фолбэк: подменю Works всегда доступно из любого раздела
-  subLinks = [
-    isRU
-      ? { href: '{{ site.baseurl }}/ru/cases/',        text: 'Кейсы' }
-      : { href: '{{ site.baseurl }}/cases/',           text: 'Cases' },
-    isRU
-      ? { href: '{{ site.baseurl }}/ru/pet-projects/', text: 'Пет-проекты' }
-      : { href: '{{ site.baseurl }}/pet-projects/',    text: 'Pet projects' }
-  ].map(function(it){
-    var a = document.createElement('a');
-    a.setAttribute('href', it.href);
-    a.textContent = it.text;
-    return a;
+  // 2) Подпункты: если .subnav есть — используем; иначе даём локализованный фолбэк
+  var subLinks = Array.from(document.querySelectorAll('.subnav a[href]'));
+  if (!subLinks.length){
+    subLinks = [
+      isRU
+        ? { href: base + '/ru/cases/',        text: 'Кейсы' }
+        : { href: base + '/cases/',           text: 'Cases' },
+      isRU
+        ? { href: base + '/ru/pet-projects/', text: 'Пет-проекты' }
+        : { href: base + '/pet-projects/',    text: 'Pet projects' }
+    ].map(function(it){
+      var a = document.createElement('a'); a.href = it.href; a.textContent = it.text; return a;
+    });
+  }
+
+  // 3) Ищем «Работы/Works» по URL, а не по тексту
+  var worksPath = isRU ? (base + '/ru/') : (base + '/');
+  function norm(p){ return (p||'').replace(/\/+$/,''); }
+  var worksIndex = topLinks.findIndex(function(a){
+    return norm(a.pathname) === norm(worksPath);
   });
-}
-// 6) Добавляем языковой пункт ENG/RUS в самый низ мобильного меню
-(function(){
-  var base = '{{ site.baseurl }}';
+
+  // 4) Рендерим список
+  list.innerHTML = '';
+  topLinks.forEach(function(a, i){
+    var li = document.createElement('li');
+    var b = document.createElement('a');
+    b.className = 'mobile-menu__link';
+    b.href = a.getAttribute('href');
+    b.textContent = a.textContent;
+    li.appendChild(b);
+    list.appendChild(li);
+
+    // подвешиваем подпункты прямо под «Работы/Works»
+    if (i === worksIndex && subLinks.length){
+      var ul = document.createElement('ul');
+      ul.className = 'mobile-sub';
+      subLinks.forEach(function(s){
+        var sli = document.createElement('li');
+        var sa = document.createElement('a');
+        sa.className = 'mobile-menu__link sub';
+        sa.href = s.getAttribute('href');
+        sa.textContent = s.textContent;
+        sli.appendChild(sa);
+        ul.appendChild(sli);
+      });
+      li.appendChild(ul);
+    }
+  });
+
+  // 5) Языковой пункт — в самый низ
   var url  = '{{ page.url | default: "/" }}';
   var alt  = '{{ page.alt_url | default: "" }}';
-  var isRU = location.pathname.indexOf('/ru/') === 0;
-
-  var href = alt && alt !== ''
+  var switchHref = alt && alt !== ''
     ? (base + alt)
     : (isRU ? base + url.replace(/^\/ru\//,'/')
             : base + (url === '/' ? '/ru/' : ('/ru' + url)));
+  var switchLabel = isRU ? 'ENG' : 'RUS';
 
-  var label = isRU ? 'ENG' : 'RUS';
-
-  var li = document.createElement('li');
-  var a  = document.createElement('a');
-  a.className = 'mobile-menu__link';
-  a.href = href;
-  a.textContent = label;
-  li.appendChild(a);
-  list.appendChild(li);
+  var langLi = document.createElement('li');
+  var langA  = document.createElement('a');
+  langA.className = 'mobile-menu__link';
+  langA.href = switchHref;
+  langA.textContent = switchLabel;
+  langLi.appendChild(langA);
+  list.appendChild(langLi);
 })();
+</script>
 
-// 3) Определим, к какому пункту в топ-меню подвесить подпункты
-var isRU = location.pathname.indexOf('/ru/') === 0;
-var base = '{{ site.baseurl }}';
-var worksPath = base + (isRU ? '/ru/' : '/'); // корень раздела "Работы/Works"
-var worksIndex = topLinks.findIndex(function(a){
-  // сравниваем нормализованные пути без лишних слешей
-  var p1 = (a.pathname || '').replace(/\/+$/,'');
-  var p2 = worksPath.replace(/\/+$/,'');
-  return p1 === p2;
-});
-
-    // 4) Рендерим верхний уровень
-    topLinks.forEach(function(a, idx){
-      var li = document.createElement('li');
-      var m = document.createElement('a');
-      m.className = 'mobile-menu__link';
-      m.href = a.getAttribute('href');
-      m.textContent = a.textContent.trim();
-if (location.pathname.replace(/\/+$/, '') === m.pathname.replace(/\/+$/, '')){
-  m.classList.add('current');
-}
-
-      m.addEventListener('click', closeMenu);
-      li.appendChild(m);
-
-      // 5) Если это пункт Works и у нас есть подпункты — добавляем подсписок
-      if (idx === worksIndex && subLinks.length){
-        var subUl = document.createElement('ul');
-        subUl.className = 'mobile-menu__sublist';
-
-        subLinks.forEach(function(sa){
-          var sli = document.createElement('li');
-          var s = document.createElement('a');
-          s.className = 'mobile-menu__sublink';
-          s.href = sa.getAttribute('href');
-          s.textContent = sa.textContent.trim();
-          if (location.pathname.replace(/\/+$/, '') === s.pathname.replace(/\/+$/, '')){
-  s.classList.add('current');
-}
-          s.addEventListener('click', closeMenu);
-          sli.appendChild(s);
-          subUl.appendChild(sli);
-        });
-
-        li.appendChild(subUl);
-      }
-
-      list.appendChild(li);
-    });
-  }
 
   function openMenu(){
     if (panel.hasAttribute('hidden')) panel.removeAttribute('hidden');
