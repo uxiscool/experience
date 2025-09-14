@@ -343,7 +343,6 @@ window.PET_GALLERIES = [
 ];
 
 /* ===== Lazy images (pet projects + cases) ===== */
-/* ===== Lazy images (pet projects + cases) ===== */
 /* Надёжный вариант: IO + резервная проверка на scroll/resize/load */
 (function(){
   function markLoaded(img){
@@ -478,32 +477,7 @@ window.PET_GALLERIES = [
   update();
 })();
 
-/* ==== Mobile menu (clone .main-menu) ==== */
-(function(){
-  var btn = document.getElementById('burger');
-  var icon = document.getElementById('burgerIcon');
-  var panel = document.getElementById('mobile-menu');
-  var list = document.getElementById('mobileMenuList');
-  if (!btn || !icon || !panel || !list) return;
-
-  var OPEN_CLASS = 'mm-open';
-
-var SRC_MENU = (function(){
-  var cands = document.querySelectorAll(
-    '.main-menu, header nav, nav[aria-label="Main"], nav[role="navigation"], .site-nav, .header__menu, .header-nav, .navigation, .nav'
-  );
-  for (var i = 0; i < cands.length; i++){
-    var el = cands[i];
-    if (el && el.querySelector('a[href]')) return el;
-  }
-  return null;
-})();
-
-
-  var btnHomeParent = btn.parentNode;  // куда вернуть кнопку после закрытия
-  var btnNextSibling = btn.nextSibling;
-
-/* ==== Mobile menu (clone from YAML data) ==== */
+/* ==== Mobile menu (from YAML data) — ЧИСТАЯ ВЕРСИЯ ==== */
 (function(){
   var btn   = document.getElementById('burger');
   var icon  = document.getElementById('burgerIcon');
@@ -515,33 +489,27 @@ var SRC_MENU = (function(){
   var btnHomeParent = btn.parentNode;
   var btnNextSibling = btn.nextSibling;
 
-  // 1) Нав-данные: берём прямо из YAML (две версии сразу, выберем по URL)
-  // Требуется, чтобы файлы лежали в _data/: navigation_en.yml и navigation_ru.yml
-  // Примеры структуры см. в нав-файлах: main -> [ {title,url, subnav:[...]}, ... ]
+  // нав-данные: выбираем локаль по пути
   var NAV = (function(){
     var RU = {{ site.data.navigation_ru | jsonify }};
     var EN = {{ site.data.navigation_en | jsonify }};
     return (location.pathname.indexOf('/ru/') === 0) ? RU : EN;
   })();
 
-  // Хелперы
+  // helpers
   var BASE = '{{ site.baseurl }}' || '';
   function withBase(u){ return (u && u.charAt(0) === '/') ? (BASE + u) : u; }
   function normPath(p){ return (p || '').replace(/\/+$/,'') || '/'; }
-  function pathOf(href){
-    var a = document.createElement('a'); a.href = href; 
-    return normPath(a.pathname || '');
-  }
+  function pathOf(href){ var a = document.createElement('a'); a.href = href; return normPath(a.pathname || ''); }
   var here = pathOf(location.href);
 
   function buildMobileMenu(){
     list.innerHTML = '';
-    var items = (NAV && NAV.main) || [];           // верхний уровень из YAML
+    var items = (NAV && NAV.main) || [];
 
     items.forEach(function(item){
       var li = document.createElement('li');
 
-      // ссылка верхнего уровня
       var m = document.createElement('a');
       m.className = 'mobile-menu__link';
       m.href = withBase(item.url || '/');
@@ -550,7 +518,6 @@ var SRC_MENU = (function(){
       m.addEventListener('click', closeMenu);
       li.appendChild(m);
 
-      // подпункты (если есть в YAML)
       if (item.subnav && item.subnav.length){
         var subUl = document.createElement('ul');
         subUl.className = 'mobile-menu__sublist';
@@ -606,49 +573,6 @@ var SRC_MENU = (function(){
   else buildMobileMenu();
 })();
 
-  function openMenu(){
-    if (panel.hasAttribute('hidden')) panel.removeAttribute('hidden');
-    panel.classList.add('is-open');
-    document.body.classList.add(OPEN_CLASS);
-    btn.classList.add('is-open');
-    btn.setAttribute('aria-expanded', 'true');
-    icon.src = '{{ site.baseurl }}/ui/close.svg';
-
-    // Переносим кнопку внутрь оверлея, чтобы точно была поверх
-    panel.appendChild(btn);
-
-    window.addEventListener('keydown', onKey, { passive: true });
-  }
-  function closeMenu(){
-    panel.classList.remove('is-open');
-    document.body.classList.remove(OPEN_CLASS);
-    btn.classList.remove('is-open');
-    btn.setAttribute('aria-expanded', 'false');
-    icon.src = '{{ site.baseurl }}/ui/menu.svg';
-
-    // Возвращаем кнопку туда, где она была
-    if (btnHomeParent){
-      if (btnNextSibling) btnHomeParent.insertBefore(btn, btnNextSibling);
-      else btnHomeParent.appendChild(btn);
-    }
-
-    window.removeEventListener('keydown', onKey);
-    requestAnimationFrame(function(){ panel.setAttribute('hidden',''); });
-  }
-  function toggleMenu(){
-    if (document.body.classList.contains(OPEN_CLASS)) closeMenu();
-    else openMenu();
-  }
-  function onKey(e){
-    if (e.key === 'Escape') closeMenu();
-  }
-
-  btn.addEventListener('click', function(e){ e.preventDefault(); toggleMenu(); });
-
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', buildMobileMenu);
-  else buildMobileMenu();
-})();
-
 (function(){
   var trigger = document.getElementById('cv-download-trigger');
   var pop = document.getElementById('cv-download-pop');           // десктоп-плашка
@@ -666,7 +590,6 @@ var SRC_MENU = (function(){
   function setBurgerIcon(isClose){
     if (!burgerIcon) return;
     var base = (window.site && site.baseurl) ? site.baseurl : '{{ site.baseurl }}';
-    // если внутри <img> — меняем src; если svg/use — можно добавить/снять класс is-close
     if (burgerIcon.tagName === 'IMG'){
       var menuSrc  = base + '/ui/menu.svg';
       var closeSrc = base + '/ui/close.svg';
@@ -675,7 +598,6 @@ var SRC_MENU = (function(){
     } else {
       burgerIcon.classList.toggle('is-close', !!isClose);
     }
-    // доступность
     if (burgerBtn){
       burgerBtn.setAttribute('aria-expanded', isClose ? 'true' : 'false');
       burgerBtn.setAttribute('aria-label', isClose ? 'Close' : 'Menu');
@@ -707,10 +629,9 @@ var SRC_MENU = (function(){
   // --- мобильный лист ---
   function openSheet(){
     sheet.hidden = false;
-    sheet.classList.add('is-open');           // важно для показа листа
+    sheet.classList.add('is-open');
     document.body.classList.add('mm-open');
-    setBurgerIcon(true);                      // ← бургер → крестик
-    // если вдруг открыто мобильное меню — прячем его
+    setBurgerIcon(true);
     var mobileMenu = document.getElementById('mobile-menu');
     if (mobileMenu) mobileMenu.hidden = true;
   }
@@ -718,12 +639,11 @@ var SRC_MENU = (function(){
     sheet.classList.remove('is-open');
     sheet.hidden = true;
     document.body.classList.remove('mm-open');
-    setBurgerIcon(false);                     // ← возвращаем бургер
+    setBurgerIcon(false);
   }
 
-  // --- триггер: клик/тач ---
   function onTrigger(e){
-    e.preventDefault(); // не навигируем по ссылке
+    e.preventDefault();
     if (isDesktop()){
       clearTimeout(hideTimer);
       openPop();
@@ -734,7 +654,6 @@ var SRC_MENU = (function(){
   trigger.addEventListener('click', onTrigger, {passive:false});
   trigger.addEventListener('touchend', onTrigger, {passive:false});
 
-  // --- десктоп hover-поведение ---
   trigger.addEventListener('mouseenter', function(){
     if (!isDesktop()) return;
     clearTimeout(hideTimer); openPop();
@@ -752,7 +671,6 @@ var SRC_MENU = (function(){
     hideTimer = setTimeout(closePop, 140);
   });
 
-  // --- закрытие мобильного листа по клику снаружи и Esc ---
   sheet.addEventListener('click', function(e){
     if (e.target === sheet) closeSheet();
   });
@@ -763,19 +681,16 @@ var SRC_MENU = (function(){
     a.addEventListener('click', function(){ closeSheet(); });
   });
 
-  // --- бургер: если открыт лист загрузки, первый клик закрывает ЛИСТ, а не открывает меню ---
   if (burgerBtn){
     burgerBtn.addEventListener('click', function(e){
       if (!sheet.hidden){
         e.preventDefault();
         e.stopPropagation();
         closeSheet();
-        // не даём открыть меню этим же кликом — второй клик уже откроет как обычно
       }
-    }, true); // capture, чтобы перехватить до логики меню
+    }, true); // capture
   }
 
-  // --- при ресайзе убираем открытые состояния ---
   window.addEventListener('resize', function(){
     closePop(); closeSheet();
   });
@@ -788,7 +703,6 @@ var SRC_MENU = (function(){
   var CLOSE = document.getElementById('siteBannerClose');
   var KEY = 'siteBannerDismissed-v1';
 
-  // показать, если не закрывали ранее
   if (!localStorage.getItem(KEY)) {
     B.hidden = false;
     requestAnimationFrame(function(){ B.classList.add('is-visible'); });
@@ -804,7 +718,6 @@ var SRC_MENU = (function(){
     hide();
   });
 
-  // на esc тоже прячем
   document.addEventListener('keydown', function(e){
     if (e.key === 'Escape' && B.classList.contains('is-visible')) hide();
   }, {passive:true});
