@@ -50,6 +50,7 @@
 
   </head>
   <body class="{{ page.body_class }}">
+<!-- Корректное определение языка (учёт baseurl) -->
 <script>
 (function(){
   var isRU = location.pathname.indexOf('/ru/')===0;
@@ -506,57 +507,42 @@ window.PET_GALLERIES = [
     // 1) Собираем все ссылки верхнего уровня
     var topLinks = Array.from(SRC_MENU.querySelectorAll('a[href]'));
 
-// 2) Собираем подпункты (если есть на странице) + ФОЛБЭК
-var subLinks = Array.from(document.querySelectorAll('.subnav a[href]'));
-if (!subLinks.length){
-  var isRU = location.pathname.indexOf('/ru/') === 0;
-  // Фолбэк: подменю Works всегда доступно из любого раздела
-  subLinks = [
-    isRU
-      ? { href: '{{ site.baseurl }}/ru/cases/',        text: 'Кейсы' }
-      : { href: '{{ site.baseurl }}/cases/',           text: 'Cases' },
-    isRU
-      ? { href: '{{ site.baseurl }}/ru/pet-projects/', text: 'Пет-проекты' }
-      : { href: '{{ site.baseurl }}/pet-projects/',    text: 'Pet projects' }
-  ].map(function(it){
+// 2) Подпункты "Работы" — из _data/navigation_{en|ru}.yml
+var base='{{ site.baseurl }}';
+function stripBase(p){ return p.indexOf(base)===0 ? p.slice(base.length) : p; }
+var isRU = stripBase(location.pathname).indexOf('/ru/') === 0;
+
+// нав-дерево текущего языка:
+var NAV = {% if page.lang == 'ru' %}
+            {{ site.data.navigation_ru | jsonify }}
+          {% else %}
+            {{ site.data.navigation_en | jsonify }}
+          {% endif %};
+
+// находим узел "Работы/Works" по url
+var worksUrl = isRU ? '/ru/' : '/';
+function norm(u){ return (u||'').replace(/\/+$/,''); }
+var worksNode = (NAV || []).find(function(n){ return norm(n.url) === norm(worksUrl); });
+
+// строим массив <a> для детей узла
+var subLinks = [];
+if (worksNode && Array.isArray(worksNode.children)) {
+  subLinks = worksNode.children.map(function(ch){
     var a = document.createElement('a');
-    a.setAttribute('href', it.href);
-    a.textContent = it.text;
+    a.setAttribute('href', base + ch.url);
+    a.textContent = ch.title;
     return a;
   });
 }
-// 6) Добавляем языковой пункт ENG/RUS в самый низ мобильного меню
-(function(){
-  var base = '{{ site.baseurl }}';
-  var url  = '{{ page.url | default: "/" }}';
-  var alt  = '{{ page.alt_url | default: "" }}';
-  var isRU = location.pathname.indexOf('/ru/') === 0;
-
-  var href = alt && alt !== ''
-    ? (base + alt)
-    : (isRU ? base + url.replace(/^\/ru\//,'/')
-            : base + (url === '/' ? '/ru/' : ('/ru' + url)));
-
-  var label = isRU ? 'ENG' : 'RUS';
-
-  var li = document.createElement('li');
-  var a  = document.createElement('a');
-  a.className = 'mobile-menu__link';
-  a.href = href;
-  a.textContent = label;
-  li.appendChild(a);
-  list.appendChild(li);
-})();
 
 // 3) Определим, к какому пункту в топ-меню подвесить подпункты
 var isRU = location.pathname.indexOf('/ru/') === 0;
 var base = '{{ site.baseurl }}';
-var worksPath = base + (isRU ? '/ru/' : '/'); // корень раздела "Работы/Works"
+// точное сравнение по пути, с учётом baseurl
+var worksPath = base + (isRU ? '/ru/' : '/');
+function normPath(p){ return (p||'').replace(/\/+$/,''); }
 var worksIndex = topLinks.findIndex(function(a){
-  // сравниваем нормализованные пути без лишних слешей
-  var p1 = (a.pathname || '').replace(/\/+$/,'');
-  var p2 = worksPath.replace(/\/+$/,'');
-  return p1 === p2;
+  return normPath(a.pathname) === normPath(worksPath);
 });
 
     // 4) Рендерим верхний уровень
