@@ -1364,9 +1364,37 @@ html[data-lang="ru"] .i18n-ru { display: initial; }
   100% { top: 18px; right: 18px; opacity: .45; }
 }
 
+
 @media (max-width: 979px){
   .lang-floater{ display:none !important; }
 }
 
+/* ===== NEW: мобильный языковой поплавок в левом нижнем углу ===== */
+.mobile-lang-floater{
+  position: fixed;
+  left: 18px;
+  bottom: 18px;
+  z-index: 1200;                /* выше подложки меню */
+  display: none;                /* показываем только когда меню открыто */
+  padding: 14px 16px;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: 600;
+  letter-spacing: .06em;
+  background: rgba(0,0,0,.35);
+  color: #e7eaf0;
+  border: 1px solid #2b2e33;
+  box-shadow: 0 6px 18px rgba(0,0,0,.35);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  font-size: clamp(1.1rem, 0.95rem + 1.5vw, 1.6rem); /* как пункты меню */
+}
+.mobile-menu.is-open .mobile-lang-floater{
+  display: inline-flex;
+  align-items:center;
+  justify-content:center;
+}
+.mobile-lang-floater:hover{ filter:brightness(1.1); }
+.mobile-lang-floater:focus-visible{ outline:2px solid var(--orange); outline-offset:2px; }
 
 

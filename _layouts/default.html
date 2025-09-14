@@ -73,6 +73,8 @@
     <!-- Опционально: можно поместить сюда логотип/заголовок -->
     <ul id="mobileMenuList" class="mobile-menu__list"></ul>
   </div>
+  <!-- Языковой поплавок внутри мобильного меню -->
+  <a id="mobile-lang" class="mobile-lang-floater" href="#" data-i18n-switch aria-label="Switch language">EN</a>
 </nav>
 <!-- Download overlay (mobile) -->
 <nav id="download-overlay" class="mobile-menu" hidden aria-label="Download CV">
@@ -483,6 +485,7 @@ window.PET_GALLERIES = [
   var icon  = document.getElementById('burgerIcon');
   var panel = document.getElementById('mobile-menu');
   var list  = document.getElementById('mobileMenuList');
+  var langBtn = document.getElementById('mobile-lang');
   if (!btn || !icon || !panel || !list) return;
 
   var OPEN_CLASS = 'mm-open';
@@ -502,6 +505,20 @@ window.PET_GALLERIES = [
   function normPath(p){ return (p || '').replace(/\/+$/,'') || '/'; }
   function pathOf(href){ var a = document.createElement('a'); a.href = href; return normPath(a.pathname || ''); }
   var here = pathOf(location.href);
+
+  function updateLangBtn(){
+    if (!langBtn) return;
+    var path = location.pathname + location.search + location.hash;
+    var isRu = location.pathname.indexOf('/ru/') === 0;
+    var alt = isRu
+      ? path.replace(/^\/ru(\/|$)/, '/')
+      : '/ru' + (path.charAt(0) === '/' ? '' : '/') + path;
+    langBtn.textContent = isRu ? 'EN' : 'RU';
+    langBtn.setAttribute('aria-label', isRu ? 'Switch to English' : 'Переключить на русский');
+    langBtn.href = withBase(alt);
+    // закрываем меню по тапу по переключателю
+    langBtn.addEventListener('click', function(){ closeMenu(); }, {once:true});
+  }
 
   function buildMobileMenu(){
     list.innerHTML = '';
@@ -539,6 +556,8 @@ window.PET_GALLERIES = [
 
       list.appendChild(li);
     });
+
+    updateLangBtn();
   }
 
   function openMenu(){
