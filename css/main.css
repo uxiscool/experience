@@ -1314,7 +1314,7 @@ html[data-lang="en"] .i18n-en { display: initial; }
 html[data-lang="ru"] .i18n-ru { display: initial; }
 
 /* ===== Языковой «поплавок» (RUS/ENG) ===== */
-/* === Language floater: строго ПРАВЫЙ ВЕРХ с коротким «нуджем» === */
+/* === Lang floater: right-top — farther start (×3), slower move (×4), 2s before move === */
 .lang-floater{
   position: fixed;
   z-index: 1000000;
@@ -1328,46 +1328,54 @@ html[data-lang="ru"] .i18n-ru { display: initial; }
   color: #fff;
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
-  transition: opacity .6s ease, top .6s ease, right .6s ease;
-  /* ФИНАЛ: правый верх */
+  /* финальная точка (не меняем) */
   top: 16px;
   right: 18px;
   opacity: .45;
 }
 .lang-floater:hover{ opacity: .9; }
 
-/* старт перед первым показом (через 2с) */
+/* до появления */
 .lang-floater.pre{ opacity: 0; pointer-events: none; }
 
-/* ПЕРВЫЙ показ в сессии: появиться и «подползти» ближе к углу */
+/* ПЕРВЫЙ показ за сессию:
+   появляется в стартовой точке (×3 дальше от угла),
+   затем ждёт 2s и едет к финалу 3.6s */
 .lang-floater.intro{
-  top: 20px;    /* старт немного ниже */
-  right: 26px;  /* и чуть левее от края */
-  left: auto;   /* на всякий случай — левый не используем */
+  top: 28px;     /* было 20px → ×3 от финального отступа (16px → +12px) */
+  right: 42px;   /* было 26px → ×3 от финального отступа (18px → +24px) */
+  left: auto;
   opacity: 1;
-  animation: lang-nudge .9s ease-out forwards;
+  animation: lang-nudge 3.6s ease-out forwards;
+  animation-delay: 2s; /* ← задержка между появлением и стартом движения */
 }
 
-/* Повторные визиты — сразу финал */
-.lang-floater.settled{ top: 16px; right: 18px; opacity: .45; }
+/* повторные визиты — сразу финал */
+.lang-floater.settled{
+  top: 16px;
+  right: 18px;
+  opacity: .45;
+}
 
-/* Небольшой нудж к самому углу + лёгкое притухание */
+/* короткий «нудж» ТОЛЬКО внутри правого верхнего угла */
 @keyframes lang-nudge{
-  0%   { top: 20px; right: 26px; opacity: 1; }
-  60%  { top: 17px; right: 20px; opacity: .70; }
+  0%   { top: 28px; right: 42px; opacity: 1; }
+  60%  { top: 18px; right: 24px; opacity: .70; }
   100% { top: 16px; right: 18px; opacity: .45; }
 }
 
+/* Мобилки: финал прежний (14/12), старт ×3 дальше */
 @media (max-width: 600px){
   .lang-floater,
   .lang-floater.settled { top: 14px; right: 12px; }
-  .lang-floater.intro   { top: 18px; right: 20px; }
+  .lang-floater.intro   { top: 26px; right: 36px; } /* 14→+12; 12→+24 */
   @keyframes lang-nudge{
-    0%   { top: 18px; right: 20px; opacity: 1; }
-    60%  { top: 15px; right: 14px; opacity: .70; }
+    0%   { top: 26px; right: 36px; opacity: 1; }
+    60%  { top: 16px; right: 18px; opacity: .70; }
     100% { top: 14px; right: 12px; opacity: .45; }
   }
 }
+
 
 
 
