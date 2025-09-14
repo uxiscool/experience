@@ -1,14 +1,14 @@
 ---
 layout: default
-title: Pet projects
-permalink: /pet-projects/
-lang: en
-alt_url: /ru/pet-projects/
+title: Пет-проекты
+permalink: /ru/pet-projects/
+lang: ru
+alt_url: /pet-projects/
 ---
 
 <div class="pet-meta">
   <div class="case-summary2">
-    Side projects, experiments and&nbsp;&ldquo;little joys&rdquo; where you&nbsp;can quickly try&nbsp;out ideas and&nbsp;roll them out into&nbsp;the&nbsp;world.
+    Сайд-проекты, эксперименты и «маленькие радости», где можно быстро пробовать идеи и выпускать их в мир.
   </div>
 </div>
 
@@ -36,12 +36,12 @@ alt_url: /ru/pet-projects/
     <article class="pp-card">
       <header class="pp-header">
         {% if p.icon %}<img class="pp-icon" src="{{ site.baseurl }}{{ p.icon }}" alt="">{% endif %}
-        <h3 class="pp-title">{{ p.title }}</h3>
+        <h3 class="pp-title">{{ p.title_ru | default: p.title }}</h3>
       </header>
       <div class="pp-body">
         <div class="pp-media">
           {% if thumb_src %}
-            <a class="pp-media-link" href="javascript:void(0)" onclick="openPetGallery({{ forloop.index0 }}, 0)" aria-label="Open gallery">
+            <a class="pp-media-link" href="javascript:void(0)" onclick="openPetGallery({{ forloop.index0 }}, 0)" aria-label="Открыть галерею">
               <img class="lazy-img" decoding="async" data-src="{{ site.baseurl }}{{ thumb_src }}" alt="">
               <noscript><img src="{{ site.baseurl }}{{ thumb_src }}" alt=""></noscript>
             </a>
@@ -49,8 +49,8 @@ alt_url: /ru/pet-projects/
         </div>
         <div class="pp-side">
           <div class="pp-text">
-            {% if p.subtitle %}<div class="pp-subtitle">{{ p.subtitle }}</div>{% endif %}
-            {% if p.desc %}<div class="pp-desc">{{ p.desc }}</div>{% endif %}
+            {% if p.subtitle or p.subtitle_ru %}<div class="pp-subtitle">{{ p.subtitle_ru | default: p.subtitle }}</div>{% endif %}
+            {% if p.desc or p.desc_ru %}<div class="pp-desc">{{ p.desc_ru | default: p.desc }}</div>{% endif %}
           </div>
           <div class="pp-footer">
             {% if p.kind %}<div class="pp-kind">{{ p.kind }}</div>{% endif %}
@@ -67,5 +67,3 @@ alt_url: /ru/pet-projects/
     </article>
   {%- endfor -%}
 </div>
-
-<!-- лайтбокс — общий, подключается в default.html -->

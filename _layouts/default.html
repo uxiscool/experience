@@ -50,6 +50,14 @@
 
   </head>
   <body class="{{ page.body_class }}">
+    <script>
+(function(){
+  var isRU = location.pathname.startsWith('{{ site.baseurl }}/ru/');
+  document.documentElement.setAttribute('lang', isRU ? 'ru' : 'en');
+  document.documentElement.setAttribute('data-lang', isRU ? 'ru' : 'en');
+})();
+</script>
+
     <!-- Site-wide notice banner -->
 <div id="site-banner" class="site-banner" role="region" aria-label="Site notice" hidden>
   <div class="site-banner__inner">

@@ -1307,3 +1307,70 @@ body.mm-open .cv-download-wrap{
   .site-banner__text{ font-size:.95rem; }
 }
 /* === Site-wide notice banner end=== */
+
+/* ===== i18n helpers (если ещё не добавляли) ===== */
+.i18n-en, .i18n-ru { display: none; }
+html[data-lang="en"] .i18n-en { display: initial; }
+html[data-lang="ru"] .i18n-ru { display: initial; }
+
+/* ===== Языковой «поплавок» (RUS/ENG) ===== */
+.lang-floater{
+  position: fixed;
+  z-index: 9999;
+  text-decoration: none;
+  font-weight: 600;
+  letter-spacing: .06em;
+  padding: 8px 12px;
+  border-radius: 10px;
+  background: rgba(0,0,0,.35);
+  color: #fff;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  transition: opacity .6s ease, transform .6s ease;
+  /* финальная позиция у левого верхнего угла */
+  top: 18px;
+  left: 56px;
+  opacity: .45;
+}
+
+.lang-floater:hover{
+  opacity: .9;
+}
+
+/* стартовое «pre» — спрятано до показа */
+.lang-floater.pre{
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* intro: появление в правом верхнем, затем «переезд» */
+.lang-floater.intro{
+  /* Старт в правом верхнем */
+  top: 16px;
+  right: 18px;
+  left: auto;
+  opacity: 1;
+  animation: lang-drift 1.4s ease-in-out forwards .05s;
+}
+
+/* повторные визиты: сразу финал */
+.lang-floater.settled{
+  opacity: .45;
+}
+
+/* ключевые кадры: правый верх → левый верх + выцветание */
+@keyframes lang-drift{
+  0%   { top: 16px; right: 18px; left: auto; opacity: 1; transform: translateX(0); }
+  60%  { top: 18px; right: 18px; left: auto; opacity: .75; transform: translateX(-22vw); }
+  100% { top: 18px; left: 56px; right: auto; opacity: .45; transform: translateX(0); }
+}
+
+/* На очень узких экранах чуть меньше уезжаем */
+@media (max-width: 600px){
+  @keyframes lang-drift{
+    0%   { top: 12px; right: 12px; left: auto; opacity: 1; transform: translateX(0); }
+    60%  { top: 14px; right: 12px; left: auto; opacity: .75; transform: translateX(-38vw); }
+    100% { top: 14px; left: 20px; right: auto; opacity: .45; transform: translateX(0); }
+  }
+}
+

@@ -1,9 +1,9 @@
 ---
 layout: default
-title: Cases
-permalink: /cases/
-lang: en
-alt_url: /ru/cases/
+title: Кейсы
+permalink: /ru/cases/
+lang: ru
+alt_url: /cases/
 ---
 
 <div class="featured-cases">
@@ -21,7 +21,7 @@ alt_url: /ru/cases/
 
         <div class="case-meta2">
           <div class="case-title-row">
-            <h2 class="case-title3">{{ c.title }}</h2>
+            <h2 class="case-title3">{{ c.title_ru | default: c.title }}</h2>
           </div>
 
           <div class="case-meta2-inline">
@@ -30,7 +30,7 @@ alt_url: /ru/cases/
             {% if c.type %}<span class="case-type">{{ c.type }}</span>{% endif %}
           </div>
 
-          {% if c.summary %}<div class="case-summary2">{{ c.summary }}</div>{% endif %}
+          <div class="case-summary2">{{ c.summary_ru | default: c.summary }}</div>
         </div>
 
         {% if c.stages %}
@@ -38,9 +38,10 @@ alt_url: /ru/cases/
             {% for st in c.stages %}
               {% for img in st.images %}
                 {% assign src = img.src | default: img.file | prepend: c.images_base | default: img.src %}
+                {% assign cap = img.caption_ru | default: img.caption %}
                 <div class="case-gallery-item">
                   <img class="case-thumb2 lazy-img" data-src="{{ site.baseurl }}{{ src }}" alt="">
-                  {% if img.caption %}<div class="case-thumb-caption">{{ img.caption }}</div>{% endif %}
+                  {% if cap %}<div class="case-thumb-caption">{{ cap }}</div>{% endif %}
                 </div>
               {% endfor %}
             {% endfor %}

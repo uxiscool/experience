@@ -1,0 +1,14 @@
+main:
+  - title: Works
+    url: /
+    subnav:
+      - title: Cases
+        url: /cases/
+      - title: Pet projects
+        url: /pet-projects/
+  - title: About
+    url: /about/
+  - title: CV
+    url: /cv/
+  - title: Contact
+    url: /contact/

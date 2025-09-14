@@ -1,10 +1,10 @@
 title: Vladimir Zhukov
 description: Portfolio
-baseurl: "/experience" # не трогай если в корне
-url: ""     # не трогай если в Pages
+baseurl: "/experience"
+url: ""
+
 collections:
   cases:
-    output: true
+    output: false
   petprojects:
-    output: true
-    permalink: /pet/:name/
+    output: false

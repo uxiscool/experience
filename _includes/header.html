@@ -1,15 +1,41 @@
 <div class="nav-wrapper">
   <header>
-   <div class="logo">
-  <a href="{{ site.baseurl }}/">
-    <img src="{{ site.baseurl }}/ui/logo_en.svg" alt="Vladimir Zhukov logo" class="logo-img">
-  </a>
-</div>
+    {% comment %}
+      Язык страницы:
+      - берём page.lang, если есть
+      - иначе считаем 'ru', если url начинается с /ru/, иначе 'en'
+    {% endcomment %}
+    {% assign __lang = page.lang | default: 'auto' %}
+    {% if __lang == 'auto' %}
+      {% if page.url and page.url | slice: 0,4 == '/ru/' %}
+        {% assign cur_lang = 'ru' %}
+      {% else %}
+        {% assign cur_lang = 'en' %}
+      {% endif %}
+    {% else %}
+      {% assign cur_lang = __lang %}
+    {% endif %}
+
+    {% comment %} Логотип по языку {% endcomment %}
+    <div class="logo">
+      <a href="{{ site.baseurl }}{% if cur_lang == 'ru' %}/ru/{% else %}/{% endif %}">
+        <img
+          src="{{ site.baseurl }}{% if cur_lang == 'ru' %}/ui/logo_ru.svg{% else %}/ui/logo_en.svg{% endif %}"
+          alt="Logo"
+          class="logo-img">
+      </a>
+    </div>
+
     <div class="menu-panel">
       <div class="menu-block">
+
+        {% comment %} Навигация из data-файла по языку, с fallback на legacy navigation.yml {% endcomment %}
+        {% assign nav_key = 'navigation_' | append: cur_lang %}
+        {% assign nav_data = site.data[nav_key] | default: site.data.navigation %}
+        {% assign nav = nav_data.main %}
+        {% assign pageurl = page.url %}
+
         <nav class="main-menu">
-          {% assign nav = site.data.navigation.main %}
-          {% assign pageurl = page.url %}
           {% for item in nav %}
             {% assign is_current = false %}
             {% if item.url == pageurl %}
@@ -26,18 +52,21 @@
             <a href="{{ site.baseurl }}{{ item.url }}" class="menu-link{% if is_current %} current{% endif %}">{{ item.title }}</a>
           {% endfor %}
         </nav>
-        {%- assign current_main = nav | where: "url", pageurl | first -%}
-        {%- unless current_main -%}
-          {%- for item in nav -%}
-            {%- if item.subnav -%}
-              {%- for sub in item.subnav -%}
-                {%- if sub.url == pageurl -%}
-                  {%- assign current_main = item -%}
-                {%- endif -%}
-              {%- endfor -%}
-            {%- endif -%}
-          {%- endfor -%}
-        {%- endunless -%}
+
+        {% comment %} Сабнавигация — как было {% endcomment %}
+        {%- assign current_main = nil -%}
+        {%- for item in nav -%}
+          {%- if item.url == pageurl -%}
+            {%- assign current_main = item -%}
+          {%- elsif item.subnav -%}
+            {%- for sub in item.subnav -%}
+              {%- if sub.url == pageurl -%}
+                {%- assign current_main = item -%}
+              {%- endif -%}
+            {%- endfor -%}
+          {%- endif -%}
+        {%- endfor -%}
+
         {%- if current_main and current_main.subnav -%}
           <nav class="subnav">
             {% for sub in current_main.subnav %}
@@ -45,7 +74,62 @@
             {% endfor %}
           </nav>
         {%- endif -%}
+
       </div>
     </div>
   </header>
 </div>
+
+{%- comment -%}
+  Плавающий переключатель языка (RUS / ENG):
+  - первый показ за СЕССИЮ: через 2s в правом верхнем углу → плавный перезд к финальной позиции у левого верхнего угла с "выцветанием"
+  - повторные визиты в этой сессии: сразу в финальном месте и блеклый
+{%- endcomment -%}
+<a id="lang-floater" class="lang-floater" href="#"></a>
+
+<script>
+(function(){
+  var KEY = 'langIntroSeen'; // sessionStorage — «интро уже показывали?»
+  var seen = false;
+  try { seen = sessionStorage.getItem(KEY) === '1'; } catch(e){}
+
+  // Текущий язык + URL альтернативы
+  var cur = '{{ cur_lang }}';
+  var otherLabel = (cur === 'ru') ? 'ENG' : 'RUS';
+  var url = '{{ page.url | default: "/" }}';
+  var alt = '{{ page.alt_url | default: "" }}';
+  var base = '{{ site.baseurl }}';
+
+  // Если alt_url есть — ведём туда; иначе «умная» замена префикса
+  var otherUrl;
+  if (alt && alt !== '') {
+    otherUrl = base + alt;
+  } else {
+    if (cur === 'ru') {
+      otherUrl = base + (url.replace(/^\/ru\//, '/'));
+    } else {
+      otherUrl = base + (url === '/' ? '/ru/' : ('/ru' + url));
+    }
+  }
+
+  var el = document.getElementById('lang-floater');
+  if (!el) return;
+  el.textContent = otherLabel;
+  el.href = otherUrl;
+
+  if (seen) {
+    // Сразу финальное состояние
+    el.classList.add('settled');
+    return;
+  }
+
+  // Первый раз в сессии: отложенный показ и анимация
+  el.classList.add('pre'); // невидимая точка старта (правый верх)
+  setTimeout(function(){
+    el.classList.remove('pre');
+    el.classList.add('intro'); // показать в правом верхнем, затем по CSS поедет к финалу
+    // отметим как показанный
+    try { sessionStorage.setItem(KEY, '1'); } catch(e){}
+  }, 2000);
+})();
+</script>

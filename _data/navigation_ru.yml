@@ -1,0 +1,14 @@
+main:
+  - title: Работы
+    url: /ru/
+    subnav:
+      - title: Кейсы
+        url: /ru/cases/
+      - title: Пет-проекты
+        url: /ru/pet-projects/
+  - title: Обо мне
+    url: /ru/about/
+  - title: Резюме
+    url: /ru/cv/
+  - title: Контакты
+    url: /ru/contact/
