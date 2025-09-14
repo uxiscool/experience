@@ -1359,8 +1359,8 @@ html[data-lang="ru"] .i18n-ru { display: initial; }
 
 /* короткий «нудж» ТОЛЬКО внутри правого верхнего угла */
 @keyframes lang-nudge{
-  0%   { top: 50px; right: 50px; opacity: 1; }
-  60%  { top: 45px; right: 45px; opacity: .70; }
+  0%   { top: 35px; right: 40px; opacity: 1; }
+  60%  { top: 29px; right: 38px; opacity: .40; }
   100% { top: 24px; right: 18px; opacity: .35; }
 }
 
