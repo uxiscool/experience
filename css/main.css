@@ -1329,9 +1329,9 @@ html[data-lang="ru"] .i18n-ru { display: initial; }
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
   /* финальная точка (не меняем) */
-  top: 18px;
+  top: 24px;
   right: 18px;
-  opacity: .45;
+  opacity: .35;
 }
 .lang-floater:hover{ opacity: .9; }
 
@@ -1342,30 +1342,30 @@ html[data-lang="ru"] .i18n-ru { display: initial; }
    появляется в стартовой точке (×3 дальше от угла),
    затем ждёт 2s и едет к финалу 3.6s */
 .lang-floater.intro{
-  top: 50px;     /* было 20px → ×3 от финального отступа (16px → +12px) */
-  right: 50px;   /* было 26px → ×3 от финального отступа (18px → +24px) */
+  top: 35px;     /* было 20px → ×3 от финального отступа (16px → +12px) */
+  right: 40px;   /* было 26px → ×3 от финального отступа (18px → +24px) */
   left: auto;
   opacity: 1;
-  animation: lang-nudge 3.6s ease-out forwards;
+  animation: lang-nudge 2s ease-out forwards;
   animation-delay: 1s; /* ← задержка между появлением и стартом движения */
 }
 
 /* повторные визиты — сразу финал */
 .lang-floater.settled{
-  top: 18px;
+  top: 24px;
   right: 18px;
-  opacity: .45;
+  opacity: .35;
 }
 
 /* короткий «нудж» ТОЛЬКО внутри правого верхнего угла */
 @keyframes lang-nudge{
   0%   { top: 50px; right: 50px; opacity: 1; }
-  60%  { top: 25px; right: 25px; opacity: .70; }
-  100% { top: 18px; right: 18px; opacity: .45; }
+  60%  { top: 45px; right: 45px; opacity: .70; }
+  100% { top: 24px; right: 18px; opacity: .35; }
 }
 
 
-@media (max-width: 979px){
+@media (max-width: 980px){
   .lang-floater{ display:none !important; }
 }
 
