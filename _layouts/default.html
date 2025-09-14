@@ -503,63 +503,65 @@ var SRC_MENU = (function(){
   var btnHomeParent = btn.parentNode;  // куда вернуть кнопку после закрытия
   var btnNextSibling = btn.nextSibling;
 
-   function buildMobileMenu(){
+/* ==== Mobile menu (clone from YAML data) ==== */
+(function(){
+  var btn   = document.getElementById('burger');
+  var icon  = document.getElementById('burgerIcon');
+  var panel = document.getElementById('mobile-menu');
+  var list  = document.getElementById('mobileMenuList');
+  if (!btn || !icon || !panel || !list) return;
+
+  var OPEN_CLASS = 'mm-open';
+  var btnHomeParent = btn.parentNode;
+  var btnNextSibling = btn.nextSibling;
+
+  // 1) Нав-данные: берём прямо из YAML (две версии сразу, выберем по URL)
+  // Требуется, чтобы файлы лежали в _data/: navigation_en.yml и navigation_ru.yml
+  // Примеры структуры см. в нав-файлах: main -> [ {title,url, subnav:[...]}, ... ]
+  var NAV = (function(){
+    var RU = {{ site.data.navigation_ru | jsonify }};
+    var EN = {{ site.data.navigation_en | jsonify }};
+    return (location.pathname.indexOf('/ru/') === 0) ? RU : EN;
+  })();
+
+  // Хелперы
+  var BASE = '{{ site.baseurl }}' || '';
+  function withBase(u){ return (u && u.charAt(0) === '/') ? (BASE + u) : u; }
+  function normPath(p){ return (p || '').replace(/\/+$/,'') || '/'; }
+  function pathOf(href){
+    var a = document.createElement('a'); a.href = href; 
+    return normPath(a.pathname || '');
+  }
+  var here = pathOf(location.href);
+
+  function buildMobileMenu(){
     list.innerHTML = '';
-    if (!SRC_MENU) return;
+    var items = (NAV && NAV.main) || [];           // верхний уровень из YAML
 
-    // 1) Собираем все ссылки верхнего уровня
-    var topLinks = Array.from(SRC_MENU.querySelectorAll('a[href]'));
-
-  // 2) Собираем подпункты (если есть на странице) + ФОЛБЭК
-var subLinks = Array.from(document.querySelectorAll('.subnav a[href]'));
-if (!subLinks.length){
-  // Фолбэк: подменю Works всегда доступно из любого раздела
-  subLinks = [
-    { href: '{{ site.baseurl }}/cases/',         text: 'Cases' },
-    { href: '{{ site.baseurl }}/pet-projects/',  text: 'Pet projects' }
-  ].map(function(it){
-    var a = document.createElement('a');
-    a.setAttribute('href', it.href);
-    a.textContent = it.text;
-    return a;
-  });
-}
-
-    // 3) Определим, к какому пункту в топ-меню подвесить подпункты:
-    //    ищем пункт, название которого похоже на "Works"
-var worksIndex = topLinks.findIndex(function(a){
-  var t = (a.textContent || '').trim().toLowerCase();
-  return /(work|case|работ|портф|проекты)/.test(t);
-});
-
-    // 4) Рендерим верхний уровень
-    topLinks.forEach(function(a, idx){
+    items.forEach(function(item){
       var li = document.createElement('li');
+
+      // ссылка верхнего уровня
       var m = document.createElement('a');
       m.className = 'mobile-menu__link';
-      m.href = a.getAttribute('href');
-      m.textContent = a.textContent.trim();
-if (location.pathname.replace(/\/+$/, '') === m.pathname.replace(/\/+$/, '')){
-  m.classList.add('current');
-}
-
+      m.href = withBase(item.url || '/');
+      m.textContent = item.title || '';
+      if (here === pathOf(m.href)) m.classList.add('current');
       m.addEventListener('click', closeMenu);
       li.appendChild(m);
 
-      // 5) Если это пункт Works и у нас есть подпункты — добавляем подсписок
-      if (idx === worksIndex && subLinks.length){
+      // подпункты (если есть в YAML)
+      if (item.subnav && item.subnav.length){
         var subUl = document.createElement('ul');
         subUl.className = 'mobile-menu__sublist';
 
-        subLinks.forEach(function(sa){
+        item.subnav.forEach(function(sub){
           var sli = document.createElement('li');
           var s = document.createElement('a');
           s.className = 'mobile-menu__sublink';
-          s.href = sa.getAttribute('href');
-          s.textContent = sa.textContent.trim();
-          if (location.pathname.replace(/\/+$/, '') === s.pathname.replace(/\/+$/, '')){
-  s.classList.add('current');
-}
+          s.href = withBase(sub.url || '/');
+          s.textContent = sub.title || '';
+          if (here === pathOf(s.href)) s.classList.add('current');
           s.addEventListener('click', closeMenu);
           sli.appendChild(s);
           subUl.appendChild(sli);
@@ -571,6 +573,38 @@ if (location.pathname.replace(/\/+$/, '') === m.pathname.replace(/\/+$/, '')){
       list.appendChild(li);
     });
   }
+
+  function openMenu(){
+    if (panel.hasAttribute('hidden')) panel.removeAttribute('hidden');
+    panel.classList.add('is-open');
+    document.body.classList.add(OPEN_CLASS);
+    btn.classList.add('is-open');
+    btn.setAttribute('aria-expanded', 'true');
+    icon.src = '{{ site.baseurl }}/ui/close.svg';
+    panel.appendChild(btn);
+    window.addEventListener('keydown', onKey, { passive: true });
+  }
+  function closeMenu(){
+    panel.classList.remove('is-open');
+    document.body.classList.remove(OPEN_CLASS);
+    btn.classList.remove('is-open');
+    btn.setAttribute('aria-expanded', 'false');
+    icon.src = '{{ site.baseurl }}/ui/menu.svg';
+    if (btnHomeParent){
+      if (btnNextSibling) btnHomeParent.insertBefore(btn, btnNextSibling);
+      else btnHomeParent.appendChild(btn);
+    }
+    window.removeEventListener('keydown', onKey);
+    requestAnimationFrame(function(){ panel.setAttribute('hidden',''); });
+  }
+  function toggleMenu(){ if (document.body.classList.contains(OPEN_CLASS)) closeMenu(); else openMenu(); }
+  function onKey(e){ if (e.key === 'Escape') closeMenu(); }
+
+  btn.addEventListener('click', function(e){ e.preventDefault(); toggleMenu(); });
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', buildMobileMenu);
+  else buildMobileMenu();
+})();
 
   function openMenu(){
     if (panel.hasAttribute('hidden')) panel.removeAttribute('hidden');
@@ -775,7 +809,6 @@ if (location.pathname.replace(/\/+$/, '') === m.pathname.replace(/\/+$/, '')){
     if (e.key === 'Escape' && B.classList.contains('is-visible')) hide();
   }, {passive:true});
 })();
-/* === Site notice banner end === */
 </script>
   </body>
 </html>
