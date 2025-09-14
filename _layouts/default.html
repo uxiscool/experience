@@ -139,6 +139,53 @@
 })();
 
 /* ===== Lightbox ===== */
+
+// Fallback для страниц кейсов: клики по .case-gallery → лайтбокс с локальными картинками
+(function(){
+  document.addEventListener('click', function(e){
+    var img = e.target.closest('.case-gallery .case-thumb2');
+    if (!img) return;
+
+    e.preventDefault();
+
+    var wrap = img.closest('.case-gallery');
+    if (!wrap) return;
+
+    var imgs = Array.prototype.slice.call(wrap.querySelectorAll('.case-thumb2'));
+    var arr = imgs.map(function(el){
+      return {
+        src: el.getAttribute('data-src') || el.src || '',
+        caption: el.getAttribute('alt') || ''
+      };
+    });
+    var idx = Math.max(0, imgs.indexOf(img));
+    window.openLightbox(arr, idx);
+  });
+})();
+
+// Fallback для pet projects: клики по превью карточек → openPetGallery
+(function(){
+  function wirePetCards(){
+    var cards = document.querySelectorAll('.pp-grid .pp-card');
+    cards.forEach(function(card, i){
+      var clickable = card.querySelector('.pp-media-link, .pp-media img');
+      if (!clickable || clickable.dataset.lbWired) return;
+
+      clickable.dataset.lbWired = '1';
+      clickable.addEventListener('click', function(ev){
+        if (clickable.tagName === 'A') ev.preventDefault(); // не уходим по ссылке
+        if (window.openPetGallery) window.openPetGallery(i, 0);
+      });
+    });
+  }
+
+  if (document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', wirePetCards);
+  } else {
+    wirePetCards();
+  }
+})();
+
 (function(){
   var LIGHTBOX = document.getElementById('lightbox');
   var IMG = document.getElementById('lightbox-img');
