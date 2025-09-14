@@ -1,37 +1,14 @@
 <div class="nav-wrapper">
   <header>
-    <div class="logo">
-      <a href="{{ site.baseurl }}/">
-        <img src="{{ site.baseurl }}/ui/logo_en.svg" alt="Vladimir Zhukov logo" class="logo-img">
-      </a>
-    </div>
-
+   <div class="logo">
+  <a href="{{ site.baseurl }}/">
+    <img src="{{ site.baseurl }}/ui/logo_en.svg" alt="Vladimir Zhukov logo" class="logo-img">
+  </a>
+</div>
     <div class="menu-panel">
       <div class="menu-block">
-
-        {% assign __lang = page.lang | default: 'auto' %}
-        {% if __lang == 'auto' %}
-          {% if page.url and page.url | slice: 0,4 == '/ru/' %}
-            {% assign cur_lang = 'ru' %}
-          {% else %}
-            {% assign cur_lang = 'en' %}
-          {% endif %}
-        {% else %}
-          {% assign cur_lang = __lang %}
-        {% endif %}
-
-        {% comment %}
-          2) Подхватываем навигацию из нужного data-файла.
-             Fallback: если вдруг файла нет — берём старый navigation.yml.
-        {% endcomment %}
-        {% assign nav_key = 'navigation_' | append: cur_lang %}
-        {% assign nav_data = site.data[nav_key] %}
-        {% if nav_data == nil %}
-          {% assign nav_data = site.data.navigation %}
-        {% endif %}
-
         <nav class="main-menu">
-          {% assign nav = nav_data.main %}
+          {% assign nav = site.data.navigation.main %}
           {% assign pageurl = page.url %}
           {% for item in nav %}
             {% assign is_current = false %}
@@ -49,23 +26,18 @@
             <a href="{{ site.baseurl }}{{ item.url }}" class="menu-link{% if is_current %} current{% endif %}">{{ item.title }}</a>
           {% endfor %}
         </nav>
-
-        {%- comment -%}
-          3) Подсветка сабнава — как было.
-        {%- endcomment -%}
-        {%- assign current_main = nil -%}
-        {%- for item in nav -%}
-          {%- if item.url == pageurl -%}
-            {%- assign current_main = item -%}
-          {%- elsif item.subnav -%}
-            {%- for sub in item.subnav -%}
-              {%- if sub.url == pageurl -%}
-                {%- assign current_main = item -%}
-              {%- endif -%}
-            {%- endfor -%}
-          {%- endif -%}
-        {%- endfor -%}
-
+        {%- assign current_main = nav | where: "url", pageurl | first -%}
+        {%- unless current_main -%}
+          {%- for item in nav -%}
+            {%- if item.subnav -%}
+              {%- for sub in item.subnav -%}
+                {%- if sub.url == pageurl -%}
+                  {%- assign current_main = item -%}
+                {%- endif -%}
+              {%- endfor -%}
+            {%- endif -%}
+          {%- endfor -%}
+        {%- endunless -%}
         {%- if current_main and current_main.subnav -%}
           <nav class="subnav">
             {% for sub in current_main.subnav %}
@@ -73,29 +45,6 @@
             {% endfor %}
           </nav>
         {%- endif -%}
-
-        {%- comment -%}
-          4) Переключатель языка:
-             - если есть page.alt_url — используем его (идеально, когда есть «сестринская» страница);
-             - иначе грубо меняем префикс /ru/ ↔︎ ''.
-        {%- endcomment -%}
-        {% assign other_label = cur_lang == 'ru' | ternary: 'EN', 'RU' %}
-        {% if page.alt_url %}
-          <a class="menu-link lang-switch" href="{{ site.baseurl }}{{ page.alt_url }}">{{ other_label }}</a>
-        {% else %}
-          {% assign url = page.url | default: '/' %}
-          {% if cur_lang == 'ru' %}
-            {% assign other_url = url | replace_first: '/ru/', '/' %}
-          {% else %}
-            {% if url == '/' %}
-              {% assign other_url = '/ru/' %}
-            {% else %}
-              {% assign other_url = '/ru' | append: url %}
-            {% endif %}
-          {% endif %}
-          <a class="menu-link lang-switch" href="{{ site.baseurl }}{{ other_url }}">{{ other_label }}</a>
-        {% endif %}
-
       </div>
     </div>
   </header>
