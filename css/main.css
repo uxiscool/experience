@@ -1329,7 +1329,7 @@ html[data-lang="ru"] .i18n-ru { display: initial; }
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
   /* финальная точка (не меняем) */
-  top: 16px;
+  top: 18px;
   right: 18px;
   opacity: .45;
 }
@@ -1342,26 +1342,26 @@ html[data-lang="ru"] .i18n-ru { display: initial; }
    появляется в стартовой точке (×3 дальше от угла),
    затем ждёт 2s и едет к финалу 3.6s */
 .lang-floater.intro{
-  top: 28px;     /* было 20px → ×3 от финального отступа (16px → +12px) */
-  right: 42px;   /* было 26px → ×3 от финального отступа (18px → +24px) */
+  top: 200px;     /* было 20px → ×3 от финального отступа (16px → +12px) */
+  right: 200px;   /* было 26px → ×3 от финального отступа (18px → +24px) */
   left: auto;
   opacity: 1;
   animation: lang-nudge 3.6s ease-out forwards;
-  animation-delay: 2s; /* ← задержка между появлением и стартом движения */
+  animation-delay: 3s; /* ← задержка между появлением и стартом движения */
 }
 
 /* повторные визиты — сразу финал */
 .lang-floater.settled{
-  top: 16px;
+  top: 18px;
   right: 18px;
   opacity: .45;
 }
 
 /* короткий «нудж» ТОЛЬКО внутри правого верхнего угла */
 @keyframes lang-nudge{
-  0%   { top: 28px; right: 42px; opacity: 1; }
-  60%  { top: 18px; right: 24px; opacity: .70; }
-  100% { top: 16px; right: 18px; opacity: .45; }
+  0%   { top: 200px; right: 200px; opacity: 1; }
+  60%  { top: 100px; right: 100px; opacity: .70; }
+  100% { top: 18px; right: 18px; opacity: .45; }
 }
 
 /* Мобилки: финал прежний (14/12), старт ×3 дальше */
