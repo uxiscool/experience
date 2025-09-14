@@ -50,17 +50,6 @@
 
   </head>
   <body class="{{ page.body_class }}">
-<!-- Корректное определение языка (учёт baseurl) -->
-<script>
-(function(){
-  var base='{{ site.baseurl }}';
-  function stripBase(p){ return p.indexOf(base)===0 ? p.slice(base.length) : p; }
-  var isRU = stripBase(location.pathname).indexOf('/ru/')===0;
-  document.documentElement.setAttribute('lang', isRU?'ru':'en');
-  document.documentElement.setAttribute('data-lang', isRU?'ru':'en');
-})();
-</script>
-
     <!-- Site-wide notice banner -->
 <div id="site-banner" class="site-banner" role="region" aria-label="Site notice" hidden>
   <div class="site-banner__inner">
@@ -79,120 +68,12 @@
   <img id="burgerIcon" src="{{ site.baseurl }}/ui/menu.svg" alt="">
 </button>
 <!-- Mobile menu overlay -->
-<nav id="mobile-menu" class="mobile-menu" hidden aria-label="Mobile menu">
+<nav id="mobile-menu" class="mobile-menu" hidden>
   <div class="mobile-menu__inner">
+    <!-- Опционально: можно поместить сюда логотип/заголовок -->
     <ul id="mobileMenuList" class="mobile-menu__list"></ul>
   </div>
 </nav>
-<!-- Mobile menu overlay -->
-{% comment %} Считаем язык и берём нужный data-файл как в header.html {% endcomment %}
-{% assign cur_lang = 'en' %}
-{% if page.url and page.url | slice: 0,4 == '/ru/' %}
-  {% assign cur_lang = 'ru' %}
-{% endif %}
-{% if page.lang %}
-  {% assign cur_lang = page.lang %}
-{% endif %}
-{% assign nav_key  = 'navigation_' | append: cur_lang %}
-{% assign nav_data = site.data[nav_key] | default: site.data.navigation %}
-
-<script>
-document.addEventListener('DOMContentLoaded', function(){
-  var list = document.getElementById('mobileMenuList');
-  if (!list) return;
-
-  var base='{{ site.baseurl }}';
-  function stripBase(p){ return p.indexOf(base)===0 ? p.slice(base.length) : p; }
-  function norm(u){ return (u||'').replace(/\/+$/,''); }
-  var isRU = stripBase(location.pathname).indexOf('/ru/')===0;
-
-  // 1) Достаём нав-дерево из _data
-  var NAV = {% if page.lang == 'ru' and site.data.navigation_ru %}
-              {{ site.data.navigation_ru | jsonify }}
-            {% elsif page.lang == 'en' and site.data.navigation_en %}
-              {{ site.data.navigation_en | jsonify }}
-            {% elsif site.data.navigation_en %}
-              {{ site.data.navigation_en | jsonify }}
-            {% elsif site.data.navigation_ru %}
-              {{ site.data.navigation_ru | jsonify }}
-            {% else %}
-              {{ site.data.navigation | jsonify }}
-            {% endif %} || [];
-
-  // 2) Рисуем верхний уровень
-  list.innerHTML = '';
-  var worksUrl = isRU ? '/ru/' : '/';
-  var worksNode = null;
-
-  NAV.forEach(function(node){
-    var li = document.createElement('li');
-    var a  = document.createElement('a');
-    a.className = 'mobile-menu__link';
-    a.href = base + (node.url || '/');
-    a.textContent = node.title || '';
-    li.appendChild(a);
-    list.appendChild(li);
-
-    if (norm(node.url) === norm(worksUrl)) worksNode = node;
-  });
-
-  // 3) Если у "Работы/Works" есть дети — добавляем подпункты
-  if (worksNode && Array.isArray(worksNode.subnav) && worksNode.subnav.length){
-    // ищем li, к которому крепить сабменю
-    var items = list.querySelectorAll('li > a.mobile-menu__link');
-    items.forEach(function(aEl){
-      if (norm(aEl.getAttribute('href').replace(location.origin,'')) === norm(base + worksUrl)){
-        var ul = document.createElement('ul');
-        ul.className = 'mobile-sub';
-        worksNode.subnav.forEach(function(ch){
-          var sli = document.createElement('li');
-          var sa  = document.createElement('a');
-          sa.className = 'mobile-menu__link sub';
-          sa.href = base + (ch.url || '#');
-          sa.textContent = ch.title || '';
-          sli.appendChild(sa);
-          ul.appendChild(sli);
-        });
-        aEl.parentElement.appendChild(ul);
-      }
-    });
-  }
-});
-</script>
-<script>
-(function(){
-  var burger = document.getElementById('burger');
-  var menu   = document.getElementById('mobile-menu');
-  if (!burger || !menu) return;
-
-  function openMenu(){
-    menu.hidden = false;
-    menu.setAttribute('aria-hidden','false');
-    burger.setAttribute('aria-expanded','true');
-    document.body.classList.add('lb-lock');
-  }
-  function closeMenu(){
-    menu.setAttribute('aria-hidden','true');
-    burger.setAttribute('aria-expanded','false');
-    document.body.classList.remove('lb-lock');
-    setTimeout(function(){ menu.hidden = true; }, 120);
-  }
-
-  burger.addEventListener('click', function(){
-    var expanded = burger.getAttribute('aria-expanded') === 'true';
-    expanded ? closeMenu() : openMenu();
-  });
-  // клик вне панели — закрыть (если у тебя есть затемнение/скрим)
-  document.addEventListener('click', function(e){
-    if (!menu.contains(e.target) && e.target !== burger && menu.getAttribute('aria-hidden')==='false'){
-      closeMenu();
-    }
-  });
-  document.addEventListener('keydown', function(e){
-    if (e.key === 'Escape') closeMenu();
-  });
-})();
-</script>
 <!-- Download overlay (mobile) -->
 <nav id="download-overlay" class="mobile-menu" hidden aria-label="Download CV">
   <div class="mobile-menu__inner">
@@ -606,7 +487,19 @@ window.PET_GALLERIES = [
   if (!btn || !icon || !panel || !list) return;
 
   var OPEN_CLASS = 'mm-open';
-  var SRC_MENU = document.querySelector('.main-menu');
+
+var SRC_MENU = (function(){
+  var cands = document.querySelectorAll(
+    '.main-menu, header nav, nav[aria-label="Main"], nav[role="navigation"], .site-nav, .header__menu, .header-nav, .navigation, .nav'
+  );
+  for (var i = 0; i < cands.length; i++){
+    var el = cands[i];
+    if (el && el.querySelector('a[href]')) return el;
+  }
+  return null;
+})();
+
+
   var btnHomeParent = btn.parentNode;  // куда вернуть кнопку после закрытия
   var btnNextSibling = btn.nextSibling;
 
@@ -617,42 +510,26 @@ window.PET_GALLERIES = [
     // 1) Собираем все ссылки верхнего уровня
     var topLinks = Array.from(SRC_MENU.querySelectorAll('a[href]'));
 
-// 2) Подпункты "Работы" — из _data/navigation_{en|ru}.yml
-var base='{{ site.baseurl }}';
-function stripBase(p){ return p.indexOf(base)===0 ? p.slice(base.length) : p; }
-var isRU = stripBase(location.pathname).indexOf('/ru/') === 0;
-
-// нав-дерево текущего языка:
-var NAV = {% if page.lang == 'ru' %}
-            {{ site.data.navigation_ru | jsonify }}
-          {% else %}
-            {{ site.data.navigation_en | jsonify }}
-          {% endif %};
-
-// находим узел "Работы/Works" по url
-var worksUrl = isRU ? '/ru/' : '/';
-function norm(u){ return (u||'').replace(/\/+$/,''); }
-var worksNode = (NAV || []).find(function(n){ return norm(n.url) === norm(worksUrl); });
-
-// строим массив <a> для детей узла
-var subLinks = [];
-if (worksNode && Array.isArray(worksNode.subnav)) {
-  subLinks = worksNode.subnav.map(function(ch){
+  // 2) Собираем подпункты (если есть на странице) + ФОЛБЭК
+var subLinks = Array.from(document.querySelectorAll('.subnav a[href]'));
+if (!subLinks.length){
+  // Фолбэк: подменю Works всегда доступно из любого раздела
+  subLinks = [
+    { href: '{{ site.baseurl }}/cases/',         text: 'Cases' },
+    { href: '{{ site.baseurl }}/pet-projects/',  text: 'Pet projects' }
+  ].map(function(it){
     var a = document.createElement('a');
-    a.setAttribute('href', base + ch.url);
-    a.textContent = ch.title;
+    a.setAttribute('href', it.href);
+    a.textContent = it.text;
     return a;
   });
 }
 
-// 3) Определим, к какому пункту в топ-меню подвесить подпункты
-var isRU = location.pathname.indexOf('/ru/') === 0;
-var base = '{{ site.baseurl }}';
-// точное сравнение по пути, с учётом baseurl
-var worksPath = base + (isRU ? '/ru/' : '/');
-function normPath(p){ return (p||'').replace(/\/+$/,''); }
+    // 3) Определим, к какому пункту в топ-меню подвесить подпункты:
+    //    ищем пункт, название которого похоже на "Works"
 var worksIndex = topLinks.findIndex(function(a){
-  return normPath(a.pathname) === normPath(worksPath);
+  var t = (a.textContent || '').trim().toLowerCase();
+  return /(work|case|работ|портф|проекты)/.test(t);
 });
 
     // 4) Рендерим верхний уровень
