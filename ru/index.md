@@ -107,30 +107,6 @@ alt_url: /
   {% endfor %}
 </div>
 
-<!-- Лайтбокс (один для всех проектов) -->
-<div id="lightbox" class="lightbox" style="display:none;">
-  <div class="lightbox-bg" onclick="closeLightbox()"></div>
-  <div class="lightbox-content">
-    <button class="lightbox-close" onclick="closeLightbox()" aria-label="Close">
-      <img src="{{ site.baseurl }}/ui/lightbox_close.svg" width="36" height="36" alt="Close">
-    </button>
-    <button class="lightbox-arrow left" onclick="lightboxPrev()" aria-label="Previous">
-      <img src="{{ site.baseurl }}/ui/lightbox_arrow_left.svg" width="36" height="36" alt="Prev">
-    </button>
-    <div class="lightbox-stage">
-      <img id="lightbox-img" class="lightbox-img" src="">
-      {% include lightbox_loader.html %}
-    </div>
-    <button class="lightbox-arrow right" onclick="lightboxNext()" aria-label="Next">
-      <img src="{{ site.baseurl }}/ui/lightbox_arrow_right.svg" width="36" height="36" alt="Next">
-    </button>
-    <div id="lightbox-caption" class="lightbox-caption"></div>
-    <div id="lightbox-thumbs" class="lightbox-thumbs-wrap" aria-label="Gallery thumbnails">
-      <div class="lightbox-thumbs" id="lightbox-thumbs-row"></div>
-    </div>
-  </div>
-</div>
-
 <script>
 (function(){
   var h = new Date().getHours();
