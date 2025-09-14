@@ -126,14 +126,14 @@ document.addEventListener('DOMContentLoaded', function(){
   });
 
   // 3) Если у "Работы/Works" есть дети — добавляем подпункты
-  if (worksNode && Array.isArray(worksNode.children) && worksNode.children.length){
+  if (worksNode && Array.isArray(worksNode.subnav) && worksNode.subnav.length){
     // ищем li, к которому крепить сабменю
     var items = list.querySelectorAll('li > a.mobile-menu__link');
     items.forEach(function(aEl){
       if (norm(aEl.getAttribute('href').replace(location.origin,'')) === norm(base + worksUrl)){
         var ul = document.createElement('ul');
         ul.className = 'mobile-sub';
-        worksNode.children.forEach(function(ch){
+        worksNode.subnav.forEach(function(ch){
           var sli = document.createElement('li');
           var sa  = document.createElement('a');
           sa.className = 'mobile-menu__link sub';
@@ -625,8 +625,8 @@ var worksNode = (NAV || []).find(function(n){ return norm(n.url) === norm(worksU
 
 // строим массив <a> для детей узла
 var subLinks = [];
-if (worksNode && Array.isArray(worksNode.children)) {
-  subLinks = worksNode.children.map(function(ch){
+if (worksNode && Array.isArray(worksNode.subnav)) {
+  subLinks = worksNode.subnav.map(function(ch){
     var a = document.createElement('a');
     a.setAttribute('href', base + ch.url);
     a.textContent = ch.title;
@@ -888,33 +888,6 @@ if (location.pathname.replace(/\/+$/, '') === m.pathname.replace(/\/+$/, '')){
   }, {passive:true});
 })();
 /* === Site notice banner end === */
-
-/* Добавляем ENG/RUS в мобильное меню (последним пунктом) */
-(function(){
-  var list = document.getElementById('mobileMenuList');
-  if (!list) return;
-
-  // текущий путь и baseurl из Jekyll
-  var base = '{{ site.baseurl }}';
-  var url  = '{{ page.url | default: "/" }}';
-  var alt  = '{{ page.alt_url | default: "" }}';
-
-  // определяем текущий язык по URL
-  var isRU = location.pathname.indexOf('/ru/') === 0;
-
-  // формируем ссылку на "сестринскую" страницу
-  var href = alt && alt !== ''
-    ? (base + alt)
-    : (isRU ? base + url.replace(/^\/ru\//,'/')
-            : base + (url === '/' ? '/ru/' : ('/ru' + url)));
-
-  // подпись: если мы на RU — показываем ENG, иначе RUS
-  var label = isRU ? 'ENG' : 'RUS';
-
-  var li = document.createElement('li');
-  li.innerHTML = '<a class="mobile-menu__link" href="'+href+'">'+label+'</a>';
-  list.appendChild(li);
-})();
 </script>
   </body>
 </html>
