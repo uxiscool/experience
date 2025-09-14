@@ -487,7 +487,6 @@ window.PET_GALLERIES = [
 })();
 
 /* ==== Mobile menu (clone .main-menu) ==== */
-<script>
 (function buildMobileMenu(){
   var list = document.getElementById('mobileMenuList');
   if (!list) return;
@@ -569,7 +568,6 @@ window.PET_GALLERIES = [
   langLi.appendChild(langA);
   list.appendChild(langLi);
 })();
-</script>
 
 
   function openMenu(){
@@ -613,7 +611,6 @@ window.PET_GALLERIES = [
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', buildMobileMenu);
   else buildMobileMenu();
-})();
 
 (function(){
   var trigger = document.getElementById('cv-download-trigger');
