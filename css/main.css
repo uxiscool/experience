@@ -1314,9 +1314,11 @@ html[data-lang="en"] .i18n-en { display: initial; }
 html[data-lang="ru"] .i18n-ru { display: initial; }
 
 /* ===== Языковой «поплавок» (RUS/ENG) ===== */
+/* === Language floater: строго ПРАВЫЙ ВЕРХ с коротким «нуджем» === */
 .lang-floater{
   position: fixed;
-  z-index: 9999;
+  z-index: 1000000;
+  pointer-events: auto;
   text-decoration: none;
   font-weight: 600;
   letter-spacing: .06em;
@@ -1326,51 +1328,46 @@ html[data-lang="ru"] .i18n-ru { display: initial; }
   color: #fff;
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
-  transition: opacity .6s ease, transform .6s ease;
-  /* финальная позиция у левого верхнего угла */
-  top: 18px;
-  left: 56px;
-  opacity: .45;
-}
-
-.lang-floater:hover{
-  opacity: .9;
-}
-
-/* стартовое «pre» — спрятано до показа */
-.lang-floater.pre{
-  opacity: 0;
-  pointer-events: none;
-}
-
-/* intro: появление в правом верхнем, затем «переезд» */
-.lang-floater.intro{
-  /* Старт в правом верхнем */
+  transition: opacity .6s ease, top .6s ease, right .6s ease;
+  /* ФИНАЛ: правый верх */
   top: 16px;
   right: 18px;
-  left: auto;
-  opacity: 1;
-  animation: lang-drift 1.4s ease-in-out forwards .05s;
-}
-
-/* повторные визиты: сразу финал */
-.lang-floater.settled{
   opacity: .45;
 }
+.lang-floater:hover{ opacity: .9; }
 
-/* ключевые кадры: правый верх → левый верх + выцветание */
-@keyframes lang-drift{
-  0%   { top: 16px; right: 18px; left: auto; opacity: 1; transform: translateX(0); }
-  60%  { top: 18px; right: 18px; left: auto; opacity: .75; transform: translateX(-22vw); }
-  100% { top: 18px; left: 56px; right: auto; opacity: .45; transform: translateX(0); }
+/* старт перед первым показом (через 2с) */
+.lang-floater.pre{ opacity: 0; pointer-events: none; }
+
+/* ПЕРВЫЙ показ в сессии: появиться и «подползти» ближе к углу */
+.lang-floater.intro{
+  top: 20px;    /* старт немного ниже */
+  right: 26px;  /* и чуть левее от края */
+  left: auto;   /* на всякий случай — левый не используем */
+  opacity: 1;
+  animation: lang-nudge .9s ease-out forwards;
 }
 
-/* На очень узких экранах чуть меньше уезжаем */
+/* Повторные визиты — сразу финал */
+.lang-floater.settled{ top: 16px; right: 18px; opacity: .45; }
+
+/* Небольшой нудж к самому углу + лёгкое притухание */
+@keyframes lang-nudge{
+  0%   { top: 20px; right: 26px; opacity: 1; }
+  60%  { top: 17px; right: 20px; opacity: .70; }
+  100% { top: 16px; right: 18px; opacity: .45; }
+}
+
 @media (max-width: 600px){
-  @keyframes lang-drift{
-    0%   { top: 12px; right: 12px; left: auto; opacity: 1; transform: translateX(0); }
-    60%  { top: 14px; right: 12px; left: auto; opacity: .75; transform: translateX(-38vw); }
-    100% { top: 14px; left: 20px; right: auto; opacity: .45; transform: translateX(0); }
+  .lang-floater,
+  .lang-floater.settled { top: 14px; right: 12px; }
+  .lang-floater.intro   { top: 18px; right: 20px; }
+  @keyframes lang-nudge{
+    0%   { top: 18px; right: 20px; opacity: 1; }
+    60%  { top: 15px; right: 14px; opacity: .70; }
+    100% { top: 14px; right: 12px; opacity: .45; }
   }
 }
+
+
 
