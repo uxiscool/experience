@@ -506,13 +506,18 @@ window.PET_GALLERIES = [
     // 1) Собираем все ссылки верхнего уровня
     var topLinks = Array.from(SRC_MENU.querySelectorAll('a[href]'));
 
-  // 2) Собираем подпункты (если есть на странице) + ФОЛБЭК
+// 2) Собираем подпункты (если есть на странице) + ФОЛБЭК
 var subLinks = Array.from(document.querySelectorAll('.subnav a[href]'));
 if (!subLinks.length){
+  var isRU = location.pathname.indexOf('/ru/') === 0;
   // Фолбэк: подменю Works всегда доступно из любого раздела
   subLinks = [
-    { href: '{{ site.baseurl }}/cases/',         text: 'Cases' },
-    { href: '{{ site.baseurl }}/pet-projects/',  text: 'Pet projects' }
+    isRU
+      ? { href: '{{ site.baseurl }}/ru/cases/',        text: 'Кейсы' }
+      : { href: '{{ site.baseurl }}/cases/',           text: 'Cases' },
+    isRU
+      ? { href: '{{ site.baseurl }}/ru/pet-projects/', text: 'Пет-проекты' }
+      : { href: '{{ site.baseurl }}/pet-projects/',    text: 'Pet projects' }
   ].map(function(it){
     var a = document.createElement('a');
     a.setAttribute('href', it.href);
@@ -520,13 +525,39 @@ if (!subLinks.length){
     return a;
   });
 }
+// 6) Добавляем языковой пункт ENG/RUS в самый низ мобильного меню
+(function(){
+  var base = '{{ site.baseurl }}';
+  var url  = '{{ page.url | default: "/" }}';
+  var alt  = '{{ page.alt_url | default: "" }}';
+  var isRU = location.pathname.indexOf('/ru/') === 0;
 
-    // 3) Определим, к какому пункту в топ-меню подвесить подпункты:
-    //    ищем пункт, название которого похоже на "Works"
-    var worksIndex = topLinks.findIndex(function(a){
-      var t = (a.textContent || '').trim().toLowerCase();
-      return t.includes('work'); // достаточно надёжно для твоей структуры
-    });
+  var href = alt && alt !== ''
+    ? (base + alt)
+    : (isRU ? base + url.replace(/^\/ru\//,'/')
+            : base + (url === '/' ? '/ru/' : ('/ru' + url)));
+
+  var label = isRU ? 'ENG' : 'RUS';
+
+  var li = document.createElement('li');
+  var a  = document.createElement('a');
+  a.className = 'mobile-menu__link';
+  a.href = href;
+  a.textContent = label;
+  li.appendChild(a);
+  list.appendChild(li);
+})();
+
+// 3) Определим, к какому пункту в топ-меню подвесить подпункты
+var isRU = location.pathname.indexOf('/ru/') === 0;
+var base = '{{ site.baseurl }}';
+var worksPath = base + (isRU ? '/ru/' : '/'); // корень раздела "Работы/Works"
+var worksIndex = topLinks.findIndex(function(a){
+  // сравниваем нормализованные пути без лишних слешей
+  var p1 = (a.pathname || '').replace(/\/+$/,'');
+  var p2 = worksPath.replace(/\/+$/,'');
+  return p1 === p2;
+});
 
     // 4) Рендерим верхний уровень
     topLinks.forEach(function(a, idx){
