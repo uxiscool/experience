@@ -1364,18 +1364,9 @@ html[data-lang="ru"] .i18n-ru { display: initial; }
   100% { top: 18px; right: 18px; opacity: .45; }
 }
 
-/* Мобилки: финал прежний (14/12), старт ×3 дальше */
-@media (max-width: 600px){
-  .lang-floater,
-  .lang-floater.settled { top: 14px; right: 12px; }
-  .lang-floater.intro   { top: 26px; right: 36px; } /* 14→+12; 12→+24 */
-  @keyframes lang-nudge{
-    0%   { top: 26px; right: 36px; opacity: 1; }
-    60%  { top: 16px; right: 18px; opacity: .70; }
-    100% { top: 14px; right: 12px; opacity: .45; }
-  }
+@media (max-width: 979px){
+  .lang-floater{ display:none !important; }
 }
-
 
 
 
