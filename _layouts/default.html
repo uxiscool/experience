@@ -809,25 +809,76 @@ if (location.pathname.replace(/\/+$/, '') === m.pathname.replace(/\/+$/, '')){
   var list = document.getElementById('mobileMenuList');
   if (!list) return;
 
-  // текущий путь и baseurl из Jekyll
-  var base = '{{ site.baseurl }}';
+  var base = '{{ site.baseurl }}';                 // '/experience'
+  // helper: убираем baseurl из начала пути
+  function stripBase(p){ return p.indexOf(base)===0 ? p.slice(base.length) : p; }
+
+  // язык корректно: смотрим ПРИФИКС уже без baseurl
+  var pathNoBase = stripBase(location.pathname);
+  var isRU = pathNoBase.indexOf('/ru/') === 0;
+
+  // Топ-меню из .main-menu
+  var topLinks = Array.from(document.querySelectorAll('.main-menu a[href]'));
+
+  // --- сабменю (фолбэк, если на странице .subnav нет) ---
+  var subLinks = Array.from(document.querySelectorAll('.subnav a[href]'));
+  if (!subLinks.length){
+    subLinks = [
+      isRU
+        ? { href: base + '/ru/cases/',        text: 'Кейсы' }
+        : { href: base + '/cases/',           text: 'Cases' },
+      isRU
+        ? { href: base + '/ru/pet-projects/', text: 'Пет-проекты' }
+        : { href: base + '/pet-projects/',    text: 'Pet projects' }
+    ].map(function(it){
+      var a = document.createElement('a'); a.href = it.href; a.textContent = it.text; return a;
+    });
+  }
+
+  // --- к какому пункту «Работы/Works» подвешивать сабменю: сравниваем по URL ---
+  var worksPath = base + (isRU ? '/ru/' : '/');
+  function norm(p){ return (p||'').replace(/\/+$/,''); }
+  var worksIndex = topLinks.findIndex(function(a){ return norm(a.pathname) === norm(worksPath); });
+
+  // собираем список
+  list.innerHTML = '';
+  topLinks.forEach(function(a, i){
+    var li = document.createElement('li');
+    var b = document.createElement('a');
+    b.className = 'mobile-menu__link';
+    b.href = a.getAttribute('href');
+    b.textContent = a.textContent;
+    li.appendChild(b);
+    list.appendChild(li);
+
+    if (i === worksIndex && subLinks.length){
+      var ul = document.createElement('ul');
+      ul.className = 'mobile-sub';
+      subLinks.forEach(function(s){
+        var sli = document.createElement('li');
+        var sa = document.createElement('a');
+        sa.className = 'mobile-menu__link sub';
+        sa.href = s.getAttribute('href');
+        sa.textContent = s.textContent;
+        sli.appendChild(sa); ul.appendChild(sli);
+      });
+      li.appendChild(ul);
+    }
+  });
+
+  // --- ENG/RUS пункт внизу ---
   var url  = '{{ page.url | default: "/" }}';
   var alt  = '{{ page.alt_url | default: "" }}';
-
-  // определяем текущий язык по URL
-  var isRU = location.pathname.indexOf('/ru/') === 0;
-
-  // формируем ссылку на "сестринскую" страницу
   var href = alt && alt !== ''
     ? (base + alt)
     : (isRU ? base + url.replace(/^\/ru\//,'/')
             : base + (url === '/' ? '/ru/' : ('/ru' + url)));
-
-  // подпись: если мы на RU — показываем ENG, иначе RUS
   var label = isRU ? 'ENG' : 'RUS';
-
   var li = document.createElement('li');
-  li.innerHTML = '<a class="mobile-menu__link" href="'+href+'">'+label+'</a>';
+  var a = document.createElement('a');
+  a.className = 'mobile-menu__link';
+  a.href = href; a.textContent = label;
+  li.appendChild(a);
   list.appendChild(li);
 })();
 </script>
