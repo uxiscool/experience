@@ -506,19 +506,31 @@ window.PET_GALLERIES = [
   function pathOf(href){ var a = document.createElement('a'); a.href = href; return normPath(a.pathname || ''); }
   var here = pathOf(location.href);
 
-  function updateLangBtn(){
-    if (!langBtn) return;
-    var path = location.pathname + location.search + location.hash;
-    var isRu = location.pathname.indexOf('/ru/') === 0;
-    var alt = isRu
-      ? path.replace(/^\/ru(\/|$)/, '/')
-      : '/ru' + (path.charAt(0) === '/' ? '' : '/') + path;
-    langBtn.textContent = isRu ? 'EN' : 'RU';
-    langBtn.setAttribute('aria-label', isRu ? 'Switch to English' : 'Переключить на русский');
-    langBtn.href = withBase(alt);
-    // закрываем меню по тапу по переключателю
-    langBtn.addEventListener('click', function(){ closeMenu(); }, {once:true});
+function updateLangBtn(){
+  if (!langBtn) return;
+
+  var BASE = '{{ site.baseurl }}' || '';        // уже есть выше, но не вредно
+  function stripBase(p){                         // убираем baseurl из пути
+    if (!BASE) return p || '/';
+    return p.indexOf(BASE) === 0 ? (p.slice(BASE.length) || '/') : p;
   }
+
+  var rawPath = location.pathname;               // например: /base/ru/page/
+  var path = stripBase(rawPath);                 // → /ru/page/
+  var suffix = location.search + location.hash;  // сохраняем ?q=...#...
+
+  var isRu = /^\/ru(\/|$)/.test(path);
+  var alt  = isRu ? path.replace(/^\/ru(\/|$)/, '/')     // /ru/x → /x
+                  : '/ru' + path;                        // /x → /ru/x
+
+  // финальная ссылка: BASE + alt + suffix
+  langBtn.href = (BASE || '') + alt + suffix;
+  langBtn.textContent = isRu ? 'EN' : 'RU';
+  langBtn.setAttribute('aria-label', isRu ? 'Switch to English' : 'Переключить на русский');
+
+  langBtn.addEventListener('click', function(){ closeMenu(); }, { once:true });
+}
+
 
   function buildMobileMenu(){
     list.innerHTML = '';
