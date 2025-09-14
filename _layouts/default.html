@@ -50,11 +50,11 @@
 
   </head>
   <body class="{{ page.body_class }}">
-    <script>
+<script>
 (function(){
-  var isRU = location.pathname.startsWith('{{ site.baseurl }}/ru/');
-  document.documentElement.setAttribute('lang', isRU ? 'ru' : 'en');
-  document.documentElement.setAttribute('data-lang', isRU ? 'ru' : 'en');
+  var isRU = location.pathname.indexOf('/ru/')===0;
+  document.documentElement.setAttribute('lang', isRU?'ru':'en');
+  document.documentElement.setAttribute('data-lang', isRU?'ru':'en');
 })();
 </script>
 
