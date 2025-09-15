@@ -829,6 +829,11 @@ body.page-contact>main{ flex:1 0 auto; }
 /* Не показываем, когда открыт лайтбокс */
 body.lb-lock #to-top{ opacity: 0; pointer-events: none; }
 
+body.lb-lock .lang-floater,
+body.lb-lock .mobile-lang-floater{
+  display: none !important;
+}
+
 /* Адаптив: 980 и 580 — меньше иконка и отступы */
 @media (max-width: 980px){
   :root{ --tt-size: 44px; --tt-right: 12px; --tt-bottom: 18px; }
