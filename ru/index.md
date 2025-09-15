@@ -9,11 +9,10 @@ alt_url: /
 <div class="container">
   <div class="intro-hero">
     <p id="intro-line" class="intro-line">
-    RUS I’m Vladimir — UX&nbsp;enthusiast and&nbsp;interaction architect based in&nbsp;Moscow, Russia.<br><br>
-    I’m&nbsp;passionate about a&nbsp;systematic approach to&nbsp;design and&nbsp;believe that real product value starts with well-thought-out user journeys.<br>I&nbsp;love working on&nbsp;a&nbsp;wide variety of&nbsp;interfaces, with a&nbsp;special passion for&nbsp;internal tools and&nbsp;complex B2B web&nbsp;services.<br><br>
-    My&nbsp;experience covers different project roles: from solo contributor to&nbsp;core team member. I&nbsp;enjoy tackling business tasks, building structure out&nbsp;of&nbsp;chaos, and&nbsp;making digital products truly useful and&nbsp;delightful for&nbsp;people.<br><br>
-    Open to&nbsp;collaboration and&nbsp;always excited to&nbsp;solve new&nbsp;challenges.
-    </p>
+    Я Владимир, UX/UI-дизайнер из Москвы.<br><br>
+    сторонник системного подхода к пользовательскому опыту. Уверен, что настоящая ценность продукта или отдельных его функций выявляется на discovery-этапе и благодаря чётко продуманной логике user flow.<br><br>
+    Больше всего люблю работать со сложными веб-сервисами: многослойная структура, таблицы, связи, роли. Быстро погружаюсь в новые домены и адаптирую свой опыт в разных фреймворках под конкретные новые продукты и даже команды.<br><br>
+    За годы работы был и единственным исполнителем, и ключевым участником команды. У меня хорошо получается соотносить бизнес-задачи с потребностями пользователей, находить структуру в хаосе и делать цифровые продукты удобными и полезными для людей.<br>Открыт к совместной работе и всегда за новые вызовы.</p>
     <!-- Градиентный разделитель -->
     <div class="intro-divider"></div>
   </div>
@@ -22,12 +21,6 @@ alt_url: /
 <!-- Главные кейсы -->
 <div class="featured-cases">
   {% assign featured = site.cases | where: "featured", true %}
-  {%- comment -%}
-    Сортировка:
-    1) Группируем по году; группы сортируем по 'name' (год) по убыванию.
-    2) Внутри каждого года сначала элементы с заданным 'order' (по возрастанию),
-       затем без 'order' в исходном порядке.
-  {%- endcomment -%}
   {% assign groups = featured | group_by: "year" %}
   {% assign groups_sorted = groups | sort: "name" | reverse %}
 
@@ -37,7 +30,6 @@ alt_url: /
     {% assign without_order = group_items | where_exp: "it", "it.order == nil" %}
     {% assign with_order_sorted = with_order | sort: "order" %}
     {% assign items_sorted = with_order_sorted | concat: without_order %}
-
     {% for case in items_sorted %}
       {% assign case_index = 0 %}
       {% for c in site.cases %}
@@ -46,7 +38,6 @@ alt_url: /
           {% break %}
         {% endif %}
       {% endfor %}
-
       <div class="case-block">
         <div class="case-year-rail">{{ case.year }}</div>
         <div class="case-meta2">
@@ -54,7 +45,6 @@ alt_url: /
             {% assign case_anchor = case.url | replace:'/cases/','' | replace:'/','' | downcase %}
             <a href="{{ site.baseurl }}/cases/#case-{{ case_anchor }}" class="case-title2">{{ case.title }}</a>
           </div>
-
           <!-- Мета: каждая часть в своем span; год для мобильной версии -->
           <div class="case-meta2-inline">
             <span class="case-year-inline">{{ case.year }}</span>
@@ -63,7 +53,6 @@ alt_url: /
           </div>
           <div class="case-summary2">{{ case.summary }}</div>
         </div>
-
         <div class="case-gallery">
           {% assign idx = 0 %}
           {% if case.stages %}
@@ -106,14 +95,13 @@ alt_url: /
     {% endfor %}
   {% endfor %}
 </div>
-
 <script>
 (function(){
   var h = new Date().getHours();
-  var greet = (h < 5)  ? 'Late night greetings'
-            : (h < 12) ? 'Good morning'
-            : (h < 18) ? 'Hello there'
-            :            'Good evening';
+  var greet = (h < 5)  ? 'Доброй ночи'
+            : (h < 12) ? 'Доброго утра'
+            : (h < 18) ? 'Привет'
+            :            'Хорошего вечера';
 
   var el = document.getElementById('intro-line');
   if (!el) return;
