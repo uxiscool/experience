@@ -165,6 +165,15 @@
 
 // Fallback для страниц кейсов: клики по .case-gallery → лайтбокс с локальными картинками
 (function(){
+  function decodeHTMLEntities(s){
+    if (!s) return '';
+    var d = document.createElement('div');
+    d.innerHTML = s;                          // &nbsp; → NBSP, &mdash; → —
+    var out = d.textContent || d.innerText || '';
+    d.innerHTML = out;                        // &amp;nbsp; → &nbsp; → NBSP (второй проход)
+    return d.textContent || d.innerText || '';
+  }
+
   document.addEventListener('click', function(e){
     var img = e.target.closest('.case-gallery .case-thumb2');
     if (!img) return;
@@ -175,10 +184,11 @@
     if (!wrap) return;
 
     var imgs = Array.prototype.slice.call(wrap.querySelectorAll('.case-thumb2'));
-    var arr = imgs.map(function(el){
+var arr = imgs.map(function(el){
   var box = el.closest('.case-gallery-item');
   var capEl = box && box.querySelector('.case-thumb-caption');
-  var cap = capEl ? (capEl.textContent || '').trim() : '';
+  var raw = capEl ? capEl.innerHTML : '';          // берём именно HTML
+  var cap = decodeHTMLEntities(raw);               // декодируем &nbsp;,&mdash; и т.п.
   return {
     src: el.getAttribute('data-src') || el.src || '',
     caption: cap
