@@ -73,7 +73,7 @@ alt_url: /about/
   </section>
     <!-- блок мой инструментарий -->
 <section class="tools-section">
-  <h2 class="subheading">Apps & Tools</h2>
+  <h2 class="subheading">Мои инструменты</h2>
   <div class="tools-grid" style="--tools-delay-base: 800ms">
     {% for app in site.data.apps %}
       <a class="tool appear"
@@ -97,7 +97,7 @@ alt_url: /about/
 </section>
   <!-- Блок philosophy -->
 <section class="philosophy-section">
-  <h2 class="subheading">Philosophy</h2>
+  <h2 class="subheading">Философия</h2>
   <div class="bio-columns">
     <!-- Левая колонка: текст -->
     <div class="bio">
