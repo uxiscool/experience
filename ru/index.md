@@ -17,13 +17,11 @@ alt_url: /
     <div class="intro-divider"></div>
   </div>
 </div>
-
 <!-- Главные кейсы -->
 <div class="featured-cases">
   {% assign featured = site.cases | where: "featured", true %}
   {% assign groups = featured | group_by: "year" %}
   {% assign groups_sorted = groups | sort: "name" | reverse %}
-
   {% for g in groups_sorted %}
     {% assign group_items = g.items %}
     {% assign with_order = group_items | where_exp: "it", "it.order" %}
