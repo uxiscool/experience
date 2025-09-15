@@ -176,11 +176,14 @@
 
     var imgs = Array.prototype.slice.call(wrap.querySelectorAll('.case-thumb2'));
     var arr = imgs.map(function(el){
-      return {
-        src: el.getAttribute('data-src') || el.src || '',
-        caption: el.getAttribute('alt') || ''
-      };
-    });
+  var box = el.closest('.case-gallery-item');
+  var capEl = box && box.querySelector('.case-thumb-caption');
+  var cap = capEl ? (capEl.textContent || '').trim() : '';
+  return {
+    src: el.getAttribute('data-src') || el.src || '',
+    caption: cap
+  };
+});
     var idx = Math.max(0, imgs.indexOf(img));
     window.openLightbox(arr, idx);
   });
