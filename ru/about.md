@@ -19,7 +19,7 @@ alt_url: /about/
       <!-- Правая колонка достижения -->
    <div class="bio">
   <div class="achievements-grid">
-    <figure class="laurel-badge" data-value="15+" data-label="years of experience" style="
+    <figure class="laurel-badge" data-value="15+" data-label="лет опыта" style="
           --size:160px;
           --leaf:#d6c083;
           --text:#d6c083;
@@ -27,7 +27,7 @@ alt_url: /about/
           --leaf-gap:160ms;   /* шаг между парами листьев */
           --lift:-20%;        /* вертикальный подъём SVG листвы */
         "></figure>
-    <figure class="laurel-badge" data-value="25+" data-label="big projects" style="
+    <figure class="laurel-badge" data-value="25+" data-label="значимых проектов" style="
           --size:160px;
           --leaf:#d6c083;
           --text:#d6c083;
