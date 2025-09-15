@@ -14,11 +14,10 @@ alt_url: /ru/about/
       <!-- Левая колонка: текст -->
       <div class="bio">
         <p>
-          Curiosity about human behavior and&nbsp;cognitive science led&nbsp;me&nbsp;intoUX/UI design, where I’ve&nbsp;worked for&nbsp;14+&nbsp;years. 
+          Curiosity about human behavior and&nbsp;cognitive science led&nbsp;me&nbsp;intoUX/UI design, where I’ve&nbsp;worked for&nbsp;15+&nbsp;years. 
           My&nbsp;background in&nbsp;visual arts sharpened my&nbsp;sense of&nbsp;form, color, and&nbsp;composition. 
           I&nbsp;enjoy an&nbsp;academic vibe&nbsp;— sharing ideas, debating approaches, and&nbsp;learning from&nbsp;peers.</p>
-          <p>I&nbsp;work with&nbsp;flexible methods and&nbsp;visual tools to&nbsp;align business goals with user needs, 
-          and&nbsp;have designed internal tools, mobile/desktop apps, and&nbsp;ecosystem products.
+          <p>Always open to&nbsp;new collaborations — feel free to&nbsp;reach out.
         </p>
       </div>
       <!-- Правая колонка достижения -->
