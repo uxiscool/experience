@@ -9,7 +9,7 @@ alt_url: /about/
 <div class="container">
   <!-- Блок биографии -->
   <section class="bio-section">
-   <h2 class="subheading">Bio</h2>
+   <h2 class="subheading">Биография</h2>
     <div class="bio-columns">
       <!-- Левая колонка: текст -->
       <div class="bio">
@@ -41,7 +41,7 @@ alt_url: /about/
   </section>
   <!-- Блок скилов -->
   <section class="skills-section">
-    <h2 class="subheading">Skills</h2>
+    <h2 class="subheading">Навыки</h2>
     <div class="skills-columns">
       <!-- Soft column -->
       <div class="skills-col">
