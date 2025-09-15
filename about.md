@@ -14,7 +14,7 @@ alt_url: /ru/about/
       <!-- Левая колонка: текст -->
       <div class="bio">
         <p>
-          Curiosity about human behavior and&nbsp;cognitive science led&nbsp;me&nbsp;intoUX/UI design, where I’ve&nbsp;worked for&nbsp;15+&nbsp;years. 
+          Curiosity about human behavior and&nbsp;cognitive science led&nbsp;me&nbsp;intoUX/UI design, where I’ve&nbsp;worked for&nbsp;14+&nbsp;years. 
           My&nbsp;background in&nbsp;visual arts sharpened my&nbsp;sense of&nbsp;form, color, and&nbsp;composition. 
           I&nbsp;enjoy an&nbsp;academic vibe&nbsp;— sharing ideas, debating approaches, and&nbsp;learning from&nbsp;peers.</p>
           <p>Always open to&nbsp;new collaborations — feel free to&nbsp;reach out.
@@ -23,7 +23,7 @@ alt_url: /ru/about/
       <!-- Правая колонка достижения -->
    <div class="bio">
   <div class="achievements-grid">
-    <figure class="laurel-badge" data-value="15+" data-label="years of experience" style="
+    <figure class="laurel-badge" data-value="14+" data-label="years of experience" style="
           --size:160px;
           --leaf:#d6c083;
           --text:#d6c083;
