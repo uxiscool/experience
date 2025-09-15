@@ -27,7 +27,7 @@ alt_url: /about/
           --leaf-gap:160ms;   /* шаг между парами листьев */
           --lift:-20%;        /* вертикальный подъём SVG листвы */
         "></figure>
-    <figure class="laurel-badge" data-value="25+" data-label="значимых проектов" style="
+    <figure class="laurel-badge" data-value="25+" data-label="значимых&nbsp;проектов" style="
           --size:160px;
           --leaf:#d6c083;
           --text:#d6c083;
