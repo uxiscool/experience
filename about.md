@@ -106,7 +106,7 @@ alt_url: /ru/about/
     <!-- Левая колонка: текст -->
     <div class="bio">
       <p>
-        I&nbsp;believe that the&nbsp;best solutions grow from a&nbsp;balance of&nbsp;structure and&nbsp;creativity. I&nbsp;often recharge through hiking and&nbsp;observing nature — it&nbsp;teaches patience, attention to&nbsp;detail, and&nbsp;the&nbsp;beauty of&nbsp;simplicity. Always open to&nbsp;new collaborations&nbsp;— feel free to&nbsp;reach out.
+I believe the&nbsp;best solutions come from a&nbsp;balance of&nbsp;structure and&nbsp;creativity. I&nbsp;often recharge outdoors and&nbsp;find inspiration in&nbsp;observing nature — it&nbsp;teaches patience, attention to&nbsp;detail, and&nbsp;the&nbsp;quiet beauty of&nbsp;simplicity.
       </p>
     </div>
     <!-- Правая колонка: фото -->
