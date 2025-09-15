@@ -230,7 +230,6 @@ var arr = imgs.map(function(el){
   var STAGE = document.querySelector('.lightbox-stage');
   var state = { arr:[], i:0, req:0 };
   var onKey = null;
-  var floaterTimer = 0;
 
   function setLoading(on){
     if (!STAGE) return;
@@ -244,9 +243,6 @@ var arr = imgs.map(function(el){
     if (!state.arr.length) return;
 
     LIGHTBOX.style.display = 'block';
-    clearTimeout(floaterTimer);
-document.body.classList.remove('lb-floater-wait'); // на случай, если ещё шёл «ожидательный» класс
-
     document.body.classList.add('lb-lock');
     bindKeys();
     render(0);
@@ -255,11 +251,6 @@ document.body.classList.remove('lb-floater-wait'); // на случай, есл�
   window.closeLightbox = function(){
     LIGHTBOX.style.display = 'none';
     document.body.classList.remove('lb-lock');
-    document.body.classList.add('lb-floater-wait');
-floaterTimer = setTimeout(function(){
-  document.body.classList.remove('lb-floater-wait'); // через 2000 мс начнётся плавное появление
-}, 2000);
-
     unbindKeys();
   };
 
