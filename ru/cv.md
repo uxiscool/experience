@@ -7,16 +7,16 @@ alt_url: /cv/
 ---
 <div class="container">
 <header class="cv-head">
-  <div class="cv-title">Product / UX Designer. Currently in Moscow, Russia</div>
+  <div class="cv-title">Продуктовый, UX/UI Дизайнер. Москва, Россия</div>
 <!-- Download (trigger + popover) -->
 <div class="cv-download-wrap">
 <a id="cv-download-trigger" class="cv-download-link" href="#" role="button">
   <img class="cv-download-icon" src="{{ site.baseurl }}/ui/icon_pdf.svg" alt="PDF" width="32" height="32" aria-hidden="true">
-  <span>Download CV (PDF)</span>
+  <span>Скачать резюме (PDF)</span>
 </a>
   <!-- десктопная плашка -->
   <div id="cv-download-pop" class="cv-download-pop" hidden aria-hidden="true" role="dialog" aria-label="Download CV">
-    <div class="cv-download-pop__title">Download CV (PDF)</div>
+    <div class="cv-download-pop__title">Скачать резюме (PDF)</div>
     <a class="cv-download-pop__row" href="{{ site.baseurl }}/vladimir_zhukov_cv_rus_v1.1.pdf">
       <img class="cv-download-pop__icon" src="{{ site.baseurl }}/ui/icon_download_32.svg" alt="" aria-hidden="true">
       <span class="cv-download-pop__label">PDF на русском</span>
@@ -24,7 +24,7 @@ alt_url: /cv/
     </a>
     <a class="cv-download-pop__row" href="{{ site.baseurl }}/vladimir_zhukov_cv_eng_v1.pdf">
       <img class="cv-download-pop__icon" src="{{ site.baseurl }}/ui/icon_download_32.svg" alt="" aria-hidden="true">
-      <span class="cv-download-pop__label">PDF in English</span>
+      <span class="cv-download-pop__label">PDF на английском</span>
       <span class="cv-download-pop__size">1.99&nbsp;MB</span>
     </a>
   </div>
@@ -33,185 +33,198 @@ alt_url: /cv/
   <section class="cv-grid">
     <!-- ABOUT -->
     <div class="cv-rail"></div>
-    <div class="cv-right"><h2 class="cvsubheading">About</h2></div>
+    <div class="cv-right"><h2 class="cvsubheading">О себе</h2></div>
     <div class="cv-rail"></div>
     <div class="cv-right">
-      <p>RU I have 15+ years of experience designing digital services. I’ve worked both in startup environments and on large-scale corporate projects, combining the best practices of both worlds to deliver results.</p><p>My focus is on creating well-crafted user experiences: building user flows, information architecture, prototypes, and interfaces within design systems — or evolving those systems further. I’m also interested in CX, apply data-driven improvements, and use AI tools to enhance analysis and optimize workflows.</p><p>My strengths lie in bridging design and product strategy, fostering cross-team collaboration, and ensuring a consistent, seamless user experience.</p>
+      <p>Имею 15+ лет опыта в&nbsp;проектировании цифровых сервисов. Работал как в&nbsp;стартап-атмосфере, так и&nbsp;над крупными корпоративными проектами, умею сочетать подходы из&nbsp;обеих сред для достижения результата.</p>
+      <p>Фокусируюсь на&nbsp;глубокой проработке UX: строю user flow, информационную архитектуру, создаю прототипы и&nbsp;интерфейсы в&nbsp;рамках дизайн-систем или развивая их. Интересуюсь сервис-дизайном, применяю data-driven улучшения и&nbsp;использую AI-инструменты для анализа и&nbsp;оптимизации.</p>
+      <p>Мои сильные стороны&nbsp;— соединять дизайн и&nbsp;продуктовую стратегию, поддерживать командные процессы и&nbsp;обеспечивать целостный пользовательский опыт.</p>
     </div>
     <!-- EXPERIENCE -->
     <div class="cv-rail"></div>
-    <div class="cv-right"><h2 class="cvsubheading">Experience</h2></div>
+    <div class="cv-right"><h2 class="cvsubheading">Опыт</h2></div>
+
     <!-- Job: Atom -->
     <div class="cv-rail">
       <span class="cv-company">Kama (Atom.auto)</span><br>
-      <span class="cv-dates">Aug 2023 — Aug 2025</span>
+      <span class="cv-dates">Август 2023 — Август 2025</span>
     </div>
     <div class="cv-right">
-      <div class="cv-role">UX/UI Designer (Service designer)</div>
-      <p>Design and development of an automotive infotainment system, an integrated digital content marketplace, and a companion mobile app for an electric vehicle.</p>
+      <div class="cv-role">UX/UI Designer (Service Designer)</div>
+      <p>Проектирование автомобильной infotainment-системы, маркета цифрового контента и&nbsp;мобильного приложения-компаньона электромобиля.</p>
       <ul class="cv-bullets">
-        <li>Built a dedicated in-car marketplace for add-ons and customizations;</li>
-        <li>Established a consistent UX practice in an environment of high entropy and fragmented teams;</li>
-        <li>Designed the interaction between the mobile app and the marketplace as part of the larger “car–cloud–mobile” ecosystem;</li>
-        <li>Delivered investor-ready prototypes based on vague and incomplete requirements;</li>
-        <li>Worked at the intersection of UX and product design: creating concepts, building UI, and shaping information and functional architecture;</li>
-        <li>Helped the PO structure and prioritize the design backlog;</li>
-        <li>Achieved 93% KPI on task delivery;</li>
-        <li>Earned strong positive feedback from cross-functional teams, PO, analysts, and engineers;</li>
-        <li>Recognized for improving accessibility, usability, process efficiency, and overall team empathy.</li>
+        <li>Спроектировал маркет для аддонов и&nbsp;кастомизаций;</li>
+        <li>Наладил системную UX-практику в&nbsp;условиях высокой энтропии и&nbsp;разобщённости команд;</li>
+        <li>Подготовил прототипы для инвесторов на&nbsp;основе размытых и&nbsp;неполных требований;</li>
+        <li>Создал вайрфреймы, многослойный юзерфлоу, инфо-функциональную архитектуру;</li>
+        <li>Помог PO&nbsp;сформировать бэклог на&nbsp;дизайн;</li>
+        <li>Обеспечил KPI выполнения задач на&nbsp;уровне 93%;</li>
+        <li>Очень положительные отзывы от&nbsp;смежных команд, PO, аналитиков и&nbsp;инженеров;</li>
+        <li>Отмечены инициативы по&nbsp;доступности, фокусу на&nbsp;удобстве, оптимизации процессов внутри отдела и&nbsp;общем уровне эмпатии в&nbsp;целом.</li>
       </ul>
     </div>
+
     <!-- Job: RTLABS -->
     <div class="cv-rail">
-      <span class="cv-company">RTLabs (Gosuslu)</span><br>
-      <span class="cv-dates">May 2022 — Aug 2023</span>
+      <span class="cv-company">RTLabs (Госуслуги)</span><br>
+      <span class="cv-dates">Май 2022 — Август 2023</span>
     </div>
     <div class="cv-right">
-      <div class="cv-role">Senior Product Designer</div>
-      <p>Design of new services, improvement of existing ones, and landing pages for Gosuslugi, a nationwide government service platform.</p>
+      <div class="cv-role">Старший дизайнер интерфейсов</div>
+      <p>Проектирование новых услуг, совершенствование существующих и&nbsp;создание лендингов для «Госуслуг»&nbsp;— государственного сервиса федерального значения.</p>
       <ul class="cv-bullets">
-        <li>Simplified interaction patterns to make communication between citizens and state services more user-friendly and less bureaucratic;</li>
-        <li>Balanced backend constraints with UX needs, extending the design system with new components;</li>
-        <li>Delivered responsive, WCAG-compliant interfaces and consistent experiences across services;</li>
-        <li>Positive feedback from analysts and PMs, with measurable gains in conversion and error handling.</li>
+        <li>Упростил ключевые сценарии взаимодействия граждан с&nbsp;ведомствами;</li>
+        <li>Балансировал ограничения бэкенда с&nbsp;UX-задачами, расширил DS&nbsp;новыми элементами;</li>
+        <li>Обеспечил адаптивность UI&nbsp;и&nbsp;соответствие WCAG;</li>
+        <li>Получил хорошую обратную связь от&nbsp;аналитиков и&nbsp;менеджеров: отмечен рост конверсии и&nbsp;эффективности обработки ошибок.</li>
       </ul>
     </div>
+
     <!-- Job: EPAM -->
     <div class="cv-rail">
       <span class="cv-company">EPAM</span><br>
-      <span class="cv-dates">Feb 2020 — May 2022</span>
+      <span class="cv-dates">Февраль 2020 — Май 2022</span>
     </div>
     <div class="cv-right">
       <div class="cv-role">UX Designer</div>
-       <p>Mission-critical internal service Time/Vacation/Calendars (used daily by 58,000+ employees across 25+ countries) — time tracking and project/resource planning.</p>
+      <p>Внутренний критически важный B2E&nbsp;сервис Time/Vacation/Calendars (ежедневно используется 58 000+ сотрудниками в&nbsp;25+ странах).</p>
       <ul class="cv-bullets">
-        <li>Increased the value of collected statistics;</li>
-        <li>Optimized routine tasks for resource managers;</li>
-        <li>Expanded functionality with new tools;</li>
-        <li>Simplified core features and implemented WCAG accessibility checks;</li>
-        <li>Received positive feedback from PO and related departments; user surveys confirmed higher efficiency with the updated layouts.</li>
+        <li>Существенно повысил ценность собираемой статистики.</li>
+        <li>Оптимизировал работу ресурсных менеджеров в&nbsp;типовых задачах.</li>
+        <li>Расширил функциональность сервиса новыми инструментами.</li>
+        <li>Существенно упростил частотные функции и&nbsp;внедрил проверку WCAG.</li>
+        <li>Получил положительный фидбек от&nbsp;PO&nbsp;и&nbsp;смежных отделов; опросы пользователей подтвердили рост эффективности работы на&nbsp;обновлённых лейаутах.</li>
       </ul>
-      <p>Federal project for the Russian Association of Motor Insurers (RSA) — improvement and enhancement of the nationwide web service for insurance companies.</p>
+      <p>Государственный проект Российского Союза Автостраховщиков (РСА)&nbsp;— развитие федерального веб-сервиса для страховых компаний.</p>
       <ul class="cv-bullets">
-        <li>Designed new working modules and user flows;</li>
-        <li>Coordinated and delegated tasks for a team of two designers and oversaw results;</li>
-        <li>Quickly onboarded without requiring a knowledge transfer phase;</li>
-        <li>Received positive feedback from the client, analysts, and developers.</li>
+        <li>Спроектировал новые модули и&nbsp;сценарии;</li>
+        <li>Распределял задачи для двух дизайнеров в&nbsp;составе рабочей группы, контролировал результат;</li>
+        <li>Смог быстро войти в&nbsp;проект без паузы на&nbsp;трансфер знаний.</li>
+        <li>Получена положительная обратная связь: отмечено улучшение конверсии и&nbsp;эффективности обработки ошибок.</li>
       </ul>
     </div>
+
     <!-- Job: Kaspersky -->
     <div class="cv-rail">
       <span class="cv-company">Kaspersky</span><br>
-      <span class="cv-dates">Mar 2016 — Jan 2020</span>
+      <span class="cv-dates">Март 2016 — Январь 2020</span>
     </div>
     <div class="cv-right">
-      <div class="cv-role">UX/UI Designer</div>
-      <p>Design and development of desktop, mobile, and web products.</p>
+      <div class="cv-role">Проектировщик интерфейсов</div>
+      <p>Проектирование и&nbsp;развитие десктопных, мобильных приложений и&nbsp;веб-сервисов.</p>
       <ul class="cv-bullets">
-        <li>Conducted user research and analysis: interviews, CJMs, personas, user stories;</li>
-        <li>Validated hypotheses through prototyping and testing on interactive mockups;</li>
-        <li>Introduced Figma as the primary design tool;</li>
-        <li>Ensured effective cross-team collaboration with marketing, developers, and editors;</li>
-        <li>Performed regular UX audits of new releases, improving usability and interface quality, confirmed by UI statistics;</li>
-        <li>Recognized for constructive teamwork and problem-solving.</li>
+        <li>Проводил исследования: интервью, CJM, персоны, user stories, кардсортинг, сторифреймы;</li>
+        <li>Проверял гипотезы прототипами и&nbsp;тестами на&nbsp;интерактивных макетах;</li>
+        <li>Внедрил Figma как основной инструмент;</li>
+        <li>Наладил взаимодействие с&nbsp;маркетингом, разработчиками и&nbsp;редакторами;</li>
+        <li>Делал регулярные UX-аудиты релизов&nbsp;— рост юзабилити и&nbsp;качества интерфейсов (подтвержден метриками);</li>
+        <li>Отмечен за&nbsp;конструктивность и&nbsp;решение сложных задач.</li>
       </ul>
     </div>
-        <!-- Job: AdWatch -->
+
+    <!-- Job: AdWatch -->
     <div class="cv-rail">
       <span class="cv-company">AdWatch</span><br>
-      <span class="cv-dates">Oct 2013 — Mar 2016</span>
+      <span class="cv-dates">Октябрь 2013 — Март 2016</span>
     </div>
     <div class="cv-right">
-      <div class="cv-role">UX Designer</div>
-      <p>UX design in an agency environment: fast-paced work across multiple short-term projects (mobile apps, services, websites, landing pages).</p>
+      <div class="cv-role">UX дизайнер</div>
+      <p>UX-дизайн в&nbsp;формате агентства: работа над множеством краткосрочных проектов (мобильные приложения, сервисы, сайты, лендинги).</p>
       <ul class="cv-bullets">
-        <li>Designed user flows and information architecture under tight deadlines;</li>
-        <li>Conducted user interviews and research, building CJMs and personas;</li>
-        <li>Created and tested prototypes to validate hypotheses before launch;</li>
-        <li>Ensured consistency of solutions while collaborating with graphic designers, managers, analysts, and developers;</li>
-        <li>Sharpened the ability to quickly immerse into new domains and adapt UX approaches to diverse projects;</li>
+        <li>Проектировал пользовательские сценарии и&nbsp;информационную архитектуру в&nbsp;сжатые сроки;</li>
+        <li>Проводил интервью и&nbsp;исследования, формировал CJM;</li>
+        <li>Создавал и&nbsp;тестировал прототипы, проверяя гипотезы до&nbsp;запуска;</li>
+        <li>Обеспечивал согласованность решений, работая в&nbsp;связке с&nbsp;графдизайнерами, менеджерами, аналитиками и&nbsp;разработчиками;</li>
+        <li>Прокачал скорость погружения в&nbsp;новые домены и&nbsp;адаптацию подходов к&nbsp;UX.</li>
       </ul>
     </div>
-         <!-- Job: Acronis -->
+
+    <!-- Job: Acronis -->
     <div class="cv-rail">
       <span class="cv-company">Acronis</span><br>
-      <span class="cv-dates">Jun 2011 — Oct 2013</span>
+      <span class="cv-dates">Июнь 2011 — Октябрь 2013</span>
     </div>
     <div class="cv-right">
-      <div class="cv-role">UI Designer</div>
-      <p>UI design within the large-scale enterprise project Acronis Backup & Recovery.</p>
+      <div class="cv-role">Дизайнер интерфейсов</div>
+      <p>UI/UX-дизайн в&nbsp;рамках проекта Acronis Backup &amp; Recovery.</p>
       <ul class="cv-bullets">
-        <li>Created pixel-perfect prototypes for multiple product modules and features, ensuring high implementation accuracy;</li>
-        <li>Conducted UI reviews and improved interface consistency across the product;</li>
-        <li>Collaborated with cross-functional teams, accelerating alignment and reducing rework;</li>
-        <li>Strengthened skills in typography, prototyping, and teamwork, contributing to overall interface quality.</li>
+        <li>Создал pixel-perfect макеты для множества функций и&nbsp;модулей продукта, обеспечивая высокую точность реализации;</li>
+        <li>Проводил UI-ревью и&nbsp;добился согласованности интерфейсов в&nbsp;масштабах всего продукта;</li>
+        <li>Работал с&nbsp;кросс-функциональными командами, ускоряя согласования и&nbsp;снижая переделки;</li>
+        <li>Укрепил навыки типографики, прототипирования и&nbsp;командной работы.</li>
       </ul>
     </div>
+
     <!-- SKILLS -->
     <div class="cv-rail"></div>
-    <div class="cv-right"><h2 class="cvsubheading">Skills</h2></div>
+    <div class="cv-right"><h2 class="cvsubheading">Навыки</h2></div>
     <div class="cv-rail"></div>
     <div class="cv-right">
-      Product discovery, CJM/user journey architecture, UX writing, prototyping, Lean UX, JTBD, user research & interviews, personas, CJM (as is/to be), user flows, information architecture, CX, prototyping (lo-fi/hi-fi), hypothesis validation, data-driven UX, usability audits, accessibility (WCAG), DS, cross-functional collaboration, knowledge sharing.
+      Product discovery, UX-копирайтинг, прототипирование (lo-fi/hi-fi), Lean UX, JTBD, пользовательские исследования и&nbsp;интервью, персоны, CJM (as&nbsp;is/to&nbsp;be), user flows, информационная архитектура, CX, валидация гипотез, data-driven UX, UX-аудиты, доступность (WCAG), дизайн-системы, обмен знаниями.
     </div>
+
     <!-- TOOLS -->
     <div class="cv-rail"></div>
-    <div class="cv-right"><h2 class="cvsubheading">Tools</h2></div>
+    <div class="cv-right"><h2 class="cvsubheading">Инструменты</h2></div>
     <div class="cv-rail"></div>
     <div class="cv-right">
-      Figma (Auto-layout, Variants, Tokens), Protopie, basics — HTML/CSS, Photoshop/Illustrator, Lottie, Obsidian, Miro/Holst.so, AI/LLM, Vibecoding.
+      Figma (Auto-layout, Variants, Tokens), Protopie; базовые&nbsp;— HTML/CSS, Photoshop/Illustrator, Lottie, Obsidian, Miro/Holst.so, AI/LLM, Вайбкодинг.
     </div>
+
     <!-- SIDE PROJECTS -->
     <div class="cv-rail"></div>
-    <div class="cv-right"><h2 class="cvsubheading">Side projects</h2></div>
+    <div class="cv-right"><h2 class="cvsubheading">Пет-проекты</h2></div>
     <div class="cv-rail"></div>
     <div class="cv-right">
-      Figma plugins (Image Compressor, Find My Fonts), a prompt-management web service, Task/list manager for Android.
+      Плагины для Figma (Image Compressor, Find My Fonts), веб-сервис для управления промптами, Task/list-менеджер для Android.
     </div>
+
     <!-- LANGUAGES -->
     <div class="cv-rail"></div>
-    <div class="cv-right"><h2 class="cvsubheading">Languages</h2></div>
+    <div class="cv-right"><h2 class="cvsubheading">Языки</h2></div>
     <div class="cv-rail"></div>
     <div class="cv-right">
-      Russian — native; English — Sufficient for reading documentation.
+      Русский&nbsp;— родной; английский&nbsp;— чтение технической документации.
     </div>
+
     <!-- CONTACTS -->
     <div class="cv-rail"></div>
-    <div class="cv-right"><h2 class="cvsubheading">Contacts</h2></div>
+    <div class="cv-right"><h2 class="cvsubheading">Контакты</h2></div>
     <div class="cv-rail"></div>
     <div class="cv-right">
       <ul class="cv-contacts-list">
         <li>
-          Email: 
+          Email:
           <a class="cv-email" href="javascript:void(0)"
-   data-user="loocsixu" data-host="moc.liamg">
-  <span class="cv-email-text">[show email]</span>
-</a></li>
+             data-user="loocsixu" data-host="moc.liamg">
+            <span class="cv-email-text">[показать email]</span>
+          </a>
+        </li>
         <li>
-          LinkedIn: 
+          LinkedIn:
           <a href="https://linkedin.com/in/uxvladimir" target="_blank" rel="noopener">
             linkedin.com/in/uxvladimir
           </a>
         </li>
         <li>
-          Telegram: 
-          <a href="https://t.me/zloi_cactus" target="_blank" rel="noopener">
-            @zloi_cactus
+          Телеграм:
+          <a href="https://t.me/zloy_cactus" target="_blank" rel="noopener">
+            @zloy_cactus
           </a>
         </li>
       </ul>
       <!-- email обфускация -->
-  <script>
-(function () {
-  function rev(s){ return s.split('').reverse().join(''); }
-  document.querySelectorAll('.cv-email').forEach(function(a){
-    var addr = rev(a.dataset.user) + '@' + rev(a.dataset.host);
-    a.href = 'mailto:' + addr;
-    var t = a.querySelector('.cv-email-text');
-    if (t) t.textContent = addr;
-  });
-})();
-</script>
+      <script>
+      (function () {
+        function rev(s){ return s.split('').reverse().join(''); }
+        document.querySelectorAll('.cv-email').forEach(function(a){
+          var addr = rev(a.dataset.user) + '@' + rev(a.dataset.host);
+          a.href = 'mailto:' + addr;
+          var t = a.querySelector('.cv-email-text');
+          if (t) t.textContent = addr;
+        });
+      })();
+      </script>
       <noscript><p>Email: uxiscool [at] gmail [dot] com</p></noscript>
     </div>
   </section>
