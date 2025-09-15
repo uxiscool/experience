@@ -1316,7 +1316,7 @@ html[data-lang="ru"] .i18n-ru { display: initial; }
 /* ===== Языковой «поплавок» (RUS/ENG) ===== */
 /* === Lang floater: right-top — farther start (×3), slower move (×4), 2s before move === */
 .lang-floater{
-  position: fixed;
+  position: absolute;
   z-index: 1000000;
   pointer-events: auto;
   text-decoration: none;
