@@ -8,11 +8,11 @@ alt_url: /ru/
 <div class="container">
   <div class="intro-hero">
     <p id="intro-line" class="intro-line">
-    I’m Vladimir — UX&nbsp;enthusiast and&nbsp;UX/UI designer from Moscow.<br>Here I share selected projects that best reflect my approach to design and user experience.<br><br>
-    I like when interfaces feel honest and free of clutter. I value simplicity, clarity, and the sense that a product is truly made for people.<br><br>
-I enjoy turning complex services into something clear and approachable. Finding structure in chaos and shaping solutions that help businesses while delighting users is what motivates me most.<br><br>
-For me, design is not only about interfaces but also about relationships. I value teamwork, stay curious about science and technology, and like looking at things from different angles to discover new connections.<br><br>
-Open to collaboration and always excited for new challenges.
+    I’m Vladimir — UX&nbsp;enthusiast and&nbsp;UX/UI designer from&nbsp;Moscow.<br>Here I&nbsp;share selected projects that&nbsp;best reflect my&nbsp;approach to&nbsp;design and&nbsp;user experience.<br><br>
+    I like when&nbsp;interfaces feel honest and&nbsp;free of&nbsp;clutter. I&nbsp;value simplicity, clarity, and&nbsp;the&nbsp;sense that&nbsp;a&nbsp;product is&nbsp;truly made for&nbsp;people.<br><br>
+I&nbsp;enjoy turning complex services into&nbsp;something clear and&nbsp;approachable. Finding structure in&nbsp;chaos and&nbsp;shaping solutions that&nbsp;help businesses while delighting users is&nbsp;what motivates me&nbsp;most.<br><br>
+For me, design is&nbsp;not&nbsp;only about interfaces but&nbsp;also about relationships. I&nbsp;value teamwork, stay curious about science and&nbsp;technology, and&nbsp;like looking at&nbsp;things from&nbsp;different angles to&nbsp;discover new connections.<br><br>
+Open to&nbsp;collaboration and&nbsp;always excited for&nbsp;new challenges.
     </p>
     <!-- Градиентный разделитель -->
     <div class="intro-divider"></div>
