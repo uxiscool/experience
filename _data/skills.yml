@@ -1,43 +1,54 @@
-hard:
-  - name: UX Research
-    note: Interviews, surveys, JTBD, analysis of user scenarios
-  - name: Information Architecture
-    note: Building sitemaps, user flows, and navigation
-  - name: UI Design
-    note: Creating layouts in Figma, working with design systems
-  - name: Prototyping
-    note: Interactive prototypes, early-stage hypothesis validation
-  - name: Figma Advanced
-    note: Auto-layouts, components, variables, plugins
-  - name: Usability Testing
-    note: Conducting tests, capturing and analyzing feedback
-  - name: Wireframing
-    note: Quick drafts of interfaces and scenarios
-  - name: HTML/CSS Basics
-    note: Understanding of markup for collaboration with developers
-  - name: Design Handoff
-    note: Preparing layouts and specifications for developers
-  - name: Accessibility
-    note: WCAG, contrast, accessibility for diverse users
-
 soft:
-  - name: Empathy
-    note: Ability to understand users’ motivations and feelings
-  - name: Communication
-    note: Clear expression of ideas, active listening
-  - name: Collaboration
-    note: Comfortable working in cross-functional teams
-  - name: Systems Thinking
-    note: Seeing connections and consequences of decisions
-  - name: Facilitation
-    note: Leading sessions and workshops, keeping the group focused
-  - name: Flexibility
-    note: Quickly adapting to project changes
-  - name: Perseverance
-    note: Following tasks through despite challenges
-  - name: Time Management
-    note: Planning time and prioritizing effectively
-  - name: Openness to Feedback
-    note: Viewing criticism as a way to grow
-  - name: Creativity
-    note: Generating ideas and finding non-standard solutions
+  - name: "Product discovery"
+    note: "Finding and articulating real user and business needs; shaping hypotheses and scoping problems."
+    note_ru: "Поиск и формулировка реальных потребностей пользователей и бизнеса, работа с гипотезами и постановкой задач."
+  - name: "UX copywriting"
+    note: "Crafting interface copy that helps people quickly understand what to do and how."
+    note_ru: "Формулировка текстов интерфейсов, которые помогают пользователю быстро понимать, что и как делать."
+  - name: "Lean UX"
+    note: "Fewer artifacts, more validation: quickly testing ideas and hypotheses in real conditions."
+    note_ru: "Подход «минимум артефактов — максимум проверок»: быстрая проверка идей и гипотез в реальных условиях."
+  - name: "JTBD"
+    note: "Jobs To Be Done: understanding the job users hire the product to do."
+    note_ru: "Jobs To Be Done: понимание задач пользователя «ради чего» он использует продукт."
+  - name: "User research & interviews"
+    note: "Collecting insights via interviews, observation and surveys to better understand the audience."
+    note_ru: "Сбор инсайтов через интервью, наблюдения и опросы для лучшего понимания аудитории."
+  - name: "Personas"
+    note: "Defining user archetypes so the team speaks about the audience in the same terms."
+    note_ru: "Составление типажей пользователей, чтобы команда говорила об аудитории на одном языке."
+  - name: "CJM (as-is / to-be)"
+    note: "Customer journey maps: capturing the current experience and designing the future one."
+    note_ru: "Карты пути пользователя: фиксация текущего опыта и проектирование будущего."
+  - name: "User flows"
+    note: "Step-by-step scenarios from entry to outcome."
+    note_ru: "Подробные сценарии прохождения шагов пользователем — от входа до результата."
+  - name: "CX"
+    note: "Customer Experience: end-to-end experience across all product/service touchpoints."
+    note_ru: "Customer Experience: целостный опыт пользователя во всех точках контакта с продуктом или сервисом."
+  - name: "Knowledge sharing"
+    note: "Documentation, workshops and discussions that help the team grow with the product."
+    note_ru: "Документация, воркшопы, обсуждения — чтобы команда росла вместе с продуктом."
+
+hard:
+  - name: "Prototyping (lo-fi/hi-fi)"
+    note: "From quick sketches and wireframes to detailed interactive prototypes for testing."
+    note_ru: "От быстрых скетчей и wireframes до детализированных интерактивных макетов для тестирования."
+  - name: "Information architecture"
+    note: "Logical structure of information and sections so people find things with minimal effort."
+    note_ru: "Логичная структура данных и разделов, чтобы пользователь находил нужное без усилий."
+  - name: "Hypothesis validation"
+    note: "Testing product assumptions through experiments, user tests and metrics."
+    note_ru: "Проверка предположений о продукте через тесты, эксперименты и метрики."
+  - name: "Data-driven UX"
+    note: "Decision-making based on data: analytics, metrics and A/B tests."
+    note_ru: "Принятие решений на основе данных: аналитика, метрики, A/B-тесты."
+  - name: "UX audits"
+    note: "Evaluating interfaces for usability, finding friction and growth points."
+    note_ru: "Проверка интерфейсов на удобство, выявление проблем и точек роста."
+  - name: "Accessibility (WCAG)"
+    note: "Designing interfaces that meet accessibility standards so everyone can use them."
+    note_ru: "Соответствие интерфейсов стандартам доступности, чтобы ими могли пользоваться все."
+  - name: "Design systems"
+    note: "Creating and evolving component systems for consistency and faster delivery."
+    note_ru: "Создание и развитие систем компонентов для единообразия и ускорения разработки."
