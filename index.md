@@ -8,10 +8,11 @@ alt_url: /ru/
 <div class="container">
   <div class="intro-hero">
     <p id="intro-line" class="intro-line">
-    EN I’m Vladimir — UX&nbsp;enthusiast and&nbsp;interaction architect based in&nbsp;Moscow, Russia.<br><br>
-    I’m&nbsp;passionate about a&nbsp;systematic approach to&nbsp;design and&nbsp;believe that real product value starts with well-thought-out user journeys.<br>I&nbsp;love working on&nbsp;a&nbsp;wide variety of&nbsp;interfaces, with a&nbsp;special passion for&nbsp;internal tools and&nbsp;complex B2B web&nbsp;services.<br><br>
-    My&nbsp;experience covers different project roles: from solo contributor to&nbsp;core team member. I&nbsp;enjoy tackling business tasks, building structure out&nbsp;of&nbsp;chaos, and&nbsp;making digital products truly useful and&nbsp;delightful for&nbsp;people.<br><br>
-    Open to&nbsp;collaboration and&nbsp;always excited to&nbsp;solve new&nbsp;challenges.
+    I’m Vladimir — UX&nbsp;enthusiast and&nbsp;UX/UI designer from Moscow.<br>Here I share selected projects that best reflect my approach to design and user experience.<br><br>
+    I like when interfaces feel honest and free of clutter. I value simplicity, clarity, and the sense that a product is truly made for people.<br><br>
+I enjoy turning complex services into something clear and approachable. Finding structure in chaos and shaping solutions that help businesses while delighting users is what motivates me most.<br><br>
+For me, design is not only about interfaces but also about relationships. I value teamwork, stay curious about science and technology, and like looking at things from different angles to discover new connections.<br><br>
+Open to collaboration and always excited for new challenges.
     </p>
     <!-- Градиентный разделитель -->
     <div class="intro-divider"></div>
