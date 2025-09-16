@@ -51,26 +51,31 @@ alt_url: /ru/about/
       <div class="skills-col">
         <h3 class="skills-title">Soft</h3>
         <div class="skills skills-grid">
-          {% for s in site.data.skills.soft %}
-            <span
-              class="pill tilt mono tooltip slide-in-left"
-              data-tip="{{ s.note | default: '—' }}"
-              style="animation-delay: {{ forloop.index0 | times: 80 }}ms"
-            >{{ s.name }}</span>
-          {% endfor %}
+{% for s in site.data.skills.soft %}
+  {% assign tip = s.note %}
+  {% if page.lang == 'ru' and s.note_ru %}{% assign tip = s.note_ru %}{% endif %}
+  <span
+    class="pill tilt mono tooltip slide-in-left"
+    data-tip="{{ tip | default: '—' }}"
+    style="animation-delay: {{ forloop.index0 | times: 80 }}ms"
+  >{{ s.name }}</span>
+{% endfor %}
         </div>
       </div>
       <!-- Hard column -->
       <div class="skills-col">
         <h3 class="skills-title">Hard</h3>
         <div class="skills skills-grid">
-          {% for s in site.data.skills.hard %}
-            <span
-              class="pill tilt mono tooltip slide-in-right"
-              data-tip="{{ s.note | default: '—' }}"
-              style="animation-delay: {{ forloop.index0 | times: 80 }}ms"
-            >{{ s.name }}</span>
-          {% endfor %}
+{% for s in site.data.skills.hard %}
+  {% assign tip = s.note %}
+  {% if page.lang == 'ru' and s.note_ru %}{% assign tip = s.note_ru %}{% endif %}
+  <span
+    class="pill tilt mono tooltip slide-in-left"
+    data-tip="{{ tip | default: '—' }}"
+    style="animation-delay: {{ forloop.index0 | times: 80 }}ms"
+  >{{ s.name }}</span>
+{% endfor %}
+
         </div>
       </div>
     </div>
