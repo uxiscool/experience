@@ -45,7 +45,7 @@ alt_url: /about/
     <div class="skills-columns">
       <!-- Soft column -->
       <div class="skills-col">
-        <h3 class="skills-title">Soft</h3>
+        <h3 class="skills-title">Софт</h3>
         <div class="skills skills-grid">
 {% for s in site.data.skills.soft %}
   {% assign tip = s.note %}
@@ -60,7 +60,7 @@ alt_url: /about/
       </div>
       <!-- Hard column -->
       <div class="skills-col">
-        <h3 class="skills-title">Hard</h3>
+        <h3 class="skills-title">Хард</h3>
         <div class="skills skills-grid">
 {% for s in site.data.skills.hard %}
   {% assign tip = s.note %}
