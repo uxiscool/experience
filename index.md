@@ -51,10 +51,9 @@ Open to&nbsp;collaboration and&nbsp;always excited for&nbsp;new challenges.
         <div class="case-year-rail">{{ case.year }}</div>
         <div class="case-meta2">
           <div class="case-title-row">
-            {% assign case_anchor = case.url | replace:'/cases/','' | replace:'/','' | downcase %}
-            <a href="{{ site.baseurl }}/cases/#case-{{ case_anchor }}" class="case-title2">{{ case.title }}</a>
+          {% assign case_anchor = case.url | replace:'/cases/','' | replace:'/','' | downcase %}
+<a href="{{ site.baseurl }}{% if page.lang == 'ru' %}/ru{% endif %}/cases/#case-{{ case_anchor }}" class="case-title2">{{ case.title }}</a>
           </div>
-
           <!-- Мета: каждая часть в своем span; год для мобильной версии -->
           <div class="case-meta2-inline">
             <span class="case-year-inline">{{ case.year }}</span>
