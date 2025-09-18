@@ -42,6 +42,16 @@ alt_url: /ru/cases/
       </div>
     {% endif %}
 
+{% if c.stages %}
+  {% for st in c.stages %}
+
+    {% if st.title or st.summary %}
+      <div class="stage-header">
+        {% if st.title %}<h3 class="case-title2">{{ st.title }}</h3>{% endif %}
+        {% if st.summary %}<div class="stage-summary">{{ st.summary }}</div>{% endif %}
+      </div>
+    {% endif %}
+
     <div class="case-gallery">
       {% for img in st.images %}
         {% assign src = img.src | default: img.file | prepend: c.images_base | default: img.src %}
@@ -51,8 +61,10 @@ alt_url: /ru/cases/
         </div>
       {% endfor %}
     </div>
+
   {% endfor %}
 {% endif %}
+
 
       </div>
     {% endfor %}
