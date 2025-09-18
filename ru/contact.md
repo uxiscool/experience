@@ -67,7 +67,7 @@ body_class: page-contact
           </span>
           <div class="contact-line">
             <span class="contact-title">Behance</span>
-            <span class="soon-tag">(coming somewhen)</span>
+            <span class="soon-tag">(в разработке)</span>
           </div>
         </li>
         <!-- 6) Dribbble (coming soon) -->
@@ -77,7 +77,7 @@ body_class: page-contact
           </span>
           <div class="contact-line">
             <span class="contact-title">Dribbble</span>
-            <span class="soon-tag">(coming somewhen)</span>
+            <span class="soon-tag">(в разработке)</span>
           </div>
         </li>
         <!-- 7) Habr (coming soon) -->
@@ -87,7 +87,7 @@ body_class: page-contact
           </span>
           <div class="contact-line">
             <span class="contact-title">Habr</span>
-            <span class="soon-tag">(coming somewhen)</span>
+            <span class="soon-tag">(в разработке)</span>
           </div>
         </li>
       </ul>
