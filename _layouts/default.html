@@ -50,7 +50,7 @@
 
   </head>
   <body class="{{ page.body_class }}">
-    <!-- Site-wide notice banner -->
+    <!-- Site-wide notice banner 
 <div id="site-banner" class="site-banner" role="region" aria-label="Site notice" hidden>
   <div class="site-banner__inner">
     <div class="site-banner__text">
@@ -61,7 +61,7 @@
     </button>
   </div>
 </div>
- <!-- Site-wide notice banner end -->
+Site-wide notice banner end -->
     {% include header.html %}
     <!-- Mobile menu button -->
 <button id="burger" class="burger-btn" aria-label="Open menu" aria-controls="mobile-menu" aria-expanded="false">
@@ -809,33 +809,31 @@ function updateLangBtn(){
     closePop(); closeSheet();
   });
 })();
+//(function(){
+//  var B = document.getElementById('site-banner');
+//  if (!B) return;
+//  var CLOSE = document.getElementById('siteBannerClose');
+ // var KEY = 'siteBannerDismissed-v1';
 
-/* === Site notice banner === */
-(function(){
-  var B = document.getElementById('site-banner');
-  if (!B) return;
-  var CLOSE = document.getElementById('siteBannerClose');
-  var KEY = 'siteBannerDismissed-v1';
+ // if (!localStorage.getItem(KEY)) {
+ //   B.hidden = false;
+ //   requestAnimationFrame(function(){ B.classList.add('is-visible'); });
+ // }
 
-  if (!localStorage.getItem(KEY)) {
-    B.hidden = false;
-    requestAnimationFrame(function(){ B.classList.add('is-visible'); });
-  }
+ // function hide(){
+ //   B.classList.remove('is-visible');
+ //   setTimeout(function(){ B.hidden = true; }, 350);
+ // }
 
-  function hide(){
-    B.classList.remove('is-visible');
-    setTimeout(function(){ B.hidden = true; }, 350);
-  }
+ // if (CLOSE) CLOSE.addEventListener('click', function(){
+ //   localStorage.setItem(KEY, '1');
+ //   hide();
+ // });
 
-  if (CLOSE) CLOSE.addEventListener('click', function(){
-    localStorage.setItem(KEY, '1');
-    hide();
-  });
-
-  document.addEventListener('keydown', function(e){
-    if (e.key === 'Escape' && B.classList.contains('is-visible')) hide();
-  }, {passive:true});
-})();
+ // document.addEventListener('keydown', function(e){
+ //   if (e.key === 'Escape' && B.classList.contains('is-visible')) hide();
+ // }, {passive:true});
+//})();
 </script>
   </body>
 </html>
