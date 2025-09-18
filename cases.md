@@ -35,29 +35,27 @@ alt_url: /ru/cases/
 
 {% if c.stages %}
   {% for st in c.stages %}
-    {% if st.title or st.summary %}
-      <div class="stage-header">
-        {% if st.title %}<h3 class="stage-title">{{ st.title }}</h3>{% endif %}
-        {% if st.summary %}<div class="stage-summary">{{ st.summary }}</div>{% endif %}
-      </div>
-    {% endif %}
 
-{% if c.stages %}
-  {% for st in c.stages %}
-
-    {% if st.title or st.summary %}
-      <div class="stage-header">
-        {% if st.title %}<h3 class="case-title2">{{ st.title }}</h3>{% endif %}
-        {% if st.summary %}<div class="stage-summary">{{ st.summary }}</div>{% endif %}
-      </div>
-    {% endif %}
+    <div class="stage-header">
+      {% if page.lang == 'ru' %}
+        {% if st.name %}<h3 class="case-title2">{{ st.name }}</h3>{% endif %}
+        {% if st.desc_ru %}<div class="stage-summary">{{ st.desc_ru }}</div>{% endif %}
+      {% else %}
+        {% if st.name %}<h3 class="case-title2">{{ st.name }}</h3>{% endif %}
+        {% if st.desc %}<div class="stage-summary">{{ st.desc }}</div>{% endif %}
+      {% endif %}
+    </div>
 
     <div class="case-gallery">
       {% for img in st.images %}
         {% assign src = img.src | default: img.file | prepend: c.images_base | default: img.src %}
         <div class="case-gallery-item">
           <img class="case-thumb2 lazy-img" data-src="{{ site.baseurl }}{{ src }}" alt="">
-          {% if img.caption %}<div class="case-thumb-caption">{{ img.caption }}</div>{% endif %}
+          {% if page.lang == 'ru' and img.caption_ru %}
+            <div class="case-thumb-caption">{{ img.caption_ru }}</div>
+          {% elsif img.caption %}
+            <div class="case-thumb-caption">{{ img.caption }}</div>
+          {% endif %}
         </div>
       {% endfor %}
     </div>
@@ -65,8 +63,4 @@ alt_url: /ru/cases/
   {% endfor %}
 {% endif %}
 
-
-      </div>
-    {% endfor %}
-  {% endfor %}
 </div>
