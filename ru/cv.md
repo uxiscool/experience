@@ -46,7 +46,7 @@ alt_url: /cv/
     <!-- Job: Atom -->
     <div class="cv-rail">
       <span class="cv-company">Kama (Atom.auto)</span><br>
-      <span class="cv-dates">Август 2023 — Август 2025</span>
+      <span class="cv-dates">Авг 2023 — Авг 2025</span>
     </div>
     <div class="cv-right">
       <div class="cv-role">UX/UI Designer (Service Designer)</div>
@@ -65,7 +65,7 @@ alt_url: /cv/
     <!-- Job: RTLABS -->
     <div class="cv-rail">
       <span class="cv-company">RTLabs (Госуслуги)</span><br>
-      <span class="cv-dates">Май 2022 — Август 2023</span>
+      <span class="cv-dates">Май 2022 — Авг 2023</span>
     </div>
     <div class="cv-right">
       <div class="cv-role">Старший дизайнер интерфейсов</div>
@@ -80,7 +80,7 @@ alt_url: /cv/
     <!-- Job: EPAM -->
     <div class="cv-rail">
       <span class="cv-company">EPAM</span><br>
-      <span class="cv-dates">Февраль 2020 — Май 2022</span>
+      <span class="cv-dates">Фев 2020 — Май 2022</span>
     </div>
     <div class="cv-right">
       <div class="cv-role">UX Designer</div>
@@ -103,7 +103,7 @@ alt_url: /cv/
     <!-- Job: Kaspersky -->
     <div class="cv-rail">
       <span class="cv-company">Kaspersky</span><br>
-      <span class="cv-dates">Март 2016 — Январь 2020</span>
+      <span class="cv-dates">Мар 2016 — Янв 2020</span>
     </div>
     <div class="cv-right">
       <div class="cv-role">Проектировщик интерфейсов</div>
@@ -120,7 +120,7 @@ alt_url: /cv/
     <!-- Job: AdWatch -->
     <div class="cv-rail">
       <span class="cv-company">AdWatch</span><br>
-      <span class="cv-dates">Октябрь 2013 — Март 2016</span>
+      <span class="cv-dates">Окт 2013 — Мар 2016</span>
     </div>
     <div class="cv-right">
       <div class="cv-role">UX-дизайнер</div>
@@ -136,7 +136,7 @@ alt_url: /cv/
     <!-- Job: Acronis -->
     <div class="cv-rail">
       <span class="cv-company">Acronis</span><br>
-      <span class="cv-dates">Июнь 2011 — Октябрь 2013</span>
+      <span class="cv-dates">Июн 2011 — Окт 2013</span>
     </div>
     <div class="cv-right">
       <div class="cv-role">Дизайнер интерфейсов</div>
