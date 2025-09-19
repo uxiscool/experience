@@ -5,17 +5,13 @@ permalink: /ru/cases/
 lang: ru
 alt_url: /cases/
 ---
-
 <div class="featured-cases">
   {%- assign groups = site.cases | group_by: "year" | sort: "name" | reverse -%}
   {%- for g in groups -%}
-
     {%- assign items_by_order = g.items | sort: "order" -%}
-
     {%- for c in items_by_order -%}{% if c.order %}
       <div class="case-block">
         <div class="case-year-rail">{{ c.year }}</div>
-
         <div class="case-meta2">
           <div class="case-title-row">
             <h2 class="case-title3">{{ c.title_ru | default: c.title }}</h2>
@@ -27,15 +23,12 @@ alt_url: /cases/
           </div>
           <div class="case-summary2">{{ c.summary_ru | default: c.summary }}</div>
         </div>
-
         {% if c.stages %}
           {% for st in c.stages %}
-
             {% assign stage_desc = st.desc_ru | default: st.desc %}
             {% if stage_desc %}
               <div class="stage-summary">{{ stage_desc }}</div>
             {% endif %}
-
             <div class="case-gallery">
               {% for img in st.images %}
                 {% assign src = img.src | default: img.file | prepend: c.images_base | default: img.src %}
@@ -46,16 +39,13 @@ alt_url: /cases/
                 </div>
               {% endfor %}
             </div>
-
           {% endfor %}
         {% endif %}
       </div>
     {% endif %}{%- endfor -%}
-
     {%- for c in items_by_order -%}{% unless c.order %}
       <div class="case-block">
         <div class="case-year-rail">{{ c.year }}</div>
-
         <div class="case-meta2">
           <div class="case-title-row">
             <h2 class="case-title3">{{ c.title_ru | default: c.title }}</h2>
@@ -67,15 +57,12 @@ alt_url: /cases/
           </div>
           <div class="case-summary2">{{ c.summary_ru | default: c.summary }}</div>
         </div>
-
         {% if c.stages %}
           {% for st in c.stages %}
-
             {% assign stage_desc = st.desc_ru | default: st.desc %}
             {% if stage_desc %}
               <div class="stage-summary">{{ stage_desc }}</div>
             {% endif %}
-
             <div class="case-gallery">
               {% for img in st.images %}
                 {% assign src = img.src | default: img.file | prepend: c.images_base | default: img.src %}
@@ -86,11 +73,9 @@ alt_url: /cases/
                 </div>
               {% endfor %}
             </div>
-
           {% endfor %}
         {% endif %}
       </div>
     {% endunless %}{%- endfor -%}
-
   {%- endfor -%}
 </div>

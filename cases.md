@@ -8,13 +8,10 @@ alt_url: /ru/cases/
 <div class="featured-cases">
   {%- assign groups = site.cases | group_by: "year" | sort: "name" | reverse -%}
   {%- for g in groups -%}
-
     {%- assign items_by_order = g.items | sort: "order" -%}
-
     {%- for c in items_by_order -%}{% if c.order %}
       <div class="case-block">
         <div class="case-year-rail">{{ c.year }}</div>
-
         <div class="case-meta2">
           <div class="case-title-row">
             <h2 class="case-title3">{{ c.title }}</h2>
@@ -26,15 +23,11 @@ alt_url: /ru/cases/
           </div>
           {% if c.summary %}<div class="case-summary2">{{ c.summary }}</div>{% endif %}
         </div>
-
         {% if c.stages %}
           {% for st in c.stages %}
-
-            {# only short stage description — no titles #}
             {% if st.desc %}
               <div class="stage-summary">{{ st.desc }}</div>
             {% endif %}
-
             <div class="case-gallery">
               {% for img in st.images %}
                 {% assign src = img.src | default: img.file | prepend: c.images_base | default: img.src %}
@@ -44,16 +37,13 @@ alt_url: /ru/cases/
                 </div>
               {% endfor %}
             </div>
-
           {% endfor %}
         {% endif %}
       </div>
     {% endif %}{%- endfor -%}
-
     {%- for c in items_by_order -%}{% unless c.order %}
       <div class="case-block">
         <div class="case-year-rail">{{ c.year }}</div>
-
         <div class="case-meta2">
           <div class="case-title-row">
             <h2 class="case-title3">{{ c.title }}</h2>
@@ -65,14 +55,11 @@ alt_url: /ru/cases/
           </div>
           {% if c.summary %}<div class="case-summary2">{{ c.summary }}</div>{% endif %}
         </div>
-
         {% if c.stages %}
           {% for st in c.stages %}
-
             {% if st.desc %}
               <div class="stage-summary">{{ st.desc }}</div>
             {% endif %}
-
             <div class="case-gallery">
               {% for img in st.images %}
                 {% assign src = img.src | default: img.file | prepend: c.images_base | default: img.src %}
@@ -82,11 +69,9 @@ alt_url: /ru/cases/
                 </div>
               {% endfor %}
             </div>
-
           {% endfor %}
         {% endif %}
       </div>
     {% endunless %}{%- endfor -%}
-
   {%- endfor -%}
 </div>
