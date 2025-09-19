@@ -30,7 +30,6 @@ alt_url: /cases/
         </div>
         {% if c.stages %}
   {% for st in c.stages %}
-    {# краткое описание стадии (локализовано): без заголовков #}
     {% assign stage_desc = st.desc_ru | default: st.desc %}
     {% if stage_desc %}
       <div class="stage-summary">{{ stage_desc }}</div>
