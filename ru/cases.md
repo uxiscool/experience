@@ -14,39 +14,39 @@ alt_url: /cases/
     {% assign without_order = group_items | where_exp: "it", "it.order == nil" %}
     {% assign with_order_sorted = with_order | sort: "order" %}
     {% assign items_sorted = with_order_sorted | concat: without_order %}
-
     {% for c in items_sorted %}
       <div class="case-block">
         <div class="case-year-rail">{{ c.year }}</div>
-
         <div class="case-meta2">
           <div class="case-title-row">
             <h2 class="case-title3">{{ c.title_ru | default: c.title }}</h2>
           </div>
-
           <div class="case-meta2-inline">
             {% if c.year %}<span class="case-year-inline">{{ c.year }}</span>{% endif %}
             {% if c.company %}<span class="case-company">{{ c.company }}</span>{% endif %}
             {% if c.type %}<span class="case-type">{{ c.type }}</span>{% endif %}
           </div>
-
           <div class="case-summary2">{{ c.summary_ru | default: c.summary }}</div>
         </div>
-
         {% if c.stages %}
-          <div class="case-gallery">
-            {% for st in c.stages %}
-              {% for img in st.images %}
-                {% assign src = img.src | default: img.file | prepend: c.images_base | default: img.src %}
-                {% assign cap = img.caption_ru | default: img.caption %}
-                <div class="case-gallery-item">
-                  <img class="case-thumb2 lazy-img" data-src="{{ site.baseurl }}{{ src }}" alt="">
-                  {% if cap %}<div class="case-thumb-caption">{{ cap }}</div>{% endif %}
-                </div>
-              {% endfor %}
-            {% endfor %}
-          </div>
-        {% endif %}
+  {% for st in c.stages %}
+    {# краткое описание стадии (локализовано): без заголовков #}
+    {% assign stage_desc = st.desc_ru | default: st.desc %}
+    {% if stage_desc %}
+      <div class="stage-summary">{{ stage_desc }}</div>
+    {% endif %}
+    <div class="case-gallery">
+      {% for img in st.images %}
+        {% assign src = img.src | default: img.file | prepend: c.images_base | default: img.src %}
+        {% assign cap = img.caption_ru | default: img.caption %}
+        <div class="case-gallery-item">
+          <img class="case-thumb2 lazy-img" data-src="{{ site.baseurl }}{{ src }}" alt="">
+          {% if cap %}<div class="case-thumb-caption">{{ cap }}</div>{% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  {% endfor %}
+{% endif %}
       </div>
     {% endfor %}
   {% endfor %}
