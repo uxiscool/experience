@@ -113,9 +113,7 @@ Site-wide notice banner end -->
       <img src="{{ site.baseurl }}/ui/lightbox_arrow_left.svg" width="36" height="36" alt="Prev">
     </button>
 <div class="lightbox-stage">
-  <a id="lightbox-link" href="" target="_blank" rel="noopener">
-    <img id="lightbox-img" class="lightbox-img" src="">
-  </a>
+  <img id="lightbox-img" class="lightbox-img" src="" alt="">
   {% include lightbox_loader.html %}
 </div>
     <button class="lightbox-arrow right" onclick="lightboxNext()" aria-label="Next">
@@ -225,11 +223,19 @@ var arr = imgs.map(function(el){
 })();
 
 (function(){
-  var LIGHTBOX = document.getElementById('lightbox');
-  var IMG = document.getElementById('lightbox-img');
-  var CAP = document.getElementById('lightbox-caption');
-  var THUMBS = document.getElementById('lightbox-thumbs');
-  var STAGE = document.querySelector('.lightbox-stage');
+var LIGHTBOX = document.getElementById('lightbox');
+var IMG = document.getElementById('lightbox-img');
+var CAP = document.getElementById('lightbox-caption');
+var THUMBS = document.getElementById('lightbox-thumbs');
+var STAGE = document.querySelector('.lightbox-stage');
+
+// Клик по картинке → открыть её в новой вкладке (чистая, 100%)
+if (IMG){
+  IMG.addEventListener('click', function(){
+    if (IMG.src) window.open(IMG.src, '_blank', 'noopener');
+  });
+}
+
   var state = { arr:[], i:0, req:0 };
   var onKey = null;
 
@@ -279,8 +285,6 @@ function render(dir){
   nextImg.className = 'lightbox-img lb-anim ' + (dir > 0 ? 'lb-enter-right' : dir < 0 ? 'lb-enter-left' : 'lb-center');
   nextImg.alt = item.caption || '';
 
-  var LINK = document.getElementById('lightbox-link');   // ← ДОБАВЛЕНО
-
   nextImg.onload = function(){
     // если за это время пришёл другой render — выходим
     if (req !== state.req) return;
@@ -292,7 +296,6 @@ function render(dir){
       // первый показ / клик по миниатюре — без слайда
       oldImg.src = nextImg.src;
       oldImg.alt = nextImg.alt;
-      if (LINK) LINK.href = nextImg.src;                // ← ДОБАВЛЕНО
       renderThumbs();
       return;
     }
@@ -313,7 +316,6 @@ function render(dir){
     }
 
     IMG = nextImg;
-    if (LINK) LINK.href = nextImg.src;                  // ← ДОБАВЛЕНО
     renderThumbs();
   };
 
@@ -323,7 +325,6 @@ function render(dir){
     setLoading(false);
     if (dir === 0){
       oldImg.src = item.src;
-      if (LINK) LINK.href = item.src;                   // ← ДОБАВЛЕНО
       renderThumbs();
     } else {
       if (oldImg && oldImg.id === 'lightbox-img') oldImg.id = '';
@@ -333,13 +334,11 @@ function render(dir){
       STAGE.appendChild(nextImg);
       if (oldImg){ try { STAGE.removeChild(oldImg); } catch(e){} }
       IMG = nextImg;
-      if (LINK) LINK.href = item.src;                   // ← ДОБАВЛЕНО
       renderThumbs();
     }
   };
 
   nextImg.src = item.src;
-  if (LINK) LINK.href = item.src;                       // ← ДОБАВЛЕНО (на всякий случай сразу)
 }
 
   function renderThumbs(){

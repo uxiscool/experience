@@ -367,17 +367,6 @@ header{ display:flex; align-items:flex-start; gap:36px; margin-top:36px; }
 .lightbox-img.lb-exit-left{   transform: translate(-250%,-50%); opacity: 0; }
 .lightbox-img.lb-exit-right{  transform: translate(150%,-50%);  opacity: 0; }
 
-/* Лайтбокс: ссылка-обёртка, чтобы открывать изображение в новой вкладке */
-#lightbox-link{
-  display:block;
-  position:relative;
-  max-width:100%;
-  max-height:100%;
-}
-#lightbox-link img{
-  display:block;
-}
-
 /* Размер контейнера Lottie (подгони при желании) */
 #lottie-loader{ width:64px; height:64px; }
 
