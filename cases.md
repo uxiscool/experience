@@ -5,10 +5,12 @@ permalink: /cases/
 lang: en
 alt_url: /ru/cases/
 ---
+
 <div class="featured-cases">
   {%- assign groups = site.cases | group_by: "year" | sort: "name" | reverse -%}
   {%- for g in groups -%}
     {%- assign items_by_order = g.items | sort: "order" -%}
+
     {%- for c in items_by_order -%}{% if c.order %}
       <div class="case-block">
         <div class="case-year-rail">{{ c.year }}</div>
@@ -19,15 +21,13 @@ alt_url: /ru/cases/
           <div class="case-meta2-inline">
             {% if c.year %}<span class="case-year-inline">{{ c.year }}</span>{% endif %}
             {% if c.company %}<span class="case-company">{{ c.company }}</span>{% endif %}
-            {% if page.lang == 'ru' %}
-  {% assign _type = c.type_ru | default: c.type %}
-{% else %}
-  {% assign _type = c.type %}
-{% endif %}
-{% if _type %}<span class="case-type">{{ _type }}</span>{% endif %}
+            {% if c.type %}<span class="case-type">{{ c.type }}</span>{% endif %}
           </div>
-          {% if c.summary %}<div class="case-summary2">{{ c.summary }}</div>{% endif %}
+          {% if c.summary %}
+            <div class="case-summary2">{{ c.summary }}</div>
+          {% endif %}
         </div>
+
         {% if c.stages %}
           {% for st in c.stages %}
             {% if st.desc %}
@@ -38,7 +38,9 @@ alt_url: /ru/cases/
                 {% assign src = img.src | default: img.file | prepend: c.images_base | default: img.src %}
                 <div class="case-gallery-item">
                   <img class="case-thumb2 lazy-img" data-src="{{ site.baseurl }}{{ src }}" alt="">
-                  {% if img.caption %}<div class="case-thumb-caption">{{ img.caption }}</div>{% endif %}
+                  {% if img.caption %}
+                    <div class="case-thumb-caption">{{ img.caption }}</div>
+                  {% endif %}
                 </div>
               {% endfor %}
             </div>
@@ -46,6 +48,7 @@ alt_url: /ru/cases/
         {% endif %}
       </div>
     {% endif %}{%- endfor -%}
+
     {%- for c in items_by_order -%}{% unless c.order %}
       <div class="case-block">
         <div class="case-year-rail">{{ c.year }}</div>
@@ -56,16 +59,13 @@ alt_url: /ru/cases/
           <div class="case-meta2-inline">
             {% if c.year %}<span class="case-year-inline">{{ c.year }}</span>{% endif %}
             {% if c.company %}<span class="case-company">{{ c.company }}</span>{% endif %}
-            {% if page.lang == 'ru' %}
-  {% assign _type = c.type_ru | default: c.type %}
-{% else %}
-  {% assign _type = c.type %}
-{% endif %}
-{% if _type %}<span class="case-type">{{ _type }}</span>{% endif %}
-
+            {% if c.type %}<span class="case-type">{{ c.type }}</span>{% endif %}
           </div>
-          {% if c.summary %}<div class="case-summary2">{{ c.summary }}</div>{% endif %}
+          {% if c.summary %}
+            <div class="case-summary2">{{ c.summary }}</div>
+          {% endif %}
         </div>
+
         {% if c.stages %}
           {% for st in c.stages %}
             {% if st.desc %}
@@ -76,7 +76,9 @@ alt_url: /ru/cases/
                 {% assign src = img.src | default: img.file | prepend: c.images_base | default: img.src %}
                 <div class="case-gallery-item">
                   <img class="case-thumb2 lazy-img" data-src="{{ site.baseurl }}{{ src }}" alt="">
-                  {% if img.caption %}<div class="case-thumb-caption">{{ img.caption }}</div>{% endif %}
+                  {% if img.caption %}
+                    <div class="case-thumb-caption">{{ img.caption }}</div>
+                  {% endif %}
                 </div>
               {% endfor %}
             </div>
