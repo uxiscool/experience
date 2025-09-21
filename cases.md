@@ -19,7 +19,12 @@ alt_url: /ru/cases/
           <div class="case-meta2-inline">
             {% if c.year %}<span class="case-year-inline">{{ c.year }}</span>{% endif %}
             {% if c.company %}<span class="case-company">{{ c.company }}</span>{% endif %}
-            {% if c.type %}<span class="case-type">{{ c.type }}</span>{% endif %}
+            {% if page.lang == 'ru' %}
+  {% assign _type = c.type_ru | default: c.type %}
+{% else %}
+  {% assign _type = c.type %}
+{% endif %}
+{% if _type %}<span class="case-type">{{ _type }}</span>{% endif %}
           </div>
           {% if c.summary %}<div class="case-summary2">{{ c.summary }}</div>{% endif %}
         </div>
@@ -51,7 +56,13 @@ alt_url: /ru/cases/
           <div class="case-meta2-inline">
             {% if c.year %}<span class="case-year-inline">{{ c.year }}</span>{% endif %}
             {% if c.company %}<span class="case-company">{{ c.company }}</span>{% endif %}
-            {% if c.type %}<span class="case-type">{{ c.type }}</span>{% endif %}
+            {% if page.lang == 'ru' %}
+  {% assign _type = c.type_ru | default: c.type %}
+{% else %}
+  {% assign _type = c.type %}
+{% endif %}
+{% if _type %}<span class="case-type">{{ _type }}</span>{% endif %}
+
           </div>
           {% if c.summary %}<div class="case-summary2">{{ c.summary }}</div>{% endif %}
         </div>

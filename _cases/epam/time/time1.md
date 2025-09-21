@@ -5,6 +5,7 @@ title_ru: Корпоративные сервисы учёта рабочего 
 year: 2023
 company: Epam
 type: B2E Web Service
+type_ru: Корпоративный веб-сервис (B2E)
 featured: true
 summary: Revamped core flows for enterprise sales CRM used by 3,000+ employees.
 summary_ru: Перепроектировала ключевые сценарии для CRM, которой пользуются 3000+ сотрудников.

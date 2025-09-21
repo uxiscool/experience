@@ -46,7 +46,12 @@ alt_url: /
           <div class="case-meta2-inline">
             <span class="case-year-inline">{{ case.year }}</span>
             {% if case.company %}<span class="case-company">{{ case.company }}</span>{% endif %}
-            {% if case.type %}<span class="case-type">{{ case.type }}</span>{% endif %}
+            {% if page.lang == 'ru' %}
+  {% assign _type = case.type_ru | default: case.type %}
+{% else %}
+  {% assign _type = case.type %}
+{% endif %}
+{% if _type %}<span class="case-type">{{ _type }}</span>{% endif %}
           </div>
           <div class="case-summary2">{{ case.summary }}</div>
         </div>

@@ -37,7 +37,6 @@ Open to&nbsp;collaboration and&nbsp;always excited for&nbsp;new challenges.
     {% assign without_order = group_items | where_exp: "it", "it.order == nil" %}
     {% assign with_order_sorted = with_order | sort: "order" %}
     {% assign items_sorted = with_order_sorted | concat: without_order %}
-
     {% for case in items_sorted %}
       {% assign case_index = 0 %}
       {% for c in site.cases %}
@@ -46,7 +45,6 @@ Open to&nbsp;collaboration and&nbsp;always excited for&nbsp;new challenges.
           {% break %}
         {% endif %}
       {% endfor %}
-
       <div class="case-block">
         <div class="case-year-rail">{{ case.year }}</div>
         <div class="case-meta2">
@@ -58,11 +56,11 @@ Open to&nbsp;collaboration and&nbsp;always excited for&nbsp;new challenges.
           <div class="case-meta2-inline">
             <span class="case-year-inline">{{ case.year }}</span>
             {% if case.company %}<span class="case-company">{{ case.company }}</span>{% endif %}
-            {% if case.type %}<span class="case-type">{{ case.type }}</span>{% endif %}
+            {% assign _type = case.type %}
+{% if _type %}<span class="case-type">{{ _type }}</span>{% endif %}
           </div>
           <div class="case-summary2">{{ case.summary }}</div>
         </div>
-
         <div class="case-gallery">
           {% assign idx = 0 %}
           {% if case.stages %}
