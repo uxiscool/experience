@@ -655,9 +655,10 @@ body.page-contact>main{ flex:1 0 auto; }
   color:inherit;
 }
 .pp-media-link:focus-visible{
-  outline:2px solid #ff9900;
   outline-offset:4px;
-  border-radius:12px;
+  outline: none;       
+  box-shadow: inset 0 0 0 2px var(--orange);  /* рисуем «внутри» */
+  border-radius: 12px; 
 }
 /* Ссылки сторов в футере */
 .pp-links a.pp-store{
