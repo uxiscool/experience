@@ -52,14 +52,14 @@ Open to&nbsp;collaboration and&nbsp;always excited for&nbsp;new challenges.
           {% assign case_anchor = case.url | replace:'/cases/','' | replace:'/','' | downcase %}
 <a href="{{ site.baseurl }}{% if page.lang == 'ru' %}/ru{% endif %}/cases/#case-{{ case_anchor }}" class="case-title2">{{ case.title }}</a>
           </div>
-          <!-- Мета: каждая часть в своем span; год для мобильной версии -->
           <div class="case-meta2-inline">
             <span class="case-year-inline">{{ case.year }}</span>
             {% if case.company %}<span class="case-company">{{ case.company }}</span>{% endif %}
             {% assign _type = case.type %}
 {% if _type %}<span class="case-type">{{ _type }}</span>{% endif %}
           </div>
-          <div class="case-summary2">{{ case.summary }}</div>
+          {% assign _summary = case.summary %}
+<div class="case-summary2">{{ _summary }}</div>
         </div>
         <div class="case-gallery">
           {% assign idx = 0 %}

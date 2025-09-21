@@ -40,7 +40,8 @@ alt_url: /
         <div class="case-meta2">
           <div class="case-title-row">
           {% assign case_anchor = case.url | replace:'/cases/','' | replace:'/','' | downcase %}
-<a href="{{ site.baseurl }}{% if page.lang == 'ru' %}/ru{% endif %}/cases/#case-{{ case_anchor }}" class="case-title2">{{ case.title }}</a>
+{% assign _title = case.title_ru | default: case.title %}
+<a href="{{ site.baseurl }}/ru/cases/#case-{{ case_anchor }}" class="case-title2">{{ _title }}</a>
           </div>
           <!-- Мета: каждая часть в своем span; год для мобильной версии -->
           <div class="case-meta2-inline">
@@ -53,7 +54,8 @@ alt_url: /
 {% endif %}
 {% if _type %}<span class="case-type">{{ _type }}</span>{% endif %}
           </div>
-          <div class="case-summary2">{{ case.summary }}</div>
+          {% assign _summary = case.summary_ru | default: case.summary %}
+<div class="case-summary2">{{ _summary }}</div>
         </div>
         <div class="case-gallery">
           {% assign idx = 0 %}
@@ -78,11 +80,12 @@ alt_url: /
             {% endfor %}
           {% else %}
             {% for img in case.images %}
-              {% unless img.home == false %}
-                <div class="case-gallery-item">
-                  <img
-                    class="case-thumb2 lazy-img"
-                    data-src="{{ site.baseurl }}{{ img_src }}"
+  {% unless img.home == false %}
+    {% assign img_src = img.src | default: img.file | prepend: case.images_base | default: img.src %}
+    <div class="case-gallery-item">
+      <img
+        class="case-thumb2 lazy-img"
+        data-src="{{ site.baseurl }}{{ img_src }}"
                     alt="{{ img.caption | escape }}"
                     decoding="async"
                     onclick="openHomeGallery({{ case_index }}, {{ forloop.index0 }})">
