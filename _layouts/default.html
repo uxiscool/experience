@@ -229,10 +229,12 @@ var CAP = document.getElementById('lightbox-caption');
 var THUMBS = document.getElementById('lightbox-thumbs');
 var STAGE = document.querySelector('.lightbox-stage');
 
-// Клик по картинке → открыть её в новой вкладке (чистая, 100%)
-if (IMG){
-  IMG.addEventListener('click', function(){
-    if (IMG.src) window.open(IMG.src, '_blank', 'noopener');
+// Клик по текущему изображению → открыть в новой вкладке
+if (STAGE){
+  STAGE.addEventListener('click', function(e){
+    var img = e.target && e.target.closest('img.lightbox-img');
+    if (!img || !img.src) return;
+    window.open(img.src, '_blank', 'noopener');
   });
 }
 
