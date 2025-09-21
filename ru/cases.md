@@ -5,6 +5,7 @@ permalink: /ru/cases/
 lang: ru
 alt_url: /cases/
 ---
+
 <div class="featured-cases">
   {%- assign groups = site.cases | group_by: "year" | sort: "name" | reverse -%}
   {%- for g in groups -%}
@@ -19,12 +20,8 @@ alt_url: /cases/
           <div class="case-meta2-inline">
             {% if c.year %}<span class="case-year-inline">{{ c.year }}</span>{% endif %}
             {% if c.company %}<span class="case-company">{{ c.company }}</span>{% endif %}
-            {% if page.lang == 'ru' %}
-  {% assign _type = c.type_ru | default: c.type %}
-{% else %}
-  {% assign _type = c.type %}
-{% endif %}
-{% if _type %}<span class="case-type">{{ _type }}</span>{% endif %}
+            {% assign _type = c.type_ru | default: c.type %}
+            {% if _type %}<span class="case-type">{{ _type }}</span>{% endif %}
           </div>
           <div class="case-summary2">{{ c.summary_ru | default: c.summary }}</div>
         </div>
@@ -36,11 +33,17 @@ alt_url: /cases/
             {% endif %}
             <div class="case-gallery">
               {% for img in st.images %}
-                {% assign src = img.src | default: img.file | prepend: c.images_base | default: img.src %}
-                {% assign cap = img.caption_ru | default: img.caption %}
+                {% assign _base = c.images_base_ru | default: c.images_base %}
+                {% assign _rel = img.src_ru | default: img.file_ru | default: img.src | default: img.file %}
+                {% assign _cap = img.caption_ru | default: img.caption %}
+                {% if _base %}
+                  {% assign _src = _base | append: _rel %}
+                {% else %}
+                  {% assign _src = _rel %}
+                {% endif %}
                 <div class="case-gallery-item">
-                  <img class="case-thumb2 lazy-img" data-src="{{ site.baseurl }}{{ src }}" alt="">
-                  {% if cap %}<div class="case-thumb-caption">{{ cap }}</div>{% endif %}
+                  <img class="case-thumb2 lazy-img" data-src="{{ site.baseurl }}{{ _src }}" alt="">
+                  {% if _cap %}<div class="case-thumb-caption">{{ _cap }}</div>{% endif %}
                 </div>
               {% endfor %}
             </div>
@@ -58,12 +61,8 @@ alt_url: /cases/
           <div class="case-meta2-inline">
             {% if c.year %}<span class="case-year-inline">{{ c.year }}</span>{% endif %}
             {% if c.company %}<span class="case-company">{{ c.company }}</span>{% endif %}
-            {% if page.lang == 'ru' %}
-  {% assign _type = c.type_ru | default: c.type %}
-{% else %}
-  {% assign _type = c.type %}
-{% endif %}
-{% if _type %}<span class="case-type">{{ _type }}</span>{% endif %}
+            {% assign _type = c.type_ru | default: c.type %}
+            {% if _type %}<span class="case-type">{{ _type }}</span>{% endif %}
           </div>
           <div class="case-summary2">{{ c.summary_ru | default: c.summary }}</div>
         </div>
@@ -75,11 +74,17 @@ alt_url: /cases/
             {% endif %}
             <div class="case-gallery">
               {% for img in st.images %}
-                {% assign src = img.src | default: img.file | prepend: c.images_base | default: img.src %}
-                {% assign cap = img.caption_ru | default: img.caption %}
+                {% assign _base = c.images_base_ru | default: c.images_base %}
+                {% assign _rel = img.src_ru | default: img.file_ru | default: img.src | default: img.file %}
+                {% assign _cap = img.caption_ru | default: img.caption %}
+                {% if _base %}
+                  {% assign _src = _base | append: _rel %}
+                {% else %}
+                  {% assign _src = _rel %}
+                {% endif %}
                 <div class="case-gallery-item">
-                  <img class="case-thumb2 lazy-img" data-src="{{ site.baseurl }}{{ src }}" alt="">
-                  {% if cap %}<div class="case-thumb-caption">{{ cap }}</div>{% endif %}
+                  <img class="case-thumb2 lazy-img" data-src="{{ site.baseurl }}{{ _src }}" alt="">
+                  {% if _cap %}<div class="case-thumb-caption">{{ _cap }}</div>{% endif %}
                 </div>
               {% endfor %}
             </div>
