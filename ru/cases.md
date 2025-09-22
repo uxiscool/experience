@@ -39,8 +39,9 @@ alt_url: /cases/
 
             <div class="case-gallery">
               {% for img in st.images %}
-                {% if img.file_ru != blank %}
-                  {% assign _src = (c.images_base_ru | default: c.images_base) | append: img.file_ru %}
+                {% assign _ru = img.file_ru | to_s | strip %}
+                {% if _ru != '' %}
+                  {% assign _src = (c.images_base_ru | default: c.images_base) | append: _ru %}
                   {% assign _cap = img.caption_ru | default: img.caption %}
                 {% else %}
                   {% assign _src = c.images_base | append: img.file %}
@@ -86,8 +87,9 @@ alt_url: /cases/
 
             <div class="case-gallery">
               {% for img in st.images %}
-                {% if img.file_ru != blank %}
-                  {% assign _src = (c.images_base_ru | default: c.images_base) | append: img.file_ru %}
+                {% assign _ru = img.file_ru | to_s | strip %}
+                {% if _ru != '' %}
+                  {% assign _src = (c.images_base_ru | default: c.images_base) | append: _ru %}
                   {% assign _cap = img.caption_ru | default: img.caption %}
                 {% else %}
                   {% assign _src = c.images_base | append: img.file %}
