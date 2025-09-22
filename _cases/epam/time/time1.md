@@ -19,17 +19,17 @@ stages:
     desc_ru: "Ранние структурные наброски: навигация, ключевые потоки и информационная иерархия."
     images:
       - file: time1.jpg
-        file_ru: "time1_ru.jpg"
+        file_ru: ""
         caption: "Wireframe: core dashboard layout"
         caption_ru: "Вайрфрейм: компоновка дашборда"
         home: true
       - file: time2.jpg
-        file_ru: "time2_ru.jpg"
+        file_ru: ""
         caption: "Wireframe: analytics overview"
         caption_ru: "Вайрфрейм: обзор аналитики"
         home: true
       - file: time3.jpg
-        file_ru: "time3_ru.jpg"
+        file_ru: ""
         caption: "Wireframe: report builder"
         caption_ru: "Вайрфрейм: конструктор отчётов"
         home: false
@@ -39,17 +39,17 @@ stages:
     desc_ru: "Визуальный дизайн на реальных данных, финальные компоненты и микро-взаимодействия."
     images:
       - file: time4.jpg
-        file_ru: "time4_ru.jpg"
+        file_ru: ""
         caption: "Hi-fi: dashboard widgets"
         caption_ru: "Хай-фай: виджеты дашборда"
         home: false
       - file: time5.jpg
-        file_ru: "time5_ru.jpg"
+        file_ru: ""
         caption: "Hi-fi: analytics detail"
         caption_ru: "Хай-фай: детализация аналитики"
         home: false
       - file: time6.jpg
-        file_ru: "time6_ru.jpg"
+        file_ru: ""
         caption: "Hi-fi: reporting"
         caption_ru: "Хай-фай: отчётность"
         home: false
