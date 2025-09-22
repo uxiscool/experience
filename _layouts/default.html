@@ -230,11 +230,18 @@ var THUMBS = document.getElementById('lightbox-thumbs');
 var STAGE = document.querySelector('.lightbox-stage');
 
 // Клик по текущему изображению → открыть в новой вкладке
+// Клик по зоне stage:
+// - по картинке → открыть её в новой вкладке
+// - мимо картинки → закрыть лайтбокс
 if (STAGE){
   STAGE.addEventListener('click', function(e){
     var img = e.target && e.target.closest('img.lightbox-img');
-    if (!img || !img.src) return;
-    window.open(img.src, '_blank', 'noopener');
+    if (img && img.src){
+      window.open(img.src, '_blank', 'noopener');
+      return;
+    }
+    // щёлкнули по пустому месту внутри stage
+    if (typeof window.closeLightbox === 'function') window.closeLightbox();
   });
 }
 
