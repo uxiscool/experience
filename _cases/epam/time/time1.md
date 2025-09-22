@@ -19,7 +19,7 @@ stages:
     desc_ru: "Ранние структурные наброски: навигация, ключевые потоки и информационная иерархия."
     images:
       - file: time1.jpg
-        file_ru: ""
+        file_ru:
         caption: "Wireframe: core dashboard layout"
         caption_ru: "Вайрфрейм: компоновка дашборда"
         home: true
