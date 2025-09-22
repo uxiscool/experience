@@ -25,32 +25,22 @@ alt_url: /cases/
           </div>
           <div class="case-summary2">{{ c.summary_ru | default: c.summary }}</div>
         </div>
-        {% if c.stages %}
-          {% for st in c.stages %}
-            {% assign stage_desc = st.desc_ru | default: st.desc %}
-            {% if stage_desc %}
-              <div class="stage-summary">{{ stage_desc }}</div>
-            {% endif %}
-<div class="case-gallery">
+        <div class="case-gallery">
   {% for img in st.images %}
-    {%- assign _has_ru = img.file_ru -%}
-    {% if _has_ru %}
-      {% assign _base = c.images_base_ru | default: c.images_base %}
-      {% assign _rel  = img.file_ru %}
+    {% if img.file_ru and img.file_ru != '' %}
+      {% assign _src = (c.images_base_ru | default: c.images_base) | append: img.file_ru %}
+      {% assign _cap = img.caption_ru | default: img.caption %}
     {% else %}
-      {% assign _base = c.images_base %}
-      {% assign _rel  = img.file %}
+      {% assign _src = c.images_base | append: img.file %}
+      {% assign _cap = img.caption %}
     {% endif %}
-    {% assign _cap = img.caption_ru | default: img.caption %}
-    {% assign _src = _base | append: _rel %}
+
     <div class="case-gallery-item">
       <img class="case-thumb2 lazy-img" data-src="{{ site.baseurl }}{{ _src }}" alt="">
       {% if _cap %}<div class="case-thumb-caption">{{ _cap }}</div>{% endif %}
     </div>
   {% endfor %}
 </div>
-          {% endfor %}
-        {% endif %}
       </div>
     {% endif %}{%- endfor -%}
     {%- for c in items_by_order -%}{% unless c.order %}
@@ -68,13 +58,7 @@ alt_url: /cases/
           </div>
           <div class="case-summary2">{{ c.summary_ru | default: c.summary }}</div>
         </div>
-        {% if c.stages %}
-          {% for st in c.stages %}
-            {% assign stage_desc = st.desc_ru | default: st.desc %}
-            {% if stage_desc %}
-              <div class="stage-summary">{{ stage_desc }}</div>
-            {% endif %}
-            <div class="case-gallery">
+        <div class="case-gallery">
   {% for img in st.images %}
     {% if img.file_ru and img.file_ru != '' %}
       {% assign _src = (c.images_base_ru | default: c.images_base) | append: img.file_ru %}
@@ -83,14 +67,13 @@ alt_url: /cases/
       {% assign _src = c.images_base | append: img.file %}
       {% assign _cap = img.caption %}
     {% endif %}
+
     <div class="case-gallery-item">
       <img class="case-thumb2 lazy-img" data-src="{{ site.baseurl }}{{ _src }}" alt="">
       {% if _cap %}<div class="case-thumb-caption">{{ _cap }}</div>{% endif %}
     </div>
   {% endfor %}
 </div>
-          {% endfor %}
-        {% endif %}
       </div>
     {% endunless %}{%- endfor -%}
   {%- endfor -%}
