@@ -391,14 +391,28 @@ window.CASE_GALLERY_HOME = [
           {% for img in st.images %}
             {% unless img.home == false %}
               {% assign src = img.src | default: img.file | prepend: c.images_base | default: img.src %}
-              arr.push({ src: "{{ site.baseurl }}{{ src }}", caption: {{ img.caption | jsonify }} });
+              arr.push({
+  src: "{{ site.baseurl }}{{ src }}",
+  caption: {% if page.lang == "ru" %}
+             {{ img.caption_ru | default: img.caption | jsonify }}
+           {% else %}
+             {{ img.caption | jsonify }}
+           {% endif %}
+});
             {% endunless %}
           {% endfor %}
         {% endfor %}
       {% elsif c.images %}
         {% for img in c.images %}
           {% assign src = img.src | default: img.file | prepend: c.images_base | default: img.src %}
-          arr.push({ src: "{{ site.baseurl }}{{ src }}", caption: {{ img.caption | jsonify }} });
+          arr.push({
+  src: "{{ site.baseurl }}{{ src }}",
+  caption: {% if page.lang == "ru" %}
+             {{ img.caption_ru | default: img.caption | jsonify }}
+           {% else %}
+             {{ img.caption | jsonify }}
+           {% endif %}
+});
         {% endfor %}
       {% endif %}
       return arr;
@@ -414,13 +428,27 @@ window.CASE_GALLERY_ALL = [
         {% for st in c.stages %}
           {% for img in st.images %}
             {% assign src = img.src | default: img.file | prepend: c.images_base | default: img.src %}
-            arr.push({ src: "{{ site.baseurl }}{{ src }}", caption: {{ img.caption | jsonify }} });
+            arr.push({
+  src: "{{ site.baseurl }}{{ src }}",
+  caption: {% if page.lang == "ru" %}
+             {{ img.caption_ru | default: img.caption | jsonify }}
+           {% else %}
+             {{ img.caption | jsonify }}
+           {% endif %}
+});
           {% endfor %}
         {% endfor %}
       {% elsif c.images %}
         {% for img in c.images %}
           {% assign src = img.src | default: img.file | prepend: c.images_base | default: img.src %}
-          arr.push({ src: "{{ site.baseurl }}{{ src }}", caption: {{ img.caption | jsonify }} });
+          arr.push({
+  src: "{{ site.baseurl }}{{ src }}",
+  caption: {% if page.lang == "ru" %}
+             {{ img.caption_ru | default: img.caption | jsonify }}
+           {% else %}
+             {{ img.caption | jsonify }}
+           {% endif %}
+});
         {% endfor %}
       {% endif %}
       return arr;
@@ -436,14 +464,20 @@ window.PET_GALLERIES = [
       {% if p.gallery %}
         {% for img in p.gallery %}
           {% assign src = img.src | default: img.file | prepend: p.images_base | default: img.src %}
-          arr.push({ src: "{{ site.baseurl }}{{ src }}", caption: {{ img.caption | jsonify }} });
+          arr.push({
+  src: "{{ site.baseurl }}{{ src }}",
+  caption: {% if page.lang == "ru" %}
+             {{ img.caption_ru | default: img.caption | jsonify }}
+           {% else %}
+             {{ img.caption | jsonify }}
+           {% endif %}
+});
         {% endfor %}
       {% endif %}
       return arr;
     })(){% unless forloop.last %},{% endunless %}
   {% endfor %}
 ];
-
 /* ===== Lazy images (pet projects + cases) ===== */
 /* Надёжный вариант: IO + резервная проверка на scroll/resize/load */
 (function(){
