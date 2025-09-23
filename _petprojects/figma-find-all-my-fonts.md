@@ -8,7 +8,7 @@ desc: "Needing a&nbsp;tool to&nbsp;manage font styles in&nbsp;Figma, I&nbsp;coul
 desc_ru: "Когда понадобился плагин для проверки шрифтов в макете Figma, я не нашёл подходящего стороннего решения и сделал свой."
 icon: /assets/pix/pet/fgm_fndfnts/icon.png
 kind: Plugin for Figma
-kind_ru: Плагин для Figma
+kind_ru: Плагин Figma
 
 # Базовый префикс для картинок галереи
 images_base: /assets/pix/pet/fgm_fndfnts/
