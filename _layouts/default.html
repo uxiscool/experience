@@ -457,27 +457,32 @@ window.CASE_GALLERY_ALL = [
 ];
 
 window.PET_GALLERIES = [
-  {% assign items = site.petprojects %}
-  {% for p in items %}
+  {%- assign items = site.petprojects -%}
+  {%- assign with_order = items | where_exp: "it", "it.order" -%}
+  {%- assign without_order = items | where_exp: "it", "it.order == nil" -%}
+  {%- assign with_order_sorted = with_order | sort: "order" -%}
+  {%- assign items_sorted = with_order_sorted | concat: without_order -%}
+  {%- for p in items_sorted -%}
     (function(){
       var arr = [];
-      {% if p.gallery %}
-        {% for img in p.gallery %}
-          {% assign src = img.src | default: img.file | prepend: p.images_base | default: img.src %}
+      {%- if p.gallery -%}
+        {%- for img in p.gallery -%}
+          {%- assign src = img.src | default: img.file | prepend: p.images_base | default: img.src -%}
           arr.push({
-  src: "{{ site.baseurl }}{{ src }}",
-  caption: {% if page.lang == "ru" %}
-             {{ img.caption_ru | default: img.caption | jsonify }}
-           {% else %}
-             {{ img.caption | jsonify }}
-           {% endif %}
-});
-        {% endfor %}
-      {% endif %}
+            src: "{{ site.baseurl }}{{ src }}",
+            caption: {%- if page.lang == "ru" -%}
+                       {{ img.caption_ru | default: img.caption | jsonify }}
+                     {%- else -%}
+                       {{ img.caption | jsonify }}
+                     {%- endif -%}
+          });
+        {%- endfor -%}
+      {%- endif -%}
       return arr;
     })(){% unless forloop.last %},{% endunless %}
-  {% endfor %}
+  {%- endfor -%}
 ];
+
 /* ===== Lazy images (pet projects + cases) ===== */
 /* Надёжный вариант: IO + резервная проверка на scroll/resize/load */
 (function(){
