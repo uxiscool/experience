@@ -39,15 +39,13 @@ alt_url: /cases/
 
             <div class="case-gallery">
               {% for img in st.images %}
-                {% assign _ru = img.file_ru | to_s | strip %}
-                {% if _ru != '' %}
-                  {% assign _src = (c.images_base_ru | default: c.images_base) | append: _ru %}
-                  {% assign _cap = img.caption_ru | default: img.caption %}
-                {% else %}
-                  {% assign _src = c.images_base | append: img.file %}
-                  {% assign _cap = img.caption %}
-                {% endif %}
-
+{% assign _ru = img.file_ru | to_s | strip %}
+{% if _ru != '' %}
+  {% assign _src = (c.images_base_ru | default: c.images_base) | append: _ru %}
+{% else %}
+  {% assign _src = c.images_base | append: img.file %}
+{% endif %}
+{% assign _cap = img.caption_ru | default: img.caption %}
                 <div class="case-gallery-item">
                   <img class="case-thumb2 lazy-img" data-src="{{ site.baseurl }}{{ _src }}" alt="">
                   {% if _cap %}<div class="case-thumb-caption">{{ _cap }}</div>{% endif %}
@@ -87,15 +85,13 @@ alt_url: /cases/
 
             <div class="case-gallery">
               {% for img in st.images %}
-                {% assign _ru = img.file_ru | to_s | strip %}
-                {% if _ru != '' %}
-                  {% assign _src = (c.images_base_ru | default: c.images_base) | append: _ru %}
-                  {% assign _cap = img.caption_ru | default: img.caption %}
-                {% else %}
-                  {% assign _src = c.images_base | append: img.file %}
-                  {% assign _cap = img.caption %}
-                {% endif %}
-
+              {% assign _ru = img.file_ru | to_s | strip %}
+{% if _ru != '' %}
+  {% assign _src = (c.images_base_ru | default: c.images_base) | append: _ru %}
+{% else %}
+  {% assign _src = c.images_base | append: img.file %}
+{% endif %}
+{% assign _cap = img.caption_ru | default: img.caption %}
                 <div class="case-gallery-item">
                   <img class="case-thumb2 lazy-img" data-src="{{ site.baseurl }}{{ _src }}" alt="">
                   {% if _cap %}<div class="case-thumb-caption">{{ _cap }}</div>{% endif %}
