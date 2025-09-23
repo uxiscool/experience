@@ -63,17 +63,18 @@ alt_url: /
             {% for st in case.stages %}
               {% for img in st.images %}
                 {% unless img.home == false %}
-                  {% assign img_src = img.src | default: img.file | prepend: case.images_base | default: img.src %}
-                  <div class="case-gallery-item">
-                    <img
-                      class="case-thumb2 lazy-img"
-                      data-src="{{ site.baseurl }}{{ img_src }}"
-                      alt="{{ img.caption | escape }}"
-                      decoding="async"
-                      onclick="openHomeGallery({{ case_index }}, {{ idx }})">
-                    <noscript><img src="{{ site.baseurl }}{{ img_src }}" alt="{{ img.caption | escape }}"></noscript>
-                    {% if img.caption %}<div class="case-thumb-caption">{{ img.caption }}</div>{% endif %}
-                  </div>
+{% assign img_src = img.src | default: img.file | prepend: case.images_base | default: img.src %}
+{% assign _cap = img.caption_ru | default: img.caption %}
+<div class="case-gallery-item">
+  <img
+    class="case-thumb2 lazy-img"
+    data-src="{{ site.baseurl }}{{ img_src }}"
+    alt="{{ _cap | escape }}"
+    decoding="async"
+    onclick="openHomeGallery({{ case_index }}, {{ idx }})">
+  <noscript><img src="{{ site.baseurl }}{{ img_src }}" alt="{{ _cap | escape }}"></noscript>
+  {% if _cap %}<div class="case-thumb-caption">{{ _cap }}</div>{% endif %}
+</div>
                   {% assign idx = idx | plus: 1 %}
                 {% endunless %}
               {% endfor %}
