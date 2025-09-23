@@ -1,7 +1,7 @@
 ---
 order: 3
-title: Personal Portfolio Website
-title_ru: Персональный сайт-портфолио
+title: Personal Portfolio
+title_ru: Персональное портфолио
 
 subtitle: Static site on&nbsp;Jekyll, portfolio for&nbsp;my&nbsp;projects.
 subtitle_ru: Статичный сайт на&nbsp;Jekyll, портфолио с&nbsp;моими проектами.
@@ -10,8 +10,8 @@ desc: "I was wondering whether to&nbsp;include my&nbsp;portfolio site in&nbsp;th
 desc_ru: "Долго думал, включать ли&nbsp;сайт-портфолио в&nbsp;само портфолио. Включил, потому что это&nbsp;самостоятельный проект с&nbsp;нуля и&nbsp;наглядный пример — к&nbsp;тому же&nbsp;бесплатно хостится на&nbsp;GitHub Pages."
 
 icon: /assets/pix/pet/jekyll_portfolio/icon.svg
-kind: Personal portfolio
-kind_ru: Личное портфолио
+kind: Web site
+kind_ru: Веб-сайт
 
 images_base: /assets/pix/pet/jekyll_portfolio/
 
