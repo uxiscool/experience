@@ -11,6 +11,7 @@ desc_ru: "Долго думал, включать ли&nbsp;сайт-портф�
 
 icon: /assets/pix/pet/jekyll_portfolio/icon.svg
 kind: Personal portfolio
+kind_ru: Личное портфолио
 
 images_base: /assets/pix/pet/jekyll_portfolio/
 
