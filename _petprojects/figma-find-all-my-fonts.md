@@ -1,8 +1,11 @@
 ---
 order: 1
 title: Find All My Fonts
+title_ru: Find All My Fonts
 subtitle: A plugin that&nbsp;detects fonts, hidden text, and&nbsp;non-standard font sizes in&nbsp;layouts.
+subtitle_ru: Плагин для отображения всех шрифтов в макете, удобно выявить скрытые и с нестандартными размерами.
 desc: "Needing a&nbsp;tool to&nbsp;manage font styles in&nbsp;Figma, I&nbsp;couldn’t&nbsp;find&nbsp;a&nbsp;suitable third-party plugin, so&nbsp;I&nbsp;built my&nbsp;own."
+desc_ru: "Когда понадобился плагин для проверки шрифтов в макете Figma, я не нашёл подходящего стороннего решения и сделал свой."
 icon: /assets/pix/pet/fgm_fndfnts/icon.png
 kind: Plugin for Figma
 kind_ru: Плагин для Figma
