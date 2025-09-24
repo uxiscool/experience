@@ -1416,10 +1416,9 @@ html[data-lang="ru"] .i18n-ru { display: initial; }
 /* Pet projects: media placeholder */
 .pp-media-ph {
   position: relative;
-  height: 100%;
+  aspect-ratio: 4 / 3;
   width: 100%;
   border-radius: 16px;
-  /* background: rgba(255, 255, 255, 0.08); */
   overflow: hidden;
 }
 
@@ -1429,8 +1428,7 @@ html[data-lang="ru"] .i18n-ru { display: initial; }
   margin: auto;
   width: 48px;
   height: 48px;
-  opacity: 0.7;
-  pointer-events: none;               /* точно без клика */
+  pointer-events: none;            
 }
 
 /* 2.1. Когда превью загрузилось — убираем псевдо-элементы и их анимации */
