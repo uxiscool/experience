@@ -1417,7 +1417,7 @@ html[data-lang="ru"] .i18n-ru { display: initial; }
 .pp-media-ph {
   position: relative;
   height: 100%;
-  aspect-ratio: 3 / 4;               
+  width: 100%;
   border-radius: 16px;
   background: rgba(255, 255, 255, 0.08);
   overflow: hidden;
