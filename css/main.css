@@ -1416,8 +1416,8 @@ html[data-lang="ru"] .i18n-ru { display: initial; }
 /* Pet projects: media placeholder */
 .pp-media-ph {
   position: relative;
-  width: 100%;
-  aspect-ratio: 4 / 3;                /* 4:3 как просил */
+  height: 100%;
+  aspect-ratio: 3 / 4;               
   border-radius: 16px;
   background: rgba(255, 255, 255, 0.08);
   overflow: hidden;
