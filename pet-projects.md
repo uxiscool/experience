@@ -56,16 +56,23 @@ alt_url: /ru/pet-projects/
   {%- endif -%}
 </div>
 <div class="pp-footer">
-  {% if p.kind %}<div class="pp-kind">{{ p.kind }}</div>{% endif %}
-  <div class="pp-links">
-    {%- if p.in_progress -%}
-      <span class="pp-store pp-store--disabled" aria-disabled="true" title="In progress">In&nbsp;progress</span>
-    {%- elsif p.store_url and p.store_icon -%}
-      <a class="pp-store" href="{{ p.store_url }}" target="_blank" rel="noopener">
-        <img src="{{ p.store_icon | prepend: site.baseurl }}" alt="{{ p.store_alt | default: 'Store' }}">
-      </a>
-    {%- endif -%}
-  </div>
+  {%- if p.in_progress -%}
+    <!-- Сверху kind не показываем -->
+    <div class="pp-kind" style="display:none;"></div>
+    <div class="pp-links">
+      {% if p.kind %}<span class="pp-kind pp-kind--as-store">{{ p.kind }}</span>{% endif %}
+      {# ничего больше не выводим #}
+    </div>
+  {%- else -%}
+    {% if p.kind %}<div class="pp-kind">{{ p.kind }}</div>{% endif %}
+    <div class="pp-links">
+      {% if p.store_url and p.store_icon %}
+        <a class="pp-store" href="{{ p.store_url }}" target="_blank" rel="noopener">
+          <img src="{{ p.store_icon | prepend: site.baseurl }}" alt="{{ p.store_alt | default: 'Store' }}">
+        </a>
+      {% endif %}
+    </div>
+  {%- endif -%}
 </div>
         </div>
       </div>
