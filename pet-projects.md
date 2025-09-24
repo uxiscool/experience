@@ -42,11 +42,13 @@ alt_url: /ru/pet-projects/
       <img class="lazy-img" decoding="async" data-src="{{ site.baseurl }}{{ thumb_src }}" alt="">
       <noscript><img src="{{ site.baseurl }}{{ thumb_src }}" alt=""></noscript>
     </a>
-  {% else %}
+{% else %}
+  <div class="pp-media pp-media--ph">
     <div class="pp-media-ph" aria-hidden="true">
-      <img class="pp-media-ph-ico" src="{{ site.baseurl }}/ui/icon_image_off.svg" alt="">
+      <img class="pp-media-ph-ico" src="{{ site.baseurl }}/ui/icon_image_off.svg" alt="" loading="eager">
     </div>
-  {% endif %}
+  </div>
+{% endif %}
 </div>
         <div class="pp-side">
           <div class="pp-text">

@@ -1437,3 +1437,28 @@ html[data-lang="ru"] .i18n-ru { display: initial; }
   opacity: 0.7;
   pointer-events: none;               /* точно без клика */
 }
+
+/* 2.1. Когда превью загрузилось — убираем псевдо-элементы и их анимации */
+.case-img-wrap.has-loaded::before,
+.case-img-wrap.has-loaded::after,
+.pp-media.has-loaded::before,
+.pp-media.has-loaded::after,
+.pp-media-link.has-loaded::before,
+.pp-media-link.has-loaded::after {
+  content: none !important;
+  display: none !important;
+  animation: none !important;
+}
+
+/* 2.2. Для плейсхолдера — лоадер не нужен вообще */
+.pp-media--ph::before,
+.pp-media--ph::after {
+  content: none !important;
+  display: none !important;
+  animation: none !important;
+}
+
+/* На всякий случай — если лоадер задавался фоном у контейнера */
+.pp-media--ph {
+  background: none !important;
+}
