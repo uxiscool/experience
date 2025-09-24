@@ -2,6 +2,7 @@
 order: 3
 title: Personal Portfolio
 title_ru: Персональное портфолио
+in_progress: true
 
 subtitle: Static site on&nbsp;Jekyll, portfolio for&nbsp;my&nbsp;projects.
 subtitle_ru: Статичный сайт на&nbsp;Jekyll, портфолио с&nbsp;моими проектами.
