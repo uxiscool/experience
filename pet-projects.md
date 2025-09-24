@@ -36,12 +36,13 @@ alt_url: /ru/pet-projects/
         <h3 class="pp-title">{{ p.title }}</h3>
       </header>
       <div class="pp-body">
-        <div class="pp-media">
-  {% if thumb_src %}
-    <a class="pp-media-link" href="javascript:void(0)" onclick="openPetGallery({{ forloop.index0 }}, 0)" aria-label="Open gallery">
-      <img class="lazy-img" decoding="async" data-src="{{ site.baseurl }}{{ thumb_src }}" alt="">
-      <noscript><img src="{{ site.baseurl }}{{ thumb_src }}" alt=""></noscript>
+        {% if thumb_src %}
+  <div class="pp-media">
+    <a class="pp-media-link" href="javascript:void(0)" onclick="openPetGallery({{ forloop.index0 }}, 0)" aria-label="Открыть галерею">
+      <img class="lazy-img" decoding="async" data-src="{{ site.baseurl }}{{ thumb_src }}" alt="{{ _title }}">
+      <noscript><img src="{{ site.baseurl }}{{ thumb_src }}" alt="{{ _title }}"></noscript>
     </a>
+  </div>
 {% else %}
   <div class="pp-media pp-media--ph">
     <div class="pp-media-ph" aria-hidden="true">
@@ -49,7 +50,6 @@ alt_url: /ru/pet-projects/
     </div>
   </div>
 {% endif %}
-</div>
         <div class="pp-side">
           <div class="pp-text">
   {% if p.subtitle %}<div class="pp-subtitle">{{ p.subtitle }}</div>{% endif %}

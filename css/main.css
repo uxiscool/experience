@@ -580,11 +580,10 @@ body.page-contact>main{ flex:1 0 auto; }
   overflow:hidden; 
 }
 
-/* Фикс lazy в Chrome: даём стабильную геометрию картинке */
-.pp-media img{
+.pp-media-link > img{
   width:100%;
-  height:auto;                 /* раньше было 100% → могло давать 0px при узком вьюпорте */
-  aspect-ratio: inherit;         
+  height:auto;
+  aspect-ratio: inherit;
   object-fit:contain;
   display:block;
   margin:0;
@@ -709,13 +708,9 @@ body.page-contact>main{ flex:1 0 auto; }
   pointer-events: none;
 }
 
-.pp-media:has(img:not(.is-loaded))::before {
-  opacity: 0.6;
-}
+.pp-media:has(.lazy-img:not(.is-loaded))::before { opacity:.6; }
 
-.pp-media:has(img.is-loaded)::before {
-  opacity: 0;
-}
+.pp-media:has(.lazy-img.is-loaded)::before { opacity:0; }
 
 @keyframes spin {
   from { transform: translate(-50%, -50%) rotate(0deg); }
@@ -1451,6 +1446,7 @@ html[data-lang="ru"] .i18n-ru { display: initial; }
 }
 
 /* 2.2. Для плейсхолдера — лоадер не нужен вообще */
+/* у плейсхолдера лоадер не нужен в принципе */
 .pp-media--ph::before,
 .pp-media--ph::after {
   content: none !important;
