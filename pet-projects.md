@@ -51,7 +51,7 @@ alt_url: /ru/pet-projects/
 
   {%- if p.in_progress -%}
     <div class="pp-inprogress-note" role="note">
-      This project is in active development and not public yet.
+      This project is&nbsp;in&nbsp;active development and&nbsp;not&nbsp;public yet.
     </div>
   {%- endif -%}
 </div>

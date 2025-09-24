@@ -55,7 +55,7 @@ alt_url: /pet-projects/
   {% if _desc %}<div class="pp-desc">{{ _desc }}</div>{% endif %}
   {%- if p.in_progress -%}
     <div class="pp-inprogress-note" role="note">
-      Проект в разработке и ещё не выложен публично.
+      Проект в&nbsp;разработке и&nbsp;ещё не&nbsp;выложен публично.
     </div>
   {%- endif -%}
 </div>
