@@ -4,8 +4,8 @@ title: Vein - менеджер заметок и планировщик
 title_ru: Vein - Note-taking and planning tool
 in_progress: true
 
-subtitle: Static site on&nbsp;Jekyll, portfolio for&nbsp;my&nbsp;projects.
-subtitle_ru: Статичный сайт на&nbsp;Jekyll, портфолио с&nbsp;моими проектами.
+subtitle: An app for planning, creating lists, and keeping flexible notes all in one place.
+subtitle_ru: Приложение для планирования, составления списков и сохранения многофункциональных заметок.
 
 desc: "234"
 desc_ru: "456"
