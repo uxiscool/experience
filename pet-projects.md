@@ -60,7 +60,6 @@ alt_url: /ru/pet-projects/
     <!-- Сверху kind не показываем -->
     <div class="pp-links">
       {% if p.kind %}<div class="pp-kind">{{ p.kind }}</div>{% endif %}
-      {# зона стора пустая #}
     </div>
   {%- else -%}
     {% if p.kind %}<div class="pp-kind">{{ p.kind }}</div>{% endif %}
