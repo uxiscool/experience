@@ -10,7 +10,7 @@ subtitle_ru: Статичный сайт на&nbsp;Jekyll, портфолио с
 desc: "234"
 desc_ru: "456"
 
-icon: /assets/pix/pet/vein/icon.webp
+icon: /assets/pix/pet/vein/icon.png
 kind: Android mobile app
 kind_ru: Мобильное приложение под Android
 
