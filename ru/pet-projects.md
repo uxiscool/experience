@@ -53,19 +53,27 @@ alt_url: /pet-projects/
         </div>
         <div class="pp-side">
           <div class="pp-text">
-            {% if _subtitle %}<div class="pp-subtitle">{{ _subtitle }}</div>{% endif %}
-            {% if _desc %}<div class="pp-desc">{{ _desc }}</div>{% endif %}
-          </div>
-          <div class="pp-footer">
-            {% if _kind %}<div class="pp-kind">{{ _kind }}</div>{% endif %}
-            <div class="pp-links">
-              {% if p.store_url and p.store_icon %}
-                <a class="pp-store" href="{{ p.store_url }}" target="_blank" rel="noopener">
-                  <img src="{{ p.store_icon | prepend: site.baseurl }}" alt="{{ _store_alt }}">
-                </a>
-              {% endif %}
-            </div>
-          </div>
+  {% if _subtitle %}<div class="pp-subtitle">{{ _subtitle }}</div>{% endif %}
+  {% if _desc %}<div class="pp-desc">{{ _desc }}</div>{% endif %}
+
+  {%- if p.in_progress -%}
+    <div class="pp-inprogress-note" role="note">
+      Проект в разработке и ещё не выложен публично.
+    </div>
+  {%- endif -%}
+</div>
+<div class="pp-footer">
+  {% if _kind %}<div class="pp-kind">{{ _kind }}</div>{% endif %}
+  <div class="pp-links">
+    {%- if p.in_progress -%}
+      <span class="pp-store pp-store--disabled" aria-disabled="true" title="В разработке">В&nbsp;разработке</span>
+    {%- elsif p.store_url and p.store_icon -%}
+      <a class="pp-store" href="{{ p.store_url }}" target="_blank" rel="noopener">
+        <img src="{{ p.store_icon | prepend: site.baseurl }}" alt="{{ _store_alt }}">
+      </a>
+    {%- endif -%}
+  </div>
+</div>
         </div>
       </div>
     </article>

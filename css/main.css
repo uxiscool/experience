@@ -1403,4 +1403,29 @@ html[data-lang="ru"] .i18n-ru { display: initial; }
 .mobile-lang-floater:hover{ filter:brightness(1.1); }
 .mobile-lang-floater:focus-visible{ outline:2px solid var(--orange); outline-offset:2px; }
 
+/* Pet projects: in-progress */
+
+.pp-store.pp-store--disabled {
+  display: inline-block;
+  padding: 6px 10px;
+  border-radius: 10px;
+  font-size: 14px;
+  line-height: 1;
+  background: rgba(255,255,255,0.08);
+  border: 1px dashed rgba(255,255,255,0.28);
+  opacity: 0.85;
+  cursor: default;
+  user-select: none;
+}
+
+.pp-inprogress-note {
+  margin-top: 10px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.18);
+  font-size: 14px;
+  line-height: 1.45;
+}
+
 
