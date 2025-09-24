@@ -1406,17 +1406,6 @@ html[data-lang="ru"] .i18n-ru { display: initial; }
 /* Pet projects: in-progress */
 /* Kind, когда «переехал» на место стора */
 
-.pp-links .pp-kind--as-store {
-  display: inline-block;
-  padding: 6px 10px;
-  border-radius: 10px;
-  font-size: 14px;
-  line-height: 1;
-  background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.18);
-  opacity: 0.9;
-}
-
 .pp-inprogress-note {
   color: #858585;
   margin-top: 10px;

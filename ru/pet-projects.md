@@ -61,9 +61,9 @@ alt_url: /pet-projects/
 </div>
 <div class="pp-footer">
   {%- if p.in_progress -%}
-    <div class="pp-kind" style="display:none;"></div>
     <div class="pp-links">
-      {% if _kind %}<span class="pp-kind pp-kind--as-store">{{ _kind }}</span>{% endif %}
+      {% if _kind %}<div class="pp-kind">{{ _kind }}</div>{% endif %}
+      {# зона стора пустая #}
     </div>
   {%- else -%}
     {% if _kind %}<div class="pp-kind">{{ _kind }}</div>{% endif %}
