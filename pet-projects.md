@@ -61,7 +61,6 @@ alt_url: /ru/pet-projects/
     <div class="pp-kind" style="display:none;"></div>
     <div class="pp-links">
       {% if p.kind %}<span class="pp-kind pp-kind--as-store">{{ p.kind }}</span>{% endif %}
-      {# ничего больше не выводим #}
     </div>
   {%- else -%}
     {% if p.kind %}<div class="pp-kind">{{ p.kind }}</div>{% endif %}

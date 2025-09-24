@@ -30,13 +30,11 @@ alt_url: /pet-projects/
         {%- endif -%}
       {%- endif -%}
     {%- endif -%}
-
     {%- assign _title = p.title_ru | to_s | strip | default: p.title -%}
     {%- assign _subtitle = p.subtitle_ru | to_s | strip | default: p.subtitle -%}
     {%- assign _desc = p.desc_ru | to_s | strip | default: p.desc -%}
     {%- assign _kind = p.kind_ru | default: p.kind -%}
     {%- assign _store_alt = p.store_alt_ru | default: p.store_alt | default: 'Магазин' -%}
-
     <article class="pp-card">
       <header class="pp-header">
         {% if p.icon %}<img class="pp-icon" src="{{ site.baseurl }}{{ p.icon }}" alt="">{% endif %}
@@ -55,7 +53,6 @@ alt_url: /pet-projects/
           <div class="pp-text">
   {% if _subtitle %}<div class="pp-subtitle">{{ _subtitle }}</div>{% endif %}
   {% if _desc %}<div class="pp-desc">{{ _desc }}</div>{% endif %}
-
   {%- if p.in_progress -%}
     <div class="pp-inprogress-note" role="note">
       Проект в разработке и ещё не выложен публично.
