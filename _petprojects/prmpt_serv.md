@@ -1,14 +1,14 @@
 ---
 order: 5
-title: "Prompt management service inspired by Git"
-title_ru: "Сервис для управления промптами, вдохновлённый Git"
+title: "Prompt management service inspired by&nbsp;Git"
+title_ru: "Сервис для&nbsp;управления промптами, вдохновлённый Git"
 in_progress: true
 
-subtitle: "The service stores prompts with versioning and branching, lets you comment on results, and attach negative prompts or other useful information."
-subtitle_ru: "Сервис сохраняет промпты с версионностью и ветвлением, позволяет комментировать результаты, а также привязывать негативные промпты и другую полезную информацию."
+subtitle: "The service stores prompts with&nbsp;versioning and&nbsp;branching, lets&nbsp;you&nbsp;comment on&nbsp;results, and&nbsp;attach negative prompts or&nbsp;other useful information."
+subtitle_ru: "Сервис сохраняет промпты с&nbsp;версионностью и&nbsp;ветвлением, позволяет комментировать результаты, а&nbsp;также привязывать негативные промпты и&nbsp;другую полезную информацию."
 
-desc: "I originally built this service for my own needs — to store and manage prompts for Stable Diffusion. It turned out to be just as useful for working with any neural network. I’m now rebuilding it for a public release."
-desc_ru: "Сервис создавался для собственных нужд — хотелось хранить и системно работать с промптами для Stable Diffusion, но оказалось, что он удобен и при работе с любыми нейросетями. Сейчас я пересобираю его для публичной версии."
+desc: "I originally built this&nbsp;service for&nbsp;my&nbsp;own needs —&nbsp;to&nbsp;store and&nbsp;manage prompts for&nbsp;Stable Diffusion. It&nbsp;turned out to&nbsp;be&nbsp;just as&nbsp;useful for&nbsp;working with&nbsp;any&nbsp;neural network. I’m&nbsp;now rebuilding it&nbsp;for&nbsp;a&nbsp;public release."
+desc_ru: "Сервис создавался для&nbsp;собственных нужд —&nbsp;хотелось хранить и&nbsp;системно работать с&nbsp;промптами для&nbsp;Stable Diffusion, но&nbsp;оказалось, что он&nbsp;удобен и&nbsp;при&nbsp;работе с&nbsp;любыми нейросетями. Сейчас я&nbsp;пересобираю его&nbsp;для&nbsp;публичной версии."
 
 icon: /assets/pix/pet/prompts/icon.svg
 kind: Online service

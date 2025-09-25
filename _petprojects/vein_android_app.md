@@ -8,7 +8,7 @@ subtitle: An app for&nbsp;planning, creating lists, and&nbsp;keeping flexible no
 subtitle_ru: Приложение для планирования, составления списков и сохранения многофункциональных заметок.
 
 desc: "My app brings together notes, lists, and&nbsp;mind maps, helping you&nbsp;connect information, plan projects with&nbsp;timelines and&nbsp;calendars, and&nbsp;even discover hidden links."
-desc_ru: "Моё приложение сочетает функции менеджера заметок, списков и&nbsp;майндмэп, позволяет выстраивать связи между данными, использовать таймлайны и&nbsp;календари для планирования проектов. Дополнительно предусмотрена функция поиска неочевидных связей."
+desc_ru: "Моё приложение сочетает функции менеджера заметок, списков и&nbsp;майндмэп, позволяет выстраивать связи между данными, использовать таймлайны и&nbsp;календари для&nbsp;планирования проектов. Дополнительно предусмотрена функция поиска неочевидных связей."
 
 icon: /assets/pix/pet/vein/icon.png
 kind: Android mobile app
