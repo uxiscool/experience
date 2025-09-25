@@ -1,7 +1,7 @@
 ---
 order: 4
-title: "Vein: менеджер заметок и планировщик"
-title_ru: "Vein: Note-taking and planning tool"
+title: "Vein: Note-taking and planning tool"
+title_ru: "Vein: менеджер заметок и планировщик"
 in_progress: true
 
 subtitle: An app for&nbsp;planning, creating lists, and&nbsp;keeping flexible notes all in&nbsp;one place.

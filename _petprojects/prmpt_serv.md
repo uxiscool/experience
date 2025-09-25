@@ -1,7 +1,7 @@
 ---
 order: 5
-title: "Vein: менеджер заметок и планировщик"
-title_ru: "Vein: Note-taking and planning tool"
+title: "Prompt management service inspired by Git"
+title_ru: "Сервис для управления промптами, вдохновлённый Git"
 in_progress: true
 
 subtitle: An app for planning, creating lists, and keeping flexible notes all in one place.
@@ -10,9 +10,9 @@ subtitle_ru: Приложение для планирования, состав�
 desc: "234"
 desc_ru: "456"
 
-icon: /assets/pix/pet/vein/icon.png
-kind: Android mobile app
-kind_ru: Мобильное приложение под Android
+icon: /ui/icon_plhdr.svg
+kind: Online service
+kind_ru: Вебсервис
 
 images_base: /assets/pix/pet/jekyll_portfolio/
 
