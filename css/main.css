@@ -113,9 +113,8 @@ header{ display:flex; align-items:flex-start; gap:36px; margin-top:36px; }
 @media (max-width:980px){ .case-meta2{ padding-left:0; padding-right:0; } }
 
 .case-meta2-inline{ 
-  color:#fff; 
-  font-size:1.01rem; 
-  opacity: 0.5; 
+  color:#737374; 
+  font-size:1.01rem;
   margin:2px 0 4px; 
   white-space:nowrap; 
 }
@@ -136,8 +135,7 @@ header{ display:flex; align-items:flex-start; gap:36px; margin-top:36px; }
   margin: 0;
   font-size: 1.35rem;
   font-weight: 400;
-  color: #fff;
-  opacity: .90;
+  color: #737374;
   line-height: 1.4;
   letter-spacing: .01em;
   animation: heroFadeIn 1.1s cubic-bezier(.19,1,.22,1);
