@@ -7,16 +7,16 @@ company: Epam
 type: B2E Web Service
 type_ru: Корпоративный веб-сервис (B2E)
 featured: true
-summary: Revamped core flows for enterprise sales CRM used by 3,000+ employees.
-summary_ru: Перепроектировала ключевые сценарии для CRM, которой пользуются 3000+ сотрудников.
+summary: Revamped core flows for&nbsp;enterprise sales CRM used by&nbsp;3,000+ employees.
+summary_ru: Перепроектировала ключевые сценарии для&nbsp;CRM, которой пользуются 3000+ сотрудников.
 
 images_base: /assets/pix/cases/epam/time/
 images_base_ru: /assets/pix/cases/epam/time-ru/
 
 stages:
   - name: Wireframes
-    desc: "Early structure explorations: navigation, key flows, and information hierarchy."
-    desc_ru: "Ранние структурные наброски: навигация, ключевые потоки и информационная иерархия."
+    desc: "Early structure explorations: navigation, key flows, and&nbsp;information hierarchy."
+    desc_ru: "Ранние структурные наброски: навигация, ключевые потоки и&nbsp;информационная иерархия."
     images:
       - file: time1.jpg
         file_ru: ""
@@ -35,8 +35,8 @@ stages:
         home: false
 
   - name: High-fidelity mockups
-    desc: "Visual design with real data, final components, and micro-interactions."
-    desc_ru: "Визуальный дизайн на реальных данных, финальные компоненты и микро-взаимодействия."
+    desc: "Visual design with real data, final components, and&nbsp;micro-interactions."
+    desc_ru: "Визуальный дизайн на&nbsp;реальных данных, финальные компоненты и&nbsp;микро-взаимодействия."
     images:
       - file: time4.jpg
         file_ru: ""

@@ -1,5 +1,6 @@
 ---
 order: 2
+in_progress: false
 title: Image compressor
 title_ru: Image compressor
 subtitle: JPEG compression and&nbsp;image scale normalization for&nbsp;Figma layouts.

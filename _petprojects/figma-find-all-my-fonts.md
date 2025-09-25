@@ -1,5 +1,6 @@
 ---
 order: 1
+in_progress: false
 title: Find All My Fonts
 title_ru: Find All My Fonts
 subtitle: A plugin that&nbsp;detects fonts, hidden text, and&nbsp;non-standard font sizes in&nbsp;layouts.
