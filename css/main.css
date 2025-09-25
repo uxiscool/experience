@@ -113,7 +113,7 @@ header{ display:flex; align-items:flex-start; gap:36px; margin-top:36px; }
 @media (max-width:980px){ .case-meta2{ padding-left:0; padding-right:0; } }
 
 .case-meta2-inline{ 
-  color:#737374; 
+  color:#767779; 
   font-size:1.01rem;
   margin:2px 0 4px; 
   white-space:nowrap; 
@@ -132,6 +132,16 @@ header{ display:flex; align-items:flex-start; gap:36px; margin-top:36px; }
 
 /* Pet projects: summary как .intro-hero */
 .pet-meta .case-summary2{
+  margin: 0;
+  font-size: 1.35rem;
+  font-weight: 400;
+  color: #737374;
+  line-height: 1.4;
+  letter-spacing: .01em;
+  animation: heroFadeIn 1.1s cubic-bezier(.19,1,.22,1);
+}
+
+.case-summary2{
   margin: 0;
   font-size: 1.35rem;
   font-weight: 400;
@@ -200,7 +210,13 @@ header{ display:flex; align-items:flex-start; gap:36px; margin-top:36px; }
   transition:filter .14s;
 }
 
-.case-thumb-caption{ font-size:.97rem; color:#bac0c9; text-align:center; margin-top:3px; opacity:.86; }
+.case-thumb-caption{ 
+  font-size:.97rem; 
+  color:#bac0c9; 
+  text-align:center; 
+  margin-top:3px; 
+  opacity:.86; 
+}
 
 /* ---- Lightbox ---- */
 /* Лайтбокс-контейнер: задаём переменные и сетку */
