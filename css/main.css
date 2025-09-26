@@ -1058,7 +1058,6 @@ body.mm-open{ overflow: hidden; }
   width: inherit;
   font-size:1.35rem; 
   font-weight:400; 
-  color:#8B8B8C;
 }
 .cv-contacts{ display:flex; flex-wrap:wrap; gap:8px 12px; color:#fff; opacity:.92; }
 .cv-contact{ color:inherit; text-decoration:none; }
