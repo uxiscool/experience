@@ -8,7 +8,7 @@ type: B2E Web Service
 type_ru: Корпоративный веб-сервис (B2E)
 featured: true
 summary: Revamped core flows for&nbsp;enterprise sales CRM used by&nbsp;3,000+ employees.
-summary_ru: Перепроектировала ключевые сценарии для&nbsp;CRM, которой пользуются 3000+ сотрудников.
+summary_ru: Перепроектировал ключевые сценарии для&nbsp;CRM, которой пользуются 3000+ сотрудников.
 
 images_base: /assets/pix/cases/epam/time/
 images_base_ru: /assets/pix/cases/epam/time-ru/
@@ -20,8 +20,8 @@ stages:
     images:
       - file: time1.jpg
         file_ru: ""
-        caption: "Wireframe: core dashboard layout"
-        caption_ru: "Вайрфрейм: компоновка дашборда"
+        caption: "Early structure explorations: navigation, key flows, and&nbsp;information hierarchy."
+        caption_ru: "Ранние структурные наброски: навигация, ключевые потоки и&nbsp;информационная иерархия."
         home: true
       - file: time2.jpg
         file_ru: ""
