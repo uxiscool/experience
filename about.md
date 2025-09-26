@@ -205,16 +205,29 @@ I believe the&nbsp;best solutions come from a&nbsp;balance of&nbsp;structure and
     if (currentEl) positionBubble(currentEl);
   }
 
-  // Делегирование событий
-  document.addEventListener('mouseenter', (e) => {
-    const el = e.target.closest('.tooltip');
-    if (el) showTip(el);
-  }, true);
+  // Делегирование событий, безопасно для текстовых узлов и старых браузеров
+document.addEventListener('mouseenter', (e) => {
+  let t = e.target;
+  if (t && t.nodeType === 3) t = t.parentElement; // если текстовый узел -> к родителю
+  const el = t && typeof t.closest === 'function'
+    ? t.closest('.tooltip')
+    : (t && t.parentElement && typeof t.parentElement.closest === 'function'
+        ? t.parentElement.closest('.tooltip')
+        : null);
+  if (el) showTip(el);
+}, true);
 
-  document.addEventListener('mouseleave', (e) => {
-    const el = e.target.closest('.tooltip');
-    if (el) hideTip();
-  }, true);
+document.addEventListener('mouseleave', (e) => {
+  let t = e.target;
+  if (t && t.nodeType === 3) t = t.parentElement;
+  const el = t && typeof t.closest === 'function'
+    ? t.closest('.tooltip')
+    : (t && t.parentElement && typeof t.parentElement.closest === 'function'
+        ? t.parentElement.closest('.tooltip')
+        : null);
+  if (el) hideTip();
+}, true);
+
 })();
 </script>
 <script>
