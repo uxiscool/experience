@@ -143,10 +143,10 @@ header{ display:flex; align-items:flex-start; gap:36px; margin-top:36px; }
 
 .case-summary2{
   margin: 0;
-  font-size: 1.35rem;
+  font-size: 1.01rem;
   font-weight: 400;
   color: #737374;
-  line-height: 1.01;
+  line-height: 1.4;
   letter-spacing: .01em;
 }
 
