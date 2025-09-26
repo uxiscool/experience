@@ -146,9 +146,8 @@ header{ display:flex; align-items:flex-start; gap:36px; margin-top:36px; }
   font-size: 1.35rem;
   font-weight: 400;
   color: #737374;
-  line-height: 1.4;
+  line-height: 1.01;
   letter-spacing: .01em;
-  animation: heroFadeIn 1.1s cubic-bezier(.19,1,.22,1);
 }
 
 /* как у .intro-hero на узких экранах */
