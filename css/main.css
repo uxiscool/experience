@@ -126,7 +126,7 @@ header{ display:flex; align-items:flex-start; gap:36px; margin-top:36px; }
 .case-meta2-inline{ 
   color:#8B8B8C; 
   font-size:1.01rem;
-  margin:2px 0 4px; 
+  margin:4px 0 0; 
   white-space:nowrap; 
 }
 .case-title-row{ display:flex; align-items:center; gap:18px; }
