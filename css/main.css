@@ -181,8 +181,7 @@ header{ display:flex; align-items:flex-start; gap:36px; margin-top:36px; }
   font-family: "Playfair", ui-serif, Georgia, serif;
   font-size: 1.2rem;
   font-style: italic;
-  color: #e2e5e7;
-  opacity: .93;
+  color: #fff;
   margin-top: 24px;
   font-synthesis: none;
 }
