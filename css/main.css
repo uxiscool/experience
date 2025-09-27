@@ -48,7 +48,7 @@ header{ display:flex; align-items:flex-start; gap:36px; margin-top:36px; }
 .subnav{ display:flex; gap:12px; margin:10px 0 0; padding:0; }
 
 .menu-link,.sub-link{
-  color:#bbb; 
+  color:#8B8B8C; 
   font-size:1.1rem; 
   text-decoration:none;
   padding:6px 16px; 
