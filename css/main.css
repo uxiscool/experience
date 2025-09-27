@@ -48,11 +48,23 @@ header{ display:flex; align-items:flex-start; gap:36px; margin-top:36px; }
 .subnav{ display:flex; gap:12px; margin:10px 0 0; padding:0; }
 
 .menu-link,.sub-link{
-  color:#bbb; font-size:1.1rem; text-decoration:none;
-  padding:6px 16px; border-radius:8px; transition:background .25s, color 2s;
+  color:#bbb; 
+  font-size:1.1rem; 
+  text-decoration:none;
+  padding:6px 16px; 
+  border-radius:8px; 
+  transition:background .25s, color 2s;
 }
-.menu-link:hover,.sub-link:hover{ color:var(--orange); }
-.menu-link.current,.sub-link.current{ background:#242627; color:var(--orange); transition:background .5s, color .15s; }
+
+.menu-link:hover,.sub-link:hover{ 
+  color:var(--orange); 
+}
+
+.menu-link.current,.sub-link.current{ 
+  background:#232429; 
+  color:var(--orange);
+  transition:background .5s, color .15s; 
+}
 
 /* Focus ring */
 .menu-link:focus-visible,.sub-link:focus-visible,.tool:focus-visible,
