@@ -7,7 +7,8 @@ alt_url: /cases/
 ---
 
 <div class="featured-cases">
-  {%- assign groups = site.cases | group_by: "year" | sort: "name" | reverse -%}
+  {%- assign sorted = site.cases | sort: "year" | reverse -%}
+  {%- assign groups = sorted | group_by: "year" -%}
   {%- for g in groups -%}
     {%- assign items_by_order = g.items | sort: "order" -%}
 
