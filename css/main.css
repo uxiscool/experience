@@ -114,7 +114,13 @@ header{ display:flex; align-items:flex-start; gap:36px; margin-top:36px; }
 .case-meta{ padding:22px 18px 18px; display:flex; flex-direction:column; gap:7px; }
 .case-title{ font-size:1.19rem; font-weight:600; color:#fff; margin-bottom:2px; text-decoration:underline dotted; text-underline-offset:4px; transition:color .15s; }
 .case-title:hover{ color:var(--orange); }
-.case-year{ color:#9fa7b2; font-size:.97rem; }
+
+.case-year{ 
+  color:#9fa7b2; 
+  font-size:.97rem;
+  font-variant-numeric: oldstyle-nums; 
+}
+
 .case-summary{ font-size:1.04rem; color:#e2e5e7; opacity:.93; }
 
 .featured-cases{ display:flex; flex-direction:column; gap:60px; margin:0 0 32px; padding:48px 280px 0; }
