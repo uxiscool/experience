@@ -1,20 +1,19 @@
 ---
 order: 2
-title: Exteral B2E time management services
-title_ru: Корпоративные сервисы учёта рабочего времени
+title: Employee time tracking and management service
+title_ru: Инструмент для планирования и отслеживания рабочего времени
 year: 2023
 company: Epam
 type: B2E Web Service
 type_ru: Корпоративный веб-сервис (B2E)
 featured: true
-summary: Revamped core flows for&nbsp;enterprise sales CRM used by&nbsp;3,000+ employees.
-summary_ru: Перепроектировал ключевые сценарии для&nbsp;CRM, которой пользуются 3000+ сотрудников.
+summary: Enhanced and expanded workflows for a service used by 3,000+ employees. It combined functions for tracking and allocating working time—both individually and within projects and groups.
+summary_ru: Совершенствовал и добавлял сценарии сервиса для 3000+ сотрудников. Он объединял функции учёта и распределения рабочего времени — как личного, так и внутри проектов и групп.
 
 images_base: /assets/pix/cases/epam/time/
 images_base_ru: /assets/pix/cases/epam/time-ru/
 
 stages:
-  - name: Wireframes
     desc: "Early structure explorations: navigation, key flows, and&nbsp;information hierarchy."
     desc_ru: "Ранние структурные наброски: навигация, ключевые потоки и&nbsp;информационная иерархия."
     images:
@@ -34,7 +33,6 @@ stages:
         caption_ru: "Вайрфрейм: конструктор отчётов"
         home: false
 
-  - name: High-fidelity mockups
     desc: "Visual design with real data, final components, and&nbsp;micro-interactions."
     desc_ru: "Визуальный дизайн на&nbsp;реальных данных, финальные компоненты и&nbsp;микро-взаимодействия."
     images:
