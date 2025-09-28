@@ -652,8 +652,17 @@ body.page-contact>main{ flex:1 0 auto; }
   padding-right: 32px;
 }
 
-.pp-subtitle{ color:#cdd3db; opacity:.92; font: size .98rem; }
-.pp-desc{ color:#cdd3db; opacity:.92; font-size:.98rem; line-height:1.35; }
+.pp-subtitle{ 
+  color:#fff; 
+  font: size .98rem;
+  line-height:1.35; 
+}
+
+.pp-desc{ 
+  color:#fff; 
+  font-size:.98rem; 
+  line-height:1.35; 
+}
 
 /* Футер — жёстко к правому нижнему углу */
 .pp-footer{
@@ -682,7 +691,8 @@ body.page-contact>main{ flex:1 0 auto; }
 }
 
 .pp-kind{
-  color:#cbd2db; font-size:.9rem; opacity:.95;
+  color:#8B8B8C; 
+  font-size:.98rem; 
   text-align:right;
 }
 .pp-links{
