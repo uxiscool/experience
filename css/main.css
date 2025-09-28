@@ -1386,7 +1386,7 @@ html[data-lang="ru"] .i18n-ru { display: initial; }
   right: 20px;
   opacity: .35;
 }
-.lang-floater:hover{ opacity: .9; }
+.lang-floater:hover{ opacity: .5; }
 
 /* до появления */
 .lang-floater.pre{ opacity: 0; pointer-events: none; }
