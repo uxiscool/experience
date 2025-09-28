@@ -654,7 +654,7 @@ body.page-contact>main{ flex:1 0 auto; }
 
 .pp-subtitle{ 
   color:#fff; 
-  font: size .98rem;
+  font-size:.98rem;
   line-height:1.35; 
 }
 
