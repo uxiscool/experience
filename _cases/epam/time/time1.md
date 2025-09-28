@@ -14,6 +14,7 @@ images_base: /assets/pix/cases/epam/time/
 images_base_ru: /assets/pix/cases/epam/time-ru/
 
 stages:
+  - name: Wireframes
     desc: "Early structure explorations: navigation, key flows, and&nbsp;information hierarchy."
     desc_ru: "Ранние структурные наброски: навигация, ключевые потоки и&nbsp;информационная иерархия."
     images:
@@ -33,6 +34,7 @@ stages:
         caption_ru: "Вайрфрейм: конструктор отчётов"
         home: false
 
+  - name: High-fidelity mockups
     desc: "Visual design with real data, final components, and&nbsp;micro-interactions."
     desc_ru: "Визуальный дизайн на&nbsp;реальных данных, финальные компоненты и&nbsp;микро-взаимодействия."
     images:
