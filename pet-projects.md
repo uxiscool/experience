@@ -8,7 +8,7 @@ alt_url: /ru/pet-projects/
 
 <div class="pet-meta">
   <div class="case-summary2">
-    Side projects, experiments and&nbsp;&ldquo;little joys&rdquo; where you&nbsp;can quickly try&nbsp;out ideas and&nbsp;roll them out into&nbsp;the&nbsp;world.
+    Side projects, experiments and&nbsp;&ldquo;little joys&rdquo; where you&nbsp;can quickly try&nbsp;out ideas and&nbsp;roll them out into&nbsp;the&nbsp;world
   </div>
 </div>
 <div class="pp-grid">
