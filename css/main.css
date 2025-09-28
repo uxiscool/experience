@@ -1454,12 +1454,11 @@ html[data-lang="ru"] .i18n-ru { display: initial; }
 /* Kind, когда «переехал» на место стора */
 
 .pp-inprogress-note {
-  color: #858585;
+  color: #8B8B8C;
   margin-top: 10px;
   padding: 10px 12px;
   border-radius: 12px;
-  background: rgba(255,255,255,0.08);
-  /*border: 1px solid rgba(255,255,255,0.18);*/
+  background: #141516;
   font-size: 14px;
   line-height: 1.45;
   margin-right: -30px;
