@@ -189,7 +189,7 @@ header{ display:flex; align-items:flex-start; gap:36px; margin-top:36px; }
   color: #fff;
   margin-top: 24px;
   font-synthesis: none;
-  line-height: 1.5;
+  line-height: 1.4;
   letter-spacing: .02em;
 }
 
@@ -237,6 +237,18 @@ header{ display:flex; align-items:flex-start; gap:36px; margin-top:36px; }
   color:#8B8B8C; 
   text-align:center; 
   margin-top:3px;
+  /* кол-во строк можно крутить одной переменной */
+  --cap-lines: 2;
+
+  display: -webkit-box;           /* старый, но до сих пор нужный */
+  -webkit-box-orient: vertical;   /* обязателен для -webkit-line-clamp */
+  overflow: hidden;
+
+  /* стандартное свойство */
+  line-clamp: var(--cap-lines);
+
+  /* префиксный вариант для WebKit-браузеров */
+  -webkit-line-clamp: var(--cap-lines);
 }
 
 /* ---- Lightbox ---- */
