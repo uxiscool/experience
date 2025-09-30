@@ -214,6 +214,7 @@ header{ display:flex; align-items:flex-start; gap:36px; margin-top:36px; }
   transition:box-shadow .25s;
   position:relative;
 }
+
 .case-gallery-item:hover{ 
   background:#1f2024; 
 }
@@ -237,17 +238,11 @@ header{ display:flex; align-items:flex-start; gap:36px; margin-top:36px; }
   color:#8B8B8C; 
   text-align:center; 
   margin-top:3px;
-  /* кол-во строк можно крутить одной переменной */
   --cap-lines: 2;
-
-  display: -webkit-box;           /* старый, но до сих пор нужный */
-  -webkit-box-orient: vertical;   /* обязателен для -webkit-line-clamp */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
   overflow: hidden;
-
-  /* стандартное свойство */
   line-clamp: var(--cap-lines);
-
-  /* префиксный вариант для WebKit-браузеров */
   -webkit-line-clamp: var(--cap-lines);
 }
 
