@@ -14,13 +14,13 @@ images_base: /assets/pix/cases/epam/time/
 images_base_ru: /assets/pix/cases/epam/time-ru/
 
 stages:
-  - desc: "Early structure explorations: navigation, key flows, and&nbsp;information hierarchy."
-    desc_ru: "Ранние структурные наброски: навигация, ключевые потоки и&nbsp;информационная иерархия."
+  - desc: "The tool makes it possible to group employees into projects, allocate working time in packages or track actual hours at the project level. For individual employees, it supports logging different types of working hours, monitoring overtime, irregular work, weekends, and vacations."
+    desc_ru: "Сервис позволяет объединять сотрудников в проекты, распределять рабочее время пакетами или отслеживать фактические затраты на уровне проекта. Для сотрудников предусмотрен учёт рабочего времени по разным типам часов, контроль переработок, внеурочной работы, выходных и отпусков."
     images:
       - file: time1.jpg
         file_ru: ""
-        caption: "Early structure explorations: navigation, key flows, and&nbsp;information hierarchy."
-        caption_ru: "Ранние структурные наброски: навигация, ключевые потоки и&nbsp;информационная иерархия."
+        caption: "List of active projects. For each project, a summary is shown across all team members, broken down by hour types: standard paid, vacation, overtime, and unpaid."
+        caption_ru: "Список активных проектов. Для каждого проекта отображается сводка по всем сотрудникам — с разбивкой по типам часов: стандартные оплачиваемые, отпуска, переработки и неоплачиваемые."
         home: true
       - file: time2.jpg
         file_ru: ""
