@@ -1,27 +1,26 @@
 ---
 order: 2
-title: Exteral B2E time management services
-title_ru: Корпоративные сервисы учёта рабочего времени
+title: Employee time tracking and management service
+title_ru: Инструмент для планирования и отслеживания рабочего времени
 year: 2023
 company: Epam
 type: B2E Web Service
 type_ru: Корпоративный веб-сервис (B2E)
 featured: true
-summary: Revamped core flows for&nbsp;enterprise sales CRM used by&nbsp;3,000+ employees.
-summary_ru: Перепроектировал ключевые сценарии для&nbsp;CRM, которой пользуются 3000+ сотрудников.
+summary: Enhanced and expanded workflows for a service used by 3,000+ employees. It combined functions for tracking and allocating working time—both individually and within projects and groups.
+summary_ru: Совершенствовал и добавлял сценарии сервиса для 3000+ сотрудников. Он объединял функции учёта и распределения рабочего времени — как личного, так и внутри проектов и групп.
 
 images_base: /assets/pix/cases/epam/time/
 images_base_ru: /assets/pix/cases/epam/time-ru/
 
 stages:
-  - name: Wireframes
-    desc: "Early structure explorations: navigation, key flows, and&nbsp;information hierarchy."
-    desc_ru: "Ранние структурные наброски: навигация, ключевые потоки и&nbsp;информационная иерархия."
+  - desc: "The tool makes it possible to group employees into projects, allocate working time in packages or track actual hours at the project level. For individual employees, it supports logging different types of working hours, monitoring overtime, irregular work, weekends, and vacations."
+    desc_ru: "Сервис позволяет объединять сотрудников в проекты, распределять рабочее время пакетами или отслеживать фактические затраты на уровне проекта. Для сотрудников предусмотрен учёт рабочего времени по разным типам часов, контроль переработок, внеурочной работы, выходных и отпусков."
     images:
       - file: time1.jpg
         file_ru: ""
-        caption: "Early structure explorations: navigation, key flows, and&nbsp;information hierarchy."
-        caption_ru: "Ранние структурные наброски: навигация, ключевые потоки и&nbsp;информационная иерархия."
+        caption: "List of active projects. For each project, a summary is shown across all team members, broken down by hour types: standard paid, vacation, overtime, and unpaid."
+        caption_ru: "Список активных проектов. Для каждого проекта отображается сводка по всем сотрудникам — с разбивкой по типам часов: стандартные оплачиваемые, отпуска, переработки и неоплачиваемые."
         home: true
       - file: time2.jpg
         file_ru: ""
@@ -34,8 +33,7 @@ stages:
         caption_ru: "Вайрфрейм: конструктор отчётов"
         home: false
 
-  - name: High-fidelity mockups
-    desc: "Visual design with real data, final components, and&nbsp;micro-interactions."
+  - desc: "Visual design with real data, final components, and&nbsp;micro-interactions."
     desc_ru: "Визуальный дизайн на&nbsp;реальных данных, финальные компоненты и&nbsp;микро-взаимодействия."
     images:
       - file: time4.jpg
