@@ -216,14 +216,12 @@ header{ display:flex; align-items:flex-start; gap:36px; margin-top:36px; }
 }
 
 .case-thumb-caption{
-  /* базовая типографика — как было */
   font-size: 1rem;
   color: #8B8B8C;
   text-align: center;
-  margin-top: 3px;
+  margin-top: 8px;
 
-  /* новое: аккуратное обрезание по строкам */
-  --cap-lines: 2;                /* ← при желании поменяешь на 3 */
+  --cap-lines: 2; 
   display: -webkit-box;
   -webkit-box-orient: vertical;
   overflow: hidden;
