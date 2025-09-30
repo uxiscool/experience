@@ -45,7 +45,12 @@ alt_url: /ru/cases/
                 {% assign _src  = _base | append: _rel %}
                 <div class="case-gallery-item">
                   <img class="case-thumb2 lazy-img" data-src="{{ site.baseurl }}{{ _src }}" alt="">
-                  {% if _cap %}<div class="case-thumb-caption">{{ _cap }}</div>{% endif %}
+                  {% if _cap %}
+  <div class="case-thumb-caption"
+       title="{{ _cap | strip_html | replace: '&nbsp;', ' ' | strip }}">
+    {{ _cap | strip_html | replace: '&nbsp;', ' ' | strip }}
+  </div>
+{% endif %}
                 </div>
               {% endfor %}
             </div>
@@ -88,7 +93,12 @@ alt_url: /ru/cases/
                 {% assign _src  = _base | append: _rel %}
                 <div class="case-gallery-item">
                   <img class="case-thumb2 lazy-img" data-src="{{ site.baseurl }}{{ _src }}" alt="">
-                  {% if _cap %}<div class="case-thumb-caption">{{ _cap }}</div>{% endif %}
+                  {% if _cap %}
+  <div class="case-thumb-caption"
+       title="{{ _cap | strip_html | replace: '&nbsp;', ' ' | strip }}">
+    {{ _cap | strip_html | replace: '&nbsp;', ' ' | strip }}
+  </div>
+{% endif %}
                 </div>
               {% endfor %}
             </div>
