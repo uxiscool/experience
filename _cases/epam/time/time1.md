@@ -22,10 +22,10 @@ stages:
         caption: "List of active projects. For each project, a summary is shown across all team members, broken down by hour types: standard paid, vacation, overtime, and unpaid."
         caption_ru: "Список активных проектов. Для каждого проекта отображается сводка по всем сотрудникам — с разбивкой по типам часов: стандартные оплачиваемые, отпуска, переработки и неоплачиваемые."
         home: true
-      - file: time2.jpg
+      - file: time2.png
         file_ru: ""
-        caption: "Wireframe: analytics overview"
-        caption_ru: "Вайрфрейм: обзор аналитики"
+        caption: "Since this is a desktop service, a context menu was added with actions and links to other internal services for the project."
+        caption_ru: "Так как это десктопный сервис, было добавлено контекстное меню с действиями и возможностью обращаться к другим внутренним сервисам для проекта."
         home: true
       - file: time3.jpg
         file_ru: ""
