@@ -14,8 +14,8 @@ images_base: /assets/pix/cases/epam/time/
 images_base_ru: /assets/pix/cases/epam/time-ru/
 
 stages:
-  - desc: "The tool makes it possible to group employees into projects, allocate working time in packages or track actual hours at the project level. For individual employees, it supports logging different types of working hours, monitoring overtime, irregular work, weekends, and vacations."
-    desc_ru: "Сервис позволяет объединять сотрудников в проекты, распределять рабочее время пакетами или отслеживать фактические затраты на уровне проекта. Для сотрудников предусмотрен учёт рабочего времени по разным типам часов, контроль переработок, внеурочной работы, выходных и отпусков."
+  - desc: "The tool manages different types of working hours—paid, vacation, overtime, and more. At the project level, it provides a summary across employees, showing how time is allocated or recorded."
+    desc_ru: "Сервис учитывает разные типы рабочего времени — оплачиваемые часы, отпуска, переработки и др. На уровне проектов формируется сводка по сотрудникам, где видно как распределено или отработано время."
     images:
       - file: time1.jpg
         file_ru: ""
