@@ -167,7 +167,7 @@ header{ display:flex; align-items:flex-start; gap:36px; margin-top:36px; }
 /* Текст описания этапа внутри кейса (используется на /cases/) */
 .stage-summary {
   font-family: "Playfair", ui-serif, Georgia, serif;
-  font-size: 1.01rem;
+  font-size: 1.2rem;
   font-style: italic;
   color: #fff;
   margin-top: 18px;
