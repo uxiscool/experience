@@ -7,8 +7,7 @@ alt_url: /cases/
 ---
 
 <div class="featured-cases">
-  {%- assign sorted = site.cases | sort: "year" | reverse -%}
-  {%- assign groups = sorted | group_by: "year" -%}
+  {%- assign groups = site.cases | group_by: "year" | sort: "name" | reverse -%}
   {%- for g in groups -%}
     {%- assign items_by_order = g.items | sort: "order" -%}
 
@@ -49,9 +48,8 @@ alt_url: /cases/
 {% assign _cap = img.caption_ru | default: img.caption %}
                 <div class="case-gallery-item">
                   <img class="case-thumb2 lazy-img" data-src="{{ site.baseurl }}{{ _src }}" alt="">
-                  {% if _cap %}<div class="case-thumb-caption" title="{{ _cap | strip }}">
-  {{ _cap | strip_html | replace: '&nbsp;', ' ' | strip }}
-</div>
+                  {% if _cap %}<div class="case-thumb-caption">{{ _cap }}</div>{% endif %}
+                </div>
               {% endfor %}
             </div>
           {% endfor %}
@@ -96,9 +94,8 @@ alt_url: /cases/
 {% assign _cap = img.caption_ru | default: img.caption %}
                 <div class="case-gallery-item">
                   <img class="case-thumb2 lazy-img" data-src="{{ site.baseurl }}{{ _src }}" alt="">
-                  {% if _cap %}<div class="case-thumb-caption" title="{{ _cap | strip }}">
-  {{ _cap | strip_html | replace: '&nbsp;', ' ' | strip }}
-</div>
+                  {% if _cap %}<div class="case-thumb-caption">{{ _cap }}</div>{% endif %}
+                </div>
               {% endfor %}
             </div>
           {% endfor %}
