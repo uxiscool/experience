@@ -27,10 +27,15 @@ stages:
         caption: "Since this is a desktop service, a context menu was added with actions and links to other internal services for the project."
         caption_ru: "Так как это десктопный сервис, было добавлено контекстное меню с действиями и возможностью обращаться к другим внутренним сервисам для проекта."
         home: true
-      - file: time3.jpg
+      - file: time3.png
         file_ru: ""
-        caption: "Wireframe: report builder"
-        caption_ru: "Вайрфрейм: конструктор отчётов"
+        caption: "From the project/client list, you can navigate to the employee list. I added advanced filtering and flexible highlighting of issues."
+        caption_ru: "От списка проектов/заказчиков можно пройти в список сотрудников. Я добавил расширенную фильтрацию и гибкую подсветку проблемных точек."
+        home: false
+      - file: time4.jpg
+        file_ru: ""
+        caption: "Сделал возможность раскрывать сотрудника и смотреть детализацию статистики. Пример — перегруженный случай."
+        caption_ru: "Added the option to expand an employee and view detailed stats. Example shows a dense case."
         home: false
 
   - desc: "Visual design with real data, final components, and&nbsp;micro-interactions."
