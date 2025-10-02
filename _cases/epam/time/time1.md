@@ -34,8 +34,8 @@ stages:
         home: false
       - file: time4.jpg
         file_ru: ""
-        caption: "Сделал возможность раскрывать сотрудника и смотреть детализацию статистики. Пример — перегруженный случай."
-        caption_ru: "Added the option to expand an employee and view detailed stats. Example shows a dense case."
+        caption: "Added the option to expand an employee and view detailed stats. Example shows a dense case."
+        caption_ru: "Сделал возможность раскрывать сотрудника и смотреть детализацию статистики. Пример — перегруженный случай."
         home: false
 
   - desc: "Visual design with real data, final components, and&nbsp;micro-interactions."
