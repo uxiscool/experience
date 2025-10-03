@@ -142,9 +142,6 @@ header{ display:flex; align-items:flex-start; gap:36px; margin-top:36px; }
 .case-type2{ color:#b7c1cc; font-size:1.01rem; opacity:.96; }
 
 /* Pet projects: summary как .intro-hero */
-.pet-meta .case-summary2{
-  animation: heroFadeIn 1.1s cubic-bezier(.19,1,.22,1);
-}
 
 .case-summary2{
   margin: 0;
