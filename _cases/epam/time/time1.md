@@ -29,8 +29,8 @@ stages:
         home: true
       - file: time3.png
         file_ru: ""
-        caption: "From the project/client list, you can navigate to the employee list. I added advanced filtering and flexible highlighting of issues."
-        caption_ru: "От списка проектов/заказчиков можно пройти в список сотрудников. Я добавил расширенную фильтрацию и гибкую подсветку проблемных точек."
+        caption: "From the list of projects/customers, you can drill down into the list of employees. I added advanced filtering and quick highlighting of problematic indicators."
+        caption_ru: "От списка проектов/заказчиков можно пройти в список сотрудников. Я добавил расширенную фильтрацию и быструю подсветку проблемных показателей."
         home: false
       - file: time4.jpg
         file_ru: ""
