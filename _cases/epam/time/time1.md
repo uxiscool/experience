@@ -37,6 +37,11 @@ stages:
         caption: "Added the option to expand an employee and view detailed stats. Example shows a dense case."
         caption_ru: "Сделал возможность раскрывать сотрудника и смотреть детализацию статистики. Пример — перегруженный случай."
         home: false
+      - file: time5.png
+        file_ru: ""
+        caption: "Created navigation across projects/customers with favorites and smart search for quick access."
+        caption_ru: "Сделал навигацию по проектам/заказчикам с избранным и быстрым поиском."
+        home: false
 
   - desc: "Visual design with real data, final components, and&nbsp;micro-interactions."
     desc_ru: "Визуальный дизайн на&nbsp;реальных данных, финальные компоненты и&nbsp;микро-взаимодействия."
