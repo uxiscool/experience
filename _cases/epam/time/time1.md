@@ -40,7 +40,7 @@ stages:
       - file: time5.png
         file_ru: ""
         caption: "Created navigation across projects/customers with favorites and smart search for quick access."
-        caption_ru: "Сделал навигацию по проектам/заказчикам с избранным и быстрым поиском."
+        caption_ru: "Сделал навигацию по проектам/заказчикам с быстрым поиском и избранным."
         home: false
 
   - desc: "Visual design with real data, final components, and&nbsp;micro-interactions."
