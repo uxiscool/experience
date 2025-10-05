@@ -43,23 +43,28 @@ stages:
         caption_ru: "Сделал навигацию по проектам/заказчикам с быстрым поиском и избранным."
         home: false
 
-  - desc: "Visual design with real data, final components, and&nbsp;micro-interactions."
-    desc_ru: "Визуальный дизайн на&nbsp;реальных данных, финальные компоненты и&nbsp;микро-взаимодействия."
+  - desc: "In the admin section, I developed features for configuring time-tracking rules and local calendars for different countries."
+    desc_ru: "В административной части я развивал функции настройки правил учёта времени и локальных календарей для разных стран."
     images:
-      - file: time4.jpg
-        file_ru: ""
-        caption: "Hi-fi: dashboard widgets"
-        caption_ru: "Хай-фай: виджеты дашборда"
-        home: false
-      - file: time5.jpg
-        file_ru: ""
-        caption: "Hi-fi: analytics detail"
-        caption_ru: "Хай-фай: детализация аналитики"
-        home: false
       - file: time6.jpg
         file_ru: ""
-        caption: "Hi-fi: reporting"
-        caption_ru: "Хай-фай: отчётность"
+        caption: "Added the ability to add rules as category items and conveniently view their resulting values right in the list."
+        caption_ru: "Сделал возможность добавлять правила как элементы категорий и удобно видеть их итоговые значения уже в списке."
+        home: false
+      - file: time7.jpg
+        file_ru: ""
+        caption: "Settings for the daily time logging limit."
+        caption_ru: "Показаны настройки максимального допустимого списания времени за день."
+        home: false
+      - file: time8.jpg
+        file_ru: ""
+        caption: "Made the calendar list more informative by adding relevant details."
+        caption_ru: "Сделал список календарей более информативным за счёт дополнительных данных."
+        home: false
+      - file: time9.jpg
+        file_ru: ""
+        caption: "Designed a calendar template to account for local holidays, vacations, and working time specifics across different countries."
+        caption_ru: "Спроектировал шаблон календаря для учёта местных праздников, отпусков и особенностей рабочего времени в разных странах."
         home: false
 
 permalink: /cases/time/
