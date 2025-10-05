@@ -21,7 +21,7 @@ stages:
         file_ru: ""
         caption: "List of active projects. For each project, a summary is shown across all team members, broken down by hour types: standard paid, vacation, overtime, and unpaid."
         caption_ru: "Список активных проектов. Для каждого проекта отображается сводка по всем сотрудникам — с разбивкой по типам часов: стандартные оплачиваемые, отпуска, переработки и неоплачиваемые."
-        home: true
+        home: false
       - file: time2.png
         file_ru: ""
         caption: "Since this is a desktop service, a context menu was added with actions and links to other internal services for the project."
@@ -31,7 +31,7 @@ stages:
         file_ru: ""
         caption: "From the list of projects/customers, you can drill down into the list of employees. I added advanced filtering and quick highlighting of problematic indicators."
         caption_ru: "От списка проектов/заказчиков можно пройти в список сотрудников. Я добавил расширенную фильтрацию и быструю подсветку проблемных показателей."
-        home: false
+        home: true
       - file: time4.jpg
         file_ru: ""
         caption: "Added the option to expand an employee and view detailed stats. Example shows a dense case."
@@ -65,7 +65,7 @@ stages:
         file_ru: ""
         caption: "Designed a calendar template to account for local holidays, vacations, and working time specifics across different countries."
         caption_ru: "Спроектировал шаблон календаря для учёта местных праздников, отпусков и особенностей рабочего времени в разных странах."
-        home: false
+        home: true
 
 permalink: /cases/time/
 ---
